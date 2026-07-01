@@ -1,4 +1,7 @@
 <div class="home-3d-carousel-wrapper" style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | img_url: 'master' }}');{% endif %} background-color: {{ section.settings.bg_color }}; background-size: cover; background-position: center; position: relative;">
+  {% if section.settings.bg_video != blank %}
+    {{ section.settings.bg_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'carousel-bg-video', playsinline: true }}
+  {% endif %}
   <div class="carousel-dotted-path">
     <!-- SVG curved dotted line -->
     <svg viewBox="0 0 1000 300" preserveAspectRatio="none" style="width: 100%; height: 100%;">
@@ -11,7 +14,9 @@
         {% for block in section.blocks %}
           <div class="swiper-slide slide-item-3d">
             <div class="slide-content-wrap">
-              {% if block.settings.image != blank %}
+              {% if block.settings.slide_video != blank %}
+                {{ block.settings.slide_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'slide-video slide-image', playsinline: true }}
+              {% elsif block.settings.image != blank %}
                 <img src="{{ block.settings.image | img_url: '800x' }}" alt="{{ block.settings.title }}" class="slide-image">
               {% else %}
                 {{ 'image' | placeholder_svg_tag: 'placeholder-svg slide-image' }}
@@ -46,6 +51,15 @@
   .home-3d-carousel-wrapper {
     padding: 100px 0;
     overflow: hidden;
+  }
+  .carousel-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
   }
   .carousel-dotted-path {
     position: absolute;
@@ -197,6 +211,11 @@
       "label": "Background Image"
     },
     {
+      "type": "video",
+      "id": "bg_video",
+      "label": "Background Video"
+    },
+    {
       "type": "color",
       "id": "bg_color",
       "label": "Background Color",
@@ -235,8 +254,13 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Slide Image"
+          "label": "Slide Image (Supports GIF)"
         },
+        {
+      "type": "video",
+      "id": "slide_video",
+      "label": "Slide Video"
+    },
         {
           "type": "text",
           "id": "title",

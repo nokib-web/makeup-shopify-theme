@@ -29,7 +29,7 @@
 {% if section.settings.show_background_image %}
 {% assign lazyScript = "lazyload" %}
 {% endif %}
-<div data-section-id="{{ section.id }}" data-section-type="brand-logos-section" data-item-per-view="{{ section.settings.items_per_view }}"   data-autoplay="{{section.settings.slider_autoplay}}"  data-small-screen-items="1" data-blocks-limit="{{section.blocks.size}}" data-item-space="{{section.settings.column_gap}}" data-auto-height="{{section.settings.enable_auto_height}}">
+<div data-section-id="{{ section.id }}" data-section-type="brand-logos-section" data-item-per-view="{{ section.settings.items_per_view }}"   data-autoplay="{{section.settings.slider_autoplay}}"  data-small-screen-items="{{ section.settings.mobile_items_per_view | default: 2 }}" data-blocks-limit="{{section.blocks.size}}" data-item-space="{{section.settings.column_gap}}" data-auto-height="{{section.settings.enable_auto_height}}">
   <div class="dt-sc-section-wrapper {{lazyScript}} {{section_overlay}} {% if section.settings.background_style == 'parallax' %} parallax-initiated{% endif %}" style="{% render 'bg-color-image-padding' %}" data-style="parallax" {{background_style}} {% include 'bg_image' %}>  
     <div class="{% render 'container-settings' %}"> 
     <div class="row {{ section.settings.custom_class_name }}"> 
@@ -293,7 +293,7 @@
       nextEl: '#swiper-' + id + '-next',
       prevEl: '#swiper-' + id + '-prev'
     },
-    loop: false,
+    loop: true,
     slidesPerView: ItemsPerView,   
     slidesPerColumn: ItemsRow,
     spaceBetween: ItemsSpace,
@@ -303,10 +303,10 @@
     breakpoints: {
           320: {
             slidesPerView: mobileSlides,
-            spaceBetween: 20,
+            spaceBetween: 15,
           },
           640: {
-            slidesPerView: 2,
+            slidesPerView: mobileSlides,
             spaceBetween: 20,
           },
           768: {
@@ -585,6 +585,15 @@
 "id": "enable_slider",
 "label": "Enable Carousel",
 "default": true
+},
+{
+"type": "range",
+"id": "mobile_items_per_view",
+"label": "Mobile: Slides per row",
+"min": 1,
+"max": 4,
+"step": 1,
+"default": 2
 },
 {
 "type": "checkbox",
