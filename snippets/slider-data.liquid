@@ -1,10 +1,13 @@
 {%- assign img_url = block.settings.image | img_url: '2000x' -%}
 {% if  block.settings.link != blank %} <a href="{{ block.settings.link }}"> {% endif %}
-{% if  block.settings.image != blank %}
+{% if block.settings.video_url != blank %}
+<video class="slide-video slide-img" autoplay loop muted playsinline>
+  <source src="{{ block.settings.video_url }}" type="video/mp4">
+</video>
+{% elsif block.settings.image != blank %}
 <img class="slide-img"
      src="{{block.settings.image | img_url: 'master'}}"
      alt="{{ block.settings.image.alt | escape }}">            
-
 {% else %}
 {%- if placeholder_slide == 1 -%}
      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
@@ -14,10 +17,12 @@
 {% endif %}
 
 
-{% if  block.settings.mobile_image != blank %}
-<img class="slide-img mobile-only" src="{{block.settings.mobile_image | img_url: '768x940'}}" alt="{{ block.settings.image.alt | escape }}">     
-{% else %}
-<img src="//via.placeholder.com/798x940"   class="slide-img mobile-only" alt="{{ block.settings.image.alt }}">
+{% if block.settings.video_url == blank %}
+  {% if  block.settings.mobile_image != blank %}
+  <img class="slide-img mobile-only" src="{{block.settings.mobile_image | img_url: '768x940'}}" alt="{{ block.settings.image.alt | escape }}">     
+  {% else %}
+  <img src="//via.placeholder.com/798x940"   class="slide-img mobile-only" alt="{{ block.settings.image.alt }}">
+  {% endif %}
 {% endif %}
 
 

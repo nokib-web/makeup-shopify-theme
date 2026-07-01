@@ -102,7 +102,8 @@
       background: var(--DTTertiaryColor); background: {{ block.settings.slide_content_bg }};
         }
 
-  .home-slideshow-section .dt-sc-swiper-slider.swiper-container .swiper-slide  img { height: {{section.settings.slider_height}}px; }  
+  .home-slideshow-section .dt-sc-swiper-slider.swiper-container .swiper-slide  img,
+  .home-slideshow-section .dt-sc-swiper-slider.swiper-container .swiper-slide  video { height: {{section.settings.slider_height}}px; width: 100%; object-fit: cover; }  
 
   @media screen and (min-width: 768px){
 
@@ -609,6 +610,12 @@
 "id": "mobile_image",
 "label": "Mobile Slider Image",
 "info": "768x900"
+},
+{
+"type": "text",
+"id": "video_url",
+"label": "Video URL (MP4)",
+"info": "Paste a direct MP4 video link. It will override the slider image."
 },
 {
 "type": "color",
