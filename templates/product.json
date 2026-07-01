@@ -51,7 +51,7 @@
         "social_sharing_nPhBbf"
       ],
       "settings": {
-        "gallery_type": "thumbnails_horizontal",
+        "gallery_type": "thumbnails_vertical",
         "vertical_style": "dt-sc-product-vertical-thumb-right",
         "enable_zoom": true,
         "enable_video_looping": false,
@@ -78,6 +78,7 @@
     },
     "product-recommendations": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "show_product_recommendations": true,
         "heading": "Recommended products",

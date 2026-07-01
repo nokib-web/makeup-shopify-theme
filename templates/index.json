@@ -16,6 +16,7 @@
           "type": "Image",
           "settings": {
             "large": "shopify://shop_images/slider-1.jpg",
+            "video_ratio": "auto",
             "tab": "01",
             "main_title": "ACCESSORIES",
             "main_title_size": "55",
@@ -38,6 +39,7 @@
           "type": "Image",
           "settings": {
             "large": "shopify://shop_images/slider-2.jpg",
+            "video_ratio": "auto",
             "tab": "02",
             "main_title": "COSMETICS",
             "main_title_size": "55",
@@ -60,6 +62,7 @@
           "type": "Image",
           "settings": {
             "large": "shopify://shop_images/slider-3.jpg",
+            "video_ratio": "auto",
             "tab": "03",
             "main_title": "SKIN CARE",
             "main_title_size": "55",
@@ -218,6 +221,61 @@
         "block_button_hover_bg_color": "",
         "block_button_hover_text_color": "",
         "custom_class_name": ""
+      }
+    },
+    "custom_3d_carousel": {
+      "type": "home-3d-carousel",
+      "blocks": {
+        "slide_mmXPMe": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/blog-1_c01a3d24-b663-4b76-9711-018db9829b4f.jpg",
+            "title": "Flow",
+            "subtitle": "01 - 05",
+            "text_color": "#ffffff"
+          }
+        },
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/blog-1.jpg",
+            "title": "FLOW",
+            "subtitle": "01 - 05",
+            "text_color": "#ffffff"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/blog-2_56570218-c21b-4472-9e3c-fd275908fc5c.jpg",
+            "title": "GLAMOUR",
+            "subtitle": "02 - 05",
+            "text_color": "#ffffff"
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/blog-2.jpg",
+            "title": "ELEGANCE",
+            "subtitle": "03 - 05",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "slide_mmXPMe",
+        "slide-1",
+        "slide-2",
+        "slide-3"
+      ],
+      "settings": {
+        "bg_image": "shopify://shop_images/slider-bg.jpg",
+        "bg_color": "#f4f4f4",
+        "nav_color": "#ffffff",
+        "autoplay": true,
+        "show_navigation": true,
+        "show_pagination": true
       }
     },
     "1630321213cd794ca2": {
@@ -1202,44 +1260,6 @@
         "newsletter_button_hover_text_color": "",
         "newsletter_description_color": "",
         "custom_class_name": ""
-      }
-    },
-    "custom_3d_carousel": {
-      "type": "home-3d-carousel",
-      "blocks": {
-        "slide-1": {
-          "type": "slide",
-          "settings": {
-            "title": "FLOW",
-            "subtitle": "01 - 05"
-          }
-        },
-        "slide-2": {
-          "type": "slide",
-          "settings": {
-            "title": "GLAMOUR",
-            "subtitle": "02 - 05"
-          }
-        },
-        "slide-3": {
-          "type": "slide",
-          "settings": {
-            "title": "ELEGANCE",
-            "subtitle": "03 - 05"
-          }
-        }
-      },
-      "block_order": [
-        "slide-1",
-        "slide-2",
-        "slide-3"
-      ],
-      "settings": {
-        "bg_color": "#f4f4f4",
-        "nav_color": "#ffffff",
-        "autoplay": true,
-        "show_navigation": true,
-        "show_pagination": true
       }
     }
   },

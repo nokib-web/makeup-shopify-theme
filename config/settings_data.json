@@ -157,7 +157,7 @@
           "9a293b0b-5169-4de3-b9e6-78bcfd01de73": {
             "type": "promo_image",
             "settings": {
-              "mega_1": "catalog",
+              "mega_1": "makeup",
               "mega_columns": "three-column",
               "row_reverse": false,
               "image_1": "shopify://shop_images/demo-logo.png",
@@ -178,7 +178,7 @@
           "8ad6daad-e9b1-4394-bef6-9a513720b7eb": {
             "type": "promo_image",
             "settings": {
-              "mega_1": "FACIAL",
+              "mega_1": "home",
               "mega_columns": "four-column",
               "row_reverse": false,
               "title_1": "",
@@ -265,6 +265,7 @@
           "header_contact_hover": "#d8f3f5",
           "logo": "shopify://shop_images/demo-logo.png",
           "logo_max_width": 100,
+          "mobile_logo_max_width": 100,
           "menu_align": "logo_left",
           "show_header_social": false,
           "search_type": "search-icon",
