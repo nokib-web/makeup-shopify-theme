@@ -1,0 +1,576 @@
+{% if section.blocks.size > 0 %}
+  <div id="QuotesSection-{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="quotes-section" class="quotes-section" {% if section.settings.image_1 != blank %} style="position:relative;background-image:url('{{ section.settings.image_1 | img_url: 'master' }}');background-repeat:no-repeat;"{% endif%}>
+     <div class="grid-uniform"> 
+    <div class="module home-testimonials ready">
+    <div class="module-header border-title wow bounce">
+    {% if section.settings.heading != blank %}
+      <h2 class="hero__overlay-title separator text-center">{{ section.settings.heading }}</h2>
+      {% endif %}
+    </div>
+    <div class="module-body">
+    <div class="home-testimonials-container">
+      <div class="quote-navigation">
+          {% for block in section.blocks %}
+         {% if block.settings.icon != blank %}
+          <div class="clients">            
+            <img class="quote-icon" src="{{ block.settings.icon | img_url: "90x" }}" alt="{{ block.settings.quote }}" style="margin:auto;" />           
+          </div>
+           {% else %}
+           <div class="clients">            
+           {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+{%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+{{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}         
+          </div>
+          {% endif %}
+         {% endfor %}   
+      </div>
+      
+    <div class="quotes-slider text-center" data-count="{{ section.blocks.size }}">   
+     
+      {% for block in section.blocks %}
+        <div class="quotesSlide quotes-slide--{{ forloop.index0 }} quotes-slide--{{ block.id }}" {{ block.shopify_attributes }}>
+          {% if block.settings.quote != blank %}
+            <div class="quote rte-setting">{{ block.settings.quote }}</div>
+          {% endif %}
+           {% if block.settings.icon != blank %}
+           <div class="client-img">
+            <img class="quote-icon" src="{{ block.settings.icon | img_url: "70x" }}" alt="{{ block.settings.quote }}" style="margin:auto;" />
+           </div>  
+             {% else %}
+             <div class="client-img">
+            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
+{%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
+{{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+           </div> 
+          {% endif %}
+          <div class="client-info">
+          {% if block.settings.author != blank %}
+            <span class="quote-author">{{ block.settings.author | escape }}</span>
+          {% endif %}
+           {% if block.settings.job != blank %}
+            <span class="quote-job">{{ block.settings.job | escape }}</span>
+          {% endif %}
+          </div>  
+        </div>
+      {% endfor %}      
+    </div>    
+      
+    <div class="quotes-arrow-{{ section.id}}-nav carousel-arrow">
+    </div>
+      </div>
+    </div>
+    </div>
+    <div class="dt-sc-hr-invisible-large"></div>   
+    </div>
+  </div>
+{% else %}
+  {% include 'no-blocks' %}
+{% endif %}
+
+
+<style>
+  
+  #QuotesSection-{{ section.id }}  {
+    background-color: {{ section.settings.color_bg }};
+  }
+  #QuotesSection-{{ section.id }} .quote,
+  #QuotesSection-{{ section.id }} .quote-author,#QuotesSection-{{ section.id }} .quote-job {
+    color: {{ section.settings.color_text }};
+  }  
+  
+  /* Slider */
+.slick-slider { position: relative; display: block; box-sizing: border-box; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; -webkit-touch-callout: none; -khtml-user-select: none; -ms-touch-action: pan-y; touch-action: pan-y; -webkit-tap-highlight-color: transparent; }
+.slick-list { position: relative; display: block; overflow: hidden; margin: 0; padding: 0; }
+.slick-list:focus { outline: none; }
+.slick-list.dragging { cursor: pointer; cursor: hand; }
+.slick-slider .slick-track, .slick-slider .slick-list { -webkit-transform: translate3d(0, 0, 0); -moz-transform: translate3d(0, 0, 0); -ms-transform: translate3d(0, 0, 0); -o-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+.slick-track { position: relative; top: 0; left: 0; display: block; margin-left: auto; margin-right: auto; }
+.slick-track:before, .slick-track:after { display: table; content: ''; }
+.slick-track:after { clear: both; }
+.slick-loading .slick-track { visibility: hidden; }
+.slick-slide { display: none; float: left; height: 100%; min-height: 1px; }
+[dir='rtl'] .slick-slide { float: right; }
+.slick-slide img { display: block; }
+.slick-slide.slick-loading img { display: none; }
+.slick-slide.dragging img { pointer-events: none; }
+.slick-initialized .slick-slide { display: block; }
+.slick-loading .slick-slide { visibility: hidden; }
+.slick-vertical .slick-slide { display: block; height: auto; border: 1px solid transparent; }
+.slick-arrow.slick-hidden { display: none; }
+.quotes-section .quotes-slider .slick-slide.slick-current.slick-active.slick-center {opacity:1;}
+.quotes-section .quotes-slider .slick-slide {opacity:0.25;}
+ 
+  
+  
+  
+/* TESTIMONIALS */
+.home-testimonials-container .quote-author {
+  letter-spacing: 0;
+  margin-bottom: 0;
+  font-weight: bold;
+  font-size: 20px; }
+  @media screen and (max-width: 967px) {
+    .home-testimonials-container .quote-author {
+      font-size: 20px; } }
+
+.home-testimonials-container .slick-prev, .home-testimonials-container .slick-next {
+  width: 40px;
+  height: 40px;
+  line-height: 36px;
+  background: #fc4c4b;
+  border: 2px solid;
+  color: white;
+  border-radius: px; }
+
+.home-testimonials-container .slick-prev:hover, .home-testimonials-container .slick-next:hover {
+  background-color: #231f1e;
+  color: #ffffff;
+  border-color: #231f1e; }
+
+.home-testimonials-container .slick-prev {
+  left: 5%; }
+
+.home-testimonials-container .slick-next {
+  right: 5%; }
+
+.home-testimonials-slides {
+  position: relative;
+  display: block;
+  width: 100%; }
+
+.home-testimonials .client-img, .home-testimonials .client-info {
+  float: left; }
+
+@media screen and (max-width: 1599px) {
+  .home-testimonials .client-img {
+    width: 24%; } }
+@media screen and (max-width: 567px) {
+  .home-testimonials .client-img {
+    width: 100%; } }
+
+.home-testimonials .client-info {
+  text-align: left;
+  margin: 8px 0 0 20px; }
+  @media screen and (max-width: 1599px) {
+    .home-testimonials .client-info {
+      width: 68%; } }
+    @media screen and (min-width:1024px) and (max-width:1199px){
+  .home-testimonials .client-img {
+    width: auto;
+}
+  }
+  @media screen and (max-width: 967px) {
+    .home-testimonials .client-info {
+      margin-top: 0; } }
+  @media screen and (max-width:767px){
+  .slick-slide img {
+    float: none;
+}
+  }
+  @media screen and (max-width: 567px) {
+    .home-testimonials .client-info {
+      width: 100%;
+      margin-left: 0;
+      text-align: center; } }
+
+.home-testimonials-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 60px 0 auto;
+  clear: both; }
+  @media screen and (max-width: 567px) {
+    .home-testimonials-container {
+      margin: 0; } }
+.home-testimonials-container svg.placeholder-svg {
+ border-radius: 100%;
+  border: 5px solid #fc4c4b;
+  cursor: pointer; height: 100px; width: 100px;  
+}
+.home-testimonials-container .quote-icon {
+  border-radius: 100%;
+  border: 5px solid #fc4c4b;
+  cursor: pointer; }
+.home-testimonials-container .clients svg.placeholder-svg,
+.home-testimonials-container .clients .quote-icon {
+  transform: scale(0.8);
+  -webkit-transform: scale(0.8); }
+  @media screen and (max-width: 967px) {
+    .home-testimonials-container .clients svg.placeholder-svg,
+    .home-testimonials-container .clients .quote-icon {
+      width: 85px; } }
+.home-testimonials-container .clients.slick-current svg.placeholder-svg,
+.home-testimonials-container .clients.slick-current .quote-icon {
+  transform: scale(1);
+  -webkit-transform: scale(1); }
+  
+.home-testimonials-container svg.placeholder-svg,
+.home-testimonials-container .quote-icon, 
+.home-testimonials-container .clients.slick-current .quote-icon {
+  transition: all 0.3s linear;
+  -webkit-transition: all 0.3s linear; }
+
+.home-testimonials-container .quote-job {
+  margin-bottom: 7px; }
+
+.quote .quote-icon {
+  margin: 0 auto; }
+
+.quote, .quote-author, .quote-job {
+  float: left;
+  width: 100%; }
+
+.quote-author {
+  letter-spacing: 2px; }
+
+.quote img {
+  margin: auto; }
+
+.home-testimonials-slides-list-item.active {
+  -webkit-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -ms-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 1; }
+
+.module {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 120px 0px;
+  text-align: center; }
+
+.home-testimonials {
+  -webkit-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -ms-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  -o-transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  display: block;
+  height: 0;
+  width: 100%;
+  max-width: 100%;
+  opacity: 0;
+  padding: 0; }
+
+.home-testimonials.ready {
+  height: auto;
+  opacity: 1; }
+
+.home-testimonials.ready {
+  height: auto;
+  opacity: 1; }
+
+.home-testimonials.ready h2 {
+  margin-bottom: 20px; }
+
+.module-body {
+  position: relative;
+  z-index: 1; }
+
+.quotes-section {
+  padding: 20px 0 40px; }
+  @media screen and (max-width: 1199px) {
+    .quotes-section {
+      background-size: contain; } }
+
+@media screen and (max-width: 1199px) {
+  .quotes-section .quotes-slider {
+    margin-top: 80px; } }
+@media screen and (max-width: 767px) {
+  .quotes-section .quotes-slider {
+    margin-top: 0; } }
+
+.quotes-section .quotes-slider .slick-slide {
+
+  box-shadow: rgb(14 30 37 / 12%) 0px 2px 4px 0px, rgb(14 30 37 / 32%) 0px 2px 16px 0px;
+  background: #ffffff;
+  text-align: left;
+  position: relative;
+  padding: 80px 50px;
+  margin: 10px;
+  z-index: 1; }
+  @media screen and (max-width: 1599px) {
+    .quotes-section .quotes-slider .slick-slide {
+      padding: 40px 30px; } }
+  @media screen and (max-width: 567px) {
+    .quotes-section .quotes-slider .slick-slide {
+      text-align: center; } }
+
+.quotes-section .quotes-slider .slick-slide:before {
+  content: ',,';
+  color: #fef2f0;
+  font-family: 'Cormorant, serif';
+  letter-spacing: -25px;
+  font-size: 350px;
+  line-height: 10px;
+  position: absolute;
+  right: 50px;
+  bottom: 0;
+  transform: rotate(180deg);
+  -webkit-transform: rotate(180deg);
+  z-index: -1; }
+
+.quotes-section .quotes-slider .slick-slide:hover .quote-author {
+  color: #fc4c4b !important; }
+
+.quotes-section .quotes-slider .slick-slide:hover:before {
+  font-size: 280px; }
+
+.quotes-section .quotes-slider .slick-slide .quote-author, .quotes-section .quotes-slider .slick-slide:before {
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -ms-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear; }
+
+.tab_nav {
+  float: left;
+  width: 100%; }
+
+.home-testimonials-container .owl-prev {
+  left: 0; }
+
+.home-testimonials-container .owl-next {
+  right: 0; }
+
+.home-testimonials-container .owl-prev a, .home-testimonials-container .owl-next a {
+  float: left;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0; }
+
+.home-testimonials-container .owl-prev, .home-testimonials-container .owl-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%); }
+
+.quotes-section .slick-slider .clients {
+  width: auto !important; }
+
+.quotes-section .slick-slider .clients:first-child {
+  margin-right: 15%; }
+  @media screen and (max-width: 1199px) {
+    .quotes-section .slick-slider .clients:first-child {
+      margin-right: 0; } }
+  @media screen and (max-width: 967px) {
+    .quotes-section .slick-slider .clients:first-child {
+      margin-top: -15%; } }
+
+.quotes-section .slick-slider .clients:nth-child(2) {
+  align-self: center; }
+  @media screen and (max-width: 1199px) {
+    .quotes-section .slick-slider .clients:nth-child(2) {
+      margin-left: 8%; } }
+
+.quotes-section .slick-slider .clients:nth-child(3) {
+  align-self: flex-start;
+  margin-left: 18%;
+  margin-top: 5%; }
+  @media screen and (max-width: 1199px) {
+    .quotes-section .slick-slider .clients:nth-child(3) {
+      margin-left: 10%;
+      margin-top: 0; } }
+
+.quotes-section .slick-slider .clients:nth-child(4) {
+  margin-right: 30%;
+  margin-bottom: 4%;
+  margin-top: -10%; }
+  @media screen and (max-width: 1199px) {
+    .quotes-section .slick-slider .clients:nth-child(4) {
+      margin-right: 35%;
+      margin-top: 0; } }
+
+.quotes-section .slick-slider .clients:last-child {
+  align-self: flex-start;
+  margin-left: 35%;
+  margin-top: -5%; }
+  @media screen and (max-width: 1199px) {
+    .quotes-section .slick-slider .clients:last-child {
+      margin-left: 17%;
+      margin-top: 0; } }
+
+.quotes-section .slick-slider .clients, .quotes-section .quotes-slider .slick-slide {
+  outline: none; }
+
+.quote-navigation {
+  width: 38%;
+  float: left; }
+  @media screen and (max-width: 767px) {
+    .quote-navigation {
+      display: none !important; } }
+
+.quotes-slider {
+  width: 60%;
+  float: right;
+  padding: 0 0 40px 10px;
+  position: relative;
+  overflow: hidden; }
+  @media screen and (max-width: 767px) {
+    .quotes-slider {
+      width: 100%; } }
+
+.quotes-slider .slick-list {
+  overflow: visible;
+  margin-left: -150px; }
+  @media screen and (max-width: 1199px) {
+    .quotes-slider .slick-list {
+      padding: 0 50px !important;
+      margin-left: -50px; } }
+  @media screen and (max-width: 567px) {
+    .quotes-slider .slick-list {
+      padding: 0 10px !important;
+      margin-left: -5px; } }
+
+.quote-navigation .slick-list {
+  overflow: visible; }
+
+.quotes-slide {
+  padding: 0 30px;
+  position: absolute;
+  width: 100%;
+  max-width: 85%;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  z-index: 0;
+  pointer-events: auto;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.5s ease-out; }
+
+.quote-navigation .slick-track {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column; }
+
+.quotes-slide--visible {
+  opacity: 1;
+  z-index: 1; }
+
+.quote {
+  margin-bottom: 30px; }
+
+.quote-author {
+  letter-spacing: 1px; }
+
+  
+</style>
+
+
+
+{% schema %}
+{
+  "name": "Advanced Testimonial",
+  "class": "index-section index-section--quotes",
+  "max_blocks": 6,
+  "settings": [
+    {
+    "type": "image_picker",
+    "id": "image_1",
+    "label": "Image",
+    "info": "Size: 858x841"
+    }, 
+	{
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "What our customers say..."
+        },
+    {
+      "type": "color",
+      "id": "color_bg",
+      "label": "Background color",
+      "default": "#4a4a4a"
+    },
+    {
+      "type": "color",
+      "id": "color_text",
+      "label": "Text color",
+      "default": "#ffffff"
+    }    
+  ],
+  "blocks": [
+    {
+      "type": "quote",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "quote",
+          "label": "Text",
+          "info": "Best results if text does not exceed 400 characters",
+          "default": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>"
+        },
+		{
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Avator",
+          "info": "Size Recommended: 200x200"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author",
+          "default": "Author's name"
+        },
+		{
+          "type": "text",
+          "id": "job",
+          "label": "Designation",
+          "default": "Author's designation"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advanced Testimonial",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "quote"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+<script>  
+  $(document).on('ready', function() {
+    $('.quotes-slider').slick({    
+      centerMode: true,
+      centerPadding: '150px',
+      slidesToShow: 1,
+      slidesToScroll: 1,   
+      autoplay:false,
+      autoplaySpeed:3000,
+      draggable: false,
+      arrows: false,
+      asNavFor: '.quote-navigation',
+      appendArrows: '.quotes-arrow-{{ section.id}}-nav',
+      prevArrow: '<a class="prev-arrow"><i class="fas fa-arrow-left" aria-hidden="true"></i></a>',
+      nextArrow: '<a class="next-arrow"><i class="fas fa-arrow-right" aria-hidden="true"></i></a>',
+    });
+
+    $('.quote-navigation').slick({
+      slidesToShow: {{section.blocks.size}},    
+      asNavFor: '.quotes-slider',
+      dots: false,
+      focusOnSelect: true,
+      autoplay:false,
+      arrows: false,
+      autoplaySpeed:4000,
+      draggable: false
+      }); 
+    
+  })
+</script>
+
