@@ -1203,11 +1203,50 @@
         "newsletter_description_color": "",
         "custom_class_name": ""
       }
+    },
+    "custom_3d_carousel": {
+      "type": "home-3d-carousel",
+      "blocks": {
+        "slide-1": {
+          "type": "slide",
+          "settings": {
+            "title": "FLOW",
+            "subtitle": "01 - 05"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "settings": {
+            "title": "GLAMOUR",
+            "subtitle": "02 - 05"
+          }
+        },
+        "slide-3": {
+          "type": "slide",
+          "settings": {
+            "title": "ELEGANCE",
+            "subtitle": "03 - 05"
+          }
+        }
+      },
+      "block_order": [
+        "slide-1",
+        "slide-2",
+        "slide-3"
+      ],
+      "settings": {
+        "bg_color": "#f4f4f4",
+        "nav_color": "#ffffff",
+        "autoplay": true,
+        "show_navigation": true,
+        "show_pagination": true
+      }
     }
   },
   "order": [
     "1633071826f628c81b",
     "1630474188cd8d29c5",
+    "custom_3d_carousel",
     "1630321213cd794ca2",
     "1630469276ff7489a3",
     "1630469283cb351be4",
