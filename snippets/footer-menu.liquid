@@ -1,9 +1,9 @@
 {% if linklists[block.settings.menu].links.size > 0 %}
-<div class="{{ footer_column_alignment}}">
+<div class="{{ footer_column_alignment}} footer-accordion-block">
 {% if block.settings.title != blank  and section.settings.show_footer_title %}        
-  <h5 class="footer__title"> {{ block.settings.title }} </h5>
+  <h5 class="footer__title footer-accordion-title"> {{ block.settings.title }} </h5>
   {% endif %}
-  <ul class="{{footer_menu_style }}">
+  <ul class="{{footer_menu_style }} footer-accordion-content">
     {% for link in linklists[block.settings.menu].links %}
     <li><a href="{{ link.url }}">{{ link.title }}</a></li>
     {% endfor %}
