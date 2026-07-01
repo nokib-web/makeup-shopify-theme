@@ -175,7 +175,24 @@
     background:{{ section.settings.block_button_hover_bg_color }}; color:{{ section.settings.block_button_hover_text_color }};
   }
     
-  .dt-sc-support-blocks-section .dt-sc-support-block { /*display: flex;*/ flex-wrap: wrap; height: 100%; }
+  .dt-sc-support-blocks-section .dt-sc-support-block { 
+    flex-wrap: wrap; height: 100%; 
+    background: rgba(255, 255, 255, 0.05) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 15px !important;
+    padding: 25px 20px !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dt-sc-support-blocks-section .dt-sc-support-block:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
   
   .dt-sc-support-blocks-section .dt-sc-support-block.text-center .dt-sc-support-content { padding: 0 20px; }
   
@@ -190,12 +207,16 @@
   .dt-sc-support-blocks-section .dt-sc-support-block .dt-sc-support-icon-image { display: flex; justify-content: center; align-items: center; }
   
   #shopify-section-{{section.id}}.home-support-block .dt-sc-support-blocks-section .dt-sc-support-block .dt-sc-support-icon-image {
-    background: var(--DTTertiaryColor); background: {{ section.settings.block_icon_bg }}; 
-      
-    border-color: var(--DTTertiaryColor);
-    border-color: {{ section.settings.block_icon_border_color }};
-    
+    background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0)) !important; 
+    border-color: rgba(255, 255, 255, 0.15) !important;
     border-width: 1px; border-style: solid;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .dt-sc-support-blocks-section .dt-sc-support-block:hover .dt-sc-support-icon-image {
+    transform: scale(1.1) rotate(5deg);
   }
   
   .dt-sc-support-blocks-section .dt-sc-support-block .dt-sc-support-icon-image img { width: 100%; }
