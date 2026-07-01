@@ -1,8 +1,10 @@
 {%- assign img_url = block.settings.image | img_url: '2000x' -%}
 {% if  block.settings.link != blank %} <a href="{{ block.settings.link }}"> {% endif %}
-{% if block.settings.video_url != blank %}
+{% if block.settings.video != blank %}
 <video class="slide-video slide-img" autoplay loop muted playsinline>
-  <source src="{{ block.settings.video_url }}" type="video/mp4">
+  {% for source in block.settings.video.sources %}
+    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+  {% endfor %}
 </video>
 {% elsif block.settings.image != blank %}
 <img class="slide-img"
@@ -17,7 +19,7 @@
 {% endif %}
 
 
-{% if block.settings.video_url == blank %}
+{% if block.settings.video == blank %}
   {% if  block.settings.mobile_image != blank %}
   <img class="slide-img mobile-only" src="{{block.settings.mobile_image | img_url: '768x940'}}" alt="{{ block.settings.image.alt | escape }}">     
   {% else %}

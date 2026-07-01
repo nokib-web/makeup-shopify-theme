@@ -22,7 +22,13 @@
           {% for block in section.blocks %}
           <div class="top-data_block">              
             <div class="dt-sc-banner-content dt-sc-progress-content--{{ block.id }}">
-              {% if block.settings.large != blank  %}
+              {% if block.settings.video != blank %}
+                <video autoplay loop muted playsinline style="width: 100%; height: auto; aspect-ratio: {{ block.settings.video_ratio }}; object-fit: cover;">
+                  {% for source in block.settings.video.sources %}
+                    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                  {% endfor %}
+                </video>
+              {% elsif block.settings.large != blank  %}
               <img src="{{ block.settings.large | img_url: 'master' }}" alt="{{ section.settings.heading }}" />
               {% else %}
               {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
@@ -186,50 +192,44 @@
   
   
   
-    @media screen and (max-width: 1199px) {
-  
-   #shopify-section-template--14164613955693__1633071826f628c81b.home-slider-with-tabs .dt-sc-slider-content:before{background-color:var(--DTBodyBGColor); opacity:0.8;}
-    .home-social-media {background-color:var(--DTBodyBGColor); opacity:0.8; width:100%;}
-  }
-  
   @media screen and (max-width: 1199px) {
-    
-    #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-progress-content--{{ block.id }} h2 { font-size: calc(.9 * {{ block.settings.main_title_size }}px); }
-  #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-progress-content--{{ block.id }} h4 { font-size: calc(.9 * {{ block.settings.title_size }}px);}
-  
-    #shopify-section-template--14164613955693__1633071826f628c81b.home-slider-with-tabs .dt-sc-slider-content:before{background-color:var(--DTBodyBGColor); opacity:0.8;}
-    .home-social-media {background-color:var(--DTBodyBGColor); opacity:0.8;}
+    #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-progress-content--{{ block.id }} h2 { font-size: calc(.8 * {{ block.settings.main_title_size }}px); }
+    #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-progress-content--{{ block.id }} h4 { font-size: calc(.8 * {{ block.settings.title_size }}px);}
+    .home-social-media { display: none; }
   }
-  @media screen and (min-width:1024px) and (max-width:1199px){
-    #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-slider-content{
-    padding:40px;
+  @media screen and (max-width: 991px) {
+    #shopify-section-{{section.id}}.home-slider-with-tabs .container, 
+    #shopify-section-{{section.id}}.home-slider-with-tabs .container-fluid {
+      padding: 0;
+      max-width: 100%;
     }
-  }
-  @media screen and (min-width:768px) and (max-width:1023px){
-    #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-slider-content{
-    padding:40px;
+    #shopify-section-{{section.id}}.home-slider-with-tabs .row {
+      margin: 0;
+    }
+    #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-slider-content {
+      position: relative;
+      height: auto;
+      padding: 40px 20px 80px 20px;
+      left: 0;
+      align-items: center;
+      text-align: center;
     }
   }
   @media screen and (max-width: 767px) {
     .home-slider-with-tabs #sliderTabs-{{ section.id }}-nav .dt-sc-progress-tab h4 {
-    min-width:0 !important;
+      min-width:0 !important;
     }
     .home-slider-with-tabs .dt-sc-slider-content .dt-sc-btn:before {
-    width: 100px !important;
-}
+      width: 50px !important;
+    }
     #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-slider-content > *:not(:last-child){
-    margin-bottom:20px !important;
+      margin-bottom:15px !important;
     }
     #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-progress-content--{{ block.id }} .dt-sc-btn {
-    padding:20px 0;
+      padding:15px 0;
     }
-    #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-slider-content {
-    left:0;
-      align-items:center;
-    }
-    #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-progress-content--{{ block.id }} h2 { font-size: calc(.65 * {{ block.settings.main_title_size }}px); }
-  #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-progress-content--{{ block.id }} h4 { font-size: calc(.65 * {{ block.settings.title_size }}px);}
-    
+    #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-progress-content--{{ block.id }} h2 { font-size: calc(.6 * {{ block.settings.main_title_size }}px); }
+    #shopify-section-{{section.id}}.home-slider-with-tabs .dt-sc-progress-content--{{ block.id }} h4 { font-size: calc(.6 * {{ block.settings.title_size }}px);}
   }
 
   {% endfor %}
@@ -631,6 +631,25 @@
 "id": "large",
 "label": "Image",
 "info": "Size Recommended: 900x900"
+},
+{
+"type": "video",
+"id": "video",
+"label": "Video",
+"info": "Upload a video file. It will override the slider image."
+},
+{
+"type": "select",
+"id": "video_ratio",
+"label": "Video Aspect Ratio",
+"options": [
+{ "value": "auto", "label": "Original (Auto)" },
+{ "value": "16/9", "label": "16:9 Widescreen" },
+{ "value": "21/9", "label": "21:9 Ultrawide" },
+{ "value": "4/3", "label": "4:3 Standard" },
+{ "value": "1/1", "label": "1:1 Square" }
+],
+"default": "auto"
 },
 {
 "type": "text",
