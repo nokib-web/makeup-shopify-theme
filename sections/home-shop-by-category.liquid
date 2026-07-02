@@ -1,0 +1,490 @@
+{% if section.settings.enable_overlay %}
+  {% assign section_overlay = 'dt-sc-overlay' %}
+{% endif %}
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap">
+
+<div class="dt-sc-section-wrapper {{ section_overlay }}" style="{% render 'bg-color-image-padding' %}">
+  <div class="{% render 'container-settings' %}">
+    <div class="row {{ section.settings.custom_class_name }}">
+      
+      <div class="shop-by-cat-section-outer">
+        
+        <!-- Horizontal Background Band -->
+        <div class="shop-by-cat-bg-band" style="background-color: {{ section.settings.background_color | default: '#FAF5F0' }};"></div>
+
+        <!-- Main Content Layout -->
+        <div class="shop-by-cat-content-grid">
+          
+          <!-- Left Heading -->
+          <div class="shop-by-cat-heading-col">
+            {% if section.settings.section_heading != blank %}
+              <h2 class="shop-by-cat-title">{{ section.settings.section_heading | newline_to_br }}</h2>
+            {% endif %}
+            {% if section.settings.section_sub_heading != blank %}
+              <p class="shop-by-cat-subtitle">{{ section.settings.section_sub_heading }}</p>
+            {% endif %}
+          </div>
+
+          <!-- Mid-Left Card (Eye / Card 2) -->
+          <div class="shop-by-cat-card-col col-eye">
+            {% assign block = section.blocks[1] %}
+            {% if block == blank %}
+              {% assign block = section.blocks[0] %}
+            {% endif %}
+            
+            {% assign collection_ref = collections[block.settings.collection] %}
+            
+            {% if block.settings.image != blank %}
+              {% assign card_image_url = block.settings.image | img_url: '800x' %}
+            {% elsif collection_ref.image != blank %}
+              {% assign card_image_url = collection_ref.image | img_url: '800x' %}
+            {% elsif collection_ref.products.first.featured_image != blank %}
+              {% assign card_image_url = collection_ref.products.first.featured_image | img_url: '800x' %}
+            {% else %}
+              {% assign card_image_url = "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=800&q=80" %}
+            {% endif %}
+
+            {% if block.settings.title != blank %}
+              {% assign card_title = block.settings.title %}
+            {% elsif collection_ref.title != blank %}
+              {% assign card_title = collection_ref.title %}
+            {% else %}
+              {% assign card_title = "Eye" %}
+            {% endif %}
+
+            {% if block.settings.link != blank %}
+              {% assign card_link = block.settings.link %}
+            {% elsif collection_ref.url != blank %}
+              {% assign card_link = collection_ref.url %}
+            {% else %}
+              {% assign card_link = "#" %}
+            {% endif %}
+
+            <div class="shop-by-cat-card-anchor" {{ block.shopify_attributes }}>
+              <a href="{{ card_link }}" class="shop-by-cat-card-link">
+                <div class="shop-by-cat-img-frame" style="{% if block.settings.card_bg_color != blank %}background-color: {{ block.settings.card_bg_color }};{% endif %}">
+                  <img src="{{ card_image_url }}" alt="{{ card_title | escape }}" loading="lazy" class="shop-by-cat-real-img">
+                </div>
+                <span class="shop-by-cat-caption">{{ card_title }}</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Column (Top Card: Face, Bottom Card: Bestsellers) -->
+          <div class="shop-by-cat-card-col col-stacked-right">
+            
+            <!-- Top Card (Face / Card 1) -->
+            {% assign block_face = section.blocks[0] %}
+            {% if block_face != blank %}
+              {% assign collection_ref = collections[block_face.settings.collection] %}
+              
+              {% if block_face.settings.image != blank %}
+                {% assign face_image_url = block_face.settings.image | img_url: '800x' %}
+              {% elsif collection_ref.image != blank %}
+                {% assign face_image_url = collection_ref.image | img_url: '800x' %}
+              {% elsif collection_ref.products.first.featured_image != blank %}
+                {% assign face_image_url = collection_ref.products.first.featured_image | img_url: '800x' %}
+              {% else %}
+                {% assign face_image_url = "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" %}
+              {% endif %}
+
+              {% if block_face.settings.title != blank %}
+                {% assign face_title = block_face.settings.title %}
+              {% elsif collection_ref.title != blank %}
+                {% assign face_title = collection_ref.title %}
+              {% else %}
+                {% assign face_title = "Face" %}
+              {% endif %}
+
+              {% if block_face.settings.link != blank %}
+                {% assign face_link = block_face.settings.link %}
+              {% elsif collection_ref.url != blank %}
+                {% assign face_link = collection_ref.url %}
+              {% else %}
+                {% assign face_link = "#" %}
+              {% endif %}
+
+              <div class="shop-by-cat-card-anchor card-face-top" {{ block_face.shopify_attributes }}>
+                <a href="{{ face_link }}" class="shop-by-cat-card-link">
+                  <div class="shop-by-cat-img-frame" style="{% if block_face.settings.card_bg_color != blank %}background-color: {{ block_face.settings.card_bg_color }};{% endif %}">
+                    <img src="{{ face_image_url }}" alt="{{ face_title | escape }}" loading="lazy" class="shop-by-cat-real-img">
+                  </div>
+                  <span class="shop-by-cat-caption">{{ face_title }}</span>
+                </a>
+              </div>
+            {% endif %}
+
+            <!-- Bottom Card (Bestsellers / Card 3) -->
+            {% assign block_best = section.blocks[2] %}
+            {% if block_best == blank %}
+              {% assign block_best = section.blocks[0] %}
+            {% endif %}
+
+            {% assign collection_ref = collections[block_best.settings.collection] %}
+            
+            {% if block_best.settings.image != blank %}
+              {% assign best_image_url = block_best.settings.image | img_url: '800x' %}
+            {% elsif collection_ref.image != blank %}
+              {% assign best_image_url = collection_ref.image | img_url: '800x' %}
+            {% elsif collection_ref.products.first.featured_image != blank %}
+              {% assign best_image_url = collection_ref.products.first.featured_image | img_url: '800x' %}
+            {% else %}
+              {% assign best_image_url = "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=800&q=80" %}
+            {% endif %}
+
+            {% if block_best.settings.title != blank %}
+              {% assign best_title = block_best.settings.title %}
+            {% elsif collection_ref.title != blank %}
+              {% assign best_title = collection_ref.title %}
+            {% else %}
+              {% assign best_title = "Bestsellers" %}
+            {% endif %}
+
+            {% if block_best.settings.link != blank %}
+              {% assign best_link = block_best.settings.link %}
+            {% elsif collection_ref.url != blank %}
+              {% assign best_link = collection_ref.url %}
+            {% else %}
+              {% assign best_link = "#" %}
+            {% endif %}
+
+            <div class="shop-by-cat-card-anchor card-bestsellers-bottom" {{ block_best.shopify_attributes }}>
+              <a href="{{ best_link }}" class="shop-by-cat-card-link">
+                <div class="shop-by-cat-img-frame" style="{% if block_best.settings.card_bg_color != blank %}background-color: {{ block_best.settings.card_bg_color }};{% endif %}">
+                  <img src="{{ best_image_url }}" alt="{{ best_title | escape }}" loading="lazy" class="shop-by-cat-real-img">
+                </div>
+                <span class="shop-by-cat-caption">{{ best_title }}</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} .dt-sc-section-wrapper {
+    background-color: transparent !important;
+    padding-top: {{ section.settings.padding_top | default: "40" }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: "60" }}px;
+    overflow: visible;
+  }
+
+  .shop-by-cat-section-outer {
+    position: relative;
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 60px 0;
+  }
+
+  /* Middle Horizontal Background Band */
+  .shop-by-cat-bg-band {
+    position: absolute;
+    top: 60px;
+    left: -100vw;
+    right: -100vw;
+    height: 480px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .shop-by-cat-content-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 240px 330px 330px;
+    grid-column-gap: 50px;
+    align-items: start;
+    width: 100%;
+  }
+
+  /* Left Heading */
+  .shop-by-cat-heading-col {
+    padding-top: 30px;
+  }
+
+  .shop-by-cat-title {
+    font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif !important;
+    font-size: {{ section.settings.heading_size | default: "52" }}px !important;
+    line-height: 1.05 !important;
+    font-weight: 400 !important;
+    color: {{ section.settings.heading_color | default: "#1A1A1A" }} !important;
+    margin: 0 0 16px 0 !important;
+    letter-spacing: -0.5px !important;
+  }
+
+  .shop-by-cat-subtitle {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Mid Column: Eye */
+  .shop-by-cat-card-col.col-eye {
+    margin-top: 140px;
+  }
+
+  /* Right Column Stacked: Face (Top) & Bestsellers (Bottom) */
+  .shop-by-cat-card-col.col-stacked-right {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shop-by-cat-card-anchor.card-face-top {
+    margin-top: -40px; /* Extends up into top white area */
+  }
+
+  .shop-by-cat-card-anchor.card-bestsellers-bottom {
+    margin-top: 60px; /* Extends down into bottom white area */
+  }
+
+  /* Card Component Styling */
+  .shop-by-cat-card-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none !important;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .shop-by-cat-card-link:hover {
+    transform: translateY(-8px);
+  }
+
+  .shop-by-cat-img-frame {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    position: relative;
+    background-color: #EFE8E1;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+  }
+
+  .shop-by-cat-card-link:hover .shop-by-cat-img-frame {
+    box-shadow: 0 24px 50px rgba(0, 0, 0, 0.12);
+  }
+
+  .shop-by-cat-real-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .shop-by-cat-card-link:hover .shop-by-cat-real-img {
+    transform: scale(1.06);
+  }
+
+  .shop-by-cat-caption {
+    font-family: 'Alex Brush', 'Playfair Display', cursive, serif !important;
+    font-size: {{ section.settings.caption_size | default: "44" }}px !important;
+    line-height: 1.2 !important;
+    font-weight: 400 !important;
+    color: {{ section.settings.caption_color | default: "#70263D" }} !important;
+    margin-top: 16px !important;
+    text-align: center !important;
+    letter-spacing: 1px !important;
+    transition: color 0.3s ease;
+  }
+
+  .shop-by-cat-card-link:hover .shop-by-cat-caption {
+    color: {{ section.settings.caption_hover_color | default: "#1A1A1A" }} !important;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 1024px) {
+    .shop-by-cat-content-grid {
+      grid-template-columns: 200px 1fr 1fr;
+      grid-column-gap: 30px;
+    }
+  }
+
+  @media (max-width: 868px) {
+    .shop-by-cat-content-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    .shop-by-cat-heading-col {
+      grid-column: 1 / span 2;
+      text-align: center;
+    }
+    .shop-by-cat-card-col.col-eye {
+      margin-top: 0;
+    }
+    .shop-by-cat-card-anchor.card-face-top {
+      margin-top: 0;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .shop-by-cat-content-grid {
+      grid-template-columns: 1fr;
+    }
+    .shop-by-cat-heading-col {
+      grid-column: 1;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Shop by Category",
+  "class": "index-section home-shop-by-category",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full",
+      "label": "Show Full width",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "spacing_both_ends",
+      "label": "Enable Right & Left Spacing (Works only on Fullwidth)",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "padding_top",
+      "label": "Padding Top (px)",
+      "default": "40"
+    },
+    {
+      "type": "text",
+      "id": "padding_bottom",
+      "label": "Padding Bottom (px)",
+      "default": "60"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Band Color",
+      "default": "#FAF5F0"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": "Shop by\nCategory"
+    },
+    {
+      "type": "text",
+      "id": "section_sub_heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading_size",
+      "label": "Heading Font Size (px)",
+      "default": "52"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "text",
+      "id": "caption_size",
+      "label": "Category Caption Size (px)",
+      "default": "44"
+    },
+    {
+      "type": "color",
+      "id": "caption_color",
+      "label": "Category Caption Color",
+      "default": "#70263D"
+    },
+    {
+      "type": "color",
+      "id": "caption_hover_color",
+      "label": "Category Caption Hover Color",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "text",
+      "id": "custom_class_name",
+      "label": "Custom Class Name"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category Item",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image (Overrides collection image)"
+        },
+        {
+          "type": "color",
+          "id": "card_bg_color",
+          "label": "Card Background Color",
+          "default": "#EFE8E1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Category Label",
+          "info": "Leave empty to use Collection Title"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Custom Link",
+          "info": "Leave empty to use Collection Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop by Category",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Face",
+            "card_bg_color": "#E5D9CC"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Eye",
+            "card_bg_color": "#E0CEDB"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Bestsellers",
+            "card_bg_color": "#E3CEBE"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

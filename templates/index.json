@@ -664,325 +664,6 @@
         "custom_class_name": "center-mode"
       }
     },
-    "16304706199fd2fac2": {
-      "type": "home-product-tab",
-      "blocks": {
-        "54e795d9-de81-4e3a-a4b1-bd43782e1c2b": {
-          "type": "tab",
-          "settings": {
-            "tab": "eyes",
-            "block_title": "TRENDING"
-          }
-        },
-        "0ee075d9-7062-4ddc-bb3c-a399fc282fc8": {
-          "type": "tab",
-          "settings": {
-            "tab": "lips",
-            "block_title": "BEST SELLER"
-          }
-        },
-        "aec27dbc-6e88-41a4-8703-e5c464140c04": {
-          "type": "tab",
-          "settings": {
-            "tab": "cosmetics",
-            "block_title": "NEW PRODUCTS"
-          }
-        }
-      },
-      "block_order": [
-        "54e795d9-de81-4e3a-a4b1-bd43782e1c2b",
-        "0ee075d9-7062-4ddc-bb3c-a399fc282fc8",
-        "aec27dbc-6e88-41a4-8703-e5c464140c04"
-      ],
-      "custom_css": [],
-      "settings": {
-        "full": false,
-        "spacing_both_ends": false,
-        "padding": "100,500",
-        "margin": "0,0",
-        "show_background_image": true,
-        "background_image": "shopify://shop_images/img-6.jpg",
-        "background_style": "default",
-        "enable_overlay": false,
-        "background_color": "",
-        "overlay_transparency": "0.5",
-        "section_heading": "",
-        "section_sub_heading": "",
-        "section_description": "",
-        "section_button_text": "",
-        "section_button_link": "",
-        "section_heading_color": "#1a1a1a",
-        "section_sub_heading_color": "",
-        "section_description_color": "",
-        "section_button_bg_color": "#1a1a1a",
-        "section_button_text_color": "",
-        "section_button_hover_bg_color": "",
-        "section_button_hover_text_color": "",
-        "heading_position": "text-center",
-        "content_width": "55/70",
-        "lap_content_width": "50/65",
-        "grouped_content_bg": "rgba(0,0,0,0)",
-        "grouped_column_gap": "30",
-        "grouped_content_padding": "0",
-        "group_border_radius": "0",
-        "enable_group_box_shadow": true,
-        "reverse_column": true,
-        "enable_additional_content": true,
-        "additional_block_background_color": "",
-        "additional_block_box_shadow": false,
-        "additional_content_padding": "0",
-        "additional_block_border_radius": "0",
-        "enable_main_content": false,
-        "main_block_background_color": "rgba(0,0,0,0)",
-        "enable_main_block_box_shadow": false,
-        "main_block_border_radius": "0",
-        "main_content_padding": "0",
-        "enable_list_view": false,
-        "grid": "3",
-        "post_limit": 2,
-        "column_gap": "30",
-        "border_radius": "",
-        "tab_style": "style-1",
-        "tab_alignment": "text-center",
-        "tab_link_bg_color": "#1a1a1a",
-        "tab_link_color": "#ffffff",
-        "tab_link_bg_hover_color": "#fc4c4b",
-        "tab_link_hover_text_color": "#ffffff",
-        "tab_content_bg_color": "",
-        "tab_content_border_color": "",
-        "enable_slider": true,
-        "items_per_view": 3,
-        "rows": 1,
-        "enable_autoplay": false,
-        "slider_autoplay": 1,
-        "dots": false,
-        "carousel_pagination_alignment": "center_pagination",
-        "carousel_pagination_bottom_alignment": "outside_element",
-        "arrows": false,
-        "nav_arrow_position": "navigation-bottom-center",
-        "center_nav_arrow_alignment": "inside_container",
-        "navigation_button_color": "#ffffff",
-        "navigation_button_icon_color": "#000000",
-        "navigation_button_hover_color": "#fc4c4b",
-        "navigation_button_hover_icon_color": "#ffffff",
-        "navigation_dot_color": "",
-        "navigation_dot_active_color": "",
-        "custom_class_name": "product-hover"
-      }
-    },
-    "163047097718b4cb96": {
-      "type": "home-featured-collection",
-      "blocks": {
-        "163047097718b4cb96-0": {
-          "type": "collection",
-          "settings": {
-            "collection": "eyes",
-            "block_button_text": "",
-            "block_text_align": "text-center",
-            "content_position": "center",
-            "reverse_column": false,
-            "block_banner_bg": "",
-            "block_content_box_bg": "",
-            "block_heading_color": "#fc4c4b",
-            "block_sub_heading_color": "",
-            "block_description_color": "",
-            "block_button_bg_color": "",
-            "block_button_text_color": "",
-            "block_button_hover_bg_color": "",
-            "block_button_hover_text_color": "",
-            "overlay_style": "use_overlay",
-            "overlay_color": "",
-            "overlay_opacity": "0.5",
-            "rotation_degree": "180"
-          }
-        },
-        "163047097718b4cb96-1": {
-          "type": "collection",
-          "settings": {
-            "collection": "face",
-            "block_button_text": "",
-            "block_text_align": "text-center",
-            "content_position": "center",
-            "reverse_column": false,
-            "block_banner_bg": "",
-            "block_content_box_bg": "",
-            "block_heading_color": "#fc4c4b",
-            "block_sub_heading_color": "",
-            "block_description_color": "",
-            "block_button_bg_color": "",
-            "block_button_text_color": "",
-            "block_button_hover_bg_color": "",
-            "block_button_hover_text_color": "",
-            "overlay_style": "use_overlay",
-            "overlay_color": "",
-            "overlay_opacity": "0.5",
-            "rotation_degree": "180"
-          }
-        },
-        "collection_BbeQGF": {
-          "type": "collection",
-          "settings": {
-            "collection": "lips",
-            "block_button_text": "Shop Now",
-            "block_text_align": "text-center",
-            "content_position": "center",
-            "reverse_column": false,
-            "block_banner_bg": "",
-            "block_content_box_bg": "",
-            "block_heading_color": "",
-            "block_sub_heading_color": "",
-            "block_description_color": "",
-            "block_button_bg_color": "",
-            "block_button_text_color": "",
-            "block_button_hover_bg_color": "",
-            "block_button_hover_text_color": "",
-            "overlay_style": "use_overlay",
-            "overlay_color": "",
-            "overlay_opacity": "0.5",
-            "rotation_degree": "180"
-          }
-        },
-        "cb635f96-d3d4-4ee5-8e55-52406455ad2f": {
-          "type": "collection",
-          "disabled": true,
-          "settings": {
-            "collection": "nail",
-            "block_button_text": "",
-            "block_text_align": "text-center",
-            "content_position": "center",
-            "reverse_column": false,
-            "block_banner_bg": "",
-            "block_content_box_bg": "",
-            "block_heading_color": "#fc4c4b",
-            "block_sub_heading_color": "",
-            "block_description_color": "",
-            "block_button_bg_color": "",
-            "block_button_text_color": "",
-            "block_button_hover_bg_color": "",
-            "block_button_hover_text_color": "",
-            "overlay_style": "use_overlay",
-            "overlay_color": "",
-            "overlay_opacity": "0.5",
-            "rotation_degree": "180"
-          }
-        }
-      },
-      "block_order": [
-        "163047097718b4cb96-0",
-        "163047097718b4cb96-1",
-        "collection_BbeQGF",
-        "cb635f96-d3d4-4ee5-8e55-52406455ad2f"
-      ],
-      "settings": {
-        "full": false,
-        "spacing_both_ends": false,
-        "padding": "0,0",
-        "margin": "60,0",
-        "show_background_image": false,
-        "background_style": "default",
-        "enable_overlay": false,
-        "background_color": "",
-        "overlay_transparency": "0.5",
-        "section_heading": "SPECIAL CATEGORIES",
-        "section_sub_heading": "",
-        "section_description": "",
-        "section_button_text": "",
-        "section_button_link": "",
-        "section_heading_color": "#1a1a1a",
-        "section_sub_heading_color": "",
-        "section_description_color": "",
-        "section_button_bg_color": "",
-        "section_button_text_color": "",
-        "section_button_hover_bg_color": "",
-        "section_button_hover_text_color": "",
-        "heading_position": "text-center",
-        "grid": "3",
-        "block_banner_style": "grid",
-        "column_gap": "30",
-        "equal_height": true,
-        "overlay_style_height": "200",
-        "enable_box_shadow": false,
-        "border_radius": "0",
-        "content_width": "35/65",
-        "lap_content_width": "35/65",
-        "enable_slider": true,
-        "enable_auto_height": false,
-        "slider_autoplay": 0,
-        "items_per_view": 2,
-        "dots": true,
-        "carousel_pagination_alignment": "center_pagination",
-        "arrows": true,
-        "nav_arrow_position": "center-navigation",
-        "center_nav_arrow_alignment": "outside_container",
-        "navigation_button_color": "",
-        "navigation_button_icon_color": "",
-        "navigation_button_hover_color": "",
-        "navigation_button_hover_icon_color": "",
-        "navigation_dot_color": "",
-        "navigation_dot_active_color": "",
-        "custom_class_name": ""
-      }
-    },
-    "1630472333a237c7a7": {
-      "type": "quotes",
-      "blocks": {
-        "1630472333a237c7a7-0": {
-          "type": "quote",
-          "settings": {
-            "quote": "<p>\"Complete Cosmetics Solution has completely transformed my beauty routine. The products are high quality, long-lasting, and perfect for everyday use.\"</p>",
-            "icon": "shopify://shop_images/blonde-model-with-makeup.png",
-            "author": "Emma Williams",
-            "job": "Verified Customer"
-          }
-        },
-        "4bfe38f7-9433-4d00-aec4-d6f4d87fd956": {
-          "type": "quote",
-          "settings": {
-            "quote": "<p>Non diam phasellus vestibulum lorem sed risus ultricies tristique nulla. Tincidunt id aliquet risus feugiat in ante metus dictum. In aliquam sem fringilla ut morbi tincidunt augue interdum velit querum</p>",
-            "author": "Jennifer Smith",
-            "job": "HR Executive"
-          }
-        },
-        "f4ad2b24-de16-441c-9019-39645f41ad8a": {
-          "type": "quote",
-          "settings": {
-            "quote": "<p>Pulvinar etiam non quam lacus. Lorem donec massa sapien faucibus et molestie. Diam in arcu cursus euismod quis viverra nibh. Fusce id velit ut tortor pretium viverra suspendisse potenti marques quyum</p>",
-            "author": "James",
-            "job": "Artist"
-          }
-        },
-        "fbb312f7-2e4d-4a17-96bb-84647f1a428b": {
-          "type": "quote",
-          "settings": {
-            "quote": "<p>Lacus sed turpis tincidunt id. Sodales ut etiam sit amet nisl purus in. Nunc mattis enim ut tellus elementum. Et ligula ullamcorper malesuada proin libero nunc consequat interdum varius vitae aliquet </p>",
-            "author": "Reena",
-            "job": "Actress"
-          }
-        },
-        "23cb82f4-2900-4e9b-9764-950afb6e3b77": {
-          "type": "quote",
-          "settings": {
-            "quote": "<p>Risus in hendrerit gravida rutrum quisque non tellus orci. Lectus sit amet est placerat in egestas. Morbi tristique senectus et netus et malesuada. Viverra mauris in aliquam sem fringilla ut morbi</p>",
-            "author": "Joel",
-            "job": "Marketing Manager"
-          }
-        }
-      },
-      "block_order": [
-        "1630472333a237c7a7-0",
-        "4bfe38f7-9433-4d00-aec4-d6f4d87fd956",
-        "f4ad2b24-de16-441c-9019-39645f41ad8a",
-        "fbb312f7-2e4d-4a17-96bb-84647f1a428b",
-        "23cb82f4-2900-4e9b-9764-950afb6e3b77"
-      ],
-      "disabled": true,
-      "settings": {
-        "image_1": "shopify://shop_images/client-bg_1.png",
-        "heading": "WHAT OUR CLIENT SAY...",
-        "color_bg": "#ffffff",
-        "color_text": "#1a1a1a"
-      }
-    },
     "163047319134895603": {
       "type": "home-deal-banner",
       "disabled": true,
@@ -1265,18 +946,138 @@
         "newsletter_description_color": "",
         "custom_class_name": ""
       }
+    },
+    "custom_shop_by_category": {
+      "type": "home-shop-by-category",
+      "blocks": {
+        "cat_block_1": {
+          "type": "category",
+          "settings": {
+            "collection": "face",
+            "title": "Face",
+            "card_bg_color": "#E5D9CC"
+          }
+        },
+        "cat_block_2": {
+          "type": "category",
+          "settings": {
+            "collection": "eyes",
+            "title": "Eye",
+            "card_bg_color": "#E0CEDB"
+          }
+        },
+        "cat_block_3": {
+          "type": "category",
+          "settings": {
+            "collection": "cosmetics",
+            "title": "Bestsellers",
+            "card_bg_color": "#E3CEBE"
+          }
+        }
+      },
+      "block_order": [
+        "cat_block_1",
+        "cat_block_2",
+        "cat_block_3"
+      ],
+      "settings": {
+        "full": false,
+        "spacing_both_ends": false,
+        "padding_top": "80",
+        "padding_bottom": "100",
+        "background_color": "#FAF5F0",
+        "section_heading": "Shop by\nCategory",
+        "section_sub_heading": "",
+        "heading_size": "52",
+        "heading_color": "#1A1A1A",
+        "caption_size": "42",
+        "caption_color": "#70263D",
+        "caption_hover_color": "#1A1A1A"
+      }
+    },
+    "custom_category_circles": {
+      "type": "home-category-circles",
+      "blocks": {
+        "circle_1": {
+          "type": "category_item",
+          "settings": {
+            "collection": "cosmetics",
+            "title": "Lips Gloss"
+          }
+        },
+        "circle_2": {
+          "type": "category_item",
+          "settings": {
+            "collection": "fairness-cream",
+            "title": "Moisturizer"
+          }
+        },
+        "circle_3": {
+          "type": "category_item",
+          "settings": {
+            "collection": "eyes",
+            "title": "Eyeliner"
+          }
+        },
+        "circle_4": {
+          "type": "category_item",
+          "settings": {
+            "collection": "face",
+            "title": "Serum"
+          }
+        },
+        "circle_5": {
+          "type": "category_item",
+          "settings": {
+            "collection": "brush",
+            "title": "Cleanser"
+          }
+        },
+        "circle_6": {
+          "type": "category_item",
+          "settings": {
+            "collection": "hair-spray",
+            "title": "Perfume"
+          }
+        }
+      },
+      "block_order": [
+        "circle_1",
+        "circle_2",
+        "circle_3",
+        "circle_4",
+        "circle_5",
+        "circle_6"
+      ],
+      "settings": {
+        "full": false,
+        "spacing_both_ends": false,
+        "padding": "60,60",
+        "margin": "0,0",
+        "background_color": "#ffffff",
+        "section_heading": "Shop By Category",
+        "section_sub_heading": "",
+        "heading_size": "32",
+        "section_heading_color": "#1A1A1A",
+        "heading_position": "text-center",
+        "circle_size": "160",
+        "circle_border_width": "0",
+        "circle_border_color": "#e5e5e5",
+        "caption_size": "15",
+        "caption_color": "#222222",
+        "caption_hover_color": "#FC4C4B"
+      }
     }
   },
   "order": [
     "1633071826f628c81b",
     "1630474188cd8d29c5",
     "custom_3d_carousel",
+    "custom_shop_by_category",
+    "custom_category_circles",
     "1630321213cd794ca2",
     "1630469276ff7489a3",
     "1630469283cb351be4",
-    "16304706199fd2fac2",
-    "163047097718b4cb96",
-    "1630472333a237c7a7",
     "163047319134895603",
     "1630473198b69aa4f6",
     "16304740301177992d",
