@@ -209,6 +209,83 @@
         "custom_class_name": ""
       }
     },
+    "home_bestseller_carousel_9TEiRn": {
+      "type": "home-bestseller-carousel",
+      "blocks": {
+        "product_kp8Vik": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "loreal-glam-shine-balmy-gloss-913-dare-the-dragon-fruit-copy-1",
+            "custom_title": "",
+            "custom_price": ""
+          }
+        },
+        "product_7XbNEC": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "loreal-nude-bb-blush",
+            "custom_title": "",
+            "custom_price": ""
+          }
+        },
+        "product_Dyiigz": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "loreal-nude-bb-blush",
+            "custom_title": "",
+            "custom_price": ""
+          }
+        },
+        "product_t7ET3z": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "loreal-glam-shine-balmy-gloss-913-dare-the-dragon-fruit-copy-1",
+            "custom_title": "",
+            "custom_price": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_kp8Vik",
+        "product_7XbNEC",
+        "product_Dyiigz",
+        "product_t7ET3z"
+      ],
+      "name": "Bestseller Carousel",
+      "settings": {
+        "section_heading": "Bestsellers",
+        "section_sub_heading": "",
+        "section_description": "",
+        "section_button_text": "SHOP NOW",
+        "section_button_link": "shopify://collections/all",
+        "heading_position": "left",
+        "collection": "eyes",
+        "products_to_show": 8,
+        "image_aspect_ratio": "1-1",
+        "image_fit": "contain",
+        "show_secondary_image": true,
+        "show_swatches": true,
+        "show_swatch_name": true,
+        "button_label": "ADD TO Cart",
+        "show_button_price": true,
+        "item_space": 20,
+        "show_arrows": true,
+        "show_dots": false,
+        "enable_loop": true,
+        "enable_autoplay": false,
+        "autoplay_speed": 4,
+        "section_bg_color": "#faf6f0",
+        "card_bg_color": "#faf6f0",
+        "image_bg_color": "#f6f2ee",
+        "card_border_radius": 0,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "custom_3d_carousel": {
       "type": "home-3d-carousel",
       "blocks": {
@@ -309,7 +386,7 @@
         "background_color": "#faf5f0",
         "section_heading": "Shop byCategory",
         "section_sub_heading": "",
-        "heading_size": "52",
+        "heading_size": "60",
         "heading_color": "#1a1a1a",
         "caption_size": "42",
         "caption_color": "#70263d",
@@ -633,6 +710,7 @@
     },
     "1630469283cb351be4": {
       "type": "home-product-carousel",
+      "disabled": true,
       "settings": {
         "full": true,
         "spacing_both_ends": true,
@@ -1082,103 +1160,12 @@
         "block_button_hover_text_color": "",
         "custom_class_name": ""
       }
-    },
-    "home_bestseller_carousel_9TEiRn": {
-      "type": "home-bestseller-carousel",
-      "blocks": {
-        "product_kp8Vik": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "product": "loreal-glam-shine-balmy-gloss-913-dare-the-dragon-fruit-copy-1",
-            "custom_title": "",
-            "custom_price": ""
-          }
-        },
-        "product_7XbNEC": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "product": "loreal-nude-bb-blush",
-            "custom_title": "",
-            "custom_price": ""
-          }
-        },
-        "product_Dyiigz": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "product": "loreal-nude-bb-blush",
-            "custom_title": "",
-            "custom_price": ""
-          }
-        },
-        "product_t7ET3z": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "product": "loreal-glam-shine-balmy-gloss-913-dare-the-dragon-fruit-copy-1",
-            "custom_title": "",
-            "custom_price": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_kp8Vik",
-        "product_7XbNEC",
-        "product_Dyiigz",
-        "product_t7ET3z"
-      ],
-      "name": "Bestseller Carousel",
-      "settings": {
-        "section_heading": "Bestsellers",
-        "heading_position": "left",
-        "heading_font_size": 40,
-        "section_description": "",
-        "section_button_text": "SHOP NOW",
-        "section_button_link": "shopify://collections/all",
-        "header_margin_bottom": 30,
-        "collection": "eyes",
-        "products_to_show": 8,
-        "image_aspect_ratio": "1-1",
-        "image_fit": "contain",
-        "show_secondary_image": true,
-        "show_swatches": true,
-        "show_swatch_name": true,
-        "button_label": "ADD TO BAG",
-        "show_button_price": true,
-        "items_desktop": 4,
-        "items_laptop": 3,
-        "items_tablet": 2,
-        "items_mobile": "1.2",
-        "item_space": 20,
-        "show_arrows": true,
-        "show_dots": false,
-        "enable_loop": true,
-        "enable_autoplay": false,
-        "autoplay_speed": 4,
-        "section_bg_color": "#FAF6F0",
-        "card_bg_color": "#FAF6F0",
-        "image_bg_color": "#F6F2EE",
-        "heading_color": "#222222",
-        "text_color": "#222222",
-        "link_color": "#6B3B43",
-        "btn_bg_color": "#FAF6F0",
-        "btn_text_color": "#6B3B43",
-        "btn_border_color": "#6B3B43",
-        "swatch_ring_color": "#6B3B43",
-        "full_width": false,
-        "container_width": 1350,
-        "card_border_radius": 0,
-        "btn_border_radius": 0,
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
     }
   },
   "order": [
     "1633071826f628c81b",
     "custom_category_circles",
+    "home_bestseller_carousel_9TEiRn",
     "custom_3d_carousel",
     "custom_shop_by_category",
     "1630321213cd794ca2",
@@ -1188,7 +1175,6 @@
     "1630473198b69aa4f6",
     "16304740301177992d",
     "1630474195a8c84738",
-    "1630474188cd8d29c5",
-    "home_bestseller_carousel_9TEiRn"
+    "1630474188cd8d29c5"
   ]
 }

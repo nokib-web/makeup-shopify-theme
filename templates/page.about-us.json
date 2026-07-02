@@ -503,11 +503,11 @@
             "title": "150K+",
             "title_font_size": 44,
             "title_font_size_mobile": 32,
-            "title_color": "#2B2B2B",
+            "title_color": "#2b2b2b",
             "title_font_weight": "400",
             "description": "<p>Happy Customers</p>",
             "description_font_size": 14,
-            "description_color": "#6B6B6B",
+            "description_color": "#6b6b6b",
             "description_font_weight": "400",
             "description_max_width": 200
           }
@@ -518,11 +518,11 @@
             "title": "500+",
             "title_font_size": 44,
             "title_font_size_mobile": 32,
-            "title_color": "#2B2B2B",
+            "title_color": "#2b2b2b",
             "title_font_weight": "400",
             "description": "<p>5-Star Reviews</p>",
             "description_font_size": 14,
-            "description_color": "#6B6B6B",
+            "description_color": "#6b6b6b",
             "description_font_weight": "400",
             "description_max_width": 200
           }
@@ -533,11 +533,11 @@
             "title": "30+",
             "title_font_size": 44,
             "title_font_size_mobile": 32,
-            "title_color": "#2B2B2B",
+            "title_color": "#2b2b2b",
             "title_font_weight": "400",
             "description": "<p>Premium Products</p>",
             "description_font_size": 14,
-            "description_color": "#6B6B6B",
+            "description_color": "#6b6b6b",
             "description_font_weight": "400",
             "description_max_width": 200
           }
@@ -548,11 +548,11 @@
             "title": "15+",
             "title_font_size": 44,
             "title_font_size_mobile": 32,
-            "title_color": "#2B2B2B",
+            "title_color": "#2b2b2b",
             "title_font_weight": "400",
             "description": "<p>Countries Served</p>",
             "description_font_size": 14,
-            "description_color": "#6B6B6B",
+            "description_color": "#6b6b6b",
             "description_font_weight": "400",
             "description_max_width": 200
           }
@@ -572,8 +572,75 @@
         "padding_bottom_mobile": 32,
         "padding_horizontal": 40,
         "max_width": 1400,
-        "bg_color": "#FAF6F2",
-        "divider_color": "#D8CFC5"
+        "bg_color": "#faf6f2",
+        "divider_color": "#d8cfc5"
+      }
+    },
+    "about_testimonials_carousel_nQV8BM": {
+      "type": "about-testimonials-carousel",
+      "blocks": {
+        "review_t8qfzL": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "<p>I've never loved my daily makeup routine this much. The quality is unmatched!</p>",
+            "customer_name": "Emily R."
+          }
+        },
+        "review_r8tpmY": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "<p>The packaging, quality, and texture feel incredibly premium. Absolutely love it!</p>",
+            "customer_name": "Sarah M."
+          }
+        },
+        "review_fh7Rne": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "<p>The products are amazing and the customer service is outstanding.</p>",
+            "customer_name": "Jessica L."
+          }
+        },
+        "review_77FhbJ": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "review_text": "<p>I've never loved my daily routine this much. The quality is unmatched!</p>",
+            "customer_name": "Emily R."
+          }
+        }
+      },
+      "block_order": [
+        "review_t8qfzL",
+        "review_r8tpmY",
+        "review_fh7Rne",
+        "review_77FhbJ"
+      ],
+      "name": "Testimonials Carousel",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_horizontal": 40,
+        "max_width": 1400,
+        "bg_color": "#f5efea",
+        "eyebrow_text": "What Our Customers Say",
+        "eyebrow_font_size": 12,
+        "eyebrow_color": "#8a7a6d",
+        "eyebrow_font_weight": "600",
+        "title": "",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "title_color": "#2b2b2b",
+        "title_font_weight": "400",
+        "card_bg": "#ffffff",
+        "card_radius": 4,
+        "star_color": "#b08968",
+        "review_text_color": "#3a3a3a",
+        "name_color": "#6b6b6b"
       }
     }
   },
@@ -587,6 +654,7 @@
     "about_ingredients_grid_tiEAg8",
     "about_our_journey_VHN3ih",
     "about_meet_the_founder_GE6jbB",
-    "about_stats_bar_XbyMfY"
+    "about_stats_bar_XbyMfY",
+    "about_testimonials_carousel_nQV8BM"
   ]
 }
