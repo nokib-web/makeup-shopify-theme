@@ -1,0 +1,86 @@
+{%- case index -%}
+  {%- when 1 -%}
+    {%- assign demo_title = "Rare Eau de Parfum" -%}
+    {%- assign demo_price = "$75.00" -%}
+    {%- assign has_swatches = false -%}
+  {%- when 2 -%}
+    {%- assign demo_title = "Soft Pinch Cheek & Lip Trio" -%}
+    {%- assign demo_price = "$36.00" -%}
+    {%- assign has_swatches = false -%}
+  {%- when 3 -%}
+    {%- assign demo_title = "Warm Wishes Effortless Bronzer Stick" -%}
+    {%- assign demo_price = "$30.00" -%}
+    {%- assign has_swatches = true -%}
+    {%- assign active_shade = "Power Boost" -%}
+  {%- when 4 -%}
+    {%- assign demo_title = "Soft Pinch Liquid Blush Mini" -%}
+    {%- assign demo_price = "$25.00" -%}
+    {%- assign has_swatches = true -%}
+    {%- assign active_shade = "Hope" -%}
+  {%- else -%}
+    {%- assign demo_title = "Rare Beauty Product" -%}
+    {%- assign demo_price = "$32.00" -%}
+    {%- assign has_swatches = false -%}
+{%- endcase -%}
+
+{%- if block != nil and block.settings.custom_title != blank -%}
+  {%- assign demo_title = block.settings.custom_title -%}
+{%- endif -%}
+
+{%- if block != nil and block.settings.custom_price != blank -%}
+  {%- assign demo_price = block.settings.custom_price -%}
+{%- endif -%}
+
+<div class="bestseller-product-card" style="background-color: {{ section.settings.card_bg_color }};">
+  
+  <a href="#" class="bestseller-image-link">
+    <div class="bestseller-image-wrapper ratio-{{ section.settings.image_aspect_ratio }}" style="background-color: {{ section.settings.image_bg_color }};">
+      {%- if block != nil and block.settings.custom_image != blank -%}
+        <img 
+          src="{{ block.settings.custom_image | img_url: '600x' }}" 
+          alt="{{ demo_title | escape }}" 
+          class="bestseller-primary-img image-fit-{{ section.settings.image_fit }}"
+          loading="lazy"
+        >
+      {%- else -%}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%" class="image-fit-contain">
+          <rect width="200" height="200" fill="{{ section.settings.image_bg_color }}"/>
+          <circle cx="100" cy="90" r="45" fill="#e8d9cf" opacity="0.6"/>
+          <rect x="75" y="130" width="50" height="35" rx="4" fill="#d9a89c" opacity="0.8"/>
+          <ellipse cx="100" cy="90" r="28" fill="#c48b7e"/>
+        </svg>
+      {%- endif -%}
+    </div>
+  </a>
+
+  <div class="bestseller-card-info">
+    <h3 class="bestseller-product-title">
+      <a href="#">{{ demo_title }}</a>
+    </h3>
+
+    {%- if has_swatches and section.settings.show_swatches -%}
+      <div class="bestseller-swatch-container">
+        {%- if section.settings.show_swatch_name -%}
+          <span class="bestseller-swatch-label">{{ active_shade }}</span>
+        {%- endif -%}
+        <div class="bestseller-swatch-list">
+          <button type="button" class="bestseller-swatch-btn active" style="background-color: #d89687;" data-variant-title="Power Boost" data-variant-price="{{ demo_price }}"></button>
+          <button type="button" class="bestseller-swatch-btn" style="background-color: #c47466;" data-variant-title="Happy Sol" data-variant-price="{{ demo_price }}"></button>
+          <button type="button" class="bestseller-swatch-btn" style="background-color: #b5594b;" data-variant-title="Always Sunny" data-variant-price="{{ demo_price }}"></button>
+          <button type="button" class="bestseller-swatch-btn" style="background-color: #9e4639;" data-variant-title="Full Snap" data-variant-price="{{ demo_price }}"></button>
+          <button type="button" class="bestseller-swatch-btn" style="background-color: #7e3328;" data-variant-title="Bright Side" data-variant-price="{{ demo_price }}"></button>
+        </div>
+      </div>
+    {%- endif -%}
+
+    <div class="bestseller-action-form">
+      <button type="button" class="bestseller-add-btn">
+        <span class="btn-text-label">{{ section.settings.button_label }}</span>
+        {%- if section.settings.show_button_price -%}
+          <span class="btn-price-separator">-</span>
+          <span class="btn-price-value">{{ demo_price }}</span>
+        {%- endif -%}
+      </button>
+    </div>
+  </div>
+</div>

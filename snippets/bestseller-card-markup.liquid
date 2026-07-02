@@ -1,0 +1,144 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+{%- assign product_title = product.title -%}
+{%- if block != nil and block.settings.custom_title != blank -%}
+  {%- assign product_title = block.settings.custom_title -%}
+{%- endif -%}
+
+{%- assign display_price = current_variant.price | money -%}
+{%- if block != nil and block.settings.custom_price != blank -%}
+  {%- assign display_price = block.settings.custom_price -%}
+{%- endif -%}
+
+<div class="bestseller-product-card" style="background-color: {{ section.settings.card_bg_color }};">
+  
+  {% comment %} Product Image Box {% endcomment %}
+  <a href="{{ product.url }}" class="bestseller-image-link">
+    <div class="bestseller-image-wrapper ratio-{{ section.settings.image_aspect_ratio }}" style="background-color: {{ section.settings.image_bg_color }};">
+      {%- if block != nil and block.settings.custom_image != blank -%}
+        <img 
+          src="{{ block.settings.custom_image | img_url: '600x' }}" 
+          alt="{{ product_title | escape }}" 
+          class="bestseller-primary-img image-fit-{{ section.settings.image_fit }}"
+          loading="lazy"
+        >
+      {%- elsif product.featured_media != blank -%}
+        <img 
+          src="{{ product.featured_media | img_url: '600x' }}" 
+          alt="{{ product.featured_media.alt | escape }}" 
+          class="bestseller-primary-img image-fit-{{ section.settings.image_fit }}"
+          loading="lazy"
+          data-default-src="{{ product.featured_media | img_url: '600x' }}"
+        >
+        {%- if section.settings.show_secondary_image and product.media[1] != blank -%}
+          <img 
+            src="{{ product.media[1] | img_url: '600x' }}" 
+            alt="{{ product.media[1].alt | escape }}" 
+            class="bestseller-secondary-img image-fit-{{ section.settings.image_fit }}"
+            loading="lazy"
+          >
+        {%- endif -%}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+  </a>
+
+  {% comment %} Card Details {% endcomment %}
+  <div class="bestseller-card-info">
+    
+    {% comment %} Product Title {% endcomment %}
+    <h3 class="bestseller-product-title">
+      <a href="{{ product.url }}">{{ product_title }}</a>
+    </h3>
+
+    {% comment %} Swatches Section {% endcomment %}
+    {%- if section.settings.show_swatches -%}
+      {%- assign has_color_option = false -%}
+      {%- assign color_option_index = 0 -%}
+      
+      {%- for option in product.options_with_values -%}
+        {%- assign option_name = option.name | downcase -%}
+        {%- if option_name contains 'color' or option_name contains 'colour' or option_name contains 'shade' -%}
+          {%- assign has_color_option = true -%}
+          {%- assign color_option_index = forloop.index0 -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+      {%- if has_color_option -%}
+        <div class="bestseller-swatch-container">
+          {%- assign first_variant = product.variants | first -%}
+          {%- assign initial_shade_name = first_variant.options[color_option_index] -%}
+          
+          {%- if section.settings.show_swatch_name -%}
+            <span class="bestseller-swatch-label">{{ initial_shade_name }}</span>
+          {%- endif -%}
+
+          <div class="bestseller-swatch-list">
+            {%- assign rendered_values = '' -%}
+            {%- for variant in product.variants -%}
+              {%- assign value = variant.options[color_option_index] -%}
+              {%- unless rendered_values contains value -%}
+                {%- assign rendered_values = rendered_values | append: ',' | append: value -%}
+                
+                {%- assign variant_img_url = '' -%}
+                {%- if variant.image -%}
+                  {%- assign variant_img_url = variant.image | img_url: '600x' -%}
+                {%- else -%}
+                  {%- assign variant_img_url = product.featured_media | img_url: '600x' -%}
+                {%- endif -%}
+
+                {%- assign swatch_bg_style = '' -%}
+                {%- if variant.image -%}
+                  {%- assign swatch_thumb = variant.image | img_url: '80x80' -%}
+                  {%- assign swatch_bg_style = 'background-image: url(' | append: swatch_thumb | append: '); background-size: cover;' -%}
+                {%- else -%}
+                  {%- assign color_handle = value | handleize -%}
+                  {%- assign swatch_bg_style = 'background-color: ' | append: color_handle | append: ';' -%}
+                {%- endif -%}
+
+                <button 
+                  type="button" 
+                  class="bestseller-swatch-btn {% if forloop.first %}active{% endif %}"
+                  data-variant-id="{{ variant.id }}"
+                  data-variant-price="{{ variant.price | money }}"
+                  data-variant-title="{{ value | escape }}"
+                  data-variant-image="{{ variant_img_url }}"
+                  aria-label="{{ value | escape }}"
+                  style="{{ swatch_bg_style }}"
+                >
+                </button>
+              {%- endunless -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+
+    {% comment %} Add to Bag Action Button Form {% endcomment %}
+    <div class="bestseller-action-form">
+      <form action="/cart/add" method="post" enctype="multipart/form-data" class="bestseller-add-form" data-product-form>
+        <input type="hidden" name="id" class="bestseller-selected-variant-id" value="{{ current_variant.id }}">
+        
+        <button 
+          type="submit" 
+          name="add" 
+          class="bestseller-add-btn dt-sc-btn dT_AddToCart {% unless current_variant.available %}disabled{% endunless %}"
+          {% unless current_variant.available %}disabled{% endunless %}
+        >
+          {%- if current_variant.available -%}
+            <span class="btn-text-label">{{ section.settings.button_label }}</span>
+            {%- if section.settings.show_button_price -%}
+              <span class="btn-price-separator">-</span>
+              <span class="btn-price-value">{{ display_price }}</span>
+            {%- endif -%}
+          {%- else -%}
+            <span class="btn-text-label">{{ 'products.product.sold_out' | t | default: 'Sold Out' }}</span>
+          {%- endif -%}
+        </button>
+      </form>
+    </div>
+
+  </div>
+</div>
