@@ -134,9 +134,14 @@
         "section_heading": "Frequently Asked Questions",
         "section_sub_heading": "Trusted in more than 100 countries and 5 million customers.",
         "section_description": "",
+        "heading_position": "text-center",
         "left_column_width": 60,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "margin_top": 0,
+        "margin_bottom": 0,
         "enable_right_column": true,
-        "right_image": "shopify://shop_images/img-7.jpg",
+        "right_image": "shopify://shop_images/bg-2.png",
         "right_heading": "Ask Any Question",
         "right_text": "Feel free to ask any question you have; we're here to help!",
         "submit_button_text": "Submit Now",
@@ -146,20 +151,118 @@
         "section_heading_color": "#000000",
         "section_sub_heading_color": "#000000",
         "section_description_color": "#000000",
-        "section_button_bg_color": "#E7DFDF",
+        "section_button_bg_color": "#e7dfdf",
         "section_button_text_color": "",
         "section_button_hover_bg_color": "",
         "section_button_hover_text_color": "#050000",
-        "faq_heading_color": "#0B0000",
+        "faq_heading_color": "#0b0000",
         "faq_heading_bg_color": "#f5f5f5",
         "faq_content_color": "#000000",
         "faq_content_bg_color": "#ffffff"
+      }
+    },
+    "home_bestseller_carousel_qmCfpV": {
+      "type": "home-bestseller-carousel",
+      "blocks": {
+        "product_aFBj6p": {
+          "type": "product",
+          "settings": {
+            "product": "glam-shine-fresh-lip-gloss-by-loreal-paris-601-aqua-lemon-tonic",
+            "custom_title": "",
+            "custom_price": "",
+            "custom_badge": "",
+            "custom_rating": "",
+            "custom_rating_count": "",
+            "custom_offer_text": "",
+            "custom_feature_text": ""
+          }
+        },
+        "product_cyBGPP": {
+          "type": "product",
+          "settings": {
+            "product": "loreal-glam-shine-balmy-gloss-913-dare-the-dragon-fruit-copy",
+            "custom_title": "",
+            "custom_price": "",
+            "custom_badge": "",
+            "custom_rating": "",
+            "custom_rating_count": "",
+            "custom_offer_text": "",
+            "custom_feature_text": ""
+          }
+        },
+        "product_mmr9Tz": {
+          "type": "product",
+          "settings": {
+            "product": "loreal-nude-bb-blush",
+            "custom_title": "",
+            "custom_price": "",
+            "custom_badge": "",
+            "custom_rating": "",
+            "custom_rating_count": "",
+            "custom_offer_text": "",
+            "custom_feature_text": ""
+          }
+        },
+        "product_MMmUjG": {
+          "type": "product",
+          "settings": {
+            "product": "maybelline-eyebrow-tattoo-brow-longlasting-waterproof-eyebrow-gel-07-black-brown",
+            "custom_title": "",
+            "custom_price": "",
+            "custom_badge": "",
+            "custom_rating": "",
+            "custom_rating_count": "",
+            "custom_offer_text": "",
+            "custom_feature_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_aFBj6p",
+        "product_cyBGPP",
+        "product_mmr9Tz",
+        "product_MMmUjG"
+      ],
+      "name": "Bestseller Carousel",
+      "settings": {
+        "section_heading": "You May Like",
+        "section_sub_heading": "",
+        "section_description": "",
+        "section_button_text": "SHOP NOW",
+        "section_button_link": "shopify://collections/all",
+        "heading_position": "text-center",
+        "collection": "lips",
+        "products_to_show": 10,
+        "image_aspect_ratio": "1-1",
+        "image_fit": "contain",
+        "show_secondary_image": true,
+        "show_rating": true,
+        "show_badge": true,
+        "show_offer": true,
+        "show_feature": true,
+        "show_swatches": true,
+        "show_swatch_name": true,
+        "button_label": "ADD TO BAG",
+        "show_button_price": true,
+        "item_space": 20,
+        "show_arrows": true,
+        "show_dots": false,
+        "enable_loop": true,
+        "enable_autoplay": false,
+        "autoplay_speed": 4,
+        "section_bg_color": "#FAF6F0",
+        "card_bg_color": "#FAF6F0",
+        "image_bg_color": "#F6F2EE",
+        "card_border_radius": 0,
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     }
   },
   "order": [
     "main",
     "faq",
-    "faq_page_custom_VQYW6Q"
+    "faq_page_custom_VQYW6Q",
+    "home_bestseller_carousel_qmCfpV"
   ]
 }

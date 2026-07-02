@@ -82,7 +82,7 @@
         "eyebrow_font_size": 13,
         "eyebrow_color": "#8a7a6d",
         "eyebrow_font_weight": "600",
-        "title": "Created For Modern <br>Beauty.",
+        "title": "Created For Modern Beauty.",
         "title_font_size": 40,
         "title_font_size_mobile": 28,
         "title_color": "#2b2b2b",
@@ -100,6 +100,7 @@
         "icon_item_4Qq6pM": {
           "type": "icon_item",
           "settings": {
+            "icon": "shopify://shop_images/leaf_3.png",
             "title": "Clean Beauty",
             "description": "<p>Carefully selected ingredients made with quality and care.</p>"
           }
@@ -107,6 +108,7 @@
         "icon_item_AhDTgL": {
           "type": "icon_item",
           "settings": {
+            "icon": "shopify://shop_images/eco-friendly.png",
             "title": "Responsible Choices",
             "description": "<p>Thoughtfully sourced whenever possible with conscious production.</p>"
           }
@@ -114,6 +116,7 @@
         "icon_item_VhGb8A": {
           "type": "icon_item",
           "settings": {
+            "icon": "shopify://shop_images/diamond.png",
             "title": "Luxury Experience",
             "description": "<p>Elegant formulas, refined textures, premium packaging.</p>"
           }
@@ -121,6 +124,7 @@
         "icon_item_4fiLUf": {
           "type": "icon_item",
           "settings": {
+            "icon": "shopify://shop_images/heart.png",
             "title": "Cruelty-Free",
             "description": "<p>Beauty created with kindness.</p>"
           }
@@ -167,6 +171,7 @@
         "padding_horizontal": 40,
         "max_width": 1600,
         "bg_color": "#3d3630",
+        "bg_image": "shopify://shop_images/ChatGPT_Image_Jul_2_2026_05_42_42_PM.png",
         "title": "Beauty is not about changing who you are. It's about celebrating it.",
         "title_font_size": 32,
         "title_font_size_mobile": 22,
@@ -216,25 +221,28 @@
         "bullet_AYRdaf",
         "bullet_93nDzQ"
       ],
+      "custom_css": [
+        "@media screen and (max-width: 768px) {.title-br {display: none !important; }}"
+      ],
       "name": "Why Choose Us",
       "settings": {
-        "padding_top": 0,
-        "padding_bottom": 0,
+        "padding_top": 60,
+        "padding_bottom": 60,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
         "padding_horizontal": 28,
         "max_width": 1400,
         "bg_color": "#faf6f2",
-        "image": "shopify://shop_images/Screenshot2026-02-08at07.34.42.png",
+        "image": "shopify://shop_images/ChatGPT_Image_Jul_2_2026_05_50_20_PM.png",
         "image_height": 420,
         "image_width": 45,
-        "image_radius": 8,
+        "image_radius": 10,
         "enable_shadow": false,
         "eyebrow_text": "Why Thousands Choose Us",
         "eyebrow_font_size": 12,
         "eyebrow_color": "#8a7a6d",
         "eyebrow_font_weight": "600",
-        "title": "Why Thousands Choose Our Brand",
+        "title": "Why Thousands Choose <br class=\"title-br\">Our Brand",
         "title_font_size": 40,
         "title_font_size_mobile": 28,
         "title_color": "#2b2b2b",
@@ -252,7 +260,7 @@
         "item_rFdz8j": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/beauty-natural-2.jpg",
+            "image": "shopify://shop_images/ChatGPT_Image_Jul_2_2026_05_58_43_PM.png",
             "image_height": 200,
             "image_width": 100,
             "image_radius": 8,
@@ -270,7 +278,7 @@
         "item_9xAM9R": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/lor-al-paris-lash-paradise-mascara-in-elegant-beauty-setting.png",
+            "image": "shopify://shop_images/ChatGPT_Image_Jul_2_2026_06_03_11_PM.png",
             "image_height": 200,
             "image_width": 100,
             "image_radius": 8,
@@ -288,7 +296,7 @@
         "item_LTri3V": {
           "type": "item",
           "settings": {
-            "image": "shopify://shop_images/beauty-natural-10.jpg",
+            "image": "shopify://shop_images/ChatGPT_Image_Jul_2_2026_06_04_41_PM.png",
             "image_height": 200,
             "image_width": 100,
             "image_radius": 8,
@@ -335,7 +343,7 @@
         "milestone_q7pLqT": {
           "type": "milestone",
           "settings": {
-            "image": "shopify://shop_images/client-1_200x200_f05e21e1-9909-4671-86f7-1696054295ce.png",
+            "image": "shopify://shop_images/group_1.png",
             "image_width": 60,
             "image_height": 60,
             "image_radius": 60,
@@ -353,7 +361,7 @@
         "milestone_ChPynA": {
           "type": "milestone",
           "settings": {
-            "image": "shopify://shop_images/client-3_200x200_0a350948-5ca6-4010-b918-50990f2d10c9.png",
+            "image": "shopify://shop_images/makeup.png",
             "image_width": 60,
             "image_height": 60,
             "image_radius": 60,
@@ -371,7 +379,7 @@
         "milestone_k8iTDa": {
           "type": "milestone",
           "settings": {
-            "image": "shopify://shop_images/client-5_200x200_4f8d1908-e2e8-4b53-b79b-0dedfc8f80c7.png",
+            "image": "shopify://shop_images/group_1.png",
             "image_width": 60,
             "image_height": 60,
             "image_radius": 60,
@@ -389,7 +397,7 @@
         "milestone_eBmAeA": {
           "type": "milestone",
           "settings": {
-            "image": "shopify://shop_images/client-4_200x200_1cc69620-ebaf-415c-90bb-aa5befce6429.png",
+            "image": "shopify://shop_images/planet-earth.png",
             "image_width": 60,
             "image_height": 60,
             "image_radius": 60,
@@ -407,7 +415,7 @@
         "milestone_bH6nrz": {
           "type": "milestone",
           "settings": {
-            "image": "shopify://shop_images/slider-3.jpg",
+            "image": "shopify://shop_images/like_1.png",
             "image_width": 60,
             "image_height": 60,
             "image_radius": 60,
