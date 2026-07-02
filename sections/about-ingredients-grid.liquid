@@ -1,0 +1,472 @@
+<div class="ingredients-section">
+  <div class="ingredients">
+    <div class="ingredients__header">
+      {%- if section.settings.eyebrow_text != blank -%}
+        <p class="ingredients__eyebrow">{{ section.settings.eyebrow_text }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank -%}
+        <h2 class="ingredients__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="ingredients__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'item' -%}
+            <div class="ingredients__item" {{ block.shopify_attributes }}>
+              {%- if block.settings.image -%}
+                <div class="ingredients__media" style="width:{{ block.settings.image_width }}%;margin-left:auto;margin-right:auto;">
+                  <img
+                    class="ingredients__image"
+                    src="{{ block.settings.image | image_url: width: 800 }}"
+                    srcset="{{ block.settings.image | image_url: width: 400 }} 400w,
+                            {{ block.settings.image | image_url: width: 600 }} 600w,
+                            {{ block.settings.image | image_url: width: 800 }} 800w"
+                    sizes="(min-width: 750px) 33vw, 100vw"
+                    alt="{{ block.settings.image.alt | default: block.settings.title | escape }}"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                    loading="lazy"
+                    style="height:{{ block.settings.image_height }}px;border-radius:{{ block.settings.image_radius }}px;{% if block.settings.enable_shadow %}box-shadow:0 16px 40px rgba(0,0,0,0.16);{% endif %}"
+                  >
+                </div>
+              {%- endif -%}
+
+              {%- if block.settings.title != blank -%}
+                <p class="ingredients__item-title" style="font-size:{{ block.settings.title_font_size }}px;color:{{ block.settings.title_color }};font-weight:{{ block.settings.title_font_weight }};">{{ block.settings.title }}</p>
+              {%- endif -%}
+
+              {%- if block.settings.description != blank -%}
+                <div class="ingredients__item-description" style="font-size:{{ block.settings.description_font_size }}px;color:{{ block.settings.description_color }};font-weight:{{ block.settings.description_font_weight }};">{{ block.settings.description }}</div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --ing-padding-top: {{ section.settings.padding_top }}px;
+    --ing-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --ing-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --ing-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --ing-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --ing-max-width: {{ section.settings.max_width }}px;
+    --ing-bg-color: {{ section.settings.bg_color }};
+
+    --ing-eyebrow-size: {{ section.settings.eyebrow_font_size }}px;
+    --ing-eyebrow-color: {{ section.settings.eyebrow_color }};
+    --ing-eyebrow-weight: {{ section.settings.eyebrow_font_weight }};
+
+    --ing-title-size: {{ section.settings.title_font_size }}px;
+    --ing-title-size-mobile: {{ section.settings.title_font_size_mobile }}px;
+    --ing-title-color: {{ section.settings.title_color }};
+    --ing-title-weight: {{ section.settings.title_font_weight }};
+
+    background-color: var(--ing-bg-color);
+  }
+
+  #shopify-section-{{ section.id }} .ingredients {
+    max-width: var(--ing-max-width);
+    margin: 0 auto;
+    padding: var(--ing-padding-top) var(--ing-padding-horizontal) var(--ing-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .ingredients__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  #shopify-section-{{ section.id }} .ingredients__eyebrow {
+    font-size: var(--ing-eyebrow-size);
+    color: var(--ing-eyebrow-color);
+    font-weight: var(--ing-eyebrow-weight);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 12px;
+  }
+
+  #shopify-section-{{ section.id }} .ingredients__title {
+    font-size: var(--ing-title-size-mobile);
+    color: var(--ing-title-color);
+    font-weight: var(--ing-title-weight);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .ingredients__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .ingredients__item {
+    flex: 1 1 280px;
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .ingredients__media {
+    margin-bottom: 24px;
+  }
+
+  #shopify-section-{{ section.id }} .ingredients__image {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  #shopify-section-{{ section.id }} .ingredients__item-title {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 10px;
+  }
+
+  #shopify-section-{{ section.id }} .ingredients__item-description {
+    line-height: 1.6;
+  }
+
+  #shopify-section-{{ section.id }} .ingredients__item-description p {
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .ingredients__title {
+      font-size: var(--ing-title-size);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .ingredients {
+      padding: var(--ing-padding-top-mobile) var(--ing-padding-horizontal) var(--ing-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .ingredients__grid {
+      flex-direction: column;
+      gap: 32px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Ingredients Grid",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1920,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Thoughtfully Chosen"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Color",
+      "default": "#8A7A6D"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Ingredients That Make The Difference"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Font size (desktop)",
+      "min": 24,
+      "max": 64,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 20,
+      "max": 44,
+      "step": 2,
+      "unit": "px",
+      "default": 26
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Color",
+      "default": "#2B2B2B"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Ingredient",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "range",
+          "id": "image_height",
+          "label": "Height",
+          "min": 120,
+          "max": 500,
+          "step": 10,
+          "unit": "px",
+          "default": 200
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Width",
+          "min": 60,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 100
+        },
+        {
+          "type": "range",
+          "id": "image_radius",
+          "label": "Border radius",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 0
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_shadow",
+          "label": "Enable shadow",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Title"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Natural Oils"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "label": "Font size",
+          "min": 10,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Color",
+          "default": "#2B2B2B"
+        },
+        {
+          "type": "select",
+          "id": "title_font_weight",
+          "label": "Font weight",
+          "options": [
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semibold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "600"
+        },
+        {
+          "type": "header",
+          "content": "Description"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Hydrates and nourishes skin.</p>"
+        },
+        {
+          "type": "range",
+          "id": "description_font_size",
+          "label": "Font size",
+          "min": 10,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Color",
+          "default": "#6B6B6B"
+        },
+        {
+          "type": "select",
+          "id": "description_font_weight",
+          "label": "Font weight",
+          "options": [
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semibold" }
+          ],
+          "default": "400"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients Grid",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "title": "Natural Oils",
+            "description": "<p>Hydrates and nourishes skin.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "Botanical Extracts",
+            "description": "<p>Rich in antioxidants.</p>"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "title": "Vitamin Complex",
+            "description": "<p>Supports healthy-looking skin.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

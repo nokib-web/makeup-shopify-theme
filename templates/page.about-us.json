@@ -140,20 +140,440 @@
         "padding_bottom_mobile": 32,
         "padding_horizontal": 40,
         "max_width": 1400,
-        "bg_color": "#F5F0EC",
-        "divider_color": "#D8CFC5",
+        "bg_color": "#f5f0ec",
+        "divider_color": "#d8cfc5",
         "icon_width": 48,
         "icon_height": 48,
         "icon_width_mobile": 40,
         "icon_height_mobile": 40,
         "title_font_size": 14,
         "title_font_size_mobile": 13,
-        "title_color": "#2B2B2B",
+        "title_color": "#2b2b2b",
         "title_font_weight": "600",
         "description_font_size": 14,
-        "description_color": "#6B6B6B",
+        "description_color": "#6b6b6b",
         "description_font_weight": "400",
         "description_max_width": 220
+      }
+    },
+    "about_quote_banner_4Fh99K": {
+      "type": "about-quote-banner",
+      "name": "Quote Banner",
+      "settings": {
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "padding_top_mobile": 60,
+        "padding_bottom_mobile": 60,
+        "padding_horizontal": 40,
+        "max_width": 1600,
+        "bg_color": "#3d3630",
+        "title": "Beauty is not about changing who you are. It's about celebrating it.",
+        "title_font_size": 32,
+        "title_font_size_mobile": 22,
+        "title_color": "#ffffff",
+        "title_font_weight": "400",
+        "title_max_width": 800
+      }
+    },
+    "about_why_choose_us_JLmRiV": {
+      "type": "about-why-choose-us",
+      "blocks": {
+        "bullet_xTmzgi": {
+          "type": "bullet",
+          "settings": {
+            "text": "Premium Ingredients"
+          }
+        },
+        "bullet_z4BUJD": {
+          "type": "bullet",
+          "settings": {
+            "text": "Skin-Loving Formulas"
+          }
+        },
+        "bullet_kcFtLW": {
+          "type": "bullet",
+          "settings": {
+            "text": "Modern Minimal Packaging"
+          }
+        },
+        "bullet_AYRdaf": {
+          "type": "bullet",
+          "settings": {
+            "text": "Tested for Performance"
+          }
+        },
+        "bullet_93nDzQ": {
+          "type": "bullet",
+          "settings": {
+            "text": "Trusted by Beauty Lovers"
+          }
+        }
+      },
+      "block_order": [
+        "bullet_xTmzgi",
+        "bullet_z4BUJD",
+        "bullet_kcFtLW",
+        "bullet_AYRdaf",
+        "bullet_93nDzQ"
+      ],
+      "name": "Why Choose Us",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_horizontal": 28,
+        "max_width": 1400,
+        "bg_color": "#faf6f2",
+        "image": "shopify://shop_images/Screenshot2026-02-08at07.34.42.png",
+        "image_height": 420,
+        "image_width": 45,
+        "image_radius": 8,
+        "enable_shadow": false,
+        "eyebrow_text": "Why Thousands Choose Us",
+        "eyebrow_font_size": 12,
+        "eyebrow_color": "#8a7a6d",
+        "eyebrow_font_weight": "600",
+        "title": "Why Thousands Choose Our Brand",
+        "title_font_size": 40,
+        "title_font_size_mobile": 28,
+        "title_color": "#2b2b2b",
+        "title_font_weight": "400",
+        "icon_size": 20,
+        "icon_color": "#8a7a6d",
+        "item_font_size": 15,
+        "item_color": "#3a3a3a",
+        "item_font_weight": "400"
+      }
+    },
+    "about_ingredients_grid_tiEAg8": {
+      "type": "about-ingredients-grid",
+      "blocks": {
+        "item_rFdz8j": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/beauty-natural-2.jpg",
+            "image_height": 200,
+            "image_width": 100,
+            "image_radius": 8,
+            "enable_shadow": true,
+            "title": "Natural Oils",
+            "title_font_size": 14,
+            "title_color": "#2b2b2b",
+            "title_font_weight": "600",
+            "description": "<p>Hydrates and nourishes skin.</p>",
+            "description_font_size": 14,
+            "description_color": "#6b6b6b",
+            "description_font_weight": "400"
+          }
+        },
+        "item_9xAM9R": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/lor-al-paris-lash-paradise-mascara-in-elegant-beauty-setting.png",
+            "image_height": 200,
+            "image_width": 100,
+            "image_radius": 8,
+            "enable_shadow": true,
+            "title": "Botanical Extracts",
+            "title_font_size": 14,
+            "title_color": "#2b2b2b",
+            "title_font_weight": "600",
+            "description": "<p>Rich in antioxidants.</p>",
+            "description_font_size": 14,
+            "description_color": "#6b6b6b",
+            "description_font_weight": "400"
+          }
+        },
+        "item_LTri3V": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/beauty-natural-10.jpg",
+            "image_height": 200,
+            "image_width": 100,
+            "image_radius": 8,
+            "enable_shadow": true,
+            "title": "Vitamin Complex",
+            "title_font_size": 14,
+            "title_color": "#2b2b2b",
+            "title_font_weight": "600",
+            "description": "<p>Supports healthy-looking skin.</p>",
+            "description_font_size": 14,
+            "description_color": "#6b6b6b",
+            "description_font_weight": "400"
+          }
+        }
+      },
+      "block_order": [
+        "item_rFdz8j",
+        "item_9xAM9R",
+        "item_LTri3V"
+      ],
+      "name": "Ingredients Grid",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_horizontal": 40,
+        "max_width": 1400,
+        "bg_color": "#ffffff",
+        "eyebrow_text": "Thoughtfully Chosen",
+        "eyebrow_font_size": 12,
+        "eyebrow_color": "#8a7a6d",
+        "eyebrow_font_weight": "600",
+        "title": "Ingredients That Make The Difference",
+        "title_font_size": 36,
+        "title_font_size_mobile": 26,
+        "title_color": "#2b2b2b",
+        "title_font_weight": "400"
+      }
+    },
+    "about_our_journey_VHN3ih": {
+      "type": "about-our-journey",
+      "blocks": {
+        "milestone_q7pLqT": {
+          "type": "milestone",
+          "settings": {
+            "image": "shopify://shop_images/client-1_200x200_f05e21e1-9909-4671-86f7-1696054295ce.png",
+            "image_width": 60,
+            "image_height": 60,
+            "image_radius": 60,
+            "enable_shadow": false,
+            "time_label": "2019",
+            "time_font_size": 15,
+            "time_color": "#2b2b2b",
+            "time_font_weight": "700",
+            "description": "<p>Brand Founded</p>",
+            "description_font_size": 13,
+            "description_color": "#6b6b6b",
+            "description_font_weight": "400"
+          }
+        },
+        "milestone_ChPynA": {
+          "type": "milestone",
+          "settings": {
+            "image": "shopify://shop_images/client-3_200x200_0a350948-5ca6-4010-b918-50990f2d10c9.png",
+            "image_width": 60,
+            "image_height": 60,
+            "image_radius": 60,
+            "enable_shadow": false,
+            "time_label": "2020",
+            "time_font_size": 15,
+            "time_color": "#2b2b2b",
+            "time_font_weight": "700",
+            "description": "<p>First Collection</p>",
+            "description_font_size": 13,
+            "description_color": "#6b6b6b",
+            "description_font_weight": "400"
+          }
+        },
+        "milestone_k8iTDa": {
+          "type": "milestone",
+          "settings": {
+            "image": "shopify://shop_images/client-5_200x200_4f8d1908-e2e8-4b53-b79b-0dedfc8f80c7.png",
+            "image_width": 60,
+            "image_height": 60,
+            "image_radius": 60,
+            "enable_shadow": false,
+            "time_label": "2022",
+            "time_font_size": 15,
+            "time_color": "#2b2b2b",
+            "time_font_weight": "700",
+            "description": "<p>10,000+ Happy Customers</p>",
+            "description_font_size": 13,
+            "description_color": "#6b6b6b",
+            "description_font_weight": "400"
+          }
+        },
+        "milestone_eBmAeA": {
+          "type": "milestone",
+          "settings": {
+            "image": "shopify://shop_images/client-4_200x200_1cc69620-ebaf-415c-90bb-aa5befce6429.png",
+            "image_width": 60,
+            "image_height": 60,
+            "image_radius": 60,
+            "enable_shadow": false,
+            "time_label": "2024",
+            "time_font_size": 15,
+            "time_color": "#2b2b2b",
+            "time_font_weight": "700",
+            "description": "<p>Expanded Worldwide</p>",
+            "description_font_size": 13,
+            "description_color": "#6b6b6b",
+            "description_font_weight": "400"
+          }
+        },
+        "milestone_bH6nrz": {
+          "type": "milestone",
+          "settings": {
+            "image": "shopify://shop_images/slider-3.jpg",
+            "image_width": 60,
+            "image_height": 60,
+            "image_radius": 60,
+            "enable_shadow": false,
+            "time_label": "Today",
+            "time_font_size": 15,
+            "time_color": "#2b2b2b",
+            "time_font_weight": "700",
+            "description": "<p>Growing Every Day</p>",
+            "description_font_size": 13,
+            "description_color": "#6b6b6b",
+            "description_font_weight": "400"
+          }
+        }
+      },
+      "block_order": [
+        "milestone_q7pLqT",
+        "milestone_ChPynA",
+        "milestone_k8iTDa",
+        "milestone_eBmAeA",
+        "milestone_bH6nrz"
+      ],
+      "name": "Our Journey",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_horizontal": 40,
+        "max_width": 1400,
+        "bg_color": "#faf6f2",
+        "line_color": "#d8c3b5",
+        "icon_border_color": "#d8c3b5",
+        "eyebrow_text": "Our Journey",
+        "eyebrow_font_size": 12,
+        "eyebrow_color": "#8a7a6d",
+        "eyebrow_font_weight": "600",
+        "title": "",
+        "title_font_size": 32,
+        "title_font_size_mobile": 24,
+        "title_color": "#2b2b2b",
+        "title_font_weight": "400"
+      }
+    },
+    "about_meet_the_founder_GE6jbB": {
+      "type": "about-meet-the-founder",
+      "name": "Meet The Founder",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_horizontal": 28,
+        "max_width": 1400,
+        "bg_color": "#ffffff",
+        "image": "shopify://shop_images/girl.png",
+        "image_height": 420,
+        "image_width": 45,
+        "image_radius": 0,
+        "enable_shadow": false,
+        "eyebrow_text": "Meet The Founder",
+        "eyebrow_font_size": 12,
+        "eyebrow_color": "#8a7a6d",
+        "eyebrow_font_weight": "600",
+        "title": "Beauty should never feel complicated.",
+        "title_font_size": 36,
+        "title_font_size_mobile": 26,
+        "title_color": "#2b2b2b",
+        "title_font_weight": "400",
+        "description": "<p>Our vision has always been to create products that fit effortlessly into real life—combining elegance, performance, and confidence in every collection.</p>",
+        "description_font_size": 15,
+        "description_color": "#6b6b6b",
+        "description_font_weight": "400",
+        "description_max_width": 460,
+        "signature_width": 150,
+        "signature_height": 60,
+        "name": "Olivia Morgan",
+        "name_font_size": 14,
+        "name_color": "#2b2b2b",
+        "name_font_weight": "600",
+        "position": "Founder & Creative Director",
+        "position_font_size": 13,
+        "position_color": "#8a8a8a",
+        "position_font_weight": "400"
+      }
+    },
+    "about_stats_bar_XbyMfY": {
+      "type": "about-stats-bar",
+      "blocks": {
+        "stat_PP6EWe": {
+          "type": "stat",
+          "settings": {
+            "title": "150K+",
+            "title_font_size": 44,
+            "title_font_size_mobile": 32,
+            "title_color": "#2B2B2B",
+            "title_font_weight": "400",
+            "description": "<p>Happy Customers</p>",
+            "description_font_size": 14,
+            "description_color": "#6B6B6B",
+            "description_font_weight": "400",
+            "description_max_width": 200
+          }
+        },
+        "stat_6X4mJd": {
+          "type": "stat",
+          "settings": {
+            "title": "500+",
+            "title_font_size": 44,
+            "title_font_size_mobile": 32,
+            "title_color": "#2B2B2B",
+            "title_font_weight": "400",
+            "description": "<p>5-Star Reviews</p>",
+            "description_font_size": 14,
+            "description_color": "#6B6B6B",
+            "description_font_weight": "400",
+            "description_max_width": 200
+          }
+        },
+        "stat_fUq3At": {
+          "type": "stat",
+          "settings": {
+            "title": "30+",
+            "title_font_size": 44,
+            "title_font_size_mobile": 32,
+            "title_color": "#2B2B2B",
+            "title_font_weight": "400",
+            "description": "<p>Premium Products</p>",
+            "description_font_size": 14,
+            "description_color": "#6B6B6B",
+            "description_font_weight": "400",
+            "description_max_width": 200
+          }
+        },
+        "stat_AfWgCK": {
+          "type": "stat",
+          "settings": {
+            "title": "15+",
+            "title_font_size": 44,
+            "title_font_size_mobile": 32,
+            "title_color": "#2B2B2B",
+            "title_font_weight": "400",
+            "description": "<p>Countries Served</p>",
+            "description_font_size": 14,
+            "description_color": "#6B6B6B",
+            "description_font_weight": "400",
+            "description_max_width": 200
+          }
+        }
+      },
+      "block_order": [
+        "stat_PP6EWe",
+        "stat_6X4mJd",
+        "stat_fUq3At",
+        "stat_AfWgCK"
+      ],
+      "name": "Stats Bar",
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_horizontal": 40,
+        "max_width": 1400,
+        "bg_color": "#FAF6F2",
+        "divider_color": "#D8CFC5"
       }
     }
   },
@@ -161,6 +581,12 @@
     "main",
     "about_hero_UMnPtG",
     "our_story_rKGXFh",
-    "about_icon_bar_Xjc7BG"
+    "about_icon_bar_Xjc7BG",
+    "about_quote_banner_4Fh99K",
+    "about_why_choose_us_JLmRiV",
+    "about_ingredients_grid_tiEAg8",
+    "about_our_journey_VHN3ih",
+    "about_meet_the_founder_GE6jbB",
+    "about_stats_bar_XbyMfY"
   ]
 }

@@ -1,0 +1,520 @@
+<div class="why-choose-section">
+  <div class="why-choose">
+    <div class="why-choose__grid">
+
+      {%- if section.settings.image -%}
+        <div class="why-choose__media">
+          <img
+            class="why-choose__image"
+            src="{{ section.settings.image | image_url: width: 1400 }}"
+            srcset="{{ section.settings.image | image_url: width: 600 }} 600w,
+                    {{ section.settings.image | image_url: width: 1000 }} 1000w,
+                    {{ section.settings.image | image_url: width: 1400 }} 1400w"
+            sizes="(min-width: 990px) 50vw, 100vw"
+            alt="{{ section.settings.image.alt | default: section.settings.title | escape }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            loading="lazy"
+          >
+        </div>
+      {%- endif -%}
+
+      <div class="why-choose__content">
+        {%- if section.settings.eyebrow_text != blank -%}
+          <p class="why-choose__eyebrow">{{ section.settings.eyebrow_text }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="why-choose__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+
+        <span class="why-choose__divider"></span>
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="why-choose__list">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'bullet' -%}
+                <li class="why-choose__item" {{ block.shopify_attributes }}>
+                  <span class="why-choose__icon-wrap">
+                    {%- if section.settings.bullet_icon -%}
+                      <img
+                        class="why-choose__icon"
+                        src="{{ section.settings.bullet_icon | image_url: width: 60 }}"
+                        alt=""
+                        width="{{ section.settings.bullet_icon.width }}"
+                        height="{{ section.settings.bullet_icon.height }}"
+                        loading="lazy"
+                      >
+                    {%- else -%}
+                      <svg class="why-choose__icon why-choose__icon--default" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M8 12.5L10.5 15L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    {%- endif -%}
+                  </span>
+                  <span class="why-choose__item-text">{{ block.settings.text }}</span>
+                </li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --wc-padding-top: {{ section.settings.padding_top }}px;
+    --wc-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --wc-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --wc-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --wc-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --wc-max-width: {{ section.settings.max_width }}px;
+    --wc-bg-color: {{ section.settings.bg_color }};
+
+    --wc-image-height: {{ section.settings.image_height }}px;
+    --wc-image-width: {{ section.settings.image_width }}%;
+    --wc-image-radius: {{ section.settings.image_radius }}px;
+
+    --wc-eyebrow-size: {{ section.settings.eyebrow_font_size }}px;
+    --wc-eyebrow-color: {{ section.settings.eyebrow_color }};
+    --wc-eyebrow-weight: {{ section.settings.eyebrow_font_weight }};
+
+    --wc-title-size: {{ section.settings.title_font_size }}px;
+    --wc-title-size-mobile: {{ section.settings.title_font_size_mobile }}px;
+    --wc-title-color: {{ section.settings.title_color }};
+    --wc-title-weight: {{ section.settings.title_font_weight }};
+
+    --wc-icon-size: {{ section.settings.icon_size }}px;
+    --wc-icon-color: {{ section.settings.icon_color }};
+    --wc-item-font-size: {{ section.settings.item_font_size }}px;
+    --wc-item-color: {{ section.settings.item_color }};
+    --wc-item-weight: {{ section.settings.item_font_weight }};
+
+    background-color: var(--wc-bg-color);
+  }
+
+  #shopify-section-{{ section.id }} .why-choose {
+    max-width: var(--wc-max-width);
+    margin: 0 auto;
+    padding: var(--wc-padding-top) var(--wc-padding-horizontal) var(--wc-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__grid {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__media {
+    order: 1;
+    flex: 0 0 var(--wc-image-width);
+    max-width: var(--wc-image-width);
+    margin-left: calc(-1 * var(--wc-padding-horizontal));
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__image {
+    display: block;
+    width: 100%;
+    height: var(--wc-image-height);
+    object-fit: cover;
+    border-radius: var(--wc-image-radius);
+    {%- if section.settings.enable_shadow -%}
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__content {
+    order: 2;
+    flex: 1 1 0%;
+    min-width: 280px;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__eyebrow {
+    font-size: var(--wc-eyebrow-size);
+    color: var(--wc-eyebrow-color);
+    font-weight: var(--wc-eyebrow-weight);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 16px;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__title {
+    font-size: var(--wc-title-size-mobile);
+    color: var(--wc-title-color);
+    font-weight: var(--wc-title-weight);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__divider {
+    display: block;
+    width: 48px;
+    height: 2px;
+    background-color: var(--wc-title-color);
+    margin: 24px 0;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__icon-wrap {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__icon {
+    width: var(--wc-icon-size);
+    height: var(--wc-icon-size);
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__icon--default {
+    color: var(--wc-icon-color);
+  }
+
+  #shopify-section-{{ section.id }} .why-choose__item-text {
+    font-size: var(--wc-item-font-size);
+    color: var(--wc-item-color);
+    font-weight: var(--wc-item-weight);
+    line-height: 1.4;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .why-choose__title {
+      font-size: var(--wc-title-size);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .why-choose {
+      padding: var(--wc-padding-top-mobile) var(--wc-padding-horizontal) var(--wc-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .why-choose__grid {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .why-choose__media {
+      flex: 1 1 auto;
+      max-width: none;
+      width: 100%;
+      margin-left: calc(-1 * var(--wc-padding-horizontal));
+      margin-right: calc(-1 * var(--wc-padding-horizontal));
+    }
+
+    #shopify-section-{{ section.id }} .why-choose__image {
+      height: 340px;
+      border-radius: 0;
+    }
+
+    #shopify-section-{{ section.id }} .why-choose__content {
+      min-width: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1920,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF6F2"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Height",
+      "min": 200,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "default": 420
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Width (% of row)",
+      "min": 30,
+      "max": 60,
+      "step": 1,
+      "unit": "%",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_shadow",
+      "label": "Enable shadow",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Why Thousands Choose Us"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Color",
+      "default": "#8A7A6D"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Why Thousands Choose Our Brand"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Font size (desktop)",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Color",
+      "default": "#2B2B2B"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "Bullet points"
+    },
+    {
+      "type": "image_picker",
+      "id": "bullet_icon",
+      "label": "Bullet icon (optional)",
+      "info": "Leave empty to use the default checkmark icon"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 12,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Default icon color",
+      "default": "#8A7A6D"
+    },
+    {
+      "type": "range",
+      "id": "item_font_size",
+      "label": "Text font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "color",
+      "id": "item_color",
+      "label": "Text color",
+      "default": "#3A3A3A"
+    },
+    {
+      "type": "select",
+      "id": "item_font_weight",
+      "label": "Text font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" }
+      ],
+      "default": "400"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bullet",
+      "name": "Bullet Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Premium Ingredients"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us",
+      "blocks": [
+        { "type": "bullet", "settings": { "text": "Premium Ingredients" } },
+        { "type": "bullet", "settings": { "text": "Skin-Loving Formulas" } },
+        { "type": "bullet", "settings": { "text": "Modern Minimal Packaging" } },
+        { "type": "bullet", "settings": { "text": "Tested for Performance" } },
+        { "type": "bullet", "settings": { "text": "Trusted by Beauty Lovers" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

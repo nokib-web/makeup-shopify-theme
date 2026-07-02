@@ -10,6 +10,44 @@
   {%- assign display_price = block.settings.custom_price -%}
 {%- endif -%}
 
+{% comment %} Metafields & Custom Extra Data Checks {% endcomment %}
+{%- assign badge_text = '' -%}
+{%- if block != nil and block.settings.custom_badge != blank -%}
+  {%- assign badge_text = block.settings.custom_badge -%}
+{%- elsif product.metafields.custom.badge != blank -%}
+  {%- assign badge_text = product.metafields.custom.badge -%}
+{%- elsif product.tags contains 'bestseller' or product.tags contains 'Bestseller' -%}
+  {%- assign badge_text = '#1 Best Seller' -%}
+{%- endif -%}
+
+{%- assign offer_text = '' -%}
+{%- if block != nil and block.settings.custom_offer_text != blank -%}
+  {%- assign offer_text = block.settings.custom_offer_text -%}
+{%- elsif product.metafields.custom.offer_text != blank -%}
+  {%- assign offer_text = product.metafields.custom.offer_text -%}
+{%- endif -%}
+
+{%- assign feature_text = '' -%}
+{%- if block != nil and block.settings.custom_feature_text != blank -%}
+  {%- assign feature_text = block.settings.custom_feature_text -%}
+{%- elsif product.metafields.custom.feature_text != blank -%}
+  {%- assign feature_text = product.metafields.custom.feature_text -%}
+{%- endif -%}
+
+{%- assign rating_val = '4.8' -%}
+{%- assign rating_cnt = '3,406' -%}
+{%- if block != nil and block.settings.custom_rating != blank -%}
+  {%- assign rating_val = block.settings.custom_rating -%}
+{%- elsif product.metafields.reviews.rating.value != blank -%}
+  {%- assign rating_val = product.metafields.reviews.rating.value -%}
+{%- endif -%}
+
+{%- if block != nil and block.settings.custom_rating_count != blank -%}
+  {%- assign rating_cnt = block.settings.custom_rating_count -%}
+{%- elsif product.metafields.reviews.rating_count != blank -%}
+  {%- assign rating_cnt = product.metafields.reviews.rating_count -%}
+{%- endif -%}
+
 <div class="bestseller-product-card" style="background-color: {{ section.settings.card_bg_color }};">
   
   {% comment %} Product Image Box {% endcomment %}
@@ -51,6 +89,35 @@
     <h3 class="bestseller-product-title">
       <a href="{{ product.url }}">{{ product_title }}</a>
     </h3>
+
+    {% comment %} Star Rating & Review Count {% endcomment %}
+    {%- if section.settings.show_rating -%}
+      <div class="bestseller-card-rating">
+        <span class="bestseller-stars">★★★★☆</span>
+        <span class="bestseller-rating-count">{{ rating_cnt }}</span>
+      </div>
+    {%- endif -%}
+
+    {% comment %} Custom Badge (e.g. #1 Best Seller) {% endcomment %}
+    {%- if section.settings.show_badge and badge_text != blank -%}
+      <div class="bestseller-card-badge-wrap">
+        <span class="bestseller-card-badge">{{ badge_text }}</span>
+      </div>
+    {%- endif -%}
+
+    {% comment %} Offer Line / Extra Metafield Text {% endcomment %}
+    {%- if section.settings.show_offer and offer_text != blank -%}
+      <div class="bestseller-card-offer">
+        {{ offer_text }}
+      </div>
+    {%- endif -%}
+
+    {% comment %} Feature / Sustainability Line {% endcomment %}
+    {%- if section.settings.show_feature and feature_text != blank -%}
+      <div class="bestseller-card-feature">
+        <span class="feature-icon">🌱</span> {{ feature_text }}
+      </div>
+    {%- endif -%}
 
     {% comment %} Swatches Section {% endcomment %}
     {%- if section.settings.show_swatches -%}

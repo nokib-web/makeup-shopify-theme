@@ -1,6 +1,6 @@
 {% comment %}
   Bestseller Product Carousel Section
-  Rare Beauty Style Product Carousel Section with Native Theme Styles
+  Rare Beauty Style Product Carousel Section with Full-Width Side Card Peeking & Rich Metafields Data
 {% endcomment %}
 
 {%- assign section_bg = section.settings.section_bg_color -%}
@@ -10,17 +10,27 @@
   {% assign section_overlay = 'dt-sc-overlay' %}
 {% endif %}
 
-<div class="dt-sc-section-wrapper {{ section_overlay }} bestseller-section-wrapper" id="bestseller-section-{{ section.id }}" style="{% render 'bg-color-image-padding' %}" {% include 'bg_image' %}>
+<div class="dt-sc-section-wrapper {{ section_overlay }} bestseller-section-wrapper" id="bestseller-section-{{ section.id }}">
+  
+  {% comment %} Native Theme Section Header (Centered in Standard Container) {% endcomment %}
   <div class="{% render 'container-settings' %}">
-    
-    {% comment %} Native Theme Section Header (Centered) {% endcomment %}
     <div class="row {{ section.settings.custom_class_name }}">
       {% render 'section-heading', class: section.id %} 
     </div>
+  </div>
 
-    {% comment %} Carousel Outer Container {% endcomment %}
+  {% comment %} Full Width Carousel Outer Container for Side Card Peeking {% endcomment %}
+  <div class="bestseller-full-width-container">
     <div class="bestseller-carousel-outer">
-      <div class="dt-sc-swiper-slider swiper-container bestseller-swiper-{{ section.id }} {% if section.settings.dots %} {{ section.settings.carousel_pagination_alignment }} {% endif %} {% if section.settings.arrows %} {{ section.settings.nav_arrow_position }} {% endif %}" data-section-id="{{ section.id }}">
+      
+      {% comment %} Left Navigation Arrow (Middle Left) {% endcomment %}
+      {%- if section.settings.show_arrows -%}
+        <div class="bestseller-arrow-prev bestseller-swiper-prev-{{ section.id }}" aria-label="Previous">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </div>
+      {%- endif -%}
+
+      <div class="swiper-container bestseller-swiper-{{ section.id }}" data-section-id="{{ section.id }}">
         <div class="swiper-wrapper">
           
           {% comment %} Render Blocks if Added {% endcomment %}
@@ -49,7 +59,7 @@
                       </div>
                     {%- endfor -%}
                   {%- else -%}
-                    {%- for i in (1..4) -%}
+                    {%- for i in (1..8) -%}
                       <div class="swiper-slide bestseller-card-slide" {{ block.shopify_attributes }}>
                         {%- render 'bestseller-demo-card-markup', index: i, block: nil, section: section -%}
                       </div>
@@ -70,7 +80,7 @@
                 </div>
               {%- endfor -%}
             {%- else -%}
-              {%- for i in (1..6) -%}
+              {%- for i in (1..8) -%}
                 <div class="swiper-slide bestseller-card-slide">
                   {%- render 'bestseller-demo-card-markup', index: i, block: nil, section: section -%}
                 </div>
@@ -81,22 +91,22 @@
 
         </div>
 
-        {% comment %} Navigation Arrows {% endcomment %}
-        {%- if section.settings.show_arrows -%}
-          <div class="swiper-arrows bestseller-arrows">
-            <div id="swiper-{{ section.id }}-prev" class="swiper-button-prev dt-sc-btn bestseller-swiper-prev-{{ section.id }}" aria-label="Previous"></div>
-            <div id="swiper-{{ section.id }}-next" class="swiper-button-next dt-sc-btn bestseller-swiper-next-{{ section.id }}" aria-label="Next"></div>
-          </div>
-        {%- endif -%}
-
         {%- if section.settings.show_dots -%}
           <div class="swiper-pagination bestseller-swiper-pagination-{{ section.id }}"></div>
         {%- endif -%}
 
       </div>
-    </div>
 
+      {% comment %} Right Navigation Arrow (Middle Right) {% endcomment %}
+      {%- if section.settings.show_arrows -%}
+        <div class="bestseller-arrow-next bestseller-swiper-next-{{ section.id }}" aria-label="Next">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      {%- endif -%}
+
+    </div>
   </div>
+
 </div>
 
 <style>
@@ -104,39 +114,111 @@
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
     background-color: {{ section_bg }};
+    width: 100%;
+    overflow: hidden;
   }
 
-  /* Carousel Outer Layout */
+  /* Centered Section Heading with SINGLE Background Image (No Repeat) */
+  #bestseller-section-{{ section.id }} .dt-sc-heading {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: {{ section.settings.header_margin_bottom }}px !important;
+    position: relative !important;
+  }
+
+  /* Disable Duplicate :after Background Image */
+  #bestseller-section-{{ section.id }} .dt-sc-heading:after {
+    display: none !important;
+  }
+
+  /* Single Centered :before Background Image */
+  #bestseller-section-{{ section.id }} .dt-sc-heading:before {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin-left: 0 !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: contain !important;
+  }
+
+  #bestseller-section-{{ section.id }} .dt-sc-main-heading {
+    text-align: center !important;
+  }
+
+  /* Full Width Container */
+  .bestseller-full-width-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Carousel Outer Layout with Full-Width Edge Padding */
   .bestseller-carousel-outer {
     position: relative;
-    padding: 0;
+    padding: 0 50px;
     overflow: hidden;
+    width: 100%;
   }
 
   .bestseller-swiper-{{ section.id }} {
     overflow: visible !important;
     position: relative;
-    padding: 15px 0 35px 0;
+    padding: 10px 0 30px 0;
   }
 
-  .bestseller-card-slide {
+  /* BASE SLIDE STYLE: Faded (0.4) on side peeking cards extending past main 4 columns */
+  .bestseller-swiper-{{ section.id }} .swiper-slide {
     height: auto;
-    /* Faded effect on non-center / outer edge cards */
     opacity: 0.4;
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity 0.35s ease, transform 0.35s ease;
   }
 
-  /* Active & Visible slides are 100% Opaque */
-  .bestseller-swiper-{{ section.id }} .swiper-slide-visible,
-  .bestseller-swiper-{{ section.id }} .swiper-slide-active,
-  .bestseller-swiper-{{ section.id }} .swiper-slide-next {
-    opacity: 1;
+  /* THE 4 MAIN VISIBLE CARDS IN THE MIDDLE GRID ARE 100% NORMAL & SOLID (Opacity 1) */
+  .bestseller-swiper-{{ section.id }} .swiper-slide.swiper-slide-visible {
+    opacity: 1 !important;
   }
 
-  /* Fade out the far-left and far-right edge overflow slides */
-  .bestseller-swiper-{{ section.id }} .swiper-slide-prev,
-  .bestseller-swiper-{{ section.id }} .swiper-slide:not(.swiper-slide-visible) {
-    opacity: 0.35 !important;
+  /* Middle Left and Middle Right Navigation Arrows */
+  .bestseller-arrow-prev,
+  .bestseller-arrow-next {
+    position: absolute;
+    top: 42%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    color: #222222;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 25;
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: all 0.25s ease;
+  }
+
+  .bestseller-arrow-prev { left: 4px; }
+  .bestseller-arrow-next { right: 4px; }
+
+  .bestseller-arrow-prev:hover,
+  .bestseller-arrow-next:hover {
+    background-color: var(--DTPrimaryColor, #6B3B43);
+    color: #FFFFFF;
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  .bestseller-arrow-prev.swiper-button-disabled,
+  .bestseller-arrow-next.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
   }
 
   /* Product Card Styling */
@@ -181,7 +263,7 @@
   .bestseller-image-wrapper img.image-fit-contain,
   .bestseller-image-wrapper svg {
     object-fit: contain;
-    padding: 20px;
+    padding: 16px;
   }
 
   .bestseller-image-wrapper img.image-fit-cover {
@@ -207,9 +289,9 @@
     {%- endif -%}
   }
 
-  /* Card Content Info */
+  /* Card Content Info & Metafields Support */
   .bestseller-card-info {
-    padding: 16px 0 10px 0;
+    padding: 14px 0 8px 0;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -217,10 +299,10 @@
 
   .bestseller-product-title {
     font-family: var(--DTFontTypo_Heading, serif);
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    line-height: 1.3;
-    margin: 0 0 10px 0;
+    line-height: 1.35;
+    margin: 0 0 6px 0;
     color: var(--DTColor_Heading, #222);
   }
 
@@ -234,9 +316,66 @@
     color: var(--DTPrimaryColor);
   }
 
+  /* Rating Stars & Review Count */
+  .bestseller-card-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 6px;
+    font-size: 13px;
+  }
+
+  .bestseller-stars {
+    color: #FFA41C;
+    letter-spacing: 1px;
+    font-size: 13px;
+  }
+
+  .bestseller-rating-count {
+    color: #007185;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  /* Custom Badge (#1 Best Seller) */
+  .bestseller-card-badge-wrap {
+    margin-bottom: 6px;
+  }
+
+  .bestseller-card-badge {
+    display: inline-block;
+    background-color: #C64B00;
+    color: #FFFFFF;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* Offer / Price Subtitle Line */
+  .bestseller-card-offer {
+    font-size: 12px;
+    color: #565959;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  /* Feature / Sustainability Line */
+  .bestseller-card-feature {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #2e7d32;
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
   /* Swatches */
   .bestseller-swatch-container {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   .bestseller-swatch-label {
@@ -246,21 +385,21 @@
     font-weight: 600;
     color: var(--DTColor_Body, #333);
     opacity: 0.85;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     text-transform: capitalize;
-    min-height: 16px;
+    min-height: 15px;
   }
 
   .bestseller-swatch-list {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
   }
 
   .bestseller-swatch-btn {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     border: none;
     padding: 0;
@@ -291,39 +430,35 @@
     margin: 0;
   }
 
-  /* Uses Theme Primary Button dt-sc-btn */
   .bestseller-add-btn.dt-sc-btn {
     width: 100%;
-    margin-top: 10px;
+    margin-top: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 11px;
+    padding: 8px 10px;
   }
 
   .btn-price-separator {
     margin: 0 4px;
   }
 
-  /* Navigation Arrows - Using Native Theme Classes */
-  .bestseller-swiper-prev-{{ section.id }},
-  .bestseller-swiper-next-{{ section.id }} {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    z-index: 10;
+  @media (max-width: 991px) {
+    .bestseller-carousel-outer { padding: 0 35px; }
+    .bestseller-arrow-prev { left: 0px; }
+    .bestseller-arrow-next { right: 0px; }
   }
 
-  .bestseller-swiper-prev-{{ section.id }} { left: 0px; }
-  .bestseller-swiper-next-{{ section.id }} { right: 0px; }
-
   @media (max-width: 767px) {
+    .bestseller-carousel-outer { padding: 0 25px; }
     #bestseller-section-{{ section.id }} {
       padding-top: {{ section.settings.padding_top | times: 0.7 }}px;
       padding-bottom: {{ section.settings.padding_bottom | times: 0.7 }}px;
     }
+    .bestseller-arrow-prev, .bestseller-arrow-next { width: 36px; height: 36px; }
   }
 </style>
 
@@ -339,15 +474,15 @@
       }
 
       var swiper = new Swiper(containerSelector, {
-        slidesPerView: {{ section.settings.items_mobile }},
+        slidesPerView: 1.2,
         spaceBetween: {{ section.settings.item_space }},
         loop: {{ section.settings.enable_loop }},
         watchSlidesProgress: true,
         watchSlidesVisibility: true,
         autoplay: {% if section.settings.enable_autoplay %}{ delay: {{ section.settings.autoplay_speed }} * 1000 }{% else %}false{% endif %},
         navigation: {
-          nextEl: '#swiper-' + sectionId + '-next',
-          prevEl: '#swiper-' + sectionId + '-prev',
+          nextEl: '.bestseller-swiper-next-' + sectionId,
+          prevEl: '.bestseller-swiper-prev-' + sectionId,
         },
         pagination: {
           el: '.bestseller-swiper-pagination-' + sectionId,
@@ -355,15 +490,15 @@
         },
         breakpoints: {
           640: {
-            slidesPerView: {{ section.settings.items_tablet }},
+            slidesPerView: 2.4,
             spaceBetween: {{ section.settings.item_space }}
           },
           992: {
-            slidesPerView: {{ section.settings.items_laptop }},
+            slidesPerView: 3.4,
             spaceBetween: {{ section.settings.item_space }}
           },
           1200: {
-            slidesPerView: {{ section.settings.items_desktop }},
+            slidesPerView: 4.5,
             spaceBetween: {{ section.settings.item_space }}
           }
         }
@@ -419,7 +554,7 @@
   });
 </script>
 
-{% comment %} Schema Definition with Theme Native Fields {% endcomment %}
+{% comment %} Schema Definition {% endcomment %}
 {% schema %}
 {
   "name": "Bestseller Carousel",
@@ -448,13 +583,13 @@
     {
       "type": "text",
       "id": "section_button_text",
-      "label": "Shop Link / Button Label",
+      "label": "Shop Link Label",
       "default": "SHOP NOW"
     },
     {
       "type": "url",
       "id": "section_button_link",
-      "label": "Shop Link / Button URL",
+      "label": "Shop Link URL",
       "default": "/collections/all"
     },
     {
@@ -484,7 +619,7 @@
       "max": 16,
       "step": 1,
       "label": "Maximum Products to Show",
-      "default": 8
+      "default": 10
     },
     {
       "type": "select",
@@ -512,6 +647,34 @@
       "type": "checkbox",
       "id": "show_secondary_image",
       "label": "Show Secondary Image on Hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Rich Card Details & Metafields"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "label": "Show Star Ratings & Review Count",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badge",
+      "label": "Show Badge (#1 Best Seller)",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_offer",
+      "label": "Show Offer Subtitle Line",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_feature",
+      "label": "Show Sustainability / Feature Line",
       "default": true
     },
     {
@@ -545,44 +708,6 @@
     {
       "type": "header",
       "content": "Carousel Layout Settings"
-    },
-    {
-      "type": "range",
-      "id": "items_desktop",
-      "min": 2,
-      "max": 6,
-      "step": 1,
-      "label": "Products per view (Desktop)",
-      "default": 4
-    },
-    {
-      "type": "range",
-      "id": "items_laptop",
-      "min": 2,
-      "max": 4,
-      "step": 1,
-      "label": "Products per view (Laptop)",
-      "default": 3
-    },
-    {
-      "type": "range",
-      "id": "items_tablet",
-      "min": 1,
-      "max": 3,
-      "step": 1,
-      "label": "Products per view (Tablet)",
-      "default": 2
-    },
-    {
-      "type": "select",
-      "id": "items_mobile",
-      "label": "Products per view (Mobile)",
-      "options": [
-        { "value": "1", "label": "1 Card" },
-        { "value": "1.2", "label": "1.2 Cards (Side Peek)" },
-        { "value": "2", "label": "2 Cards" }
-      ],
-      "default": "1.2"
     },
     {
       "type": "range",
@@ -708,7 +833,32 @@
         {
           "type": "text",
           "id": "custom_price",
-          "label": "Custom Price Display (e.g. £4.25)"
+          "label": "Custom Price Display (e.g. £16.76)"
+        },
+        {
+          "type": "text",
+          "id": "custom_badge",
+          "label": "Custom Badge Text (e.g. #1 Best Seller)"
+        },
+        {
+          "type": "text",
+          "id": "custom_rating",
+          "label": "Custom Rating Value (e.g. 4.8)"
+        },
+        {
+          "type": "text",
+          "id": "custom_rating_count",
+          "label": "Custom Rating Count (e.g. 3,406)"
+        },
+        {
+          "type": "text",
+          "id": "custom_offer_text",
+          "label": "Custom Offer Text (e.g. 1 offer from £16.76)"
+        },
+        {
+          "type": "text",
+          "id": "custom_feature_text",
+          "label": "Custom Feature Metafield Text (e.g. 1 sustainability feature)"
         }
       ]
     },
@@ -728,7 +878,7 @@
           "max": 12,
           "step": 1,
           "label": "Number of Products to Show",
-          "default": 6
+          "default": 8
         }
       ]
     }

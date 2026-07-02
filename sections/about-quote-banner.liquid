@@ -1,0 +1,210 @@
+<div class="quote-banner-section">
+  <div class="quote-banner">
+    {%- if section.settings.title != blank -%}
+      <h2 class="quote-banner__title">{{ section.settings.title }}</h2>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --quote-padding-top: {{ section.settings.padding_top }}px;
+    --quote-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --quote-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --quote-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --quote-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --quote-max-width: {{ section.settings.max_width }}px;
+    --quote-bg-color: {{ section.settings.bg_color }};
+
+    --quote-title-size: {{ section.settings.title_font_size }}px;
+    --quote-title-size-mobile: {{ section.settings.title_font_size_mobile }}px;
+    --quote-title-color: {{ section.settings.title_color }};
+    --quote-title-weight: {{ section.settings.title_font_weight }};
+    --quote-title-max-width: {{ section.settings.title_max_width }}px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--quote-bg-color);
+    {%- if section.settings.bg_image -%}
+    background-image: url('{{ section.settings.bg_image | image_url: width: 2400 }}');
+    background-size: cover;
+    background-position: center;
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .quote-banner {
+    width: 100%;
+    max-width: var(--quote-max-width);
+    margin: 0 auto;
+    padding: var(--quote-padding-top) var(--quote-padding-horizontal) var(--quote-padding-bottom);
+    text-align: center;
+  }
+
+  #shopify-section-{{ section.id }} .quote-banner__title {
+    font-size: var(--quote-title-size-mobile);
+    color: var(--quote-title-color);
+    font-weight: var(--quote-title-weight);
+    max-width: var(--quote-title-max-width);
+    line-height: 1.5;
+    margin: 0 auto;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .quote-banner__title {
+      font-size: var(--quote-title-size);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .quote-banner {
+      padding: var(--quote-padding-top-mobile) var(--quote-padding-horizontal) var(--quote-padding-bottom-mobile);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Quote Banner",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 240,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 240,
+      "step": 4,
+      "unit": "px",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1920,
+      "step": 20,
+      "unit": "px",
+      "default": 1600
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#3D3630"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Title",
+      "default": "Beauty is not about changing who you are. It's about celebrating it."
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Font size (desktop)",
+      "min": 18,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 22
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "title_max_width",
+      "label": "Max width",
+      "min": 300,
+      "max": 1200,
+      "step": 20,
+      "unit": "px",
+      "default": 800
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quote Banner"
+    }
+  ]
+}
+{% endschema %}

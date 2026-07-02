@@ -1,0 +1,300 @@
+<div class="stats-bar-section">
+  <div class="stats-bar">
+    <div class="stats-bar__grid">
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'stat' -%}
+          <div class="stats-bar__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.title != blank -%}
+              <p class="stats-bar__title" style="font-size:{{ block.settings.title_font_size_mobile }}px;color:{{ block.settings.title_color }};font-weight:{{ block.settings.title_font_weight }};">{{ block.settings.title }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <div class="stats-bar__description" style="font-size:{{ block.settings.description_font_size }}px;color:{{ block.settings.description_color }};font-weight:{{ block.settings.description_font_weight }};max-width:{{ block.settings.description_max_width }}px;">{{ block.settings.description }}</div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --stats-padding-top: {{ section.settings.padding_top }}px;
+    --stats-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --stats-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --stats-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --stats-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --stats-max-width: {{ section.settings.max_width }}px;
+    --stats-bg-color: {{ section.settings.bg_color }};
+    --stats-divider-color: {{ section.settings.divider_color }};
+
+    background-color: var(--stats-bg-color);
+  }
+
+  #shopify-section-{{ section.id }} .stats-bar {
+    max-width: var(--stats-max-width);
+    margin: 0 auto;
+    padding: var(--stats-padding-top) var(--stats-padding-horizontal) var(--stats-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .stats-bar__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .stats-bar__item {
+    flex: 1 1 180px;
+    max-width: 260px;
+    text-align: center;
+    padding: 0 32px;
+    border-right: 1px solid var(--stats-divider-color);
+  }
+
+  #shopify-section-{{ section.id }} .stats-bar__item:last-child {
+    border-right: none;
+  }
+
+  #shopify-section-{{ section.id }} .stats-bar__title {
+    line-height: 1.1;
+    margin: 0 0 10px;
+  }
+
+  #shopify-section-{{ section.id }} .stats-bar__description {
+    line-height: 1.5;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .stats-bar__description p {
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'stat' -%}
+        #shopify-section-{{ section.id }} .stats-bar__item:nth-child({{ forloop.index }}) .stats-bar__title {
+          font-size: {{ block.settings.title_font_size }}px;
+        }
+      {%- endif -%}
+    {%- endfor -%}
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .stats-bar {
+      padding: var(--stats-padding-top-mobile) var(--stats-padding-horizontal) var(--stats-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .stats-bar__grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .stats-bar__item {
+      max-width: 320px;
+      padding: 0 16px;
+      border-right: none;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Stats Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1920,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF6F2"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#D8CFC5"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Title"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "150K+"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "label": "Font size (desktop)",
+          "min": 20,
+          "max": 72,
+          "step": 2,
+          "unit": "px",
+          "default": 44
+        },
+        {
+          "type": "range",
+          "id": "title_font_size_mobile",
+          "label": "Font size (mobile)",
+          "min": 16,
+          "max": 56,
+          "step": 2,
+          "unit": "px",
+          "default": 32
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Color",
+          "default": "#2B2B2B"
+        },
+        {
+          "type": "select",
+          "id": "title_font_weight",
+          "label": "Font weight",
+          "options": [
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semibold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "header",
+          "content": "Description"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Happy Customers</p>"
+        },
+        {
+          "type": "range",
+          "id": "description_font_size",
+          "label": "Font size",
+          "min": 10,
+          "max": 24,
+          "step": 1,
+          "unit": "px",
+          "default": 14
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Color",
+          "default": "#6B6B6B"
+        },
+        {
+          "type": "select",
+          "id": "description_font_weight",
+          "label": "Font weight",
+          "options": [
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semibold" }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "range",
+          "id": "description_max_width",
+          "label": "Max width",
+          "min": 100,
+          "max": 400,
+          "step": 10,
+          "unit": "px",
+          "default": 200
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Stats Bar",
+      "blocks": [
+        { "type": "stat", "settings": { "title": "150K+", "description": "<p>Happy Customers</p>" } },
+        { "type": "stat", "settings": { "title": "500+", "description": "<p>5-Star Reviews</p>" } },
+        { "type": "stat", "settings": { "title": "30+", "description": "<p>Premium Products</p>" } },
+        { "type": "stat", "settings": { "title": "15+", "description": "<p>Countries Served</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

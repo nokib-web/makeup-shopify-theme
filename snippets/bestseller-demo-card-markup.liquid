@@ -1,25 +1,45 @@
 {%- case index -%}
   {%- when 1 -%}
-    {%- assign demo_title = "Rare Eau de Parfum" -%}
-    {%- assign demo_price = "$75.00" -%}
+    {%- assign demo_title = "Wonderskin Wonder Blading Lip Stain Peel Off Masque" -%}
+    {%- assign demo_price = "£16.76" -%}
+    {%- assign demo_badge = "#1 Best Seller" -%}
+    {%- assign demo_rating_cnt = "3,406" -%}
+    {%- assign demo_offer = "1 offer from £16.76" -%}
+    {%- assign demo_feature = "1 sustainability feature" -%}
     {%- assign has_swatches = false -%}
   {%- when 2 -%}
     {%- assign demo_title = "Soft Pinch Cheek & Lip Trio" -%}
-    {%- assign demo_price = "$36.00" -%}
+    {%- assign demo_price = "£36.00" -%}
+    {%- assign demo_badge = "Best Seller" -%}
+    {%- assign demo_rating_cnt = "1,820" -%}
+    {%- assign demo_offer = "Special Offer £36.00" -%}
+    {%- assign demo_feature = "Eco Packaging" -%}
     {%- assign has_swatches = false -%}
   {%- when 3 -%}
     {%- assign demo_title = "Warm Wishes Effortless Bronzer Stick" -%}
-    {%- assign demo_price = "$30.00" -%}
+    {%- assign demo_price = "£30.00" -%}
+    {%- assign demo_badge = "Popular" -%}
+    {%- assign demo_rating_cnt = "4,950" -%}
+    {%- assign demo_offer = "1 offer from £30.00" -%}
+    {%- assign demo_feature = "Cruelty Free" -%}
     {%- assign has_swatches = true -%}
     {%- assign active_shade = "Power Boost" -%}
   {%- when 4 -%}
     {%- assign demo_title = "Soft Pinch Liquid Blush Mini" -%}
-    {%- assign demo_price = "$25.00" -%}
+    {%- assign demo_price = "£25.00" -%}
+    {%- assign demo_badge = "Trending" -%}
+    {%- assign demo_rating_cnt = "2,140" -%}
+    {%- assign demo_offer = "Limited Edition £25.00" -%}
+    {%- assign demo_feature = "Vegan Formula" -%}
     {%- assign has_swatches = true -%}
     {%- assign active_shade = "Hope" -%}
   {%- else -%}
-    {%- assign demo_title = "Rare Beauty Product" -%}
-    {%- assign demo_price = "$32.00" -%}
+    {%- assign demo_title = "Rare Beauty Luxury Cosmetic" -%}
+    {%- assign demo_price = "£32.00" -%}
+    {%- assign demo_badge = "Top Pick" -%}
+    {%- assign demo_rating_cnt = "1,250" -%}
+    {%- assign demo_offer = "1 offer from £32.00" -%}
+    {%- assign demo_feature = "Natural Ingredients" -%}
     {%- assign has_swatches = false -%}
 {%- endcase -%}
 
@@ -29,6 +49,22 @@
 
 {%- if block != nil and block.settings.custom_price != blank -%}
   {%- assign demo_price = block.settings.custom_price -%}
+{%- endif -%}
+
+{%- if block != nil and block.settings.custom_badge != blank -%}
+  {%- assign demo_badge = block.settings.custom_badge -%}
+{%- endif -%}
+
+{%- if block != nil and block.settings.custom_offer_text != blank -%}
+  {%- assign demo_offer = block.settings.custom_offer_text -%}
+{%- endif -%}
+
+{%- if block != nil and block.settings.custom_feature_text != blank -%}
+  {%- assign demo_feature = block.settings.custom_feature_text -%}
+{%- endif -%}
+
+{%- if block != nil and block.settings.custom_rating_count != blank -%}
+  {%- assign demo_rating_cnt = block.settings.custom_rating_count -%}
 {%- endif -%}
 
 <div class="bestseller-product-card" style="background-color: {{ section.settings.card_bg_color }};">
@@ -57,6 +93,35 @@
     <h3 class="bestseller-product-title">
       <a href="#">{{ demo_title }}</a>
     </h3>
+
+    {% comment %} Star Rating & Review Count {% endcomment %}
+    {%- if section.settings.show_rating -%}
+      <div class="bestseller-card-rating">
+        <span class="bestseller-stars">★★★★☆</span>
+        <span class="bestseller-rating-count">{{ demo_rating_cnt }}</span>
+      </div>
+    {%- endif -%}
+
+    {% comment %} Custom Badge (#1 Best Seller) {% endcomment %}
+    {%- if section.settings.show_badge and demo_badge != blank -%}
+      <div class="bestseller-card-badge-wrap">
+        <span class="bestseller-card-badge">{{ demo_badge }}</span>
+      </div>
+    {%- endif -%}
+
+    {% comment %} Offer Subtitle Line {% endcomment %}
+    {%- if section.settings.show_offer and demo_offer != blank -%}
+      <div class="bestseller-card-offer">
+        {{ demo_offer }}
+      </div>
+    {%- endif -%}
+
+    {% comment %} Feature / Sustainability Line {% endcomment %}
+    {%- if section.settings.show_feature and demo_feature != blank -%}
+      <div class="bestseller-card-feature">
+        <span class="feature-icon">🌱</span> {{ demo_feature }}
+      </div>
+    {%- endif -%}
 
     {%- if has_swatches and section.settings.show_swatches -%}
       <div class="bestseller-swatch-container">

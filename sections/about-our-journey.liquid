@@ -1,0 +1,527 @@
+<div class="journey-section">
+  <div class="journey">
+    <div class="journey__header">
+      {%- if section.settings.eyebrow_text != blank -%}
+        <p class="journey__eyebrow">{{ section.settings.eyebrow_text }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.title != blank -%}
+        <h2 class="journey__title">{{ section.settings.title }}</h2>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="journey__track">
+        <span class="journey__line"></span>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'milestone' -%}
+            <div class="journey__item" {{ block.shopify_attributes }}>
+              {%- if block.settings.image -%}
+                <span
+                  class="journey__icon-wrap"
+                  style="width:{{ block.settings.image_width }}px;height:{{ block.settings.image_height }}px;border-radius:{{ block.settings.image_radius }}px;{% if block.settings.enable_shadow %}box-shadow:0 8px 20px rgba(0,0,0,0.14);{% endif %}"
+                >
+                  <img
+                    class="journey__icon"
+                    src="{{ block.settings.image | image_url: width: 200 }}"
+                    alt="{{ block.settings.image.alt | default: block.settings.time_label | escape }}"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                    loading="lazy"
+                  >
+                </span>
+              {%- endif -%}
+
+              {%- if block.settings.time_label != blank -%}
+                <p class="journey__time" style="font-size:{{ block.settings.time_font_size }}px;color:{{ block.settings.time_color }};font-weight:{{ block.settings.time_font_weight }};">{{ block.settings.time_label }}</p>
+              {%- endif -%}
+
+              {%- if block.settings.description != blank -%}
+                <div class="journey__description" style="font-size:{{ block.settings.description_font_size }}px;color:{{ block.settings.description_color }};font-weight:{{ block.settings.description_font_weight }};">{{ block.settings.description }}</div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --journey-padding-top: {{ section.settings.padding_top }}px;
+    --journey-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --journey-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --journey-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --journey-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --journey-max-width: {{ section.settings.max_width }}px;
+    --journey-bg-color: {{ section.settings.bg_color }};
+
+    --journey-eyebrow-size: {{ section.settings.eyebrow_font_size }}px;
+    --journey-eyebrow-color: {{ section.settings.eyebrow_color }};
+    --journey-eyebrow-weight: {{ section.settings.eyebrow_font_weight }};
+
+    --journey-title-size: {{ section.settings.title_font_size }}px;
+    --journey-title-size-mobile: {{ section.settings.title_font_size_mobile }}px;
+    --journey-title-color: {{ section.settings.title_color }};
+    --journey-title-weight: {{ section.settings.title_font_weight }};
+
+    --journey-line-color: {{ section.settings.line_color }};
+    --journey-icon-border-color: {{ section.settings.icon_border_color }};
+
+    background-color: var(--journey-bg-color);
+  }
+
+  #shopify-section-{{ section.id }} .journey {
+    max-width: var(--journey-max-width);
+    margin: 0 auto;
+    padding: var(--journey-padding-top) var(--journey-padding-horizontal) var(--journey-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .journey__header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  #shopify-section-{{ section.id }} .journey__eyebrow {
+    font-size: var(--journey-eyebrow-size);
+    color: var(--journey-eyebrow-color);
+    font-weight: var(--journey-eyebrow-weight);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin: 0 0 12px;
+  }
+
+  #shopify-section-{{ section.id }} .journey__title {
+    font-size: var(--journey-title-size-mobile);
+    color: var(--journey-title-color);
+    font-weight: var(--journey-title-weight);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .journey__track {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  #shopify-section-{{ section.id }} .journey__line {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--journey-line-color);
+    z-index: 0;
+  }
+
+  #shopify-section-{{ section.id }} .journey__item {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 8px;
+  }
+
+  #shopify-section-{{ section.id }} .journey__icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--journey-bg-color);
+    border: 1px solid var(--journey-icon-border-color);
+    margin-bottom: 18px;
+  }
+
+  #shopify-section-{{ section.id }} .journey__icon {
+    width: 55%;
+    height: 55%;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .journey__time {
+    margin: 0 0 6px;
+  }
+
+  #shopify-section-{{ section.id }} .journey__description {
+    line-height: 1.5;
+  }
+
+  #shopify-section-{{ section.id }} .journey__description p {
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .journey__title {
+      font-size: var(--journey-title-size);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .journey {
+      padding: var(--journey-padding-top-mobile) var(--journey-padding-horizontal) var(--journey-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .journey__track {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 28px;
+    }
+
+    #shopify-section-{{ section.id }} .journey__line {
+      top: 0;
+      bottom: 0;
+      left: 30px;
+      right: auto;
+      width: 1px;
+      height: auto;
+    }
+
+    #shopify-section-{{ section.id }} .journey__item {
+      flex-direction: row;
+      text-align: left;
+      padding: 0;
+      gap: 16px;
+    }
+
+    #shopify-section-{{ section.id }} .journey__icon-wrap {
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Our Journey",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1920,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF6F2"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Connector line color",
+      "default": "#D8C3B5"
+    },
+    {
+      "type": "color",
+      "id": "icon_border_color",
+      "label": "Icon circle border color",
+      "default": "#D8C3B5"
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Our Journey"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Color",
+      "default": "#8A7A6D"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Title (optional)"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Font size (desktop)",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 18,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Color",
+      "default": "#2B2B2B"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "milestone",
+      "name": "Milestone",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Icon"
+        },
+        {
+          "type": "range",
+          "id": "image_width",
+          "label": "Width",
+          "min": 40,
+          "max": 120,
+          "step": 2,
+          "unit": "px",
+          "default": 60
+        },
+        {
+          "type": "range",
+          "id": "image_height",
+          "label": "Height",
+          "min": 40,
+          "max": 120,
+          "step": 2,
+          "unit": "px",
+          "default": 60
+        },
+        {
+          "type": "range",
+          "id": "image_radius",
+          "label": "Border radius",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 60,
+          "info": "Use max value for a full circle"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_shadow",
+          "label": "Enable shadow",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Time"
+        },
+        {
+          "type": "text",
+          "id": "time_label",
+          "label": "Time label",
+          "default": "2024"
+        },
+        {
+          "type": "range",
+          "id": "time_font_size",
+          "label": "Font size",
+          "min": 10,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 15
+        },
+        {
+          "type": "color",
+          "id": "time_color",
+          "label": "Color",
+          "default": "#2B2B2B"
+        },
+        {
+          "type": "select",
+          "id": "time_font_weight",
+          "label": "Font weight",
+          "options": [
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semibold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "700"
+        },
+        {
+          "type": "header",
+          "content": "Description"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Milestone description</p>"
+        },
+        {
+          "type": "range",
+          "id": "description_font_size",
+          "label": "Font size",
+          "min": 10,
+          "max": 22,
+          "step": 1,
+          "unit": "px",
+          "default": 13
+        },
+        {
+          "type": "color",
+          "id": "description_color",
+          "label": "Color",
+          "default": "#6B6B6B"
+        },
+        {
+          "type": "select",
+          "id": "description_font_weight",
+          "label": "Font weight",
+          "options": [
+            { "value": "400", "label": "Regular" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semibold" }
+          ],
+          "default": "400"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Journey",
+      "blocks": [
+        {
+          "type": "milestone",
+          "settings": { "time_label": "2019", "description": "<p>Brand Founded</p>" }
+        },
+        {
+          "type": "milestone",
+          "settings": { "time_label": "2020", "description": "<p>First Collection</p>" }
+        },
+        {
+          "type": "milestone",
+          "settings": { "time_label": "2022", "description": "<p>10,000+ Happy Customers</p>" }
+        },
+        {
+          "type": "milestone",
+          "settings": { "time_label": "2024", "description": "<p>Expanded Worldwide</p>" }
+        },
+        {
+          "type": "milestone",
+          "settings": { "time_label": "Today", "description": "<p>Growing Every Day</p>" }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
