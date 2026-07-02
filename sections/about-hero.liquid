@@ -1,0 +1,662 @@
+<div class="about-section" id="shopify-section-{{ section.id }}-wrapper">
+  <div class="about">
+    <div class="about__grid">
+
+      <div class="about__content">
+        {%- if section.settings.eyebrow_text != blank -%}
+          <p class="about__eyebrow">{{ section.settings.eyebrow_text }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h1 class="about__title">{{ section.settings.title }}</h1>
+        {%- endif -%}
+
+        {%- if section.settings.description != blank -%}
+          <div class="about__description">{{ section.settings.description }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.button_text != blank or section.settings.button_text_2 != blank -%}
+          <div class="about__buttons">
+            {%- if section.settings.button_text != blank -%}
+              <a href="{{ section.settings.button_link | default: '#' }}" class="about__btn about__btn--primary">
+                {{ section.settings.button_text }}
+              </a>
+            {%- endif -%}
+            {%- if section.settings.button_text_2 != blank -%}
+              <a href="{{ section.settings.button_link_2 | default: '#' }}" class="about__btn about__btn--secondary">
+                {{ section.settings.button_text_2 }}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.image or section.settings.image_mobile -%}
+      <div class="about__media">
+        {%- if section.settings.image -%}
+          <img
+            class="about__image about__image--desktop"
+            src="{{ section.settings.image | image_url: width: 1600 }}"
+            srcset="{{ section.settings.image | image_url: width: 800 }} 800w,
+                    {{ section.settings.image | image_url: width: 1200 }} 1200w,
+                    {{ section.settings.image | image_url: width: 1600 }} 1600w"
+            sizes="(min-width: 990px) 50vw, 100vw"
+            alt="{{ section.settings.image.alt | default: section.settings.title | escape }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;"
+          >
+        {%- endif -%}
+
+        {%- if section.settings.image_mobile -%}
+          <img
+            class="about__image about__image--mobile"
+            src="{{ section.settings.image_mobile | image_url: width: 800 }}"
+            srcset="{{ section.settings.image_mobile | image_url: width: 600 }} 600w,
+                    {{ section.settings.image_mobile | image_url: width: 800 }} 800w"
+            sizes="100vw"
+            alt="{{ section.settings.image_mobile.alt | default: section.settings.title | escape }}"
+            width="{{ section.settings.image_mobile.width }}"
+            height="{{ section.settings.image_mobile.height }}"
+            loading="eager"
+            style="width:100%;height:100%;object-fit:cover;"
+          >
+        {%- endif -%}
+      </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --about-padding-top: {{ section.settings.padding_top }}px;
+    --about-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --about-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --about-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --about-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --about-max-width: {{ section.settings.max_width }}px;
+    --about-bg-color: {{ section.settings.bg_color }};
+
+    --about-eyebrow-size: {{ section.settings.eyebrow_font_size }}px;
+    --about-eyebrow-color: {{ section.settings.eyebrow_color }};
+    --about-eyebrow-weight: {{ section.settings.eyebrow_font_weight }};
+
+    --about-title-size: {{ section.settings.title_font_size }}px;
+    --about-title-size-mobile: {{ section.settings.title_font_size_mobile }}px;
+    --about-title-color: {{ section.settings.title_color }};
+    --about-title-weight: {{ section.settings.title_font_weight }};
+
+    --about-desc-size: {{ section.settings.description_font_size }}px;
+    --about-desc-color: {{ section.settings.description_color }};
+    --about-desc-weight: {{ section.settings.description_font_weight }};
+    --about-desc-max-width: {{ section.settings.description_max_width }}px;
+
+    --about-btn-padding-h: {{ section.settings.button_padding_horizontal }}px;
+    --about-btn-padding-v: {{ section.settings.button_padding_vertical }}px;
+    --about-btn-font-size: {{ section.settings.button_font_size }}px;
+    --about-btn-color: {{ section.settings.button_color }};
+    --about-btn-weight: {{ section.settings.button_font_weight }};
+    --about-btn-bg: {{ section.settings.button_bg }};
+    --about-btn-hover-bg: {{ section.settings.button_hover_bg }};
+
+    --about-btn2-padding-h: {{ section.settings.button_2_padding_horizontal }}px;
+    --about-btn2-padding-v: {{ section.settings.button_2_padding_vertical }}px;
+    --about-btn2-font-size: {{ section.settings.button_2_font_size }}px;
+    --about-btn2-color: {{ section.settings.button_2_color }};
+    --about-btn2-weight: {{ section.settings.button_2_font_weight }};
+    --about-btn2-bg: {{ section.settings.button_2_bg }};
+    --about-btn2-hover-bg: {{ section.settings.button_2_hover_bg }};
+    --about-btn2-border: {{ section.settings.button_2_border_color }};
+
+    background-color: var(--about-bg-color);
+    {%- if section.settings.bg_image -%}
+    background-image: url('{{ section.settings.bg_image | image_url: width: 2400 }}');
+    background-size: cover;
+    background-position: center;
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .about {
+    max-width: var(--about-max-width);
+    margin: 0 auto;
+    padding: var(--about-padding-top) var(--about-padding-horizontal) var(--about-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .about__grid {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  #shopify-section-{{ section.id }} .about__content {
+    flex: 1 1 420px;
+    min-width: 300px;
+  }
+
+  #shopify-section-{{ section.id }} .about__media {
+    flex: 1 1 420px;
+    min-width: 300px;
+    position: relative;
+    align-self: stretch;
+    overflow: hidden;
+    border-radius: {{ section.settings.image_radius }}px;
+  }
+
+  #shopify-section-{{ section.id }} .about__image--mobile {
+    display: none;
+  }
+
+  #shopify-section-{{ section.id }} .about__eyebrow {
+    font-size: var(--about-eyebrow-size);
+    color: var(--about-eyebrow-color);
+    font-weight: var(--about-eyebrow-weight);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 16px;
+  }
+
+  #shopify-section-{{ section.id }} .about__title {
+    font-size: var(--about-title-size-mobile);
+    color: var(--about-title-color);
+    font-weight: var(--about-title-weight);
+    line-height: 1.15;
+    margin: 0 0 20px;
+  }
+
+  #shopify-section-{{ section.id }} .about__description {
+    font-size: var(--about-desc-size);
+    color: var(--about-desc-color);
+    font-weight: var(--about-desc-weight);
+    max-width: var(--about-desc-max-width);
+    line-height: 1.6;
+    margin: 0 0 32px;
+  }
+
+  #shopify-section-{{ section.id }} .about__description p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .about__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  #shopify-section-{{ section.id }} .about__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  #shopify-section-{{ section.id }} .about__btn--primary {
+    padding: var(--about-btn-padding-v) var(--about-btn-padding-h);
+    font-size: var(--about-btn-font-size);
+    font-weight: var(--about-btn-weight);
+    color: var(--about-btn-color);
+    background-color: var(--about-btn-bg);
+    border: 1px solid var(--about-btn-bg);
+  }
+
+  #shopify-section-{{ section.id }} .about__btn--primary:hover {
+    background-color: var(--about-btn-hover-bg);
+    border-color: var(--about-btn-hover-bg);
+  }
+
+  #shopify-section-{{ section.id }} .about__btn--secondary {
+    padding: var(--about-btn2-padding-v) var(--about-btn2-padding-h);
+    font-size: var(--about-btn2-font-size);
+    font-weight: var(--about-btn2-weight);
+    color: var(--about-btn2-color);
+    background-color: var(--about-btn2-bg);
+    border: 1px solid var(--about-btn2-border);
+  }
+
+  #shopify-section-{{ section.id }} .about__btn--secondary:hover {
+    background-color: var(--about-btn2-hover-bg);
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .about__title {
+      font-size: var(--about-title-size);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .about {
+      padding: var(--about-padding-top-mobile) var(--about-padding-horizontal) var(--about-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .about__grid {
+      flex-direction: column;
+    }
+
+    #shopify-section-{{ section.id }} .about__media {
+      width: 100%;
+      min-height: 320px;
+    }
+
+    {%- if section.settings.image_mobile -%}
+    #shopify-section-{{ section.id }} .about__image--desktop {
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .about__image--mobile {
+      display: block;
+    }
+    {%- endif -%}
+
+    {%- if section.settings.bg_image_mobile -%}
+    #shopify-section-{{ section.id }} {
+      background-image: url('{{ section.settings.bg_image_mobile | image_url: width: 1200 }}');
+    }
+    {%- endif -%}
+  }
+</style>
+
+{% schema %}
+{
+  "name": "About Hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1920,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#F5F2EE"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image (optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Background image (mobile override)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (optional)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image (mobile override)"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "Image corner radius",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "About Our Brand"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Color",
+      "default": "#3D5A36"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Beauty That Feels Like You"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Font size (desktop)",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 20,
+      "max": 56,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Color",
+      "default": "#2B2B2B"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Create beauty rituals inspired by confidence, simplicity, and everyday luxury.</p>"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Color",
+      "default": "#5C5C5C"
+    },
+    {
+      "type": "select",
+      "id": "description_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "description_max_width",
+      "label": "Max width",
+      "min": 200,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "default": 440
+    },
+    {
+      "type": "header",
+      "content": "Primary button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop Collection"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "label": "Padding vertical",
+      "min": 6,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "select",
+      "id": "button_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Background",
+      "default": "#2B2B2B"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Hover background",
+      "default": "#3D5A36"
+    },
+    {
+      "type": "header",
+      "content": "Secondary button"
+    },
+    {
+      "type": "text",
+      "id": "button_text_2",
+      "label": "Button text",
+      "default": "Discover Our Story"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Button link"
+    },
+    {
+      "type": "range",
+      "id": "button_2_padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "button_2_padding_vertical",
+      "label": "Padding vertical",
+      "min": 6,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_2_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "button_2_color",
+      "label": "Text color",
+      "default": "#2B2B2B"
+    },
+    {
+      "type": "select",
+      "id": "button_2_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "color",
+      "id": "button_2_bg",
+      "label": "Background",
+      "default": "#00000000"
+    },
+    {
+      "type": "color",
+      "id": "button_2_hover_bg",
+      "label": "Hover background",
+      "default": "#00000010"
+    },
+    {
+      "type": "color",
+      "id": "button_2_border_color",
+      "label": "Border color",
+      "default": "#2B2B2B"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,444 @@
+<div class="story-section">
+  <div class="story">
+    <div class="story__grid">
+
+      {%- if section.settings.image -%}
+        <div class="story__media">
+          <img
+            class="story__image"
+            src="{{ section.settings.image | image_url: width: 1400 }}"
+            srcset="{{ section.settings.image | image_url: width: 600 }} 600w,
+                    {{ section.settings.image | image_url: width: 1000 }} 1000w,
+                    {{ section.settings.image | image_url: width: 1400 }} 1400w"
+            sizes="(min-width: 990px) 50vw, 100vw"
+            alt="{{ section.settings.image.alt | default: section.settings.title | escape }}"
+            width="{{ section.settings.image.width }}"
+            height="{{ section.settings.image.height }}"
+            loading="lazy"
+          >
+        </div>
+      {%- endif -%}
+
+      <div class="story__content">
+        {%- if section.settings.eyebrow_text != blank -%}
+          <p class="story__eyebrow">{{ section.settings.eyebrow_text }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="story__title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+
+        <span class="story__divider"></span>
+
+        {%- if section.settings.description != blank -%}
+          <div class="story__description">{{ section.settings.description }}</div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --story-padding-top: {{ section.settings.padding_top }}px;
+    --story-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --story-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --story-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --story-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --story-max-width: {{ section.settings.max_width }}px;
+    --story-bg-color: {{ section.settings.bg_color }};
+
+    --story-image-height: {{ section.settings.image_height }}px;
+    --story-image-width: {{ section.settings.image_width }}%;
+    --story-image-radius: {{ section.settings.image_radius }}px;
+
+    --story-eyebrow-size: {{ section.settings.eyebrow_font_size }}px;
+    --story-eyebrow-color: {{ section.settings.eyebrow_color }};
+    --story-eyebrow-weight: {{ section.settings.eyebrow_font_weight }};
+
+    --story-title-size: {{ section.settings.title_font_size }}px;
+    --story-title-size-mobile: {{ section.settings.title_font_size_mobile }}px;
+    --story-title-color: {{ section.settings.title_color }};
+    --story-title-weight: {{ section.settings.title_font_weight }};
+
+    --story-desc-size: {{ section.settings.description_font_size }}px;
+    --story-desc-color: {{ section.settings.description_color }};
+    --story-desc-weight: {{ section.settings.description_font_weight }};
+    --story-desc-max-width: {{ section.settings.description_max_width }}px;
+
+    background-color: var(--story-bg-color);
+  }
+
+  #shopify-section-{{ section.id }} .story {
+    max-width: var(--story-max-width);
+    margin: 0 auto;
+    padding: var(--story-padding-top) var(--story-padding-horizontal) var(--story-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .story__grid {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  #shopify-section-{{ section.id }} .story__media {
+    order: 1;
+    flex: 0 0 var(--story-image-width);
+    max-width: var(--story-image-width);
+    margin-left: calc(-1 * var(--story-padding-horizontal));
+  }
+
+  #shopify-section-{{ section.id }} .story__image {
+    display: block;
+    width: 100%;
+    height: var(--story-image-height);
+    object-fit: cover;
+    border-radius: var(--story-image-radius);
+    {%- if section.settings.enable_shadow -%}
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .story__content {
+    order: 2;
+    flex: 1 1 0%;
+    min-width: 280px;
+  }
+
+  #shopify-section-{{ section.id }} .story__eyebrow {
+    font-size: var(--story-eyebrow-size);
+    color: var(--story-eyebrow-color);
+    font-weight: var(--story-eyebrow-weight);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 16px;
+  }
+
+  #shopify-section-{{ section.id }} .story__title {
+    font-size: var(--story-title-size-mobile);
+    color: var(--story-title-color);
+    font-weight: var(--story-title-weight);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} .story__divider {
+    display: block;
+    width: 48px;
+    height: 2px;
+    background-color: var(--story-title-color);
+    margin: 24px 0;
+  }
+
+  #shopify-section-{{ section.id }} .story__description {
+    font-size: var(--story-desc-size);
+    color: var(--story-desc-color);
+    font-weight: var(--story-desc-weight);
+    max-width: var(--story-desc-max-width);
+    line-height: 1.7;
+  }
+
+  #shopify-section-{{ section.id }} .story__description p {
+    margin: 0 0 18px;
+  }
+
+  #shopify-section-{{ section.id }} .story__description p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .story__title {
+      font-size: var(--story-title-size);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .story {
+      padding: var(--story-padding-top-mobile) var(--story-padding-horizontal) var(--story-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .story__grid {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .story__media {
+      flex: 1 1 auto;
+      max-width: none;
+      width: 100%;
+      margin-left: calc(-1 * var(--story-padding-horizontal));
+      margin-right: calc(-1 * var(--story-padding-horizontal));
+    }
+
+    #shopify-section-{{ section.id }} .story__image {
+      height: 340px;
+      border-radius: 0;
+    }
+
+    #shopify-section-{{ section.id }} .story__content {
+      min-width: 0;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Our Story",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1920,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FAF6F2"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Height",
+      "min": 200,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "default": 420
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Width (% of row)",
+      "min": 30,
+      "max": 60,
+      "step": 1,
+      "unit": "%",
+      "default": 45
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_shadow",
+      "label": "Enable shadow",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_text",
+      "label": "Eyebrow text",
+      "default": "Our Story"
+    },
+    {
+      "type": "range",
+      "id": "eyebrow_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Color",
+      "default": "#8A7A6D"
+    },
+    {
+      "type": "select",
+      "id": "eyebrow_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Created For Modern Beauty."
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Font size (desktop)",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Color",
+      "default": "#2B2B2B"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Instead of following trends, we focus on timeless beauty.</p><p>Our mission began with a simple idea: create cosmetics that feel luxurious, perform beautifully, and become part of your everyday ritual.</p><p>Every product is designed with thoughtful ingredients, elegant packaging, and effortless wear.</p>"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Color",
+      "default": "#5C5C5C"
+    },
+    {
+      "type": "select",
+      "id": "description_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "description_max_width",
+      "label": "Max width",
+      "min": 200,
+      "max": 700,
+      "step": 10,
+      "unit": "px",
+      "default": 480
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Story"
+    }
+  ]
+}
+{% endschema %}

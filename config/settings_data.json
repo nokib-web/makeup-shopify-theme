@@ -263,8 +263,8 @@
           "header_phone": "9876543210",
           "header_contact": "#ffffff",
           "header_contact_hover": "#d8f3f5",
-          "logo": "shopify://shop_images/demo-logo.png",
-          "logo_max_width": 100,
+          "logo": "shopify://shop_images/logo.png",
+          "logo_max_width": 130,
           "mobile_logo_max_width": 100,
           "menu_align": "logo_left",
           "show_header_social": false,
@@ -344,15 +344,15 @@
             "type": "logo",
             "settings": {
               "title": "",
-              "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard ...",
-              "link_text": "Know more",
+              "text": "At Complete Cosmetics Limited, we create beauty experiences through premium cosmetics designed for modern lifestyles. Elegant, reliable, and crafted to help you shine with confidence.",
+              "link_text": "",
               "url": "",
               "footer_btn_color": "#206469",
               "footer_btn_bg": "#206469",
               "footer_btn_hover_color": "#206469",
               "footer_btn_hover_bg": "#206469",
-              "logo": "shopify://shop_images/demo-logo.png",
-              "footer_logo_height": 100,
+              "logo": "shopify://shop_images/footer-logo.png",
+              "footer_logo_height": 144,
               "container_width": 25,
               "column_alignment": "text-start"
             }
@@ -492,7 +492,7 @@
           "a99cf698-9b20-4fae-b092-53ec06ddc104": {
             "type": "image",
             "settings": {
-              "product": "blush-brush-cosmetic",
+              "product": "loreal-glam-shine-balmy-gloss-913-dare-the-dragon-fruit-copy-1",
               "from": "Texas, US",
               "time": "10 minutes ago"
             }
@@ -500,7 +500,7 @@
           "9d66bd40-a2ec-4683-a573-704c38a7a0e9": {
             "type": "image",
             "settings": {
-              "product": "cosmetic-powder-brush",
+              "product": "maybelline-eyebrow-tattoo-brow-longlasting-waterproof-eyebrow-gel-07-black-brown",
               "from": "Newyork, US",
               "time": "45 minutes ago"
             }
@@ -508,7 +508,7 @@
           "230b0ecb-020f-4c39-bf47-52b587056412": {
             "type": "image",
             "settings": {
-              "product": "flawless-matte-complexion",
+              "product": "loreal-nude-magique-cushion-foundation-7-golden-beige-14-6g",
               "from": "Chennai, India",
               "time": "19 minutes ago"
             }
@@ -516,7 +516,7 @@
           "8dbb4b4f-d9ca-4553-b804-4271607154ff": {
             "type": "image",
             "settings": {
-              "product": "eyeliner-pen-waterproof",
+              "product": "maybelline-eyebrow-tattoo-brow-longlasting-waterproof-eyebrow-gel-07-black-brown",
               "from": "Sydney, Australia",
               "time": "27 minutes ago"
             }

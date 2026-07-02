@@ -694,7 +694,6 @@
         "0ee075d9-7062-4ddc-bb3c-a399fc282fc8",
         "aec27dbc-6e88-41a4-8703-e5c464140c04"
       ],
-      "disabled": true,
       "custom_css": [],
       "settings": {
         "full": false,
@@ -874,12 +873,11 @@
         "collection_BbeQGF",
         "cb635f96-d3d4-4ee5-8e55-52406455ad2f"
       ],
-      "disabled": true,
       "settings": {
         "full": false,
         "spacing_both_ends": false,
         "padding": "0,0",
-        "margin": "-400,0",
+        "margin": "60,0",
         "show_background_image": false,
         "background_style": "default",
         "enable_overlay": false,
@@ -931,9 +929,10 @@
         "1630472333a237c7a7-0": {
           "type": "quote",
           "settings": {
-            "quote": "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type</p>",
-            "author": "Alex",
-            "job": "Founder & CEO"
+            "quote": "<p>\"Complete Cosmetics Solution has completely transformed my beauty routine. The products are high quality, long-lasting, and perfect for everyday use.\"</p>",
+            "icon": "shopify://shop_images/blonde-model-with-makeup.png",
+            "author": "Emma Williams",
+            "job": "Verified Customer"
           }
         },
         "4bfe38f7-9433-4d00-aec4-d6f4d87fd956": {

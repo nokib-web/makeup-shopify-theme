@@ -1,0 +1,166 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "about_hero_UMnPtG": {
+      "type": "about-hero",
+      "name": "About Hero",
+      "settings": {
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_horizontal": 40,
+        "max_width": 1200,
+        "bg_color": "#f5f2ee",
+        "bg_image": "shopify://shop_images/slider-bg.jpg",
+        "image_radius": 0,
+        "eyebrow_text": "About Our Brand",
+        "eyebrow_font_size": 13,
+        "eyebrow_color": "#3d5a36",
+        "eyebrow_font_weight": "600",
+        "title": "Beauty That Feels  Like You",
+        "title_font_size": 52,
+        "title_font_size_mobile": 34,
+        "title_color": "#2b2b2b",
+        "title_font_weight": "400",
+        "description": "<p>Create beauty rituals inspired by confidence, simplicity, and everyday luxury.</p>",
+        "description_font_size": 16,
+        "description_color": "#5c5c5c",
+        "description_font_weight": "400",
+        "description_max_width": 440,
+        "button_text": "Shop Collection",
+        "button_link": "",
+        "button_padding_horizontal": 32,
+        "button_padding_vertical": 16,
+        "button_font_size": 13,
+        "button_color": "#ffffff",
+        "button_font_weight": "600",
+        "button_bg": "#2b2b2b",
+        "button_hover_bg": "#3d5a36",
+        "button_text_2": "Discover Our Story",
+        "button_link_2": "",
+        "button_2_padding_horizontal": 32,
+        "button_2_padding_vertical": 16,
+        "button_2_font_size": 13,
+        "button_2_color": "#2b2b2b",
+        "button_2_font_weight": "600",
+        "button_2_bg": "rgba(0,0,0,0)",
+        "button_2_hover_bg": "#0000000f",
+        "button_2_border_color": "#2b2b2b"
+      }
+    },
+    "our_story_rKGXFh": {
+      "type": "our-story",
+      "name": "Our Story",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "padding_horizontal": 28,
+        "max_width": 1400,
+        "bg_color": "#faf6f2",
+        "image": "shopify://shop_images/slider-3.jpg",
+        "image_height": 420,
+        "image_width": 45,
+        "image_radius": 8,
+        "enable_shadow": false,
+        "eyebrow_text": "Our Story",
+        "eyebrow_font_size": 13,
+        "eyebrow_color": "#8a7a6d",
+        "eyebrow_font_weight": "600",
+        "title": "Created For Modern Beauty.",
+        "title_font_size": 40,
+        "title_font_size_mobile": 28,
+        "title_color": "#2b2b2b",
+        "title_font_weight": "400",
+        "description": "<p>Instead of following trends, we focus on timeless beauty.</p><p>Our mission began with a simple idea: create cosmetics that feel luxurious, perform beautifully, and become part of your everyday ritual.</p><p>Every product is designed with thoughtful ingredients, elegant packaging, and effortless wear.</p>",
+        "description_font_size": 16,
+        "description_color": "#5c5c5c",
+        "description_font_weight": "400",
+        "description_max_width": 480
+      }
+    },
+    "about_icon_bar_Xjc7BG": {
+      "type": "about-icon-bar",
+      "blocks": {
+        "icon_item_4Qq6pM": {
+          "type": "icon_item",
+          "settings": {
+            "title": "Clean Beauty",
+            "description": "<p>Carefully selected ingredients made with quality and care.</p>"
+          }
+        },
+        "icon_item_AhDTgL": {
+          "type": "icon_item",
+          "settings": {
+            "title": "Responsible Choices",
+            "description": "<p>Thoughtfully sourced whenever possible with conscious production.</p>"
+          }
+        },
+        "icon_item_VhGb8A": {
+          "type": "icon_item",
+          "settings": {
+            "title": "Luxury Experience",
+            "description": "<p>Elegant formulas, refined textures, premium packaging.</p>"
+          }
+        },
+        "icon_item_4fiLUf": {
+          "type": "icon_item",
+          "settings": {
+            "title": "Cruelty-Free",
+            "description": "<p>Beauty created with kindness.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "icon_item_4Qq6pM",
+        "icon_item_AhDTgL",
+        "icon_item_VhGb8A",
+        "icon_item_4fiLUf"
+      ],
+      "name": "Icon Bar",
+      "settings": {
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_horizontal": 40,
+        "max_width": 1400,
+        "bg_color": "#F5F0EC",
+        "divider_color": "#D8CFC5",
+        "icon_width": 48,
+        "icon_height": 48,
+        "icon_width_mobile": 40,
+        "icon_height_mobile": 40,
+        "title_font_size": 14,
+        "title_font_size_mobile": 13,
+        "title_color": "#2B2B2B",
+        "title_font_weight": "600",
+        "description_font_size": 14,
+        "description_color": "#6B6B6B",
+        "description_font_weight": "400",
+        "description_max_width": 220
+      }
+    }
+  },
+  "order": [
+    "main",
+    "about_hero_UMnPtG",
+    "our_story_rKGXFh",
+    "about_icon_bar_Xjc7BG"
+  ]
+}

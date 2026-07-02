@@ -1,0 +1,419 @@
+<div class="icon-bar-section">
+  <div class="icon-bar">
+    <div class="icon-bar__grid">
+
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'icon_item' -%}
+          <div class="icon-bar__item" {{ block.shopify_attributes }}>
+            {%- if block.settings.icon -%}
+              <div class="icon-bar__icon-wrap">
+                <img
+                  class="icon-bar__icon"
+                  src="{{ block.settings.icon | image_url: width: 200 }}"
+                  alt="{{ block.settings.icon.alt | default: block.settings.title | escape }}"
+                  width="{{ block.settings.icon.width }}"
+                  height="{{ block.settings.icon.height }}"
+                  loading="lazy"
+                >
+              </div>
+            {%- endif -%}
+
+            {%- if block.settings.title != blank -%}
+              <p class="icon-bar__title">{{ block.settings.title }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.description != blank -%}
+              <div class="icon-bar__description">{{ block.settings.description }}</div>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+    </div>
+  </div>
+</div>
+
+<style>
+  #shopify-section-{{ section.id }} {
+    --icon-bar-padding-top: {{ section.settings.padding_top }}px;
+    --icon-bar-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --icon-bar-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --icon-bar-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --icon-bar-padding-horizontal: {{ section.settings.padding_horizontal }}px;
+    --icon-bar-max-width: {{ section.settings.max_width }}px;
+    --icon-bar-bg-color: {{ section.settings.bg_color }};
+    --icon-bar-divider-color: {{ section.settings.divider_color }};
+
+    background-color: var(--icon-bar-bg-color);
+  }
+
+  #shopify-section-{{ section.id }} .icon-bar {
+    max-width: var(--icon-bar-max-width);
+    margin: 0 auto;
+    padding: var(--icon-bar-padding-top) var(--icon-bar-padding-horizontal) var(--icon-bar-padding-bottom);
+  }
+
+  #shopify-section-{{ section.id }} .icon-bar__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  #shopify-section-{{ section.id }} .icon-bar__item {
+    flex: 1 1 200px;
+    max-width: 280px;
+    text-align: center;
+    padding: 0 32px;
+    border-right: 1px solid var(--icon-bar-divider-color);
+  }
+
+  #shopify-section-{{ section.id }} .icon-bar__item:last-child {
+    border-right: none;
+  }
+
+  #shopify-section-{{ section.id }} .icon-bar__icon-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  #shopify-section-{{ section.id }} .icon-bar__icon {
+    width: {{ section.settings.icon_width }}px;
+    height: {{ section.settings.icon_height }}px;
+    object-fit: contain;
+  }
+
+  #shopify-section-{{ section.id }} .icon-bar__title {
+    font-size: var(--icon-bar-title-size-mobile);
+    color: var(--icon-bar-title-color);
+    font-weight: var(--icon-bar-title-weight);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 12px;
+  }
+
+  #shopify-section-{{ section.id }} .icon-bar__description {
+    font-size: var(--icon-bar-desc-size);
+    color: var(--icon-bar-desc-color);
+    font-weight: var(--icon-bar-desc-weight);
+    max-width: var(--icon-bar-desc-max-width);
+    line-height: 1.6;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .icon-bar__description p {
+    margin: 0;
+  }
+
+  #shopify-section-{{ section.id }} {
+    --icon-bar-title-size: {{ section.settings.title_font_size }}px;
+    --icon-bar-title-size-mobile: {{ section.settings.title_font_size_mobile }}px;
+    --icon-bar-title-color: {{ section.settings.title_color }};
+    --icon-bar-title-weight: {{ section.settings.title_font_weight }};
+
+    --icon-bar-desc-size: {{ section.settings.description_font_size }}px;
+    --icon-bar-desc-color: {{ section.settings.description_color }};
+    --icon-bar-desc-weight: {{ section.settings.description_font_weight }};
+    --icon-bar-desc-max-width: {{ section.settings.description_max_width }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    #shopify-section-{{ section.id }} .icon-bar__title {
+      font-size: var(--icon-bar-title-size);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #shopify-section-{{ section.id }} .icon-bar {
+      padding: var(--icon-bar-padding-top-mobile) var(--icon-bar-padding-horizontal) var(--icon-bar-padding-bottom-mobile);
+    }
+
+    #shopify-section-{{ section.id }} .icon-bar__grid {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+
+    #shopify-section-{{ section.id }} .icon-bar__item {
+      max-width: 320px;
+      padding: 0 16px;
+      border-right: none;
+    }
+
+    #shopify-section-{{ section.id }} .icon-bar__icon {
+      width: {{ section.settings.icon_width_mobile }}px;
+      height: {{ section.settings.icon_height_mobile }}px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Icon Bar",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom (mobile)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Padding horizontal",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1920,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#F5F0EC"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#D8CFC5"
+    },
+    {
+      "type": "header",
+      "content": "Icon"
+    },
+    {
+      "type": "range",
+      "id": "icon_width",
+      "label": "Width (desktop)",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "icon_height",
+      "label": "Height (desktop)",
+      "min": 20,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "icon_width_mobile",
+      "label": "Width (mobile)",
+      "min": 16,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "icon_height_mobile",
+      "label": "Height (mobile)",
+      "min": 16,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size",
+      "label": "Font size (desktop)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Font size (mobile)",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Color",
+      "default": "#2B2B2B"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "range",
+      "id": "description_font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Color",
+      "default": "#6B6B6B"
+    },
+    {
+      "type": "select",
+      "id": "description_font_weight",
+      "label": "Font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "description_max_width",
+      "label": "Max width",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 220
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_item",
+      "name": "Icon Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Clean Beauty"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Carefully selected ingredients made with quality and care.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon Bar",
+      "blocks": [
+        {
+          "type": "icon_item",
+          "settings": {
+            "title": "Clean Beauty",
+            "description": "<p>Carefully selected ingredients made with quality and care.</p>"
+          }
+        },
+        {
+          "type": "icon_item",
+          "settings": {
+            "title": "Responsible Choices",
+            "description": "<p>Thoughtfully sourced whenever possible with conscious production.</p>"
+          }
+        },
+        {
+          "type": "icon_item",
+          "settings": {
+            "title": "Luxury Experience",
+            "description": "<p>Elegant formulas, refined textures, premium packaging.</p>"
+          }
+        },
+        {
+          "type": "icon_item",
+          "settings": {
+            "title": "Cruelty-Free",
+            "description": "<p>Beauty created with kindness.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
