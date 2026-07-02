@@ -3,8 +3,6 @@
   Interactive Polaroid Style Comparison with Native Theme Title & Cursive Annotations
 {% endcomment %}
 
-{%- assign section_bg = section.settings.section_bg_color -%}
-
 <div class="dt-sc-section-wrapper before-after-section-wrapper" id="before-after-section-{{ section.id }}">
   <div class="{% render 'container-settings' %}">
     
@@ -46,7 +44,7 @@
           {%- endif -%}
         </div>
 
-        {% comment %} RIGHT POLAROID CARD (AFTER WITH DIRECT ANNOTATION OVERLAYS) {% endcomment %}
+        {% comment %} RIGHT POLAROID CARD (AFTER WITH OVERLAY ANNOTATIONS) {% endcomment %}
         <div class="polaroid-card polaroid-after">
           <div class="tape-strip tape-top-right"></div>
           <div class="tape-strip tape-bottom-left"></div>
@@ -68,46 +66,44 @@
                 </svg>
               </div>
             {%- endif -%}
-
-            {% comment %} ANNOTATIONS ANCHORED DIRECTLY ON THE AFTER PHOTO {% endcomment %}
-            {%- if section.settings.enable_annotations -%}
-              
-              {% comment %} Annotation 1: Top Right (Texture refined) {% endcomment %}
-              {%- if section.settings.annotation_1_text != blank -%}
-                <div class="after-annotation annotation-top-right">
-                  <div class="annotation-text">{{ section.settings.annotation_1_text }}</div>
-                  <svg class="annotation-arrow-svg arrow-texture" viewBox="0 0 80 60" fill="none" stroke="currentColor">
-                    <path d="M 65 10 C 45 12, 25 28, 12 50" stroke-width="2.8" stroke-linecap="round"/>
-                    <path d="M 24 46 L 10 52 L 15 35" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-              {%- endif -%}
-
-              {% comment %} Annotation 2: Bottom Right (Skin smoother) {% endcomment %}
-              {%- if section.settings.annotation_2_text != blank -%}
-                <div class="after-annotation annotation-bottom-right">
-                  <div class="annotation-text">{{ section.settings.annotation_2_text }}</div>
-                  <svg class="annotation-arrow-svg arrow-skin" viewBox="0 0 80 50" fill="none" stroke="currentColor">
-                    <path d="M 70 40 C 50 35, 30 28, 12 12" stroke-width="2.8" stroke-linecap="round"/>
-                    <path d="M 24 12 L 10 10 L 14 26" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </div>
-              {%- endif -%}
-
-              {% comment %} Annotation 3: Bottom Left (Glow undeniable) {% endcomment %}
-              {%- if section.settings.annotation_3_text != blank -%}
-                <div class="after-annotation annotation-bottom-left">
-                  <svg class="annotation-arrow-svg arrow-glow" viewBox="0 0 90 60" fill="none" stroke="currentColor">
-                    <path d="M 12 45 C 25 18, 55 12, 78 22" stroke-width="2.8" stroke-linecap="round"/>
-                    <path d="M 64 12 L 80 23 L 78 6" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                  <div class="annotation-text">{{ section.settings.annotation_3_text }}</div>
-                </div>
-              {%- endif -%}
-
-            {%- endif -%}
-
           </div>
+
+          {% comment %} ANNOTATIONS RADIATING FROM CENTER {% endcomment %}
+          {%- if section.settings.enable_annotations -%}
+            <div class="center-origin-anchor" style="position: absolute; top: 45%; left: 45%; width: 0; height: 0; z-index: 20; pointer-events: none;">
+              
+              {%- if section.settings.annotation_1_text != blank -%}
+                <div class="annotation-branch" style="position: absolute; bottom: 0; left: 0;">
+                  <svg viewBox="0 0 160 160" style="width: 160px; height: 160px; transform: translate(0, -100%); overflow: visible; filter: drop-shadow(0 1px 2px rgba(255,255,255,0.9));" fill="none" stroke="{{ section.settings.annotation_color }}">
+                    <path d="M 0 160 Q 80 130 160 0" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M 130 15 L 160 0 L 145 35" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <div class="annotation-text" style="position: absolute; top: -170px; right: -210px; text-align: right;">{{ section.settings.annotation_1_text }}</div>
+                </div>
+              {%- endif -%}
+
+              {%- if section.settings.annotation_2_text != blank -%}
+                <div class="annotation-branch" style="position: absolute; top: 0; left: 0;">
+                  <svg viewBox="0 0 150 150" style="width: 150px; height: 150px; overflow: visible; filter: drop-shadow(0 1px 2px rgba(255,255,255,0.9));" fill="none" stroke="{{ section.settings.annotation_color }}">
+                    <path d="M 0 0 Q 80 50 150 150" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M 120 140 L 150 150 L 140 120" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <div class="annotation-text underlined-text" style="position: absolute; bottom: -180px; right: -230px; text-align: right;">{{ section.settings.annotation_2_text }}</div>
+                </div>
+              {%- endif -%}
+
+              {%- if section.settings.annotation_3_text != blank -%}
+                <div class="annotation-branch" style="position: absolute; top: 0; right: 0;">
+                  <svg viewBox="0 0 160 160" style="width: 160px; height: 160px; transform: translate(-100%, 0); overflow: visible; filter: drop-shadow(0 1px 2px rgba(255,255,255,0.9));" fill="none" stroke="{{ section.settings.annotation_color }}">
+                    <path d="M 160 0 Q 60 60 0 160" stroke-width="3.5" stroke-linecap="round"/>
+                    <path d="M 30 145 L 0 160 L 15 130" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <div class="annotation-text tilted-text" style="position: absolute; bottom: -190px; left: -220px; text-align: left;">{{ section.settings.annotation_3_text }}</div>
+                </div>
+              {%- endif -%}
+
+            </div>
+          {%- endif -%}
 
           {%- if section.settings.after_label != blank -%}
             <div class="polaroid-label">{{ section.settings.after_label }}</div>
@@ -126,7 +122,13 @@
   #before-after-section-{{ section.id }} {
     padding-top: {{ section.settings.padding_top }}px;
     padding-bottom: {{ section.settings.padding_bottom }}px;
-    background-color: {{ section_bg }};
+    background-color: {{ section.settings.section_bg_color }};
+    {% if section.settings.section_bg_image != blank %}
+      background-image: url('{{ section.settings.section_bg_image | img_url: 'master' }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    {% endif %}
     position: relative;
     overflow: hidden;
   }
@@ -159,7 +161,7 @@
     background-size: contain !important;
   }
 
-  /* Preserve exact text casing entered by merchant in Theme Editor (No forced lowercase) */
+  /* Preserve exact text casing entered by merchant in Theme Editor */
   #before-after-section-{{ section.id }} .dt-sc-main-heading {
     text-align: center !important;
     text-transform: none !important;
@@ -172,7 +174,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    padding: 20px 20px 50px 20px;
+    padding: 50px 20px 80px 20px;
   }
 
   .before-after-polaroid-stage {
@@ -206,6 +208,7 @@
   .polaroid-after {
     transform: rotate({{ section.settings.card_rotation_right }}deg);
     z-index: 3;
+    overflow: visible !important;
   }
 
   .polaroid-card:hover {
@@ -301,22 +304,34 @@
     transform: rotate(25deg);
   }
 
-  /* Annotations Anchored Cleanly Inside the AFTER Photo Frame */
+  /* Annotations Anchored Exactly Like Reference Image */
   .after-annotation {
     position: absolute;
-    z-index: 15;
+    z-index: 20;
     pointer-events: none;
     color: {{ section.settings.annotation_color }};
   }
 
   .annotation-text {
     font-family: 'Caveat', cursive, sans-serif;
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 700;
-    line-height: 1.1;
+    line-height: 1;
     white-space: nowrap;
     color: {{ section.settings.annotation_color }};
     text-shadow: 0 1px 4px rgba(255,255,255,0.95), 0 0 3px rgba(255,255,255,0.95);
+  }
+
+  .annotation-text.underlined-text {
+    border-bottom: 2px solid {{ section.settings.annotation_color }};
+    padding-bottom: 2px;
+    display: inline-block;
+    box-shadow: 0 3px 0 {{ section.settings.annotation_color }};
+  }
+
+  .annotation-text.tilted-text {
+    transform: rotate(-8deg);
+    display: inline-block;
   }
 
   .annotation-arrow-svg {
@@ -324,48 +339,56 @@
     filter: drop-shadow(0 1px 2px rgba(255,255,255,0.9));
   }
 
-  /* 1. Top Right Annotation: Texture refined */
-  .annotation-top-right {
-    top: 6%;
-    right: 5%;
+  /* 1. Texture refined (Top Right Above Polaroid Card) */
+  .annotation-texture-refined {
+    top: -45px;
+    right: 15px;
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
-  .annotation-top-right .arrow-texture {
-    width: 55px;
-    height: 45px;
+  .annotation-texture-refined .arrow-texture-path {
+    width: 80px;
+    height: 80px;
     display: block;
-    margin-top: 2px;
-    margin-left: auto;
+    margin-top: -10px;
+    margin-right: 20px;
   }
 
-  /* 2. Bottom Right Annotation: Skin smoother */
-  .annotation-bottom-right {
-    bottom: 16%;
-    right: 5%;
+  /* 2. Skin smoother (Lower Right On Photo Frame) */
+  .annotation-skin-smoother {
+    bottom: 50px;
+    right: 20px;
     text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
-  .annotation-bottom-right .arrow-skin {
-    width: 55px;
+  .annotation-skin-smoother .arrow-skin-path {
+    width: 60px;
     height: 40px;
     display: block;
-    margin-top: 2px;
-    margin-left: auto;
   }
 
-  /* 3. Bottom Left Annotation: Glow undeniable */
-  .annotation-bottom-left {
-    bottom: 6%;
-    left: 5%;
+  /* 3. Glow undeniable (Bottom Left Outside Polaroid Card) */
+  .annotation-glow-undeniable {
+    bottom: -65px;
+    left: -110px;
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
-  .annotation-bottom-left .arrow-glow {
-    width: 65px;
-    height: 45px;
+  .annotation-glow-undeniable .arrow-glow-path {
+    width: 80px;
+    height: 80px;
     display: block;
-    margin-bottom: 2px;
+    margin-bottom: -15px;
+    margin-left: 60px;
   }
 
   /* Responsive Adjustments */
@@ -376,13 +399,13 @@
       padding: 12px 12px 28px 12px;
     }
     .polaroid-before { margin-right: -25px; }
-    .annotation-text { font-size: 19px; }
-    .annotation-top-right { top: 4%; right: 4%; }
-    .annotation-bottom-right { bottom: 12%; right: 4%; }
-    .annotation-bottom-left { bottom: 4%; left: 4%; }
-    .annotation-top-right .arrow-texture { width: 45px; height: 35px; }
-    .annotation-bottom-right .arrow-skin { width: 45px; height: 32px; }
-    .annotation-bottom-left .arrow-glow { width: 50px; height: 35px; }
+    .annotation-text { font-size: 24px; }
+    .annotation-texture-refined { top: -35px; right: 5px; }
+    .annotation-texture-refined .arrow-texture-path { width: 60px; height: 60px; }
+    .annotation-skin-smoother { bottom: 40px; right: 10px; }
+    .annotation-skin-smoother .arrow-skin-path { width: 45px; height: 30px; }
+    .annotation-glow-undeniable { bottom: -50px; left: -70px; }
+    .annotation-glow-undeniable .arrow-glow-path { width: 60px; height: 60px; }
   }
 
   @media (max-width: 640px) {
@@ -556,7 +579,7 @@
     {
       "type": "text",
       "id": "annotation_2_text",
-      "label": "Annotation 2 (Bottom Right)",
+      "label": "Annotation 2 (Middle Right)",
       "default": "Skin smoother"
     },
     {
@@ -567,13 +590,18 @@
     },
     {
       "type": "header",
-      "content": "Section Colors & Padding"
+      "content": "Section Colors & Background"
     },
     {
       "type": "color",
       "id": "section_bg_color",
-      "label": "Section Background",
+      "label": "Section Background Color",
       "default": "#FAF6F0"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_bg_image",
+      "label": "Section Background Image"
     },
     {
       "type": "range",
