@@ -192,6 +192,15 @@
       "settings": {
         "full": false,
         "spacing_both_ends": false,
+        "enable_carousel": true,
+        "infinite_loop": true,
+        "auto_play": false,
+        "auto_play_speed": 3,
+        "show_navigation": true,
+        "show_pagination": false,
+        "items_per_view_desktop": 6,
+        "items_per_view_tablet": 4,
+        "items_per_view_mobile": 2,
         "padding": "60,60",
         "margin": "0,0",
         "background_color": "#ffffff",
@@ -319,7 +328,8 @@
             "image": "shopify://shop_images/blog-1_c01a3d24-b663-4b76-9711-018db9829b4f.jpg",
             "title": "Flow",
             "subtitle": "01 - 05",
-            "text_color": "#ffffff"
+            "text_color": "#ffffff",
+            "link": ""
           }
         },
         "slide-1": {
@@ -328,7 +338,8 @@
             "image": "shopify://shop_images/blog-1.jpg",
             "title": "FLOW",
             "subtitle": "01 - 05",
-            "text_color": "#ffffff"
+            "text_color": "#ffffff",
+            "link": ""
           }
         },
         "slide-2": {
@@ -337,7 +348,8 @@
             "image": "shopify://shop_images/blog-2_56570218-c21b-4472-9e3c-fd275908fc5c.jpg",
             "title": "GLAMOUR",
             "subtitle": "02 - 05",
-            "text_color": "#ffffff"
+            "text_color": "#ffffff",
+            "link": ""
           }
         },
         "slide-3": {
@@ -346,7 +358,8 @@
             "image": "shopify://shop_images/blog-2.jpg",
             "title": "ELEGANCE",
             "subtitle": "03 - 05",
-            "text_color": "#ffffff"
+            "text_color": "#ffffff",
+            "link": ""
           }
         }
       },
@@ -1176,7 +1189,7 @@
         "background_image": "shopify://shop_images/broadcrumb-bg.png",
         "background_style": "parallax",
         "enable_overlay": true,
-        "background_color": "#FEF2F0",
+        "background_color": "#fef2f0",
         "overlay_transparency": "1",
         "section_heading": "",
         "section_sub_heading": "",

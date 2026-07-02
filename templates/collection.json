@@ -109,6 +109,9 @@
         "c46d821f-34df-4d7e-afed-7f3cfe4f37c4",
         "b8b9fac8-f331-4738-a7e9-29aa5671dffe"
       ],
+      "custom_css": [
+        ".left-sidebar{margin-top:60px;}"
+      ],
       "settings": {
         "hide_breadcrumb": false,
         "show_collection_image": true,

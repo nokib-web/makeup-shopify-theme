@@ -650,6 +650,55 @@
         "review_text_color": "#3a3a3a",
         "name_color": "#6b6b6b"
       }
+    },
+    "quotes_QnQyJF": {
+      "type": "quotes",
+      "blocks": {
+        "quote_gPJYKh": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
+            "author": "Author's name",
+            "job": "Author's designation"
+          }
+        },
+        "quote_tyw8wN": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
+            "author": "Author's name",
+            "job": "Author's designation"
+          }
+        },
+        "quote_4cdiRX": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
+            "author": "Author's name",
+            "job": "Author's designation"
+          }
+        },
+        "quote_36Bx99": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
+            "author": "Author's name",
+            "job": "Author's designation"
+          }
+        }
+      },
+      "block_order": [
+        "quote_gPJYKh",
+        "quote_tyw8wN",
+        "quote_4cdiRX",
+        "quote_36Bx99"
+      ],
+      "name": "Advanced Testimonial",
+      "settings": {
+        "heading": "What our customers say...",
+        "color_bg": "#4a4a4a",
+        "color_text": "#ffffff"
+      }
     }
   },
   "order": [
@@ -663,6 +712,7 @@
     "about_our_journey_VHN3ih",
     "about_meet_the_founder_GE6jbB",
     "about_stats_bar_XbyMfY",
-    "about_testimonials_carousel_nQV8BM"
+    "about_testimonials_carousel_nQV8BM",
+    "quotes_QnQyJF"
   ]
 }
