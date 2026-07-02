@@ -1,0 +1,533 @@
+<div data-section-id="{{ section.id }}" data-section-type="faq-page-custom-section">  
+  <div class="{% render 'container-settings' %}"> 
+    <div class="row {{ section.settings.custom_class_name }}">
+      <div class="dt-sc-faqs">   
+        {% render 'section-heading', class: section.id %} 
+        
+        <div class="dt-sc-column two-column custom-faq-grid">
+          
+          {% comment %} LEFT COLUMN: Accordion {% endcomment %}
+          <div class="custom-faq-left">
+            {% if section.blocks.size > 0 %}      
+            <div class="dt-sc-accordion-container custom-boxed-accordion {{section.settings.text_position}} {{ section.settings.block_style}}">   
+              {% for block in section.blocks %}   
+              {% if block.settings.title != blank  %} 
+              <div class="dt-sc-accordion-item">
+                <div class="dt-sc-accordion-btn {% if forloop.first %}active{% endif %}">
+                  {% if section.settings.enable_heading_icons %}
+                  {% if block.type == 'icon' %}<h5 {% if forloop.first %}class="active"{% endif %}>
+                  {%- assign img_url = block.settings.icon | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  <img class="lazyload"
+                        src="{{ 'loading.gif' | asset_url }}"
+                      data-src="{{ img_url }}"
+                      data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
+                      data-aspectratio="{{ section.settings.icon.aspect_ratio }}"
+                      data-sizes="auto"            
+                      alt="{{ block.settings.title }}">            
+                  <noscript>
+                    {{ block.settings.icon | img_url: '480x480', scale: 2 | img_tag: block.settings.icon.alt, 'dt-sc-noscript-image' }}
+                  </noscript>
+                  {{ block.settings.title }}</h5>
+                  {% endif %}
+                  {% if block.type == 'class' %}<h5 {% if forloop.first %}class="active"{% endif %}><i class="{{block.settings.class}}"></i>{{ block.settings.title }}</h5>{% endif %}
+                  {% else %}
+                  <h5 {% if forloop.first %}class="active"{% endif %}>{{ block.settings.title }}</h5>
+                  {% endif %} 
+                </div>        
+                
+                {% if block.settings.desc != blank  %} 
+                <div class="dt-sc-accordion-content {% if forloop.first %}open{% endif %}">
+                  <div class="dt-sc-accordion-content-inner">
+                    <p>{{ block.settings.desc}}</p>
+                  </div>
+                </div>
+                {% endif %} 
+              </div>
+              {% endif %} 
+              {% endfor %}
+            </div>           
+            {% endif %}
+          </div>
+          
+          {% comment %} RIGHT COLUMN: Image & Form {% endcomment %}
+          {% if section.settings.enable_right_column %}
+          <div class="custom-faq-right text-center">
+             <div class="custom-faq-right-inner" {% if section.settings.right_image != blank %}style="background-image: url('{{ section.settings.right_image | img_url: 'master' }}');"{% endif %}>
+                
+                {% if section.settings.right_heading != blank %}
+                  <h4 class="faq-right-heading">{{ section.settings.right_heading }}</h4>
+                {% endif %}
+                
+                {% if section.settings.right_text != blank %}
+                  <p class="faq-right-text">{{ section.settings.right_text }}</p>
+                {% endif %}
+                
+                <div class="faq-contact-form">
+                  {% form 'contact' %}
+                    {%- if form.posted_successfully? -%}
+                      <p class="form-status form-status-list form__message" tabindex="-1" autofocus style="color: green; margin-bottom: 10px;">{{ 'contact.form.post_success' | t | default: 'Thanks for contacting us! We will get back to you as soon as possible.' }}</p>
+                    {%- elsif form.errors -%}
+                      <div class="form__message" style="color: red; margin-bottom: 10px;">
+                        <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{{ 'contact.form.error_heading' | t | default: 'Please adjust the following:' }}</h2>
+                      </div>
+                    {%- endif -%}
+                    
+                    <div class="contact-form-input-group">
+                       <input type="email" id="ContactForm-email" class="faq-field-input" autocomplete="email" name="contact[email]" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" placeholder="Your Email" style="margin-bottom: 10px;"/>
+                    </div>
+
+                    <div class="contact-form-input-group" style="position: relative;">
+                      <input type="text" id="ContactForm-body" class="faq-field-input" name="contact[body]" placeholder="write here..." required>
+                      <span class="faq-input-icon"><i class="fa fa-question-circle-o"></i></span>
+                    </div>
+                    
+                    <button type="submit" class="dt-sc-btn faq-submit-btn">{{ section.settings.submit_button_text | default: 'Submit Now' }}</button>
+                  {% endform %}
+                </div>
+             </div>
+          </div>
+          {% endif %}
+
+        </div>
+      </div> 
+    </div>
+  </div>  
+</div>
+
+<style>
+  #shopify-section-{{section.id}} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+  }
+
+  /* Custom FAQ Grid Layout */
+  .custom-faq-grid {
+    display: grid;
+    gap: 40px;
+    align-items: start;
+  }
+  
+  /* Fallback if dt-sc-column two-column doesn't act as a grid */
+  @media (min-width: 992px) {
+    .custom-faq-grid {
+      grid-template-columns: {{ section.settings.left_column_width }}% calc({{ 100 | minus: section.settings.left_column_width }}% - 40px);
+    }
+  }
+  @media (max-width: 991px) {
+    .custom-faq-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Section Heading Styles */
+  #shopify-section-{{section.id}} .dt-sc-heading .dt-sc-main-heading { color: var(--DTColor_Heading); color:{{ section.settings.section_heading_color }}; } 
+  #shopify-section-{{section.id}} .dt-sc-heading .dt-sc-sub-heading { color: var(--DTColor_Heading); color:{{ section.settings.section_sub_heading_color }}; } 
+  #shopify-section-{{section.id}} .dt-sc-heading .dt-sc-heading-description { color: var(--DTColor_Body); color:{{ section.settings.section_description_color }}; } 
+  
+  /* Boxed Accordion Styles */
+  .custom-boxed-accordion { width: 100%; margin: 0 auto; }
+  
+  .custom-boxed-accordion .dt-sc-accordion-item {
+    background-color: var(--DTTertiaryColor);
+    background-color: {{section.settings.faq_content_bg_color}};
+    border-radius: var(--DTRadius); border-radius: {{ section.settings.border_radius }}px;
+    margin-bottom: {{ section.settings.segmented_layout_gap }}px;
+    border: 1px solid rgba(0,0,0,0.05);
+    {% if section.settings.enable_box_shadow %} box-shadow: var(--DTboxShadow); {% endif %}
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  /* Active state background */
+  .custom-boxed-accordion .dt-sc-accordion-btn.active {
+    background-color: {{section.settings.faq_heading_bg_color | default: 'rgba(0,0,0,0.03)' }};
+  }
+  
+  .custom-boxed-accordion .dt-sc-accordion-btn { 
+    width: 100%; margin: 0 auto; cursor: pointer; padding: 20px 30px; 
+    transition: background-color 0.3s ease;
+  }
+  
+  .custom-boxed-accordion .dt-sc-accordion-btn h5 { 
+    margin: 0; position: relative; display: flex; align-items: center; flex-wrap: wrap; 
+    color: var(--DT_Button_Text_Color); color: {{section.settings.faq_heading_color}}; 
+    font-size: 1.1em;
+  }
+  
+  /* FontAwesome chevron icons */
+  .custom-boxed-accordion .dt-sc-accordion-btn h5:after { 
+    content: "\f105"; /* angle-right */
+    display: block; position: absolute; font-family: FontAwesome; top: 50%; right: 0; 
+    transform: translateY(-50%);
+    transition: var(--DTBaseTransition);
+    color: inherit;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  .custom-boxed-accordion .dt-sc-accordion-btn.active h5:after,
+  .custom-boxed-accordion .dt-sc-accordion-btn h5.active:after { 
+    content: "\f107"; /* angle-down */
+  }
+
+  .custom-boxed-accordion .dt-sc-accordion-content { 
+    height: 0px; width: 100%; margin: 0 auto; overflow: hidden; 
+    color: var(--DTColor_Body); color: {{section.settings.faq_content_color}}; 
+  }
+  .custom-boxed-accordion .dt-sc-accordion-content.open { height: auto; }
+  .custom-boxed-accordion .dt-sc-accordion-content-inner { padding: 0 30px 25px 30px; }
+  .custom-boxed-accordion .dt-sc-accordion-content-inner p:last-child { margin-bottom: 0; }
+  
+  /* Right Column Styles */
+  .custom-faq-right {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 120px;
+    z-index: 10;
+  }
+  .custom-faq-right-inner {
+    padding: 40px 20px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: var(--DTRadius);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 450px;
+  }
+  .faq-right-heading {
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+  .faq-right-text {
+    margin-bottom: 25px;
+    color: var(--DTColor_Body);
+    font-size: 0.95em;
+  }
+  
+  /* Contact Form Styles */
+  .faq-contact-form {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  .faq-field-input {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 30px;
+    background-color: #fff;
+    font-size: 0.95em;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  .faq-field-input:focus {
+    border-color: var(--DTPrimaryColor);
+  }
+  .faq-input-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1.1em;
+    pointer-events: none;
+  }
+  .faq-submit-btn {
+    margin-top: 20px;
+    border-radius: 30px;
+    padding: 12px 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: var(--DT_Button_BG_Color);  background:{{ section.settings.section_button_bg_color }}; 
+    color: var(--DT_Button_Text_Color); color:{{ section.settings.section_button_text_color }};
+  }
+  .faq-submit-btn:hover {
+    background: var(--DT_Button_BG_Hover_Color); background:{{ section.settings.section_button_hover_bg_color }}; 
+    color: var(--DT_Button_Text_Hover_Color); color:{{ section.settings.section_button_hover_text_color }};
+  }
+  
+</style>
+
+<script>
+  // Simple Vanilla JS accordion logic for custom section
+  document.addEventListener('DOMContentLoaded', function() {
+    var accBtns = document.querySelectorAll('#shopify-section-{{section.id}} .dt-sc-accordion-btn');
+    accBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        // Close others (optional, depending on desired UX)
+        /*
+        accBtns.forEach(function(otherBtn) {
+          if (otherBtn !== btn) {
+            otherBtn.classList.remove('active');
+            otherBtn.querySelector('h5').classList.remove('active');
+            otherBtn.nextElementSibling.classList.remove('open');
+          }
+        });
+        */
+        
+        this.classList.toggle('active');
+        this.querySelector('h5').classList.toggle('active');
+        var content = this.nextElementSibling;
+        if (content.classList.contains('open')) {
+          content.classList.remove('open');
+        } else {
+          content.classList.add('open');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+"name": "Custom FAQ Page",
+"class": "index-section custom-faq-page-section",
+"settings": [
+{
+"type": "text",
+"id": "section_heading",
+"label": "Main Heading",
+"default": "Frequently Asked Questions"
+},  
+{
+"type": "text",
+"id": "section_sub_heading",
+"label": "Sub Heading",
+"default": "Trusted in more than 100 countries and 5 million customers."
+},  
+{
+"type": "text",
+"id": "section_description",
+"label": "Description"
+},
+{
+"type": "select",
+"id": "heading_position",
+"label": "Heading Position",
+"default": "text-center",
+"options": [
+{
+"value": "text-center",
+"label": "Center"
+},
+{
+"value": "text-start",
+"label": "Left"
+},
+{
+"value": "text-end",
+"label": "Right"
+}
+]
+},
+{
+"type": "header",
+"content": "Layout Settings"
+},
+{
+"type": "range",
+"id": "left_column_width",
+"min": 40,
+"max": 80,
+"step": 1,
+"unit": "%",
+"label": "Left Column Width (Desktop)",
+"default": 60
+},
+{
+"type": "header",
+"content": "Section Spacing"
+},
+{
+"type": "range",
+"id": "padding_top",
+"min": 0,
+"max": 100,
+"step": 2,
+"unit": "px",
+"label": "Top Padding",
+"default": 36
+},
+{
+"type": "range",
+"id": "padding_bottom",
+"min": 0,
+"max": 100,
+"step": 2,
+"unit": "px",
+"label": "Bottom Padding",
+"default": 36
+},
+{
+"type": "range",
+"id": "margin_top",
+"min": 0,
+"max": 100,
+"step": 2,
+"unit": "px",
+"label": "Top Margin",
+"default": 0
+},
+{
+"type": "range",
+"id": "margin_bottom",
+"min": 0,
+"max": 100,
+"step": 2,
+"unit": "px",
+"label": "Bottom Margin",
+"default": 0
+},
+{
+"type": "header",
+"content": "Right Column (Image & Form)"
+},
+{
+"type": "checkbox",
+"id": "enable_right_column",
+"label": "Enable Right Column",
+"default": true
+},
+{
+"type": "image_picker",
+"id": "right_image",
+"label": "Illustration Image"
+},
+{
+"type": "text",
+"id": "right_heading",
+"label": "Right Heading",
+"default": "Ask Any Question"
+},
+{
+"type": "text",
+"id": "right_text",
+"label": "Right Text",
+"default": "Feel free to ask any question you have; we're here to help!"
+},
+{
+"type": "text",
+"id": "submit_button_text",
+"label": "Submit Button Text",
+"default": "Submit Now"
+},
+{
+"type": "header",
+"content": "Accordion Styling"
+},
+{
+"type": "text",
+"id": "border_radius",
+"label": "Box Border Radius",
+"default":"8",
+"info": "Units not needed"
+},
+{
+"type": "checkbox",
+"id": "enable_box_shadow",
+"label": "Enable Box Shadow",
+"default": false
+},
+{
+"type": "text",
+"id": "segmented_layout_gap",
+"label": "Gap between items",
+"default":"15",
+"info": "Units not needed"
+},
+{
+"type": "header",
+"content": "Section Color settings"
+},
+{
+"type": "color",
+"id": "section_heading_color",
+"label": "Heading color"
+},    
+{
+"type": "color",
+"id": "section_sub_heading_color",
+"label": "Sub heading color"
+},   
+{
+"type": "color",
+"id": "section_description_color",
+"label": "Description color"
+},  
+{
+"type": "color",
+"id": "section_button_bg_color",
+"label": "Button bg color"
+},   
+{
+"type": "color",
+"id": "section_button_text_color",
+"label": "Button text color"
+},   
+{
+"type": "color",
+"id": "section_button_hover_bg_color",
+"label": "Button hover bg color"
+},   
+{
+"type": "color",
+"id": "section_button_hover_text_color",
+"label": "Button hover text color"
+},
+{
+"type": "color",
+"id": "faq_heading_color",
+"label": "Faq Heading text color"
+},
+{
+"type": "color",
+"id": "faq_heading_bg_color",
+"label": "Active Faq Box BG color",
+"default": "#f5f5f5"
+},
+{
+"type": "color",
+"id": "faq_content_color",
+"label": "Faq Content text color"
+},
+{
+"type": "color",
+"id": "faq_content_bg_color",
+"label": "Faq Box BG color (Inactive)",
+"default": "#ffffff"
+}
+],
+"blocks": [
+{
+"type": "icon",
+"name": "FAQ Item",        
+"settings": [
+{
+"type": "text",
+"id": "title",
+"label": "Question",
+"default": "Question"
+},
+{
+"type": "textarea",
+"id": "desc",
+"label": "Answer",  
+"default": "Lorem ipsum dolor sit amet"
+}      
+]
+}
+],
+"presets": [
+{
+"name": "Custom FAQ Page",
+"category": "FAQ"
+}
+]
+}
+{% endschema %}
