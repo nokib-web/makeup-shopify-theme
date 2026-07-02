@@ -1,0 +1,606 @@
+{% comment %}
+  Before & After Polaroid Showcase Section
+  Interactive Polaroid Style Comparison with Native Theme Title & Cursive Annotations
+{% endcomment %}
+
+{%- assign section_bg = section.settings.section_bg_color -%}
+
+<div class="dt-sc-section-wrapper before-after-section-wrapper" id="before-after-section-{{ section.id }}">
+  <div class="{% render 'container-settings' %}">
+    
+    {% comment %} Native Theme Section Header (Centered + Theme Title BG Image Support + Preserved Case) {% endcomment %}
+    <div class="row {{ section.settings.custom_class_name }}">
+      {% render 'section-heading', class: section.id %} 
+    </div>
+
+    {% comment %} Polaroid Stage Container {% endcomment %}
+    <div class="before-after-polaroid-container">
+      <div class="before-after-polaroid-stage">
+
+        {% comment %} LEFT POLAROID CARD (BEFORE) {% endcomment %}
+        <div class="polaroid-card polaroid-before">
+          <div class="tape-strip tape-top-left"></div>
+          <div class="tape-strip tape-bottom-right"></div>
+          
+          <div class="polaroid-image-wrapper">
+            {%- if section.settings.before_image != blank -%}
+              <img 
+                src="{{ section.settings.before_image | img_url: '800x' }}" 
+                alt="{{ section.settings.before_label | escape }}"
+                loading="lazy"
+              >
+            {%- else -%}
+              <div class="polaroid-placeholder-box">
+                <svg viewBox="0 0 400 500" width="100%" height="100%">
+                  <rect width="400" height="500" fill="#EAE0D5"/>
+                  <circle cx="200" cy="200" r="110" fill="#D3C2B2"/>
+                  <path d="M120 220 C150 290, 250 290, 280 220" stroke="#8C7667" stroke-width="6" fill="none"/>
+                  <text x="200" y="440" text-anchor="middle" fill="#756053" font-family="monospace" font-size="22" font-weight="bold">BEFORE PHOTO</text>
+                </svg>
+              </div>
+            {%- endif -%}
+          </div>
+
+          {%- if section.settings.before_label != blank -%}
+            <div class="polaroid-label">{{ section.settings.before_label }}</div>
+          {%- endif -%}
+        </div>
+
+        {% comment %} RIGHT POLAROID CARD (AFTER WITH DIRECT ANNOTATION OVERLAYS) {% endcomment %}
+        <div class="polaroid-card polaroid-after">
+          <div class="tape-strip tape-top-right"></div>
+          <div class="tape-strip tape-bottom-left"></div>
+
+          <div class="polaroid-image-wrapper">
+            {%- if section.settings.after_image != blank -%}
+              <img 
+                src="{{ section.settings.after_image | img_url: '800x' }}" 
+                alt="{{ section.settings.after_label | escape }}"
+                loading="lazy"
+              >
+            {%- else -%}
+              <div class="polaroid-placeholder-box">
+                <svg viewBox="0 0 400 500" width="100%" height="100%">
+                  <rect width="400" height="500" fill="#F4ECE1"/>
+                  <circle cx="200" cy="200" r="110" fill="#E8D9C8"/>
+                  <path d="M120 230 C160 300, 240 300, 280 230" stroke="#9C4436" stroke-width="7" fill="none"/>
+                  <text x="200" y="440" text-anchor="middle" fill="#8C3527" font-family="monospace" font-size="22" font-weight="bold">AFTER PHOTO</text>
+                </svg>
+              </div>
+            {%- endif -%}
+
+            {% comment %} ANNOTATIONS ANCHORED DIRECTLY ON THE AFTER PHOTO {% endcomment %}
+            {%- if section.settings.enable_annotations -%}
+              
+              {% comment %} Annotation 1: Top Right (Texture refined) {% endcomment %}
+              {%- if section.settings.annotation_1_text != blank -%}
+                <div class="after-annotation annotation-top-right">
+                  <div class="annotation-text">{{ section.settings.annotation_1_text }}</div>
+                  <svg class="annotation-arrow-svg arrow-texture" viewBox="0 0 80 60" fill="none" stroke="currentColor">
+                    <path d="M 65 10 C 45 12, 25 28, 12 50" stroke-width="2.8" stroke-linecap="round"/>
+                    <path d="M 24 46 L 10 52 L 15 35" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              {%- endif -%}
+
+              {% comment %} Annotation 2: Bottom Right (Skin smoother) {% endcomment %}
+              {%- if section.settings.annotation_2_text != blank -%}
+                <div class="after-annotation annotation-bottom-right">
+                  <div class="annotation-text">{{ section.settings.annotation_2_text }}</div>
+                  <svg class="annotation-arrow-svg arrow-skin" viewBox="0 0 80 50" fill="none" stroke="currentColor">
+                    <path d="M 70 40 C 50 35, 30 28, 12 12" stroke-width="2.8" stroke-linecap="round"/>
+                    <path d="M 24 12 L 10 10 L 14 26" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              {%- endif -%}
+
+              {% comment %} Annotation 3: Bottom Left (Glow undeniable) {% endcomment %}
+              {%- if section.settings.annotation_3_text != blank -%}
+                <div class="after-annotation annotation-bottom-left">
+                  <svg class="annotation-arrow-svg arrow-glow" viewBox="0 0 90 60" fill="none" stroke="currentColor">
+                    <path d="M 12 45 C 25 18, 55 12, 78 22" stroke-width="2.8" stroke-linecap="round"/>
+                    <path d="M 64 12 L 80 23 L 78 6" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  <div class="annotation-text">{{ section.settings.annotation_3_text }}</div>
+                </div>
+              {%- endif -%}
+
+            {%- endif -%}
+
+          </div>
+
+          {%- if section.settings.after_label != blank -%}
+            <div class="polaroid-label">{{ section.settings.after_label }}</div>
+          {%- endif -%}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Courier+Prime:wght@700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+  #before-after-section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section_bg }};
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Centered Theme Section Heading with Preserved Text Case */
+  #before-after-section-{{ section.id }} .dt-sc-heading {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: {{ section.settings.header_margin_bottom }}px !important;
+    position: relative !important;
+  }
+
+  /* Disable Duplicate :after Background Image */
+  #before-after-section-{{ section.id }} .dt-sc-heading:after {
+    display: none !important;
+  }
+
+  /* Single Centered :before Background Image */
+  #before-after-section-{{ section.id }} .dt-sc-heading:before {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin-left: 0 !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: contain !important;
+  }
+
+  /* Preserve exact text casing entered by merchant in Theme Editor (No forced lowercase) */
+  #before-after-section-{{ section.id }} .dt-sc-main-heading {
+    text-align: center !important;
+    text-transform: none !important;
+    font-size: {{ section.settings.heading_font_size }}px !important;
+  }
+
+  /* Stage & Polaroid Card Container */
+  .before-after-polaroid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px 20px 50px 20px;
+  }
+
+  .before-after-polaroid-stage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* Polaroid Card Frame */
+  .polaroid-card {
+    position: relative;
+    background: #FFFFFF;
+    padding: 16px 16px 36px 16px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12), 0 4px 12px rgba(0,0,0,0.06);
+    transition: transform 0.4s ease, box-shadow 0.4s ease, z-index 0.4s ease;
+    width: {{ section.settings.card_width }}px;
+    max-width: 46vw;
+    border-radius: 2px;
+  }
+
+  .polaroid-before {
+    transform: rotate({{ section.settings.card_rotation_left }}deg);
+    margin-right: -45px;
+    z-index: 1;
+  }
+
+  .polaroid-after {
+    transform: rotate({{ section.settings.card_rotation_right }}deg);
+    z-index: 3;
+  }
+
+  .polaroid-card:hover {
+    box-shadow: 0 22px 50px rgba(0,0,0,0.18), 0 6px 16px rgba(0,0,0,0.09);
+  }
+
+  .polaroid-before:hover {
+    transform: rotate({{ section.settings.card_rotation_left }}deg) scale(1.03);
+    z-index: 4;
+  }
+
+  .polaroid-after:hover {
+    transform: rotate({{ section.settings.card_rotation_right }}deg) scale(1.03);
+    z-index: 5;
+  }
+
+  .polaroid-image-wrapper {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background-color: #F6F2EE;
+    position: relative;
+    border-radius: 2px;
+  }
+
+  .polaroid-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .polaroid-placeholder-box {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  .polaroid-label {
+    font-family: 'Courier Prime', monospace, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #333333;
+    text-align: center;
+    margin-top: 16px;
+    border-bottom: 1.5px solid #333333;
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    width: max-content;
+  }
+
+  /* Tape Accent Strips */
+  .tape-strip {
+    position: absolute;
+    width: 100px;
+    height: 32px;
+    background-color: rgba(226, 216, 198, 0.78);
+    backdrop-filter: blur(1px);
+    border: 1px dashed rgba(200, 185, 165, 0.5);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.06);
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  .tape-top-left {
+    top: -14px;
+    left: -25px;
+    transform: rotate(-32deg);
+  }
+
+  .tape-bottom-right {
+    bottom: -10px;
+    right: -25px;
+    transform: rotate(-25deg);
+  }
+
+  .tape-top-right {
+    top: -14px;
+    right: -25px;
+    transform: rotate(32deg);
+  }
+
+  .tape-bottom-left {
+    bottom: -10px;
+    left: -25px;
+    transform: rotate(25deg);
+  }
+
+  /* Annotations Anchored Cleanly Inside the AFTER Photo Frame */
+  .after-annotation {
+    position: absolute;
+    z-index: 15;
+    pointer-events: none;
+    color: {{ section.settings.annotation_color }};
+  }
+
+  .annotation-text {
+    font-family: 'Caveat', cursive, sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.1;
+    white-space: nowrap;
+    color: {{ section.settings.annotation_color }};
+    text-shadow: 0 1px 4px rgba(255,255,255,0.95), 0 0 3px rgba(255,255,255,0.95);
+  }
+
+  .annotation-arrow-svg {
+    color: {{ section.settings.annotation_color }};
+    filter: drop-shadow(0 1px 2px rgba(255,255,255,0.9));
+  }
+
+  /* 1. Top Right Annotation: Texture refined */
+  .annotation-top-right {
+    top: 6%;
+    right: 5%;
+    text-align: right;
+  }
+
+  .annotation-top-right .arrow-texture {
+    width: 55px;
+    height: 45px;
+    display: block;
+    margin-top: 2px;
+    margin-left: auto;
+  }
+
+  /* 2. Bottom Right Annotation: Skin smoother */
+  .annotation-bottom-right {
+    bottom: 16%;
+    right: 5%;
+    text-align: right;
+  }
+
+  .annotation-bottom-right .arrow-skin {
+    width: 55px;
+    height: 40px;
+    display: block;
+    margin-top: 2px;
+    margin-left: auto;
+  }
+
+  /* 3. Bottom Left Annotation: Glow undeniable */
+  .annotation-bottom-left {
+    bottom: 6%;
+    left: 5%;
+    text-align: left;
+  }
+
+  .annotation-bottom-left .arrow-glow {
+    width: 65px;
+    height: 45px;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 991px) {
+    .polaroid-card {
+      width: 320px;
+      max-width: 44vw;
+      padding: 12px 12px 28px 12px;
+    }
+    .polaroid-before { margin-right: -25px; }
+    .annotation-text { font-size: 19px; }
+    .annotation-top-right { top: 4%; right: 4%; }
+    .annotation-bottom-right { bottom: 12%; right: 4%; }
+    .annotation-bottom-left { bottom: 4%; left: 4%; }
+    .annotation-top-right .arrow-texture { width: 45px; height: 35px; }
+    .annotation-bottom-right .arrow-skin { width: 45px; height: 32px; }
+    .annotation-bottom-left .arrow-glow { width: 50px; height: 35px; }
+  }
+
+  @media (max-width: 640px) {
+    .before-after-polaroid-stage {
+      flex-direction: column;
+      gap: 35px;
+    }
+    .polaroid-card {
+      width: 85vw;
+      max-width: 340px;
+      padding: 14px 14px 30px 14px;
+    }
+    .polaroid-before {
+      transform: rotate(-3deg);
+      margin-right: 0;
+    }
+    .polaroid-after {
+      transform: rotate(3deg);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Before & After Polaroid",
+  "class": "index-section home-before-after-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Heading Settings"
+    },
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": "Agedefy"
+    },
+    {
+      "type": "text",
+      "id": "section_sub_heading",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "section_button_text",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "section_button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "heading_position",
+      "label": "Heading Position",
+      "options": [
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-start", "label": "Left" },
+        { "value": "text-end", "label": "Right" }
+      ],
+      "default": "text-center"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Heading Font Size",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "header_margin_bottom",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "label": "Header Bottom Margin",
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "Before & After Images & Labels"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image",
+      "label": "Before Photo"
+    },
+    {
+      "type": "text",
+      "id": "before_label",
+      "label": "Before Label Text",
+      "default": "BEFORE AGEDEFY"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image",
+      "label": "After Photo"
+    },
+    {
+      "type": "text",
+      "id": "after_label",
+      "label": "After Label Text",
+      "default": "AFTER AGEDEFY"
+    },
+    {
+      "type": "header",
+      "content": "Polaroid Frame Customization"
+    },
+    {
+      "type": "range",
+      "id": "card_width",
+      "min": 260,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "label": "Polaroid Frame Width",
+      "default": 380
+    },
+    {
+      "type": "range",
+      "id": "card_rotation_left",
+      "min": -15,
+      "max": 0,
+      "step": 1,
+      "unit": "deg",
+      "label": "Before Card Tilt Angle",
+      "default": -6
+    },
+    {
+      "type": "range",
+      "id": "card_rotation_right",
+      "min": 0,
+      "max": 15,
+      "step": 1,
+      "unit": "deg",
+      "label": "After Card Tilt Angle",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Handwritten Cursive Annotations"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_annotations",
+      "label": "Enable Handwritten Callout Annotations",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "annotation_color",
+      "label": "Annotation Ink Color",
+      "default": "#B82420"
+    },
+    {
+      "type": "text",
+      "id": "annotation_1_text",
+      "label": "Annotation 1 (Top Right)",
+      "default": "Texture refined"
+    },
+    {
+      "type": "text",
+      "id": "annotation_2_text",
+      "label": "Annotation 2 (Bottom Right)",
+      "default": "Skin smoother"
+    },
+    {
+      "type": "text",
+      "id": "annotation_3_text",
+      "label": "Annotation 3 (Bottom Left)",
+      "default": "Glow undeniable"
+    },
+    {
+      "type": "header",
+      "content": "Section Colors & Padding"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#FAF6F0"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Before & After Polaroid",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}
