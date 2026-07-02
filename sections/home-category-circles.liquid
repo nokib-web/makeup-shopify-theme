@@ -21,8 +21,11 @@
       
       {% render 'section-heading', class: section.id %}
 
-      <div class="category-circles-wrapper">
-        <ul class="category-circles-list {{ column_class }}">
+      <div class="category-circles-wrapper" id="category-circles-{{ section.id }}" style="position: relative;">
+        {% if section.settings.enable_carousel %}
+        <div class="swiper mySwiper-{{ section.id }}">
+        {% endif %}
+        <ul class="{% if section.settings.enable_carousel %}swiper-wrapper{% else %}category-circles-list {{ column_class }}{% endif %}">
           
           {%- if section.blocks.size > 0 -%}
             {%- for block in section.blocks -%}
@@ -54,7 +57,7 @@
                 {% assign circle_link = "#" %}
               {% endif %}
 
-              <li class="category-circle-item" {{ block.shopify_attributes }}>
+              <li class="category-circle-item {% if section.settings.enable_carousel %}swiper-slide{% endif %}" {{ block.shopify_attributes }}>
                 <a href="{{ circle_link }}" class="category-circle-card">
                   <div class="category-circle-image-container">
                     {% if circle_img != blank %}
@@ -81,7 +84,7 @@
             {% assign default_images = "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=80,https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=80,https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=80,https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=400&q=80,https://images.unsplash.com/photo-1556228722-d1191e4b85c1?auto=format&fit=crop&w=400&q=80,https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=400&q=80" | split: "," %}
             
             {% for def_title in default_titles %}
-              <li class="category-circle-item">
+              <li class="category-circle-item {% if section.settings.enable_carousel %}swiper-slide{% endif %}">
                 <a href="#" class="category-circle-card">
                   <div class="category-circle-image-container">
                     <img src="{{ default_images[forloop.index0] }}" alt="{{ def_title }}" loading="lazy" class="category-circle-img">
@@ -93,6 +96,16 @@
           {%- endif -%}
 
         </ul>
+        {% if section.settings.enable_carousel %}
+        </div>
+        {% if section.settings.show_pagination %}
+          <div class="swiper-pagination"></div>
+        {% endif %}
+        {% if section.settings.show_navigation %}
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+        {% endif %}
+        {% endif %}
       </div>
 
     </div>
@@ -244,6 +257,76 @@
       "id": "spacing_both_ends",
       "label": "Enable Right & Left Spacing (Works only on Fullwidth)",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Carousel Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_carousel",
+      "label": "Enable Carousel",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite_loop",
+      "label": "Infinite Loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "auto_play",
+      "label": "Auto Play",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "auto_play_speed",
+      "label": "Auto Play Speed (seconds)",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show Navigation Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show Pagination Dots",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "items_per_view_desktop",
+      "label": "Items per view (Desktop)",
+      "min": 3,
+      "max": 8,
+      "step": 1,
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "items_per_view_tablet",
+      "label": "Items per view (Tablet)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "items_per_view_mobile",
+      "label": "Items per view (Mobile)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
     },
     {
       "type": "text",
@@ -425,3 +508,45 @@
   ]
 }
 {% endschema %}
+
+{% if section.settings.enable_carousel %}
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var swiper_{{ section.id | replace: '-', '_' }} = new Swiper('.mySwiper-{{ section.id }}', {
+      slidesPerView: {{ section.settings.items_per_view_mobile }},
+      spaceBetween: 15,
+      {% if section.settings.infinite_loop %}
+      loop: true,
+      {% endif %}
+      {% if section.settings.auto_play %}
+      autoplay: {
+        delay: {{ section.settings.auto_play_speed | times: 1000 }},
+        disableOnInteraction: false,
+      },
+      {% endif %}
+      {% if section.settings.show_pagination %}
+      pagination: {
+        el: '#category-circles-{{ section.id }} .swiper-pagination',
+        clickable: true,
+      },
+      {% endif %}
+      {% if section.settings.show_navigation %}
+      navigation: {
+        nextEl: '#category-circles-{{ section.id }} .swiper-button-next',
+        prevEl: '#category-circles-{{ section.id }} .swiper-button-prev',
+      },
+      {% endif %}
+      breakpoints: {
+        576: {
+          slidesPerView: {{ section.settings.items_per_view_tablet }},
+          spaceBetween: 20,
+        },
+        992: {
+          slidesPerView: {{ section.settings.items_per_view_desktop }},
+          spaceBetween: 30,
+        }
+      }
+    });
+  });
+</script>
+{% endif %}

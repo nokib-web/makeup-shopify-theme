@@ -399,13 +399,11 @@
       padding: 12px 12px 28px 12px;
     }
     .polaroid-before { margin-right: -25px; }
-    .annotation-text { font-size: 24px; }
-    .annotation-texture-refined { top: -35px; right: 5px; }
-    .annotation-texture-refined .arrow-texture-path { width: 60px; height: 60px; }
-    .annotation-skin-smoother { bottom: 40px; right: 10px; }
-    .annotation-skin-smoother .arrow-skin-path { width: 45px; height: 30px; }
-    .annotation-glow-undeniable { bottom: -50px; left: -70px; }
-    .annotation-glow-undeniable .arrow-glow-path { width: 60px; height: 60px; }
+    
+    /* Scale down annotations on tablet */
+    .center-origin-anchor {
+      transform: scale(0.6);
+    }
   }
 
   @media (max-width: 640px) {
@@ -424,6 +422,11 @@
     }
     .polaroid-after {
       transform: rotate(3deg);
+    }
+    
+    /* Hide annotations on mobile to prevent overflow */
+    .center-origin-anchor {
+      display: none !important;
     }
   }
 </style>
