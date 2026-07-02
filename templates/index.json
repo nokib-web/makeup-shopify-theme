@@ -357,7 +357,7 @@
         "slide-3"
       ],
       "settings": {
-        "bg_image": "shopify://shop_images/slider-bg.jpg",
+        "bg_image": "shopify://shop_images/client-bg_1.png",
         "bg_color": "#f4f4f4",
         "nav_color": "#ffffff",
         "autoplay": true,
@@ -850,6 +850,36 @@
         "custom_class_name": "deal-background"
       }
     },
+    "home_before_after_gXqyG7": {
+      "type": "home-before-after",
+      "name": "Before & After Polaroid",
+      "settings": {
+        "section_heading": "Real Result",
+        "section_sub_heading": "before & after",
+        "section_description": "",
+        "section_button_text": "",
+        "section_button_link": "",
+        "heading_position": "text-center",
+        "heading_font_size": 48,
+        "header_margin_bottom": 35,
+        "before_image": "shopify://shop_images/Screenshot2026-02-08at08.44.30.png",
+        "before_label": "BEFORE Lip Oil Rehab Serum",
+        "after_image": "shopify://shop_images/after-image.png",
+        "after_label": "AFTER Lip Oil Rehab Serum",
+        "card_width": 380,
+        "card_rotation_left": -6,
+        "card_rotation_right": 6,
+        "enable_annotations": true,
+        "annotation_color": "#b82420",
+        "annotation_1_text": "Texture refined",
+        "annotation_2_text": "Skin smoother",
+        "annotation_3_text": "Glow undeniable",
+        "section_bg_color": "#faf6f0",
+        "section_bg_image": "shopify://shop_images/slider-bg.jpg",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "1630473198b69aa4f6": {
       "type": "home-featured-blog",
       "settings": {
@@ -1145,8 +1175,8 @@
         "show_background_image": true,
         "background_image": "shopify://shop_images/broadcrumb-bg.png",
         "background_style": "parallax",
-        "enable_overlay": false,
-        "background_color": "#f7f7f7",
+        "enable_overlay": true,
+        "background_color": "#FEF2F0",
         "overlay_transparency": "1",
         "section_heading": "",
         "section_sub_heading": "",
@@ -1184,33 +1214,6 @@
         "block_button_hover_text_color": "",
         "custom_class_name": ""
       }
-    },
-    "home_before_after_gXqyG7": {
-      "type": "home-before-after",
-      "name": "Before & After Polaroid",
-      "settings": {
-        "section_heading": "Agedefy",
-        "section_sub_heading": "",
-        "section_description": "",
-        "section_button_text": "",
-        "section_button_link": "",
-        "heading_position": "text-center",
-        "heading_font_size": 48,
-        "header_margin_bottom": 35,
-        "before_label": "BEFORE AGEDEFY",
-        "after_label": "AFTER AGEDEFY",
-        "card_width": 380,
-        "card_rotation_left": -6,
-        "card_rotation_right": 6,
-        "enable_annotations": true,
-        "annotation_color": "#B82420",
-        "annotation_1_text": "Texture refined",
-        "annotation_2_text": "Skin smoother",
-        "annotation_3_text": "Glow undeniable",
-        "section_bg_color": "#FAF6F0",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
     }
   },
   "order": [
@@ -1223,10 +1226,10 @@
     "1630469276ff7489a3",
     "1630469283cb351be4",
     "163047319134895603",
+    "home_before_after_gXqyG7",
     "1630473198b69aa4f6",
     "16304740301177992d",
     "1630474195a8c84738",
-    "1630474188cd8d29c5",
-    "home_before_after_gXqyG7"
+    "1630474188cd8d29c5"
   ]
 }
