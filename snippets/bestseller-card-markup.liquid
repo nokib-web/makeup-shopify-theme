@@ -4,6 +4,10 @@
 {%- if section.settings.show_button_price == false -%}
   {%- assign show_button_price = false -%}
 {%- endif -%}
+{%- assign show_secondary_image = true -%}
+{%- if section.settings.show_secondary_image == false -%}
+  {%- assign show_secondary_image = false -%}
+{%- endif -%}
 
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
@@ -59,7 +63,7 @@
   
   {% comment %} Product Image Box {% endcomment %}
   <a href="{{ product.url }}" class="bestseller-image-link">
-    <div class="bestseller-image-wrapper ratio-{{ image_aspect_ratio }}" style="background-color: {{ section.settings.image_bg_color }};">
+    <div class="bestseller-image-wrapper ratio-{{ image_aspect_ratio }} {% if show_secondary_image and product.media[1] != blank %}has-secondary-image{% endif %}" style="background-color: {{ section.settings.image_bg_color }};">
       {%- if block != nil and block.settings.custom_image != blank -%}
         <img 
           src="{{ block.settings.custom_image | img_url: '600x' }}" 
@@ -75,7 +79,7 @@
           loading="lazy"
           data-default-src="{{ product.featured_media | img_url: '600x' }}"
         >
-        {%- if section.settings.show_secondary_image and product.media[1] != blank -%}
+        {%- if show_secondary_image and product.media[1] != blank -%}
           <img 
             src="{{ product.media[1] | img_url: '600x' }}" 
             alt="{{ product.media[1].alt | escape }}" 
