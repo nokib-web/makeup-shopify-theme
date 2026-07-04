@@ -125,10 +125,103 @@
         "title_hover_color": "#70bdc2",
         "product_bg": "#d8f3f5"
       }
+    },
+    "collections_newsletter_social_ffTqkr": {
+      "type": "collections-newsletter-social",
+      "blocks": {
+        "social_icon_eiXRmU": {
+          "type": "social_icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/facebook-app-symbol.png",
+            "link": "#",
+            "open_new_tab": true
+          }
+        },
+        "social_icon_j8jfEY": {
+          "type": "social_icon",
+          "settings": {
+            "icon_image": "shopify://shop_images/instagram_1.png",
+            "link": "#",
+            "open_new_tab": true
+          }
+        },
+        "social_icon_NdgpPr": {
+          "type": "social_icon",
+          "settings": {
+            "link": "",
+            "open_new_tab": true
+          }
+        },
+        "social_icon_qiD69J": {
+          "type": "social_icon",
+          "settings": {
+            "link": "",
+            "open_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "social_icon_eiXRmU",
+        "social_icon_j8jfEY",
+        "social_icon_NdgpPr",
+        "social_icon_qiD69J"
+      ],
+      "name": "Newsletter & Social",
+      "settings": {
+        "padding_horizontal": 20,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "max_width": 1400,
+        "bg_color": "#fdeceb",
+        "icon_image": "shopify://shop_images/gift.png",
+        "icon_size": 70,
+        "icon_padding": 15,
+        "icon_bg": "#e8493f",
+        "icon_radius": 100,
+        "title": "Get Beauty Tips & Exclusive Offers",
+        "title_font_size_desktop": 22,
+        "title_font_size_mobile": 18,
+        "title_color": "#1a1a1a",
+        "title_font_weight": "700",
+        "description": "Join our newsletter and be the first to know about new arrivals, offers & more.",
+        "desc_font_size": 14,
+        "desc_color": "#5a5a5a",
+        "desc_font_weight": "400",
+        "desc_max_width": 360,
+        "form_max_width": 420,
+        "field_height": 48,
+        "input_placeholder": "Enter your email address",
+        "input_font_size": 14,
+        "input_color": "#1a1a1a",
+        "input_bg": "#ffffff",
+        "input_radius": 4,
+        "input_border_width": 0,
+        "input_border_color": "#e0e0e0",
+        "button_label": "Subscribe",
+        "btn_padding_horizontal": 12,
+        "btn_padding_vertical": 13,
+        "btn_font_size": 13,
+        "btn_color": "#ffffff",
+        "btn_font_weight": "600",
+        "btn_bg": "#e8493f",
+        "btn_hover_bg": "#c93a31",
+        "success_message": "Thanks for subscribing!",
+        "social_title": "Follow Us",
+        "social_title_font_size_desktop": 18,
+        "social_title_font_size_mobile": 16,
+        "social_title_color": "#1a1a1a",
+        "social_title_font_weight": "700",
+        "social_icon_size": 36,
+        "social_icon_padding": 9,
+        "social_icon_bg": "#ffffff",
+        "social_icon_hover_bg": "#f5c9c6",
+        "social_icon_radius": 50
+      }
     }
   },
   "order": [
     "1626870276b398a0aa",
-    "main"
+    "main",
+    "collections_newsletter_social_ffTqkr"
   ]
 }

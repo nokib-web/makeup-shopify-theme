@@ -68,7 +68,7 @@
         "hide_addtocart": false,
         "show_wishlist": false,
         "show_share_buttons": true,
-        "tab_position": "right",
+        "tab_position": "bottom",
         "product_tab1": true,
         "product_tab1_heading": "Product Description",
         "product_tab2": true,
