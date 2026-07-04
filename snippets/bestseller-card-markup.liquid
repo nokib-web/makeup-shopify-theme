@@ -1,3 +1,10 @@
+{%- assign image_aspect_ratio = section.settings.image_aspect_ratio | default: '1-1' -%}
+{%- assign image_fit = section.settings.image_fit | default: 'contain' -%}
+{%- assign show_button_price = true -%}
+{%- if section.settings.show_button_price == false -%}
+  {%- assign show_button_price = false -%}
+{%- endif -%}
+
 {%- assign current_variant = product.selected_or_first_available_variant -%}
 
 {%- assign product_title = product.title -%}
@@ -52,19 +59,19 @@
   
   {% comment %} Product Image Box {% endcomment %}
   <a href="{{ product.url }}" class="bestseller-image-link">
-    <div class="bestseller-image-wrapper ratio-{{ section.settings.image_aspect_ratio }}" style="background-color: {{ section.settings.image_bg_color }};">
+    <div class="bestseller-image-wrapper ratio-{{ image_aspect_ratio }}" style="background-color: {{ section.settings.image_bg_color }};">
       {%- if block != nil and block.settings.custom_image != blank -%}
         <img 
           src="{{ block.settings.custom_image | img_url: '600x' }}" 
           alt="{{ product_title | escape }}" 
-          class="bestseller-primary-img image-fit-{{ section.settings.image_fit }}"
+          class="bestseller-primary-img image-fit-{{ image_fit }}"
           loading="lazy"
         >
       {%- elsif product.featured_media != blank -%}
         <img 
           src="{{ product.featured_media | img_url: '600x' }}" 
           alt="{{ product.featured_media.alt | escape }}" 
-          class="bestseller-primary-img image-fit-{{ section.settings.image_fit }}"
+          class="bestseller-primary-img image-fit-{{ image_fit }}"
           loading="lazy"
           data-default-src="{{ product.featured_media | img_url: '600x' }}"
         >
@@ -72,7 +79,7 @@
           <img 
             src="{{ product.media[1] | img_url: '600x' }}" 
             alt="{{ product.media[1].alt | escape }}" 
-            class="bestseller-secondary-img image-fit-{{ section.settings.image_fit }}"
+            class="bestseller-secondary-img image-fit-{{ image_fit }}"
             loading="lazy"
           >
         {%- endif -%}
@@ -89,6 +96,16 @@
     <h3 class="bestseller-product-title">
       <a href="{{ product.url }}">{{ product_title }}</a>
     </h3>
+
+    {% comment %} Product Price {% endcomment %}
+    <div class="bestseller-card-price" style="font-weight: 600; font-size: 14px; margin-top: 4px; margin-bottom: 6px; color: var(--DTColor_Heading, #111);">
+      {%- if current_variant.compare_at_price > current_variant.price -%}
+        <span class="bestseller-price-sale" style="color: var(--DTPrimaryColor, #e63946);">{{ display_price }}</span>
+        <span class="bestseller-price-compare" style="text-decoration: line-through; font-size: 12px; color: #888; margin-left: 6px;">{{ current_variant.compare_at_price | money }}</span>
+      {%- else -%}
+        <span class="bestseller-price-regular">{{ display_price }}</span>
+      {%- endif -%}
+    </div>
 
     {% comment %} Star Rating & Review Count {% endcomment %}
     {%- if section.settings.show_rating -%}
@@ -195,9 +212,9 @@
           {% unless current_variant.available %}disabled{% endunless %}
         >
           {%- if current_variant.available -%}
-            <span class="btn-text-label">{{ section.settings.button_label }}</span>
-            {%- if section.settings.show_button_price -%}
-              <span class="btn-price-separator">-</span>
+            <span class="btn-text-label">{{ section.settings.button_label | default: 'Add to Bag' }}</span>
+            {%- if show_button_price -%}
+              <span class="btn-price-separator">|</span>
               <span class="btn-price-value">{{ display_price }}</span>
             {%- endif -%}
           {%- else -%}

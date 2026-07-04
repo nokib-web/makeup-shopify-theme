@@ -1,0 +1,449 @@
+{% comment %}
+  Modern Bento Grid Showcase Section (2026 Trend) for Beauty & Cosmetics
+  Fully integrated with Theme Design System, Heading Brush & Background Image Support
+{% endcomment %}
+
+{%- assign section_bg_color = section.settings.section_bg_color -%}
+{%- assign section_bg_image = section.settings.section_bg_image -%}
+
+<div class="dt-sc-section-wrapper custom-bento-grid-section" id="custom-bento-{{ section.id }}">
+  <div class="{% render 'container-settings' %}">
+    
+    {% comment %} Native Theme Section Header (with Brush & Typography) {% endcomment %}
+    <div class="row {{ section.settings.custom_class_name }}">
+      {% render 'section-heading', class: section.id %}
+    </div>
+
+    {% comment %} Bento Grid Layout Container {% endcomment %}
+    <div class="bento-grid-container">
+      
+      {% comment %} Bento Box 1: Large Spotlight Hero Card {% endcomment %}
+      <div class="bento-box bento-spotlight" style="background-color: {{ section.settings.spotlight_bg }};">
+        <div class="bento-spotlight-bg">
+          {%- if section.settings.spotlight_image != blank -%}
+            <img src="{{ section.settings.spotlight_image | img_url: '800x' }}" alt="{{ section.settings.spotlight_title | escape }}" loading="lazy">
+          {%- else -%}
+            {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+          {%- if section.settings.enable_overlay -%}
+            <div class="bento-overlay" style="background: rgba(0,0,0, {{ section.settings.overlay_opacity }});"></div>
+          {%- endif -%}
+        </div>
+
+        <div class="bento-spotlight-content" style="color: {{ section.settings.spotlight_text_color }}; text-align: {{ section.settings.spotlight_text_align }};">
+          {%- if section.settings.spotlight_badge != blank -%}
+            <span class="bento-badge" style="background-color: {{ section.settings.badge_bg }}; color: {{ section.settings.badge_color }};">
+              {{ section.settings.spotlight_badge }}
+            </span>
+          {%- endif -%}
+
+          {%- if section.settings.spotlight_title != blank -%}
+            <h3 class="bento-title" style="color: {{ section.settings.spotlight_text_color }};">
+              {{ section.settings.spotlight_title }}
+            </h3>
+          {%- endif -%}
+
+          {%- if section.settings.spotlight_desc != blank -%}
+            <p class="bento-desc" style="color: {{ section.settings.spotlight_text_color }}; opacity: 0.9;">
+              {{ section.settings.spotlight_desc }}
+            </p>
+          {%- endif -%}
+
+          {%- if section.settings.spotlight_btn_label != blank -%}
+            <a href="{{ section.settings.spotlight_btn_link | default: '#' }}" class="dt-sc-btn bento-btn">
+              {{ section.settings.spotlight_btn_label }}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      {% comment %} Bento Box 2..N: Product Cards Grid {% endcomment %}
+      {%- assign bento_collection = collections[section.settings.collection] -%}
+      {%- assign product_limit = section.settings.products_to_show | default: 3 -%}
+
+      {%- if bento_collection != blank and bento_collection.products_count > 0 -%}
+        {%- for product in bento_collection.products limit: product_limit -%}
+          <div class="bento-box bento-product-cell">
+            {%- render 'product-grid-item', product: product, section: section -%}
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        {% comment %} Onboarding Sample Product Cards {% endcomment %}
+        {%- for i in (1..product_limit) -%}
+          <div class="bento-box bento-product-cell onboarding-cell">
+            <div class="bestseller-product-card">
+              <div class="bestseller-image-wrapper ratio-1-1" style="background: #f8f8f8; display: flex; align-items: center; justify-content: center;">
+                {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </div>
+              <div class="bestseller-card-info" style="padding: 15px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+                <h3 class="bestseller-product-title">Spotlight Cosmetic {{ i }}</h3>
+                <div class="bestseller-card-price" style="font-weight: 600; margin-top: 5px;">$35.00</div>
+                <button class="dt-sc-btn" style="width: 100%; margin-top: 10px;">Add to Bag</button>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+
+    </div>
+
+  </div>
+</div>
+
+<style>
+  #custom-bento-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section_bg_color }};
+    {% if section_bg_image != blank %}
+      background-image: url('{{ section_bg_image | img_url: '2000x' }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    {% endif %}
+  }
+
+  .custom-bento-grid-section {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .bento-grid-container {
+    display: grid;
+    grid-template-columns: 1.3fr repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .bento-box {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #ffffff;
+    box-shadow: none;
+    border: 1px solid #EAEAEA;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .bento-box:hover {
+    transform: translateY(-4px);
+    border-color: #111111;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  }
+
+  /* Spotlight Hero Cell */
+  .bento-spotlight {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 35px;
+    border-color: transparent !important;
+  }
+
+  .bento-spotlight-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .bento-spotlight-bg img,
+  .bento-spotlight-bg svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  .bento-spotlight:hover .bento-spotlight-bg img {
+    transform: scale(1.05);
+  }
+
+  .bento-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .bento-spotlight-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .bento-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 0px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 14px;
+  }
+
+  .bento-title {
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+  }
+
+  .bento-desc {
+    font-size: 14px;
+    margin-bottom: 22px;
+  }
+
+  /* Button - Uses Global Theme Button Variables */
+  .bento-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background-color: var(--DT_Button_BG_Color, var(--DTPrimaryColor, #e63946)) !important;
+    color: var(--DT_Button_Text_Color, #ffffff) !important;
+    border: var(--DT_Button_border_width, 1px) solid var(--DT_Button_border_Color, var(--DTPrimaryColor, #e63946)) !important;
+    border-radius: var(--DT_Button_Border_Radius, 4px) !important;
+    width: auto !important;
+    max-width: 100%;
+    padding: 12px 28px !important;
+    text-align: center;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .bento-btn:hover {
+    background-color: var(--DT_Button_BG_Hover_Color, #333333) !important;
+    color: var(--DT_Button_Text_Hover_Color, #ffffff) !important;
+    border-color: var(--DT_Button_hover_border_Color, #333333) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  /* Equal Height Product Cells */
+  .bento-product-cell,
+  .bento-product-cell > li,
+  .bento-product-cell .products,
+  .bento-product-cell .product-detail,
+  .bento-product-cell .bestseller-product-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    flex: 1 1 auto !important;
+  }
+
+  .bento-product-cell .bestseller-card-info {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    justify-content: space-between !important;
+    padding: 16px !important;
+  }
+
+  .bento-product-cell .bestseller-action-form {
+    margin-top: auto !important;
+  }
+
+  @media (max-width: 1199px) {
+    .bento-grid-container {
+      grid-template-columns: 1fr 1fr;
+    }
+    .bento-spotlight {
+      grid-column: span 2;
+      min-height: 350px;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .bento-grid-container {
+      grid-template-columns: 1fr;
+    }
+    .bento-spotlight {
+      grid-column: span 1;
+      min-height: 300px;
+      padding: 20px;
+    }
+    .bento-title { font-size: 20px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Bento Grid Showcase",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": "Spotlight Collection"
+    },
+    {
+      "type": "text",
+      "id": "section_sub_heading",
+      "label": "Sub Heading",
+      "default": "TRENDING BEAUTY LOOKS"
+    },
+    {
+      "type": "textarea",
+      "id": "section_description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "heading_position",
+      "label": "Heading Alignment",
+      "default": "text-center",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Spotlight Banner Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "spotlight_image",
+      "label": "Spotlight Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_overlay",
+      "label": "Enable Dark Overlay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 0.9,
+      "step": 0.1,
+      "label": "Overlay Opacity",
+      "default": 0.3
+    },
+    {
+      "type": "text",
+      "id": "spotlight_badge",
+      "label": "Spotlight Badge",
+      "default": "MUST-HAVE LOOK"
+    },
+    {
+      "type": "color",
+      "id": "badge_bg",
+      "label": "Badge Background",
+      "default": "#e63946"
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Badge Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "spotlight_title",
+      "label": "Spotlight Title",
+      "default": "The Dewy Glow Routine"
+    },
+    {
+      "type": "text",
+      "id": "spotlight_desc",
+      "label": "Spotlight Description",
+      "default": "Achieve effortless radiance with our curated essentials."
+    },
+    {
+      "type": "color",
+      "id": "spotlight_text_color",
+      "label": "Spotlight Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "text",
+      "id": "spotlight_btn_label",
+      "label": "Button Label",
+      "default": "Shop The Look"
+    },
+    {
+      "type": "url",
+      "id": "spotlight_btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Product Grid Settings"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Featured Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "label": "Products to Show",
+      "default": 3
+    },
+    {
+      "type": "header",
+      "content": "Section Style & Background"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#fafafa"
+    },
+    {
+      "type": "image_picker",
+      "id": "section_bg_image",
+      "label": "Background Image"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bento Grid Showcase",
+      "category": "Collection"
+    }
+  ]
+}
+{% endschema %}

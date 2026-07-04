@@ -14,37 +14,30 @@ class CollectionFiltersForm extends HTMLElement {
         super();
         this.filterData = [];
         this.onActiveFilterClick = this.onActiveFilterClick.bind(this);
+        this.onSubmitHandler = this.onSubmitHandler.bind(this);
     
-        /*
-        this.debouncedOnSubmit = debounce((event) => {
-          this.onSubmitHandler(event);
-        }, 500);
-        */
-
         this.debouncedOnSubmit = debounce((event) => {
             event.preventDefault();
             this.onSubmitHandler(event);
-          }, 0);
+        }, 300);
 
-        //this.querySelector('form').addEventListener('input', this.debouncedOnSubmit.bind(this));  
-        //this.querySelector('form').addEventListener('submit', this.debouncedOnSubmit.bind(this));
-        
-        //this.querySelector('form').addEventListener('submit', this.onSubmitHandler);
-        document.querySelector('#CollectionFiltersForm').addEventListener('submit', this.onSubmitHandler);
+        const form = this.querySelector('form') || document.querySelector('#CollectionFiltersForm');
+        if (form) {
+            form.addEventListener('input', this.debouncedOnSubmit);
+            form.addEventListener('submit', this.onSubmitHandler);
+        }
+
         window.addEventListener('popstate', this.onHistoryChange.bind(this));
-    
         this.bindActiveFacetButtonEvents();
     }
 
     onSubmitHandler(event) {
-        event.preventDefault();
-        const formAction = event.target.closest('form').action;
-        const formData = new FormData(event.target.closest('form'));
+        if (event) event.preventDefault();
+        const form = (event && event.target) ? event.target.closest('form') : document.querySelector('#CollectionFiltersForm');
+        const formAction = form ? form.action : window.location.pathname;
+        const formData = new FormData(form);
         const searchParams = new URLSearchParams(formData).toString();
-        //this.renderPage(formAction, searchParams, event);
-        //this.renderPage(formAction, searchParams, event);
-        dTRenderCollection(formAction, searchParams, event);
-        
+        this.renderPage(formAction, searchParams, event);
     }
 
     onActiveFilterClick(event) {
@@ -80,22 +73,18 @@ class CollectionFiltersForm extends HTMLElement {
     
 
     renderPage(targetURL, searchParams, event, updateURLHash = true) {
-        const sections = [1];
-        document.querySelector('.collection-grid').querySelector('#dT_collectionGrid').classList.add('loading');
+        const gridEl = document.querySelector('#dT_collectionGrid');
+        if (gridEl) gridEl.classList.add('loading');
     
-        targetURL = targetURL.split("?");
-        targetURL = targetURL[0].trim()+"?";
+        const baseUrl = targetURL.split("?")[0].trim();
+        const url = searchParams ? `${baseUrl}?${searchParams}` : baseUrl;
     
-        sections.forEach((section) => {
-            const url = `${targetURL}&${searchParams}`;
-            const filterDataUrl = element => element.url === url;
+        const filterDataUrl = element => element.url === url;
+  
+        this.filterData.some(filterDataUrl) ?
+          this.renderSectionFromCache(filterDataUrl, 1, event) :
+          this.renderSectionFromFetch(url, 1, event);
       
-            this.filterData.some(filterDataUrl) ?
-              this.renderSectionFromCache(filterDataUrl, section, event) :
-              this.renderSectionFromFetch(url, section, event);
-        });
-      
-    
         if (updateURLHash) this.updateURLHash(searchParams);
     } 
 

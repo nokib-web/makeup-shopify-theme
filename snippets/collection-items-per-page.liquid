@@ -10,16 +10,25 @@
 </div>
 
 <script type="text/javascript">
-$('#paginateBy').on('change', function(){
-  var val = $(this).val();
-  $.ajax({
-    type: "POST",
-    url: '/cart.js',
-    data: {"attributes[pagination]": val}, 
-    success: function(d){
-      window.location.reload(); 
-    },
-    dataType: 'json'
-  });
-});
+  (function() {
+    var paginateSelect = document.getElementById('paginateBy');
+    if (paginateSelect) {
+      paginateSelect.addEventListener('change', function(e) {
+        var val = e.target.value;
+        var formData = new FormData();
+        formData.append('attributes[pagination]', val);
+
+        fetch('/cart/update.js', {
+          method: 'POST',
+          body: formData
+        })
+        .then(function() {
+          window.location.reload();
+        })
+        .catch(function(error) {
+          console.error('Error updating pagination:', error);
+        });
+      });
+    }
+  })();
 </script>
