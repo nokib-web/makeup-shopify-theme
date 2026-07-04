@@ -471,6 +471,54 @@
         "padding_bottom": 60
       }
     },
+    "custom_tabbed_showcase": {
+      "type": "custom-tabbed-collection",
+      "blocks": {
+        "tab_1": {
+          "type": "collection_tab",
+          "settings": {
+            "title": "Best Sellers",
+            "collection": "eyes",
+            "show_view_all": true,
+            "view_all_label": "View All Products"
+          }
+        },
+        "tab_2": {
+          "type": "collection_tab",
+          "settings": {
+            "title": "Lip & Gloss",
+            "collection": "face",
+            "show_view_all": true,
+            "view_all_label": "View All Lips"
+          }
+        },
+        "tab_3": {
+          "type": "collection_tab",
+          "settings": {
+            "title": "Skin Care",
+            "collection": "lips",
+            "show_view_all": true,
+            "view_all_label": "View All Skin Care"
+          }
+        }
+      },
+      "block_order": [
+        "tab_1",
+        "tab_2",
+        "tab_3"
+      ],
+      "settings": {
+        "section_heading": "Featured Categories",
+        "section_sub_heading": "EXPLORE POPULAR CATEGORIES",
+        "section_description": "",
+        "heading_position": "text-center",
+        "products_to_show": 4,
+        "columns": 4,
+        "section_bg_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "custom_3d_carousel": {
       "type": "home-3d-carousel",
       "blocks": {
@@ -581,6 +629,31 @@
         "caption_color": "#70263d",
         "caption_hover_color": "#1a1a1a",
         "custom_class_name": ""
+      }
+    },
+    "custom_bento_showcase": {
+      "type": "custom-bento-grid",
+      "settings": {
+        "section_heading": "Spotlight Collection",
+        "section_sub_heading": "TRENDING BEAUTY LOOKS",
+        "section_description": "",
+        "heading_position": "text-center",
+        "spotlight_image": "shopify://shop_images/blog-1.jpg",
+        "enable_overlay": true,
+        "overlay_opacity": 0.3,
+        "spotlight_badge": "TRENDING NOW",
+        "badge_bg": "#e63946",
+        "badge_color": "#ffffff",
+        "spotlight_title": "The Dewy Glow Routine",
+        "spotlight_desc": "Achieve effortless radiance with our curated cosmetics.",
+        "spotlight_text_color": "#ffffff",
+        "spotlight_btn_label": "Shop The Look",
+        "spotlight_btn_link": "",
+        "collection": "face",
+        "products_to_show": 3,
+        "section_bg_color": "#f9f9f9",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "1630321213cd794ca2": {
@@ -1378,75 +1451,6 @@
         "block_button_hover_bg_color": "",
         "block_button_hover_text_color": "",
         "custom_class_name": ""
-      }
-    },
-    "custom_tabbed_showcase": {
-      "type": "custom-tabbed-collection",
-      "blocks": {
-        "tab_1": {
-          "type": "collection_tab",
-          "settings": {
-            "title": "Best Sellers",
-            "collection": "all",
-            "show_view_all": true,
-            "view_all_label": "View All Products"
-          }
-        },
-        "tab_2": {
-          "type": "collection_tab",
-          "settings": {
-            "title": "Lip & Gloss",
-            "collection": "all",
-            "show_view_all": true,
-            "view_all_label": "View All Lips"
-          }
-        },
-        "tab_3": {
-          "type": "collection_tab",
-          "settings": {
-            "title": "Skin Care",
-            "collection": "all",
-            "show_view_all": true,
-            "view_all_label": "View All Skin Care"
-          }
-        }
-      },
-      "block_order": [
-        "tab_1",
-        "tab_2",
-        "tab_3"
-      ],
-      "settings": {
-        "section_sub_heading": "EXPLORE POPULAR CATEGORIES",
-        "section_heading": "Featured Categories",
-        "heading_position": "text-center",
-        "products_to_show": 4,
-        "columns": 4,
-        "section_bg_color": "#ffffff",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "custom_bento_showcase": {
-      "type": "custom-bento-grid",
-      "settings": {
-        "section_sub_heading": "TRENDING BEAUTY LOOKS",
-        "section_heading": "Spotlight Collection",
-        "heading_position": "text-center",
-        "enable_overlay": true,
-        "overlay_opacity": 0.3,
-        "spotlight_badge": "TRENDING NOW",
-        "badge_bg": "#e63946",
-        "badge_color": "#ffffff",
-        "spotlight_title": "The Dewy Glow Routine",
-        "spotlight_desc": "Achieve effortless radiance with our curated cosmetics.",
-        "spotlight_text_color": "#ffffff",
-        "spotlight_btn_label": "Shop The Look",
-        "collection": "all",
-        "products_to_show": 3,
-        "section_bg_color": "#f9f9f9",
-        "padding_top": 60,
-        "padding_bottom": 60
       }
     }
   },
