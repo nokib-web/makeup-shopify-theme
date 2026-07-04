@@ -16,6 +16,104 @@
   
   
 </script>
+<style>
+  .recently-viewed-products #recently-viewed-products-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+    align-items: stretch !important;
+  }
+
+  .recently-viewed-products .products.grid__item {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+  }
+
+  .recently-viewed-products .product-container {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    border: 1px solid var(--DTColor_Border, #eaeaea) !important;
+    border-radius: 6px !important;
+    background: var(--DTBodyBGColor, #ffffff) !important;
+    padding: 16px !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .recently-viewed-products .product-container:hover {
+    transform: translateY(-4px) !important;
+    border-color: var(--DTPrimaryColor, #111111) !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06) !important;
+  }
+
+  .recently-viewed-products .product-image img {
+    max-height: 250px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  .recently-viewed-products .product-bottom {
+    display: flex !important;
+    flex-direction: column !important;
+    flex-grow: 1 !important;
+    justify-content: space-between !important;
+    margin-top: 14px !important;
+    text-align: center !important;
+  }
+
+  .recently-viewed-products .product-title {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    line-height: 1.35 !important;
+    margin-bottom: 8px !important;
+  }
+
+  .recently-viewed-products .action {
+    margin-top: auto !important;
+    padding-top: 10px !important;
+  }
+
+  .recently-viewed-products .action .btn {
+    width: 100% !important;
+    background-color: var(--DT_Button_BG_Color, var(--DTPrimaryColor, #e63946)) !important;
+    color: var(--DT_Button_Text_Color, #ffffff) !important;
+    border: var(--DT_Button_border_width, 1px) solid var(--DT_Button_border_Color, var(--DTPrimaryColor, #e63946)) !important;
+    border-radius: var(--DT_Button_Border_Radius, 4px) !important;
+    padding: 10px 16px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.08em !important;
+    text-transform: uppercase !important;
+    transition: all 0.3s ease !important;
+  }
+
+  .recently-viewed-products .action .btn:hover {
+    background-color: var(--DT_Button_BG_Hover_Color, #333333) !important;
+    color: var(--DT_Button_Text_Hover_Color, #ffffff) !important;
+  }
+
+  @media (max-width: 991px) {
+    .recently-viewed-products #recently-viewed-products-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .recently-viewed-products #recently-viewed-products-grid {
+      grid-template-columns: repeat(1, 1fr) !important;
+    }
+  }
+</style>
+
 <section class="recently-viewed-products" data-section-id="recently-viewed-products" data-section-type="recently-viewed-products" >
   <div class="container">
   <div class="dt-sc-hr-invisible-medium"></div>
@@ -41,9 +139,8 @@
       <div class="product-top">
         <div class="product-image">
           <a href="${url}" class="product-grid-image">
-            <img src="${Shopify.Products.resizeImage(featured_image, "master")}" alt="${featured_image.alt}"/>
-
-  </a>
+            <img src="${Shopify.Products.resizeImage(featured_image, "600x600")}" alt="${featured_image.alt}"/>
+          </a>
   </div>
 
         {{if compare_at_price_min > price_min || !available}}

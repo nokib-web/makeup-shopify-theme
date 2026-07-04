@@ -69,12 +69,8 @@
         {% assign max_img_width = product_img_height | times: product_img_ratio | append:"px"%}
         {% endif %}   
           {%- assign img_url = media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}        
-        <img class="product-item-img zoom-img lazyload{% unless featured_media == media %} lazypreload{% endunless %}"  data-srczoom="{{ media.preview_image.src | img_url: "2000x" }}"
-          src="{{ 'loading.gif' | asset_url }}"
-          data-src="{{ img_url }}"
-          data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-          data-aspectratio="{{ media.preview_image.aspect_ratio }}"
-          data-sizes="auto"        
+        <img class="product-item-img zoom-img" data-srczoom="{{ media.preview_image.src | img_url: "2000x" }}"
+          src="{{ media | img_url: '800x800' }}"
           alt="{{ media.alt | escape }}" title="{{product.title}}" />
         {% if section.settings.enable_zoom %}
         <a tabindex="-1" class="zoom-img-container zoom-img-position" data-image-loading-animation href="javascript:void(0);">
@@ -104,7 +100,7 @@
         <div class="swiper-wrapper">
           {% for media in product.media %}
           <div class="swiper-slide" tabindex="0">
-            <img class="swiper-thumb-item lazyload"   src="{{ 'loading.gif' | asset_url }}"    data-src="{{ media | img_url: 'medium' }}" alt="{{ media.alt | escape }}" title="{{ product.title | escape }}" />
+            <img class="swiper-thumb-item" src="{{ media | img_url: '160x160' }}" alt="{{ media.alt | escape }}" title="{{ product.title | escape }}" />
             {% if media.media_type == "video" or media.media_type == "external_video"%}
             <span class="icon-wrapper">
               <svg  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

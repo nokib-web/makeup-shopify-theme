@@ -2,6 +2,9 @@
   <div class="dt-sc-tabs dt-sc-list-inline">       
     {% if section.settings.product_tab1 %}<button class="tablinks" onclick="openTab(event, 'tab-description')">{{ section.settings.product_tab1_heading }}</button>{% endif %}
     {% if section.settings.product_tab2 %}<button class="tablinks" onclick="openTab(event, 'tab-custom')">{{ section.settings.product_tab2_heading }}</button>{% endif %}
+    {% if product.metafields.custom.ingredients != blank %}
+      <button class="tablinks" onclick="openTab(event, 'tab-ingredients')">Ingredients</button>
+    {% endif %}
     {% if section.settings.product_tab3 %}<button class="tablinks" onclick="openTab(event, 'tab-review')">{{ section.settings.product_tab3_heading }}</button>{% endif %}
   </div>
   {% if section.settings.product_tab1 %}
@@ -14,6 +17,11 @@
     {{ pages[section.settings.page_content].content }}
   </div>
   {% endif %}  
+  {% if product.metafields.custom.ingredients != blank %}
+  <div class="dt-sc-tabs-content rte" id="tab-ingredients">
+    {{ product.metafields.custom.ingredients | metafield_tag }}
+  </div>
+  {% endif %}
   {% if section.settings.product_tab3 %}
   <div class="dt-sc-tabs-content" id="tab-review">
     <div id="shopify-product-reviews" data-id="{{product.id}}">
@@ -50,10 +58,35 @@
     for (i = 0; i < tablinks.length; i++) {
       tablinks[i].className = tablinks[i].className.replace(" active", "");
     }
-    document.getElementById(TabName).style.display = "block";
+    var targetTab = document.getElementById(TabName);
+    if (targetTab) {
+      targetTab.style.display = "block";
+    }
     evt.currentTarget.className += " active";
+
+    if (TabName === 'tab-review') {
+      if (window.jdgm && typeof window.jdgm.customize === 'function') {
+        window.jdgm.customize();
+      }
+    }
   }
+
+  function relocateJudgeMeToReviewsTab() {
+    var $tabReviewContainer = $('#tab-review #shopify-product-reviews');
+    if ($tabReviewContainer.length) {
+      var $externalWidget = $('.jdgm-review-widget, .jdgm-widget-wrapper, [data-block-handle="review-widget"]').not('#tab-review .jdgm-review-widget');
+      if ($externalWidget.length) {
+        $tabReviewContainer.append($externalWidget);
+      }
+    }
+  }
+
+  $(document).ready(function() {
+    relocateJudgeMeToReviewsTab();
+    setTimeout(relocateJudgeMeToReviewsTab, 800);
+    setTimeout(relocateJudgeMeToReviewsTab, 2000);
+  });
+
   $( ".tablinks" ).first().addClass( "active" );
   $( ".dt-sc-tabs-content" ).first().css( "display", "block" );
-
 </script>
