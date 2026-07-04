@@ -8,7 +8,7 @@
         {%- endif -%}
 
         {%- if section.settings.title != blank -%}
-          <h1 class="about__title">{{ section.settings.title }}</h1>
+          <h1 class="about__title">{{ section.settings.title | newline_to_br }}</h1>
         {%- endif -%}
 
         {%- if section.settings.description != blank -%}
@@ -406,7 +406,7 @@
       "content": "Title"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "title",
       "label": "Title",
       "default": "Beauty That Feels Like You"

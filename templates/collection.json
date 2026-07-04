@@ -99,7 +99,7 @@
           "type": "carousel",
           "settings": {
             "title": "Best Sellers",
-            "collection": "makeup",
+            "collection": "beauty-example-products",
             "limit": 5
           }
         }
@@ -110,7 +110,7 @@
         "b8b9fac8-f331-4738-a7e9-29aa5671dffe"
       ],
       "custom_css": [
-        ".left-sidebar{margin-top:60px;}"
+        ".left-sidebar {margin-top: 60px;}"
       ],
       "settings": {
         "hide_breadcrumb": false,

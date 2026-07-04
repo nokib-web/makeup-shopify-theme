@@ -1,0 +1,509 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+
+  .contact-hero-{{ section.id }} {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    align-items: center;
+  }
+  
+  @media screen and (min-width: 990px) {
+    .contact-hero-{{ section.id }} {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .contact-hero-content-{{ section.id }} {
+    flex: 1;
+    max-width: 500px;
+  }
+
+  .contact-hero-image-{{ section.id }} {
+    flex: 1.2;
+    width: 100%;
+    max-width: {{ section.settings.image_width }}px;
+  }
+  
+  .contact-hero-image-{{ section.id }} img, .contact-hero-image-{{ section.id }} svg {
+    width: 100%;
+    height: {{ section.settings.image_height }}px;
+    object-fit: cover;
+    border-radius: {{ section.settings.image_border_radius }}px;
+    {% if section.settings.image_shadow %}
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    {% endif %}
+  }
+  
+  .contact-hero-image-mobile-{{ section.id }} {
+    display: none;
+  }
+
+  @media screen and (max-width: 749px) {
+    .contact-hero-image-mobile-{{ section.id }} {
+      display: block;
+    }
+
+    .contact-hero-image-mobile-{{ section.id }} + .contact-hero-image-desktop-{{ section.id }} {
+      display: none;
+    }
+
+    .contact-hero-image-{{ section.id }} img,
+    .contact-hero-image-{{ section.id }} svg {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+
+  .contact-hero-image-{{ section.id }} svg {
+    background-color: #f3f3f3;
+  }
+
+  .contact-badge-{{ section.id }} {
+    display: inline-block;
+    font-size: {{ section.settings.badge_font_size }}px;
+    color: {{ section.settings.badge_color }};
+    font-weight: {{ section.settings.badge_font_weight }};
+    background-color: {{ section.settings.badge_bg_color }};
+    border: 1px solid {{ section.settings.badge_border_color }};
+    border-radius: {{ section.settings.badge_border_radius }}px;
+    padding: 4px 0px;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .contact-title-{{ section.id }} {
+    font-size: {{ section.settings.title_font_size_mobile }}px;
+    color: {{ section.settings.title_color }};
+    font-weight: {{ section.settings.title_font_weight }};
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+  @media screen and (min-width: 750px) {
+    .contact-title-{{ section.id }} {
+      font-size: {{ section.settings.title_font_size_desktop }}px;
+    }
+  }
+
+  .contact-desc-{{ section.id }} {
+    font-size: {{ section.settings.desc_font_size }}px;
+    color: {{ section.settings.desc_color }};
+    font-weight: {{ section.settings.desc_font_weight }};
+    max-width: {{ section.settings.desc_max_width }}px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+  }
+
+  .contact-btn-{{ section.id }} {
+    display: inline-block;
+    text-decoration: none;
+    padding: {{ section.settings.btn_padding_vertical }}px {{ section.settings.btn_padding_horizontal }}px;
+    font-size: {{ section.settings.btn_font_size }}px;
+    color: {{ section.settings.btn_color }};
+    font-weight: {{ section.settings.btn_font_weight }};
+    background-color: {{ section.settings.btn_bg_color }};
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .contact-btn-{{ section.id }}:hover {
+    background-color: {{ section.settings.btn_hover_bg_color }};
+  }
+{%- endstyle -%}
+
+<div class="section-{{ section.id }}-padding">
+  <div class="contact-hero-{{ section.id }}">
+    <div class="contact-hero-content-{{ section.id }}">
+      {%- if section.settings.badge_text != blank -%}
+        <div class="contact-badge-{{ section.id }}">{{ section.settings.badge_text }}</div>
+      {%- endif -%}
+      
+      {%- if section.settings.title_text != blank -%}
+        <h1 class="contact-title-{{ section.id }}">{{ section.settings.title_text }}</h1>
+      {%- endif -%}
+      
+      {%- if section.settings.desc_text != blank -%}
+        <div class="contact-desc-{{ section.id }}">{{ section.settings.desc_text }}</div>
+      {%- endif -%}
+      
+      {%- if section.settings.btn_text != blank -%}
+        <a href="{{ section.settings.btn_link | default: '#contact-form-section' }}" class="contact-btn-{{ section.id }}">{{ section.settings.btn_text }}</a>
+      {%- endif -%}
+    </div>
+    
+    <div class="contact-hero-image-{{ section.id }}">
+      {%- if section.settings.image_mobile != blank -%}
+        <div class="contact-hero-image-mobile-{{ section.id }}">
+          {{ section.settings.image_mobile | image_url: width: section.settings.image_width | image_tag: loading: 'lazy' }}
+        </div>
+      {%- endif -%}
+
+      <div class="contact-hero-image-desktop-{{ section.id }}">
+        {%- if section.settings.image != blank -%}
+          {{ section.settings.image | image_url: width: section.settings.image_width | image_tag: loading: 'lazy' }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const btn = document.querySelector('.contact-btn-{{ section.id }}');
+    if(btn && btn.getAttribute('href').startsWith('#')) {
+      btn.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        if(targetElement) {
+          e.preventDefault();
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Contact Hero Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 600,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Max Width",
+      "default": 1200
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#fdfaf7"
+    },
+    {
+      "type": "header",
+      "content": "Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "CONTACT US"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 12
+    },
+    {
+      "type": "color",
+      "id": "badge_color",
+      "label": "Color",
+      "default": "#555555"
+    },
+    {
+      "type": "range",
+      "id": "badge_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "badge_bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "badge_border_color",
+      "label": "Border Color",
+      "default": "transparent"
+    },
+    {
+      "type": "range",
+      "id": "badge_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "text",
+      "id": "title_text",
+      "label": "Title",
+      "default": "We'd Love To Hear From You"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "min": 24,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size Desktop",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Font Size Mobile",
+      "default": 36
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "title_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "textarea",
+      "id": "desc_text",
+      "label": "Description",
+      "default": "Have a question, need help, or just want to say hello? Our team is here for you."
+    },
+    {
+      "type": "range",
+      "id": "desc_font_size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 16
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Color",
+      "default": "#555555"
+    },
+    {
+      "type": "range",
+      "id": "desc_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "desc_max_width",
+      "min": 200,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "label": "Max Width",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "GET IN TOUCH"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "range",
+      "id": "btn_padding_vertical",
+      "min": 5,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Vertical",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "btn_padding_horizontal",
+      "min": 10,
+      "max": 80,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Horizontal",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "btn_font_size",
+      "min": 10,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Font Size",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "btn_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "btn_font_weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "label": "Font Weight",
+      "default": 700
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_hover_bg_color",
+      "label": "Hover Background Color",
+      "default": "#333333"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image (mobile override)"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 200,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "label": "Max Width",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 200,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "label": "Height",
+      "default": 400
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "image_shadow",
+      "label": "Enable Shadow",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Hero Banner"
+    }
+  ]
+}
+{% endschema %}

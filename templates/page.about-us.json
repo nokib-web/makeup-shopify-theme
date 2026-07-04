@@ -22,18 +22,19 @@
         "padding_bottom": 100,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
-        "padding_horizontal": 40,
-        "max_width": 1200,
+        "padding_horizontal": 28,
+        "max_width": 1460,
         "bg_color": "#f5f2ee",
-        "bg_image": "shopify://shop_images/ChatGPT_Image_Jul_2_2026_03_58_17_PM.png",
+        "bg_image": "shopify://shop_images/ChatGPT_Image_Jul_3_2026_10_29_40_AM.png",
+        "bg_image_mobile": "shopify://shop_images/ChatGPT_Image_Jul_3_2026_12_26_15_PM.png",
         "image_radius": 0,
         "eyebrow_text": "About Our Brand",
         "eyebrow_font_size": 13,
         "eyebrow_color": "#3d5a36",
         "eyebrow_font_weight": "600",
-        "title": "Beauty That <br>Feels  Like You",
+        "title": "Beauty That Feels \nLike You",
         "title_font_size": 52,
-        "title_font_size_mobile": 34,
+        "title_font_size_mobile": 32,
         "title_color": "#2b2b2b",
         "title_font_weight": "400",
         "description": "<p>Create beauty rituals inspired by confidence, simplicity, and everyday luxury.</p>",
@@ -42,7 +43,7 @@
         "description_font_weight": "400",
         "description_max_width": 440,
         "button_text": "Shop Collection",
-        "button_link": "",
+        "button_link": "shopify://collections/all",
         "button_padding_horizontal": 32,
         "button_padding_vertical": 16,
         "button_font_size": 13,
@@ -51,7 +52,7 @@
         "button_bg": "#2b2b2b",
         "button_hover_bg": "#3d5a36",
         "button_text_2": "Discover Our Story",
-        "button_link_2": "",
+        "button_link_2": "#our_story",
         "button_2_padding_horizontal": 32,
         "button_2_padding_vertical": 16,
         "button_2_font_size": 13,
@@ -242,7 +243,7 @@
         "eyebrow_font_size": 12,
         "eyebrow_color": "#8a7a6d",
         "eyebrow_font_weight": "600",
-        "title": "Why Thousands Choose <br class=\"title-br\">Our Brand",
+        "title": "Why Thousands Choose Our Brand",
         "title_font_size": 40,
         "title_font_size_mobile": 28,
         "title_color": "#2b2b2b",
@@ -323,8 +324,8 @@
         "padding_bottom": 80,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
-        "padding_horizontal": 40,
-        "max_width": 1400,
+        "padding_horizontal": 28,
+        "max_width": 1460,
         "bg_color": "#ffffff",
         "eyebrow_text": "Thoughtfully Chosen",
         "eyebrow_font_size": 12,
@@ -444,8 +445,8 @@
         "padding_bottom": 80,
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
-        "padding_horizontal": 40,
-        "max_width": 1400,
+        "padding_horizontal": 28,
+        "max_width": 1460,
         "bg_color": "#faf6f2",
         "line_color": "#d8c3b5",
         "icon_border_color": "#d8c3b5",
@@ -626,6 +627,7 @@
         "review_fh7Rne",
         "review_77FhbJ"
       ],
+      "disabled": true,
       "name": "Testimonials Carousel",
       "settings": {
         "padding_top": 80,
@@ -657,33 +659,37 @@
         "quote_gPJYKh": {
           "type": "quote",
           "settings": {
-            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author's name",
-            "job": "Author's designation"
+            "quote": "<p>I've tried many skincare products, but this one genuinely made a difference. My skin feels smoother, hydrated, and looks healthier after just a few weeks.</p>",
+            "icon": "shopify://shop_images/g1.png",
+            "author": "Emma Carter",
+            "job": "Marketing Manager"
           }
         },
         "quote_tyw8wN": {
           "type": "quote",
           "settings": {
-            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author's name",
-            "job": "Author's designation"
+            "quote": "<p>The quality exceeded my expectations. It's lightweight, absorbs quickly, and leaves my skin glowing without feeling greasy.</p>",
+            "icon": "shopify://shop_images/g2.png",
+            "author": "Sophia Bennett",
+            "job": "Beautician"
           }
         },
         "quote_4cdiRX": {
           "type": "quote",
           "settings": {
-            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author's name",
-            "job": "Author's designation"
+            "quote": "<p>I have sensitive skin, and this product worked perfectly for me. No irritation, just soft and refreshed skin every day.</p>",
+            "icon": "shopify://shop_images/g3.png",
+            "author": "Jessica Lumina",
+            "job": "Makeup Artist"
           }
         },
         "quote_36Bx99": {
           "type": "quote",
           "settings": {
-            "quote": "<p>Add customer reviews and testimonials to showcase your store's happy customers.</p>",
-            "author": "Author's name",
-            "job": "Author's designation"
+            "quote": "<p>Beautiful packaging, premium quality, and most importantly—it actually delivers on its promises. I'll definitely repurchase.</p>",
+            "icon": "shopify://shop_images/g4.png",
+            "author": "Charlotte Evans",
+            "job": "Fashion Stylist"
           }
         }
       },
@@ -695,9 +701,9 @@
       ],
       "name": "Advanced Testimonial",
       "settings": {
-        "heading": "What our customers say...",
-        "color_bg": "#4a4a4a",
-        "color_text": "#ffffff"
+        "heading": "Hear From Our Customers",
+        "color_bg": "#faf6f2",
+        "color_text": "#000000"
       }
     }
   },
