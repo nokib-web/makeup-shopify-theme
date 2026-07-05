@@ -1,3 +1,6 @@
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+
 <div class="hero2-section">
   <div class="hero2">
     <div class="hero2__grid">
@@ -43,7 +46,34 @@
       </div>
 
       <div class="hero2__media">
-        {%- if section.settings.image -%}
+        {%- assign slider_blocks = section.blocks | where: 'type', 'slider_image' -%}
+        {%- if slider_blocks.size > 0 -%}
+          <div class="swiper hero2-swiper" id="hero2-swiper-{{ section.id }}" style="width: 100%; overflow: hidden;">
+            <div class="swiper-wrapper">
+              {%- for block in slider_blocks -%}
+                {%- if block.settings.image -%}
+                  <div class="swiper-slide" {{ block.shopify_attributes }}>
+                    <img
+                      class="hero2__image"
+                      src="{{ block.settings.image | image_url: width: 1400 }}"
+                      srcset="{{ block.settings.image | image_url: width: 700 }} 700w,
+                              {{ block.settings.image | image_url: width: 1000 }} 1000w,
+                              {{ block.settings.image | image_url: width: 1400 }} 1400w"
+                      sizes="(min-width: 990px) 50vw, 100vw"
+                      alt="{{ block.settings.image.alt | default: section.settings.title_line1 | escape }}"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                      loading="lazy"
+                    >
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+          </div>
+        {%- elsif section.settings.image -%}
           <img
             class="hero2__image"
             src="{{ section.settings.image | image_url: width: 1400 }}"
@@ -181,7 +211,8 @@
 
   #shopify-section-{{ section.id }} .hero2__media {
     flex: 1 1 440px;
-    min-width: 280px;
+    min-width: 0;
+    max-width: 100%;
     display: flex;
     justify-content: center;
   }
@@ -370,6 +401,59 @@
     {%- endif -%}
   }
 </style>
+
+<script>
+  (function() {
+    function initHeroSwiper() {
+      var swiperContainer = document.querySelector('#hero2-swiper-{{ section.id }}');
+      if (swiperContainer && typeof Swiper !== 'undefined') {
+        // Destroy existing swiper if present to prevent multiple instances
+        if (swiperContainer.swiper) {
+          swiperContainer.swiper.destroy(true, true);
+        }
+        new Swiper(swiperContainer, {
+          loop: true,
+          autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+          },
+          pagination: {
+            el: swiperContainer.querySelector('.swiper-pagination'),
+            clickable: true,
+          },
+          navigation: {
+            nextEl: swiperContainer.querySelector('.swiper-button-next'),
+            prevEl: swiperContainer.querySelector('.swiper-button-prev'),
+          }
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHeroSwiper);
+    } else {
+      initHeroSwiper();
+    }
+
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail.sectionId === '{{ section.id }}') {
+        setTimeout(initHeroSwiper, 100);
+      }
+    });
+    
+    document.addEventListener('shopify:block:select', function(e) {
+      if (e.detail.sectionId === '{{ section.id }}') {
+        setTimeout(initHeroSwiper, 100);
+      }
+    });
+    
+    document.addEventListener('shopify:block:deselect', function(e) {
+      if (e.detail.sectionId === '{{ section.id }}') {
+        setTimeout(initHeroSwiper, 100);
+      }
+    });
+  })();
+</script>
 
 {% schema %}
 {
@@ -931,6 +1015,17 @@
           "id": "description",
           "label": "Description",
           "default": "Safe & gentle"
+        }
+      ]
+    },
+    {
+      "type": "slider_image",
+      "name": "Slider Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
         }
       ]
     }
