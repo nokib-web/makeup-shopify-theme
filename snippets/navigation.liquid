@@ -41,6 +41,7 @@
 {%- endif -%}
 {%- endfor -%}
 {%- endfor -%}
+<!-- DEBUG: link.title="{{ link.title }}", link_title="{{ link.title | escape | strip | handleize }}", dt_mega={{ dt_mega }} -->
 
 <li class="{{link.levels}} {% if blockType == "promo_image" %}promo_image{% elsif blockType == "product" %}megaProduct{% else %}text-menu{% endif %}
            top-level-link 

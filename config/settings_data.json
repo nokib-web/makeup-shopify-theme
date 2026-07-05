@@ -274,7 +274,7 @@
           "search_type": "search-icon",
           "enable_predictive_search": true,
           "social_icon_color": "#151413",
-          "social_icon_hover_color": "#B15A42",
+          "social_icon_hover_color": "#b15a42",
           "social_icon_bg": "rgba(0,0,0,0)",
           "social_icon_hover_bg": "rgba(0,0,0,0)",
           "show_account": false,
@@ -282,7 +282,7 @@
           "show_header_wishlist": false,
           "show_header_compare": false,
           "icon_color": "#151413",
-          "icon_hover_color": "#C9694F",
+          "icon_hover_color": "#c9694f",
           "icon_bg": "rgba(0,0,0,0)",
           "icon_hover_bg": "rgba(0,0,0,0)",
           "enable_menu_indicator": true,
@@ -291,11 +291,11 @@
           "secondary_menu": "",
           "header_bg": "#fef2f0",
           "menu_color": "#1a1a1a",
-          "menu_active_color": "#C9694F",
+          "menu_active_color": "#c9694f",
           "menu_active_bg": "rgba(0,0,0,0)",
           "mega_menu_bg": "#ffffff",
           "submenu_color": "#1a1a1a",
-          "submenu_hover_color": "#B15A42",
+          "submenu_hover_color": "#b15a42",
           "font_size": 14,
           "font_size_sub": 14,
           "show_header_currency": false
@@ -360,20 +360,11 @@
               "column_alignment": "text-start"
             }
           },
-          "fc673e94-de81-455f-bc70-636c5e5a8c60": {
-            "type": "menu",
-            "settings": {
-              "title": "Help",
-              "menu": "footer",
-              "container_width": 20,
-              "column_alignment": "text-start"
-            }
-          },
           "5368c12e-d98f-4a40-851c-6a3510cff514": {
             "type": "menu",
             "settings": {
-              "title": "Support",
-              "menu": "main-menu",
+              "title": "Trending",
+              "menu": "trending",
               "container_width": 20,
               "column_alignment": "text-start"
             }
@@ -381,8 +372,17 @@
           "c886025e-d4fe-4342-99b5-dc543122a05d": {
             "type": "menu",
             "settings": {
+              "title": "Quick Links",
+              "menu": "quick-links",
+              "container_width": 20,
+              "column_alignment": "text-start"
+            }
+          },
+          "fc673e94-de81-455f-bc70-636c5e5a8c60": {
+            "type": "menu",
+            "settings": {
               "title": "Information",
-              "menu": "main-menu",
+              "menu": "footer",
               "container_width": 20,
               "column_alignment": "text-start"
             }
@@ -398,9 +398,9 @@
         },
         "block_order": [
           "b1250184-2166-4342-a227-92ff96e23480",
-          "fc673e94-de81-455f-bc70-636c5e5a8c60",
           "5368c12e-d98f-4a40-851c-6a3510cff514",
           "c886025e-d4fe-4342-99b5-dc543122a05d",
+          "fc673e94-de81-455f-bc70-636c5e5a8c60",
           "32132342-9db0-4b3d-99bf-d693fb4ff693"
         ],
         "settings": {

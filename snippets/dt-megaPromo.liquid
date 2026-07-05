@@ -6,10 +6,7 @@
     {%- capture dt_megaImage -%}
     {%- unless block.settings.image_1 == blank -%}    
     {%- assign mega_img_1_url = block.settings.image_1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-    <img class="lazyload"
-         src="{{ 'loading.gif' | asset_url }}"
-         data-src="{{ block.settings.image_1 | img_url: 'master' }}"
-         data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
+    <img src="{{ block.settings.image_1 | img_url: 'master' }}"
          data-aspectratio="{{ block.settings.image_1.aspect_ratio }}"
          data-sizes="auto"            
          alt="{{ block.settings.image_1.alt | escape }}">            
@@ -43,10 +40,7 @@
     {%- capture dt_megaImage -%}
     {%- unless block.settings.image_2 == blank -%}
    {%- assign mega_img_2_url = block.settings.image_2 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-    <img class="lazyload"
-         src="{{ 'loading.gif' | asset_url }}"
-         data-src="{{ block.settings.image_2 | img_url: 'master' }}"
-         data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
+    <img src="{{ block.settings.image_2 | img_url: 'master' }}"
          data-aspectratio="{{ block.settings.image_2.aspect_ratio }}"
          data-sizes="auto"            
          alt="{{ block.settings.image_1.alt | escape }}">            
@@ -80,10 +74,7 @@
     {%- capture dt_megaImage -%}
     {%- unless block.settings.image_3 == blank -%}
  
-    <img class="lazyload"
-         src="{{ 'loading.gif' | asset_url }}"
-         data-src="{{ block.settings.image_3 | img_url: 'master' }}"
-         data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
+    <img src="{{ block.settings.image_3 | img_url: 'master' }}"
          data-aspectratio="{{ block.settings.image_3.aspect_ratio }}"
          data-sizes="auto"            
          alt="{{ block.settings.image_1.alt | escape }}">            
@@ -116,10 +107,7 @@
   <div class="dt-sc-mega_menu text-center">
     {%- capture dt_megaImage -%}
     {%- unless block.settings.image_4 == blank -%}      
-    <img class="lazyload"
-         src="{{ 'loading.gif' | asset_url }}"
-         data-src="{{ block.settings.image_4 | img_url: 'master' }}"
-         data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
+    <img src="{{ block.settings.image_4 | img_url: 'master' }}"
          data-aspectratio="{{ block.settings.image_4.aspect_ratio }}"
          data-sizes="auto"            
          alt="{{ block.settings.image_4.alt | escape }}">            

@@ -130,6 +130,12 @@
     "hero_highlight_anR6z6": {
       "type": "hero-highlight",
       "blocks": {
+        "slider_image_yQHbrL": {
+          "type": "slider_image",
+          "settings": {
+            "image": "shopify://shop_images/banner_5.webp"
+          }
+        },
         "slider_image_jbjkEk": {
           "type": "slider_image",
           "settings": {
@@ -151,7 +157,7 @@
         "slider_image_LLpLtM": {
           "type": "slider_image",
           "settings": {
-            "image": "shopify://shop_images/banner_image_3.webp"
+            "image": "shopify://shop_images/banner_4.webp"
           }
         },
         "badge_dmdA4n": {
@@ -180,6 +186,7 @@
         }
       },
       "block_order": [
+        "slider_image_yQHbrL",
         "slider_image_jbjkEk",
         "slider_image_Hf7QRQ",
         "slider_image_7qkLbM",
@@ -550,6 +557,16 @@
     "custom_3d_carousel": {
       "type": "home-3d-carousel",
       "blocks": {
+        "slide_3Vpkhc": {
+          "type": "slide",
+          "settings": {
+            "slide_video": "shopify://files/videos/Smoky_makeup_particles_flowing_g…_202607011634.mp4",
+            "title": "Flow",
+            "subtitle": "01 - 05",
+            "text_color": "#ffffff",
+            "link": ""
+          }
+        },
         "slide_mmXPMe": {
           "type": "slide",
           "settings": {
@@ -592,6 +609,7 @@
         }
       },
       "block_order": [
+        "slide_3Vpkhc",
         "slide_mmXPMe",
         "slide-1",
         "slide-2",
