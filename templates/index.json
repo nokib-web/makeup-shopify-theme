@@ -263,35 +263,35 @@
     "custom_category_circles": {
       "type": "home-category-circles",
       "blocks": {
-        "circle_1": {
+        "category_item_B6AHQK": {
           "type": "category_item",
           "settings": {
-            "collection": "eyes",
-            "title": "Eyes",
+            "collection": "face-makeup",
+            "image": "shopify://shop_images/51-1TwvvsrL._AC_SX679.png",
+            "title": "",
             "link": ""
           }
         },
-        "circle_2": {
+        "circle_1": {
           "type": "category_item",
           "settings": {
-            "collection": "face",
-            "title": "Moisturizer",
+            "collection": "eye-makeup",
+            "title": "Eyes",
             "link": ""
           }
         },
         "circle_3": {
           "type": "category_item",
           "settings": {
-            "collection": "lips",
-            "title": "Eyeliner",
+            "collection": "skin-care-tools",
+            "title": "Skin Care",
             "link": ""
           }
         },
         "circle_4": {
           "type": "category_item",
           "settings": {
-            "collection": "nail",
-            "image": "shopify://shop_images/lor-al-paris-color-riche-lipstick-scarlett-creme-461.png",
+            "collection": "lips-makeup",
             "title": "Lips",
             "link": ""
           }
@@ -299,25 +299,24 @@
         "circle_5": {
           "type": "category_item",
           "settings": {
-            "collection": "frontpage",
-            "image": "shopify://shop_images/Screenshot2026-02-08at09.14.51.png",
-            "title": "Cleanser",
+            "collection": "best-sellers",
+            "title": "Best Sellers",
             "link": ""
           }
         },
         "circle_6": {
           "type": "category_item",
           "settings": {
-            "collection": "face",
-            "image": "shopify://shop_images/Screenshot2026-02-08at08.39.54.png",
-            "title": "Perfume",
+            "collection": "featured",
+            "image": "shopify://shop_images/L_OrealNudeMagiqueCushionFoundation7GoldenBeige14.6g.png",
+            "title": "Featured",
             "link": ""
           }
         }
       },
       "block_order": [
+        "category_item_B6AHQK",
         "circle_1",
-        "circle_2",
         "circle_3",
         "circle_4",
         "circle_5",
@@ -407,70 +406,6 @@
     },
     "home_bestseller_carousel_9TEiRn": {
       "type": "home-bestseller-carousel",
-      "blocks": {
-        "product_kp8Vik": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "product": "loreal-glam-shine-balmy-gloss-913-dare-the-dragon-fruit-copy-1",
-            "custom_title": "",
-            "custom_price": "",
-            "custom_badge": "",
-            "custom_rating": "",
-            "custom_rating_count": "",
-            "custom_offer_text": "",
-            "custom_feature_text": ""
-          }
-        },
-        "product_7XbNEC": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "product": "loreal-nude-bb-blush",
-            "custom_title": "",
-            "custom_price": "",
-            "custom_badge": "",
-            "custom_rating": "",
-            "custom_rating_count": "",
-            "custom_offer_text": "",
-            "custom_feature_text": ""
-          }
-        },
-        "product_Dyiigz": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "product": "loreal-nude-bb-blush",
-            "custom_title": "",
-            "custom_price": "",
-            "custom_badge": "",
-            "custom_rating": "",
-            "custom_rating_count": "",
-            "custom_offer_text": "",
-            "custom_feature_text": ""
-          }
-        },
-        "product_t7ET3z": {
-          "type": "product",
-          "disabled": true,
-          "settings": {
-            "product": "loreal-glam-shine-balmy-gloss-913-dare-the-dragon-fruit-copy-1",
-            "custom_title": "",
-            "custom_price": "",
-            "custom_badge": "",
-            "custom_rating": "",
-            "custom_rating_count": "",
-            "custom_offer_text": "",
-            "custom_feature_text": ""
-          }
-        }
-      },
-      "block_order": [
-        "product_kp8Vik",
-        "product_7XbNEC",
-        "product_Dyiigz",
-        "product_t7ET3z"
-      ],
       "name": "Bestseller Carousel",
       "settings": {
         "section_heading": "Bestsellers",
@@ -513,7 +448,7 @@
           "type": "collection_tab",
           "settings": {
             "title": "Best Sellers",
-            "collection": "eyes",
+            "collection": "best-sellers",
             "show_view_all": true,
             "view_all_label": "View All Products"
           }
@@ -522,7 +457,7 @@
           "type": "collection_tab",
           "settings": {
             "title": "Lip & Gloss",
-            "collection": "face",
+            "collection": "lips-makeup",
             "show_view_all": true,
             "view_all_label": "View All Lips"
           }
@@ -531,7 +466,7 @@
           "type": "collection_tab",
           "settings": {
             "title": "Skin Care",
-            "collection": "lips",
+            "collection": "skin-care-tools",
             "show_view_all": true,
             "view_all_label": "View All Skin Care"
           }
@@ -695,7 +630,7 @@
         "spotlight_text_color": "#ffffff",
         "spotlight_btn_label": "Shop The Look",
         "spotlight_btn_link": "",
-        "collection": "face",
+        "collection": "face-makeup",
         "products_to_show": 3,
         "section_bg_color": "#f9f9f9",
         "padding_top": 60,

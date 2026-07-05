@@ -32,11 +32,11 @@
               {% assign collection_ref = collections[block.settings.collection] %}
 
               {% if block.settings.image != blank %}
-                {% assign circle_img = block.settings.image | img_url: '400x400', crop: 'center' %}
+                {% assign circle_img = block.settings.image | img_url: '400x400' %}
               {% elsif collection_ref.image != blank %}
-                {% assign circle_img = collection_ref.image | img_url: '400x400', crop: 'center' %}
+                {% assign circle_img = collection_ref.image | img_url: '400x400' %}
               {% elsif collection_ref.products.first.featured_image != blank %}
-                {% assign circle_img = collection_ref.products.first.featured_image | img_url: '400x400', crop: 'center' %}
+                {% assign circle_img = collection_ref.products.first.featured_image | img_url: '400x400' %}
               {% else %}
                 {% assign circle_img = blank %}
               {% endif %}
@@ -174,7 +174,8 @@
   .category-circle-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: 15px; /* Adds breathing room around the product */
     display: block;
     transition: transform 0.5s ease;
   }
