@@ -1,9 +1,11 @@
 <div class="container" data-section-id="{{ section.id }}" data-section-type="collection-template">            
   <div class="row">      
-    {% if cart.attributes.pagination != blank and cart.attributes.pagination %}
-    {% assign product_per_page = cart.attributes.pagination %}
-    {% else %}
     {% assign product_per_page = section.settings.grid | times: section.settings.rows %}
+    {% if cart.attributes.pagination != blank %}
+      {% assign pagination_int = cart.attributes.pagination | plus: 0 %}
+      {% if pagination_int > 0 %}
+        {% assign product_per_page = pagination_int %}
+      {% endif %}
     {% endif %}
     {% paginate collection.products by product_per_page %}  
    

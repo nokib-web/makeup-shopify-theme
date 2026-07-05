@@ -116,10 +116,10 @@
   }
 
   .custom-tab-btn {
-    background: var(--DTBodyBGColor, #ffffff);
-    color: var(--DTColor_Heading, #333333);
-    border: 1px solid var(--DTColor_Border, #dddddd);
-    border-radius: var(--DT_Button_Border_Radius, 4px);
+    background-color: transparent !important;
+    color: var(--DT_Button_BG_Color, var(--DTPrimaryColor, #e63946)) !important;
+    border: 1px solid var(--DT_Button_BG_Color, var(--DTPrimaryColor, #e63946)) !important;
+    border-radius: var(--DT_Button_Border_Radius, 4px) !important;
     padding: 10px 24px;
     font-size: 13px;
     font-weight: 600;
@@ -130,9 +130,9 @@
   }
 
   .custom-tab-btn:hover {
-    background-color: var(--DT_Button_BG_Hover_Color, var(--DTPrimaryColor, #e63946)) !important;
-    color: var(--DT_Button_Text_Hover_Color, #ffffff) !important;
-    border-color: var(--DT_Button_hover_border_Color, var(--DTPrimaryColor, #e63946)) !important;
+    background-color: var(--DT_Button_BG_Color, var(--DTPrimaryColor, #e63946)) !important;
+    color: var(--DT_Button_Text_Color, #ffffff) !important;
+    border-color: var(--DT_Button_border_Color, var(--DTPrimaryColor, #e63946)) !important;
   }
 
   .custom-tab-btn.active {

@@ -15,15 +15,22 @@
     if (paginateSelect) {
       paginateSelect.addEventListener('change', function(e) {
         var val = e.target.value;
-        var formData = new FormData();
-        formData.append('attributes[pagination]', val);
-
+        
         fetch('/cart/update.js', {
           method: 'POST',
-          body: formData
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            attributes: {
+              pagination: val
+            }
+          })
         })
         .then(function() {
-          window.location.reload();
+          var url = new URL(window.location.href);
+          url.searchParams.set('v', new Date().getTime());
+          window.location.href = url.toString();
         })
         .catch(function(error) {
           console.error('Error updating pagination:', error);
