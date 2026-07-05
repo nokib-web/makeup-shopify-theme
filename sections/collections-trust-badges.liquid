@@ -1,0 +1,311 @@
+{%- assign sec_id = section.id -%}
+
+<style>
+  .trust-badges-{{ sec_id }} {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    padding-left: {{ section.settings.padding_horizontal }}px;
+    padding-right: {{ section.settings.padding_horizontal }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .trust-badges-{{ sec_id }} .tb-wrapper {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .trust-badges-{{ sec_id }} .tb-item {
+    flex: 1 1 0;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 20px;
+    border-left: 1px solid {{ section.settings.divider_color }};
+    min-width: 200px;
+  }
+
+  .trust-badges-{{ sec_id }} .tb-item:first-child {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .trust-badges-{{ sec_id }} .tb-icon {
+    flex-shrink: 0;
+    width: {{ section.settings.icon_size }}px;
+    height: {{ section.settings.icon_size }}px;
+  }
+
+  .trust-badges-{{ sec_id }} .tb-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  .trust-badges-{{ sec_id }} .tb-text {
+    min-width: 0;
+  }
+
+  .trust-badges-{{ sec_id }} .tb-title {
+    font-size: {{ section.settings.title_font_size_desktop }}px;
+    color: {{ section.settings.title_color }};
+    font-weight: {{ section.settings.title_font_weight }};
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+  }
+
+  .trust-badges-{{ sec_id }} .tb-desc {
+    font-size: {{ section.settings.desc_font_size }}px;
+    color: {{ section.settings.desc_color }};
+    font-weight: {{ section.settings.desc_font_weight }};
+    max-width: {{ section.settings.desc_max_width }}px;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  @media screen and (max-width: 989px) {
+    .trust-badges-{{ sec_id }} .tb-item {
+      flex: 1 1 45%;
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .trust-badges-{{ sec_id }} .tb-title {
+      font-size: {{ section.settings.title_font_size_mobile }}px;
+    }
+    .trust-badges-{{ sec_id }} .tb-item {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+
+<div class="trust-badges-{{ sec_id }}">
+  <div class="tb-wrapper">
+    {%- for block in section.blocks -%}
+      <div class="tb-item" {{ block.shopify_attributes }}>
+        {%- if block.settings.icon_image != blank -%}
+          <div class="tb-icon">
+            <img src="{{ block.settings.icon_image | image_url: width: 200 }}" alt="{{ block.settings.title | escape }}" loading="lazy">
+          </div>
+        {%- endif -%}
+        <div class="tb-text">
+          {%- if block.settings.title != blank -%}
+            <p class="tb-title">{{ block.settings.title }}</p>
+          {%- endif -%}
+          {%- if block.settings.description != blank -%}
+            <p class="tb-desc">{{ block.settings.description }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trust Badges",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider color",
+      "default": "#e5e5e5"
+    },
+
+    {
+      "type": "header",
+      "content": "Icon"
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "label": "Icon size",
+      "min": 20,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40
+    },
+
+    {
+      "type": "header",
+      "content": "Title"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "label": "Title font size (desktop)",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "label": "Title font size (mobile)",
+      "min": 10,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "select",
+      "id": "title_font_weight",
+      "label": "Title font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" },
+        { "value": "800", "label": "Extra Bold" }
+      ],
+      "default": "700"
+    },
+
+    {
+      "type": "header",
+      "content": "Description"
+    },
+    {
+      "type": "range",
+      "id": "desc_font_size",
+      "label": "Description font size",
+      "min": 8,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "desc_color",
+      "label": "Description color",
+      "default": "#6b6b6b"
+    },
+    {
+      "type": "select",
+      "id": "desc_font_weight",
+      "label": "Description font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semibold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "desc_max_width",
+      "label": "Description max width",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 220
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "100% Authentic Products"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Genuine Beauty, Guaranteed"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Trust Badges",
+      "blocks": [
+        { "type": "badge" },
+        { "type": "badge" },
+        { "type": "badge" },
+        { "type": "badge" },
+        { "type": "badge" }
+      ]
+    }
+  ]
+}
+{% endschema %}

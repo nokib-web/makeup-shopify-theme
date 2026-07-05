@@ -81,6 +81,76 @@
         "custom_class_name": ""
       }
     },
+    "collections_trust_badges_4gNDDh": {
+      "type": "collections-trust-badges",
+      "blocks": {
+        "badge_tc8enp": {
+          "type": "badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/shield-badge.png",
+            "title": "100% Authentic",
+            "description": "Genuine Beauty, Guaranteed"
+          }
+        },
+        "badge_ndimBp": {
+          "type": "badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/truck.png",
+            "title": "Fast UK Delivery",
+            "description": "On Orders Over E25"
+          }
+        },
+        "badge_89Aw7d": {
+          "type": "badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/commercial.png",
+            "title": "Easy Returns",
+            "description": "Hassie-Free 14 Day Returns"
+          }
+        },
+        "badge_RaE87k": {
+          "type": "badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/credit-card.png",
+            "title": "Secure Payments",
+            "description": "100% Safe & Secure Checkout"
+          }
+        },
+        "badge_F4fAbx": {
+          "type": "badge",
+          "settings": {
+            "icon_image": "shopify://shop_images/customer-support.png",
+            "title": "Expert Support",
+            "description": "We're Here To Help"
+          }
+        }
+      },
+      "block_order": [
+        "badge_tc8enp",
+        "badge_ndimBp",
+        "badge_89Aw7d",
+        "badge_RaE87k",
+        "badge_F4fAbx"
+      ],
+      "name": "Trust Badges",
+      "settings": {
+        "padding_horizontal": 50,
+        "padding_top": 30,
+        "padding_bottom": 30,
+        "max_width": 1560,
+        "bg_color": "#ffffff",
+        "divider_color": "#e5e5e5",
+        "icon_size": 40,
+        "title_font_size_desktop": 15,
+        "title_font_size_mobile": 14,
+        "title_color": "#1a1a1a",
+        "title_font_weight": "700",
+        "desc_font_size": 13,
+        "desc_color": "#6b6b6b",
+        "desc_font_weight": "400",
+        "desc_max_width": 220
+      }
+    },
     "main": {
       "type": "main-collection-template",
       "blocks": {
@@ -99,7 +169,7 @@
           "type": "carousel",
           "settings": {
             "title": "Best Sellers",
-            "collection": "beauty-example-products",
+            "collection": "best-sellers",
             "limit": 5
           }
         }
@@ -118,7 +188,7 @@
         "collections_sort_enable": true,
         "collections_view_enable": true,
         "item_pre_view": true,
-        "grid": "3",
+        "grid": "4",
         "rows": "3",
         "text_color": "#1a1a1a",
         "title_color": "#206469",
@@ -145,17 +215,19 @@
             "open_new_tab": true
           }
         },
-        "social_icon_NdgpPr": {
+        "social_icon_VgKE4q": {
           "type": "social_icon",
           "settings": {
-            "link": "",
+            "icon_image": "shopify://shop_images/pinterest.png",
+            "link": "#",
             "open_new_tab": true
           }
         },
-        "social_icon_qiD69J": {
+        "social_icon_HFrR7C": {
           "type": "social_icon",
           "settings": {
-            "link": "",
+            "icon_image": "shopify://shop_images/youtube.png",
+            "link": "#",
             "open_new_tab": true
           }
         }
@@ -163,12 +235,12 @@
       "block_order": [
         "social_icon_eiXRmU",
         "social_icon_j8jfEY",
-        "social_icon_NdgpPr",
-        "social_icon_qiD69J"
+        "social_icon_VgKE4q",
+        "social_icon_HFrR7C"
       ],
       "name": "Newsletter & Social",
       "settings": {
-        "padding_horizontal": 20,
+        "padding_horizontal": 15,
         "padding_top": 40,
         "padding_bottom": 40,
         "max_width": 1400,
@@ -176,19 +248,19 @@
         "icon_image": "shopify://shop_images/gift.png",
         "icon_size": 70,
         "icon_padding": 15,
-        "icon_bg": "#e8493f",
+        "icon_bg": "#C9694F",
         "icon_radius": 100,
         "title": "Get Beauty Tips & Exclusive Offers",
         "title_font_size_desktop": 22,
-        "title_font_size_mobile": 18,
+        "title_font_size_mobile": 17,
         "title_color": "#1a1a1a",
         "title_font_weight": "700",
         "description": "Join our newsletter and be the first to know about new arrivals, offers & more.",
-        "desc_font_size": 14,
+        "desc_font_size": 13,
         "desc_color": "#5a5a5a",
         "desc_font_weight": "400",
         "desc_max_width": 360,
-        "form_max_width": 420,
+        "form_max_width": 520,
         "field_height": 48,
         "input_placeholder": "Enter your email address",
         "input_font_size": 14,
@@ -203,7 +275,7 @@
         "btn_font_size": 13,
         "btn_color": "#ffffff",
         "btn_font_weight": "600",
-        "btn_bg": "#e8493f",
+        "btn_bg": "#C9694F",
         "btn_hover_bg": "#c93a31",
         "success_message": "Thanks for subscribing!",
         "social_title": "Follow Us",
@@ -211,7 +283,7 @@
         "social_title_font_size_mobile": 16,
         "social_title_color": "#1a1a1a",
         "social_title_font_weight": "700",
-        "social_icon_size": 36,
+        "social_icon_size": 40,
         "social_icon_padding": 9,
         "social_icon_bg": "#ffffff",
         "social_icon_hover_bg": "#f5c9c6",
@@ -221,6 +293,7 @@
   },
   "order": [
     "1626870276b398a0aa",
+    "collections_trust_badges_4gNDDh",
     "main",
     "collections_newsletter_social_ffTqkr"
   ]
