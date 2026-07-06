@@ -41,9 +41,9 @@
         {% for block in section.blocks %}  
         {% if block.settings.image != blank %}
         <div class="dt-sc-brand-logo {% if section.settings.enable_slider %}swiper-slide{% endif %} {{block.type}}-{{block.id}}">
-          <a href="{{block.settings.link}}">            
+          <a href="{{block.settings.link}}" class="dt-sc-brand-logo-link">            
             <img class="dt-sc-brand-image"
-             src="{{ block.settings.image | img_url: '200x200' }}" />            
+             src="{{ block.settings.image | img_url: 'master' }}" />            
           </a>
         </div>
         {% else %}
@@ -97,8 +97,37 @@
   #shopify-section-{{section.id}}.home-brand-logos .dt-sc-brand-logos-section { gap: {{ section.settings.column_gap}}px; }
   #shopify-section-{{section.id}}.home-brand-logos .dt-sc-brand-logos-section .dt-sc-brand-logo { 
     padding: 0 20px;
-    background: var(--DTBodyBGColor);
-    background: {{ section.settings.block_background_color }}; }
+    background: transparent !important; }
+    
+  #shopify-section-{{section.id}}.home-brand-logos .dt-sc-brand-logo-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 140px; 
+    padding: 20px;
+    background: transparent !important;
+    border-radius: var(--DTRadius, 12px);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  
+  #shopify-section-{{section.id}}.home-brand-logos .dt-sc-brand-logo-link:hover {
+    transform: translateY(-5px);
+  }
+  
+  #shopify-section-{{section.id}}.home-brand-logos .dt-sc-brand-image {
+    width: auto;
+    height: 80px;
+    max-width: 100%;
+    object-fit: contain;
+    transition: transform 0.4s ease, filter 0.4s ease;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.06));
+  }
+  
+  #shopify-section-{{section.id}}.home-brand-logos .dt-sc-brand-logo-link:hover .dt-sc-brand-image {
+    transform: scale(1.15);
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.12));
+  }
   
   #shopify-section-{{section.id}}.home-brand-logos .dt-sc-brand-logos-section.style-1 .dt-sc-brand-logo,
   #shopify-section-{{section.id}}.home-brand-logos .dt-sc-brand-logos-section.style-2,

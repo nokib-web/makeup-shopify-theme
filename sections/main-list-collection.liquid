@@ -38,6 +38,29 @@
   .collection-detail .dt-sc-btn{
     display: inline-block;  
   }
+  .list-collection-products .pickgradient-products .grid-link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    position: relative;
+    background-color: var(--DTBodyBGColor, #f7f7f7);
+    border-radius: var(--DTRadius);
+    margin-bottom: 20px;
+  }
+  .list-collection-products .pickgradient-products .grid-link img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 20px;
+    transition: transform 0.4s ease;
+  }
+  .list-collection-products .pickgradient-products:hover .grid-link img {
+    transform: scale(1.08);
+  }
 </style>
 {% schema %}
 {
