@@ -132,6 +132,7 @@
       "blocks": {
         "slider_image_yQHbrL": {
           "type": "slider_image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/banner_5.webp"
           }
@@ -495,7 +496,7 @@
         "slide_3Vpkhc": {
           "type": "slide",
           "settings": {
-            "slide_video": "shopify://files/videos/Smoky_makeup_particles_flowing_g…_202607011634.mp4",
+            "image": "shopify://shop_images/L_OrealGlamShineBalmyGloss-915DieForGuava.png",
             "title": "Flow",
             "subtitle": "01 - 05",
             "text_color": "#ffffff",
@@ -1078,15 +1079,15 @@
         "section_heading": "Real Result",
         "section_sub_heading": "before & after",
         "section_description": "",
-        "section_button_text": "",
-        "section_button_link": "",
+        "section_button_text": "Shop the product",
+        "section_button_link": "shopify://products/maybelline-new-york-lash-sensational-sky-high-mascara-colour-black",
         "heading_position": "text-center",
         "heading_font_size": 48,
         "header_margin_bottom": 35,
-        "before_image": "shopify://shop_images/Screenshot2026-02-08at08.44.30.png",
-        "before_label": "BEFORE Lip Oil Rehab Serum",
-        "after_image": "shopify://shop_images/after-image.png",
-        "after_label": "AFTER Lip Oil Rehab Serum",
+        "before_image": "shopify://shop_images/before-image.jpg",
+        "before_label": "BEFORE Maybelline New York, Lash Sensational Sky High Mascara, Colour: Black",
+        "after_image": "shopify://shop_images/After-Image.jpg",
+        "after_label": "AFTER Maybelline New York, Lash Sensational Sky High Mascara, Colour: Black",
         "card_width": 380,
         "card_rotation_left": -6,
         "card_rotation_right": 6,

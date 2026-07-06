@@ -1,8 +1,50 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-delivery-info",
-      "settings": {}
+      "settings": {
+        "title": "Delivery Information",
+        "subtitle": "Fast & Secure UK Shipping Options",
+        "card1_title": "UK Standard Shipping",
+        "card1_price": "FREE / £3.95",
+        "card1_badge": "2 - 5 Working Days",
+        "card1_desc": "We offer free UK delivery for orders over £25. If your order value is under £25, a delivery fee of £3.95 for standard delivery will be applied at checkout.",
+        "card1_icon": "shopify://shop_images/motorbike.png",
+        "card2_title": "Next Day Delivery",
+        "card2_price": "£5.95",
+        "card2_badge": "Next Working Day",
+        "card2_desc": "We also offer a next working day delivery service for UK orders placed before 1pm. Orders are processed on working days and are delivered on the following working day, provided the order is placed before 1pm. This is charged at £5.95.",
+        "card2_icon": "shopify://shop_images/circular-alarm-clock-tool.png",
+        "table_heading": "Delivery Option details",
+        "col1_title": "Shipping Option",
+        "col2_title": "Cost and Timescale",
+        "col3_title": "Additional Details",
+        "row1_opt": "UK Standard Delivery Service",
+        "row1_cost": "Free on orders over £25, otherwise charged at £3.95",
+        "row1_time": "2-5 working days from despatch",
+        "row1_note": "",
+        "row2_opt": "Next Day Delivery Service",
+        "row2_cost": "Charged at £5.95",
+        "row2_time": "Next Day, order by 1pm on working days",
+        "row2_note": "",
+        "exceptions_heading": "Postcode Exclusions & Extended Areas",
+        "exceptions_content": "<p>Orders to Northern Ireland, Scottish Highlands and Islands, Scottish Lowlands, Isle of Man, Isle of Scilly and a number of England/Scotland Border postcodes may take longer.</p>",
+        "terms_heading": "Important Delivery & Liability Information",
+        "terms_content": "<ul><li>Next day delivery service is only available to UK Mainland orders. Packages arrive the next day only if placed by 1 pm Monday to Friday excluding Bank Holidays.</li><li>Claims for lost items must be sent 10 working days after the due date for standard tracked delivery and 5 days for Next Day orders.</li><li>We will not accept liability for lost orders if you select for your parcel to be left in a safe place, with a neighbour, or delivered to a forwarding agency address. Complete Cosmetics Limited will not be held liable for any lost, damaged, or stolen package claims of orders addressed to a parcel forwarding company. Complete Cosmetics Limited is under no obligation to offer replacements or refunds for orders or items that are reported missing.</li></ul>",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "max_width": 900,
+        "bg_color": "#faf6f0"
+      }
     }
   },
   "order": [

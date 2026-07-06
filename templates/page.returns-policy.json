@@ -1,8 +1,38 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-returns-policy",
-      "settings": {}
+      "settings": {
+        "title": "Return Policy",
+        "uk_heading": "UK Return Policy",
+        "uk_content": "<p>We offer a 14 day return service on all UK orders. When you are ready to return, use our returns portal below to get started.</p>",
+        "uk_action_text": "Ready to register your return request online?",
+        "uk_btn_text": "Click Here to Get Started",
+        "uk_btn_link": "shopify://pages/return-form",
+        "online_heading": "Online Order Return Policy",
+        "online_content": "<ul><li>You have 14 days from the date you receive your order to return it for a refund.</li><li>Once your order is received by our distribution centre, it may take up to 10 working days for your products to be processed back, and refunds may take up to 10 working days to show on your account.</li><li>All items must be returned in a re-saleable condition. Customer hygiene and safety is very important to us and our customers, items can only be returned for a refund if they are unopened, unused and with all tamper-resistant seals, packaging intact.</li><li>We are not able to issue a refund or replacement on items that are not re-saleable and reserve the right to not accept returns for health & safety purposes.</li><li>Purchases made via our website can only be returned using self-post and after we have authorised the return. We cannot process refunds for any online orders sent back without prior authorisation.</li><li>If you receive a damaged or faulty product, please contact our support team in the first instance.</li></ul>",
+        "return_heading": "Returning a Product",
+        "return_content": "<p>When you are ready to return, follow the instructions in the returns portal to submit your request.</p>",
+        "return_action_text": "Submit your return information to get authorisation:",
+        "return_btn_text": "Start Return Form",
+        "return_btn_link": "shopify://pages/return-form",
+        "return_footer_content": "<p>You will need to enter your order number, delivery address, email address and return reason. Any approved refund will be made to the original method of payment.</p>",
+        "resp_heading": "Responsibility & Conditions",
+        "resp_content": "<ul><li>We recommend you take a photograph of the item you are returning and the packaging prior to returning and also recommend you keep your proof of return until the refund has been processed as it may be required.</li><li>Please note that we are unable to accept returns of personalised products.</li><li>Any free gift you may have received as part of your order must also be returned; otherwise, we will not be able to process your refund. If the free gift is not returned, we reserve the right to deduct the value of the said free gift from your refund amount (this will be charged at the RRP of the free gift).</li><li>We do not accept returns after the applicable return period above.</li><li>We reserve the right not to accept orders from customers with unusual or suspicious returns behaviour, and used products or returns ineligible for a refund will not be shipped back.</li></ul>",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "max_width": 900,
+        "bg_color": "#faf6f0"
+      }
     }
   },
   "order": [
