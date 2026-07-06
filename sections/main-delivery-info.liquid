@@ -1,0 +1,620 @@
+{%- style -%}
+  .delivery-info-section {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+    font-family: inherit;
+  }
+
+  .delivery-info-container {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .delivery-info-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+  }
+
+  .delivery-info-header h1 {
+    font-size: 38px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 10px 0;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+
+  .delivery-info-header p {
+    font-size: 16px;
+    color: var(--DTPrimaryColor, #e63946);
+    margin: 0;
+    font-family: 'Caveat', cursive, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  /* Decorative Grid Layout for Quick Highlights */
+  .delivery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .delivery-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .delivery-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 35px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .delivery-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    border-color: var(--DTPrimaryColor, #e63946);
+  }
+
+  .delivery-card-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fdfaf7;
+    color: var(--DTPrimaryColor, #e63946);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+  }
+
+  .delivery-card-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .delivery-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #111111;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .delivery-card .price-tag {
+    font-size: 32px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 12px;
+    line-height: 1;
+  }
+
+  .delivery-card .price-tag span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #666666;
+    margin-left: 5px;
+  }
+
+  .delivery-badge {
+    background-color: #fcf1f2;
+    color: var(--DTPrimaryColor, #e63946);
+    padding: 5px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 20px;
+  }
+
+  .delivery-badge.standard {
+    background-color: #eef9f2;
+    color: #28a745;
+  }
+
+  .delivery-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555555;
+    margin: 0;
+  }
+
+  /* Decorative Tables & Content Blocks */
+  .delivery-section-box {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.01);
+  }
+
+  .delivery-section-box h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111111;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--DTPrimaryColor, #e63946);
+    display: inline-block;
+    padding-bottom: 6px;
+  }
+
+  /* Custom styled table */
+  .shipping-table-wrapper {
+    overflow-x: auto;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    margin: 15px 0;
+  }
+
+  .shipping-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 15px;
+  }
+
+  .shipping-table th, 
+  .shipping-table td {
+    padding: 18px 24px;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  .shipping-table th {
+    background-color: #fdfaf7;
+    font-weight: 700;
+    color: #111111;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+
+  .shipping-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .shipping-table td strong {
+    color: #111111;
+  }
+
+  .shipping-table td .time-note {
+    font-size: 13px;
+    color: #666666;
+    display: block;
+    margin-top: 5px;
+  }
+
+  /* Alert style box for postcode warnings */
+  .postcode-warning-box {
+    background-color: #fcf1f2;
+    border-left: 4px solid var(--DTPrimaryColor, #e63946);
+    border-radius: 4px;
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .postcode-warning-icon {
+    color: var(--DTPrimaryColor, #e63946);
+    flex-shrink: 0;
+  }
+
+  .postcode-warning-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .postcode-warning-content p {
+    margin: 0;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #333333;
+  }
+
+  /* List Styling */
+  .delivery-section-box ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .delivery-section-box ul li {
+    position: relative;
+    padding-left: 30px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #444444;
+  }
+
+  .delivery-section-box ul li::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--DTPrimaryColor, #e63946);
+  }
+{%- endstyle -%}
+
+<div class="delivery-info-section">
+  <div class="delivery-info-container">
+    
+    <div class="delivery-info-header">
+      <h1>{{ section.settings.title }}</h1>
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
+
+    <!-- Decorative Two-Column Highlights Grid -->
+    <div class="delivery-grid">
+      
+      <!-- Card 1: Standard Delivery -->
+      <div class="delivery-card">
+        <div class="delivery-card-icon">
+          {%- if section.settings.card1_icon != blank -%}
+            <img src="{{ section.settings.card1_icon | image_url: width: 60 }}" alt="{{ section.settings.card1_title | escape }}" width="60" height="60" style="object-fit: contain;">
+          {%- else -%}
+            <!-- Truck Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="3" width="15" height="13"></rect>
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+              <circle cx="5.5" cy="18.5" r="2.5"></circle>
+              <circle cx="18.5" cy="18.5" r="2.5"></circle>
+            </svg>
+          {%- endif -%}
+        </div>
+        <h3>{{ section.settings.card1_title }}</h3>
+        <div class="price-tag">{{ section.settings.card1_price }}</div>
+        <div class="delivery-badge standard">{{ section.settings.card1_badge }}</div>
+        <p>{{ section.settings.card1_desc }}</p>
+      </div>
+
+      <!-- Card 2: Next Day Delivery -->
+      <div class="delivery-card">
+        <div class="delivery-card-icon">
+          {%- if section.settings.card2_icon != blank -%}
+            <img src="{{ section.settings.card2_icon | image_url: width: 60 }}" alt="{{ section.settings.card2_title | escape }}" width="60" height="60" style="object-fit: contain;">
+          {%- else -%}
+            <!-- Lightning/Clock Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+              <path d="M13 2.05A9 9 0 0 1 21.95 11H22a10 10 0 0 0-10-10v1.05z"></path>
+              <path d="M12 2v2" stroke-dasharray="1 1"></path>
+            </svg>
+          {%- endif -%}
+        </div>
+        <h3>{{ section.settings.card2_title }}</h3>
+        <div class="price-tag">{{ section.settings.card2_price }}</div>
+        <div class="delivery-badge">{{ section.settings.card2_badge }}</div>
+        <p>{{ section.settings.card2_desc }}</p>
+      </div>
+
+    </div>
+
+    <!-- Details Table -->
+    <div class="delivery-section-box">
+      <h2>{{ section.settings.table_heading }}</h2>
+      
+      <div class="shipping-table-wrapper">
+        <table class="shipping-table">
+          <thead>
+            <tr>
+              <th>{{ section.settings.col1_title }}</th>
+              <th>{{ section.settings.col2_title }}</th>
+              <th>{{ section.settings.col3_title }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>{{ section.settings.row1_opt }}</strong></td>
+              <td>{{ section.settings.row1_cost }}</td>
+              <td>
+                {{ section.settings.row1_time }}
+                {%- if section.settings.row1_note != blank -%}
+                  <span class="time-note">{{ section.settings.row1_note }}</span>
+                {%- endif -%}
+              </td>
+            </tr>
+            <tr>
+              <td><strong>{{ section.settings.row2_opt }}</strong></td>
+              <td>{{ section.settings.row2_cost }}</td>
+              <td>
+                {{ section.settings.row2_time }}
+                {%- if section.settings.row2_note != blank -%}
+                  <span class="time-note">{{ section.settings.row2_note }}</span>
+                {%- endif -%}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Exceptions Warning Box -->
+    <div class="delivery-section-box" style="padding: 30px;">
+      <h2>{{ section.settings.exceptions_heading }}</h2>
+      <div class="postcode-warning-box">
+        <div class="postcode-warning-icon">
+          <!-- Globe/Map Icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <div class="postcode-warning-content">
+          {{ section.settings.exceptions_content }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Terms & Liability List -->
+    <div class="delivery-section-box">
+      <h2>{{ section.settings.terms_heading }}</h2>
+      {{ section.settings.terms_content }}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Delivery Info Page",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page Title",
+      "default": "Delivery Information"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Page Cursive Subtitle",
+      "default": "Fast & Secure UK Shipping Options"
+    },
+    {
+      "type": "header",
+      "content": "Card 1: Standard Shipping Highlight"
+    },
+    {
+      "type": "text",
+      "id": "card1_title",
+      "label": "Card 1 Title",
+      "default": "UK Standard Shipping"
+    },
+    {
+      "type": "text",
+      "id": "card1_price",
+      "label": "Card 1 Cost Display",
+      "default": "FREE / £3.95"
+    },
+    {
+      "type": "text",
+      "id": "card1_badge",
+      "label": "Card 1 Timescale Badge",
+      "default": "2 - 5 Working Days"
+    },
+    {
+      "type": "textarea",
+      "id": "card1_desc",
+      "label": "Card 1 Description",
+      "default": "We offer free UK delivery for orders over £25. If your order value is under £25, a delivery fee of £3.95 for standard delivery will be applied at checkout."
+    },
+    {
+      "type": "image_picker",
+      "id": "card1_icon",
+      "label": "Card 1 Custom Icon (Leaves blank for default truck)"
+    },
+    {
+      "type": "header",
+      "content": "Card 2: Next Day Shipping Highlight"
+    },
+    {
+      "type": "text",
+      "id": "card2_title",
+      "label": "Card 2 Title",
+      "default": "Next Day Delivery"
+    },
+    {
+      "type": "text",
+      "id": "card2_price",
+      "label": "Card 2 Cost Display",
+      "default": "£5.95"
+    },
+    {
+      "type": "text",
+      "id": "card2_badge",
+      "label": "Card 2 Timescale Badge",
+      "default": "Next Working Day"
+    },
+    {
+      "type": "textarea",
+      "id": "card2_desc",
+      "label": "Card 2 Description",
+      "default": "We also offer a next working day delivery service for UK orders placed before 1pm. Orders are processed on working days and are delivered on the following working day, provided the order is placed before 1pm. This is charged at £5.95."
+    },
+    {
+      "type": "image_picker",
+      "id": "card2_icon",
+      "label": "Card 2 Custom Icon (Leaves blank for default clock)"
+    },
+    {
+      "type": "header",
+      "content": "Delivery Options Details Table"
+    },
+    {
+      "type": "text",
+      "id": "table_heading",
+      "label": "Table Section Heading",
+      "default": "Delivery Option details"
+    },
+    {
+      "type": "text",
+      "id": "col1_title",
+      "label": "Column 1 Header",
+      "default": "Shipping Option"
+    },
+    {
+      "type": "text",
+      "id": "col2_title",
+      "label": "Column 2 Header",
+      "default": "Cost and Timescale"
+    },
+    {
+      "type": "text",
+      "id": "col3_title",
+      "label": "Column 3 Header",
+      "default": "Additional Details"
+    },
+    {
+      "type": "text",
+      "id": "row1_opt",
+      "label": "Row 1 (Standard) Name",
+      "default": "UK Standard Delivery Service"
+    },
+    {
+      "type": "text",
+      "id": "row1_cost",
+      "label": "Row 1 (Standard) Cost",
+      "default": "Free on orders over £25, otherwise charged at £3.95"
+    },
+    {
+      "type": "text",
+      "id": "row1_time",
+      "label": "Row 1 (Standard) Timescale",
+      "default": "2-5 working days from despatch"
+    },
+    {
+      "type": "text",
+      "id": "row1_note",
+      "label": "Row 1 (Standard) Time Note"
+    },
+    {
+      "type": "text",
+      "id": "row2_opt",
+      "label": "Row 2 (Next Day) Name",
+      "default": "Next Day Delivery Service"
+    },
+    {
+      "type": "text",
+      "id": "row2_cost",
+      "label": "Row 2 (Next Day) Cost",
+      "default": "Charged at £5.95"
+    },
+    {
+      "type": "text",
+      "id": "row2_time",
+      "label": "Row 2 (Next Day) Timescale",
+      "default": "Next Day, order by 1pm on working days"
+    },
+    {
+      "type": "text",
+      "id": "row2_note",
+      "label": "Row 2 (Next Day) Time Note"
+    },
+    {
+      "type": "header",
+      "content": "Delivery Exceptions"
+    },
+    {
+      "type": "text",
+      "id": "exceptions_heading",
+      "label": "Exceptions Heading",
+      "default": "Postcode Exclusions & Extended Areas"
+    },
+    {
+      "type": "richtext",
+      "id": "exceptions_content",
+      "label": "Exceptions Content",
+      "default": "<p>Orders to Northern Ireland, Scottish Highlands and Islands, Scottish Lowlands, Isle of Man, Isle of Scilly and a number of England/Scotland Border postcodes may take longer.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Important Terms & Liability"
+    },
+    {
+      "type": "text",
+      "id": "terms_heading",
+      "label": "Terms & Conditions Heading",
+      "default": "Important Delivery & Liability Information"
+    },
+    {
+      "type": "richtext",
+      "id": "terms_content",
+      "label": "Terms Content",
+      "default": "<ul><li>Next day delivery service is only available to UK Mainland orders. Packages arrive the next day only if placed by 1 pm Monday to Friday excluding Bank Holidays.</li><li>Claims for lost items must be sent 10 working days after the due date for standard tracked delivery and 5 days for Next Day orders.</li><li>We will not accept liability for lost orders if you select for your parcel to be left in a safe place, with a neighbour, or delivered to a forwarding agency address. Complete Cosmetics Limited will not be held liable for any lost, damaged, or stolen package claims of orders addressed to a parcel forwarding company. Complete Cosmetics Limited is under no obligation to offer replacements or refunds for orders or items that are reported missing.</li></ul>"
+    },
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 600,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Max Content Width",
+      "default": 900
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#faf6f0"
+    }
+  ]
+}
+{% endschema %}

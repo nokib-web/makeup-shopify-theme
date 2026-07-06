@@ -1,0 +1,345 @@
+{%- style -%}
+  .returns-policy-section {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .returns-policy-container {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .returns-policy-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .returns-policy-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 10px 0;
+  }
+
+  .returns-policy-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333333;
+  }
+
+  .returns-policy-group {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+  }
+
+  .returns-policy-group h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #111111;
+    margin-top: 0;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid var(--DTPrimaryColor, #e63946);
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+
+  .returns-policy-content p {
+    margin: 0 0 15px 0;
+  }
+
+  .returns-policy-content ul {
+    margin: 0 0 20px 20px;
+    padding: 0;
+  }
+
+  .returns-policy-content li {
+    margin-bottom: 10px;
+  }
+
+  .returns-action-box {
+    background-color: #fdfaf7;
+    border-left: 4px solid var(--DTPrimaryColor, #e63946);
+    padding: 20px;
+    margin: 25px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .returns-action-box {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .returns-action-box p {
+    margin: 0;
+    font-weight: 600;
+    color: #111111;
+  }
+
+  /* Button styles removed to inherit theme styles */
+
+  .returns-policy-footer {
+    margin-top: 40px;
+    border-top: 1px solid #eaeaea;
+    padding-top: 20px;
+    font-size: 14px;
+    color: #666666;
+  }
+{%- endstyle -%}
+
+<div class="returns-policy-section">
+  <div class="returns-policy-container">
+    
+    <div class="returns-policy-header">
+      <h1>{{ section.settings.title | default: page.title }}</h1>
+    </div>
+
+    <div class="returns-policy-content">
+      
+      <!-- UK Return Policy -->
+      {%- if section.settings.uk_heading != blank or section.settings.uk_content != blank -%}
+        <div class="returns-policy-group">
+          {%- if section.settings.uk_heading != blank -%}
+            <h2>{{ section.settings.uk_heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.uk_content != blank -%}
+            {{ section.settings.uk_content }}
+          {%- endif -%}
+          
+          {%- if section.settings.uk_btn_text != blank -%}
+            <div class="returns-action-box">
+              <p>{{ section.settings.uk_action_text }}</p>
+              <a href="{{ section.settings.uk_btn_link | default: '/pages/start-a-return' }}" class="dt-sc-btn">{{ section.settings.uk_btn_text }}</a>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <!-- Online Order Return Policy -->
+      {%- if section.settings.online_heading != blank or section.settings.online_content != blank -%}
+        <div class="returns-policy-group">
+          {%- if section.settings.online_heading != blank -%}
+            <h2>{{ section.settings.online_heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.online_content != blank -%}
+            {{ section.settings.online_content }}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <!-- Returning a Product -->
+      {%- if section.settings.return_heading != blank or section.settings.return_content != blank -%}
+        <div class="returns-policy-group">
+          {%- if section.settings.return_heading != blank -%}
+            <h2>{{ section.settings.return_heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.return_content != blank -%}
+            {{ section.settings.return_content }}
+          {%- endif -%}
+          
+          {%- if section.settings.return_btn_text != blank -%}
+            <div class="returns-action-box">
+              <p>{{ section.settings.return_action_text }}</p>
+              <a href="{{ section.settings.return_btn_link | default: '/pages/start-a-return' }}" class="dt-sc-btn">{{ section.settings.return_btn_text }}</a>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.return_footer_content != blank -%}
+            <div style="margin-top: 15px;">{{ section.settings.return_footer_content }}</div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      <!-- Responsibility -->
+      {%- if section.settings.resp_heading != blank or section.settings.resp_content != blank -%}
+        <div class="returns-policy-group">
+          {%- if section.settings.resp_heading != blank -%}
+            <h2>{{ section.settings.resp_heading }}</h2>
+          {%- endif -%}
+          {%- if section.settings.resp_content != blank -%}
+            {{ section.settings.resp_content }}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Returns Policy Page",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page Title Override",
+      "default": "Return Policy"
+    },
+    {
+      "type": "header",
+      "content": "UK Return Policy"
+    },
+    {
+      "type": "text",
+      "id": "uk_heading",
+      "label": "UK Policy Heading",
+      "default": "UK Return Policy"
+    },
+    {
+      "type": "richtext",
+      "id": "uk_content",
+      "label": "UK Policy Content",
+      "default": "<p>We offer a 14 day return service on all UK orders. When you are ready to return, use our returns portal below to get started.</p>"
+    },
+    {
+      "type": "text",
+      "id": "uk_action_text",
+      "label": "UK Action Box Text",
+      "default": "Ready to register your return request online?"
+    },
+    {
+      "type": "text",
+      "id": "uk_btn_text",
+      "label": "UK Button Text",
+      "default": "Click Here to Get Started"
+    },
+    {
+      "type": "url",
+      "id": "uk_btn_link",
+      "label": "UK Button Link"
+    },
+    {
+      "type": "header",
+      "content": "Online Order Return Policy"
+    },
+    {
+      "type": "text",
+      "id": "online_heading",
+      "label": "Online Policy Heading",
+      "default": "Online Order Return Policy"
+    },
+    {
+      "type": "richtext",
+      "id": "online_content",
+      "label": "Online Policy Content",
+      "default": "<ul><li>You have 14 days from the date you receive your order to return it for a refund.</li><li>Once your order is received by our distribution centre, it may take up to 10 working days for your products to be processed back, and refunds may take up to 10 working days to show on your account.</li><li>All items must be returned in a re-saleable condition. Customer hygiene and safety is very important to us and our customers, items can only be returned for a refund if they are unopened, unused and with all tamper-resistant seals, packaging intact.</li><li>We are not able to issue a refund or replacement on items that are not re-saleable and reserve the right to not accept returns for health & safety purposes.</li><li>Purchases made via our website can only be returned using self-post and after we have authorised the return. We cannot process refunds for any online orders sent back without prior authorisation.</li><li>If you receive a damaged or faulty product, please contact our support team in the first instance.</li></ul>"
+    },
+    {
+      "type": "header",
+      "content": "Returning a Product"
+    },
+    {
+      "type": "text",
+      "id": "return_heading",
+      "label": "Returning Heading",
+      "default": "Returning a Product"
+    },
+    {
+      "type": "richtext",
+      "id": "return_content",
+      "label": "Returning Content",
+      "default": "<p>When you are ready to return, follow the instructions in the returns portal to submit your request.</p>"
+    },
+    {
+      "type": "text",
+      "id": "return_action_text",
+      "label": "Returning Action Box Text",
+      "default": "Submit your return information to get authorisation:"
+    },
+    {
+      "type": "text",
+      "id": "return_btn_text",
+      "label": "Returning Button Text",
+      "default": "Start Return Form"
+    },
+    {
+      "type": "url",
+      "id": "return_btn_link",
+      "label": "Returning Button Link"
+    },
+    {
+      "type": "richtext",
+      "id": "return_footer_content",
+      "label": "Returning Footer Text",
+      "default": "<p>You will need to enter your order number, delivery address, email address and return reason. Any approved refund will be made to the original method of payment.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Responsibility & Conditions"
+    },
+    {
+      "type": "text",
+      "id": "resp_heading",
+      "label": "Responsibility Heading",
+      "default": "Responsibility & Conditions"
+    },
+    {
+      "type": "richtext",
+      "id": "resp_content",
+      "label": "Responsibility Content",
+      "default": "<ul><li>We recommend you take a photograph of the item you are returning and the packaging prior to returning and also recommend you keep your proof of return until the refund has been processed as it may be required.</li><li>Please note that we are unable to accept returns of personalised products.</li><li>Any free gift you may have received as part of your order must also be returned; otherwise, we will not be able to process your refund. If the free gift is not returned, we reserve the right to deduct the value of the said free gift from your refund amount (this will be charged at the RRP of the free gift).</li><li>We do not accept returns after the applicable return period above.</li><li>We reserve the right not to accept orders from customers with unusual or suspicious returns behaviour, and used products or returns ineligible for a refund will not be shipped back.</li></ul>"
+    },
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 600,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Max Content Width",
+      "default": 900
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#faf6f0"
+    }
+  ]
+}
+{% endschema %}

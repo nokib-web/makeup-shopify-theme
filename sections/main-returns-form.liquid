@@ -1,0 +1,440 @@
+{%- style -%}
+  .returns-form-section {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.bg_color }};
+  }
+
+  .returns-form-container {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .returns-form-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .returns-form-header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #111111;
+    margin: 0 0 10px 0;
+  }
+
+  .returns-form-header p {
+    font-size: 16px;
+    color: #666666;
+    margin: 0;
+  }
+
+  .returns-form-card {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    max-width: 650px;
+    margin: 0 auto;
+  }
+
+  .returns-form-notice {
+    background-color: #fdfaf7;
+    border-left: 4px solid var(--DTPrimaryColor, #e63946);
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.6;
+  }
+
+  .returns-form-notice strong {
+    color: #111111;
+  }
+
+  .returns-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .returns-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    .returns-form-row {
+      flex-direction: row;
+    }
+    .returns-form-row .field {
+      flex: 1;
+    }
+  }
+
+  .returns-form .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .returns-form label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333333;
+  }
+
+  .returns-form label span {
+    color: var(--DTPrimaryColor, #e63946);
+    margin-left: 2px;
+  }
+
+  .returns-form input,
+  .returns-form select,
+  .returns-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #333333;
+    background-color: #fcfbf9;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .returns-form input:focus,
+  .returns-form select:focus,
+  .returns-form textarea:focus {
+    outline: none;
+    border-color: #000000;
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
+  }
+
+  .returns-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .returns-form button.dt-sc-btn {
+    margin-top: 10px;
+    align-self: center;
+  }
+
+  .form-success-message {
+    background-color: #eef9f2;
+    border-left: 4px solid #28a745;
+    padding: 15px 20px;
+    color: #155724;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-bottom: 25px;
+  }
+
+  .form-error-message {
+    background-color: #fdf3f2;
+    border-left: 4px solid #dc3545;
+    padding: 15px 20px;
+    color: #721c24;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-bottom: 25px;
+  }
+{%- endstyle -%}
+
+<div class="returns-form-section">
+  <div class="returns-form-container">
+    
+    <div class="returns-form-header">
+      <h1>{{ section.settings.title | default: page.title }}</h1>
+      {%- if section.settings.subtitle != blank -%}
+        <p>{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="returns-form-card">
+      
+      {%- assign form_id = 'returns-request-form' -%}
+      {%- form 'contact', id: form_id, class: 'returns-form' -%}
+        
+        {%- if form.posted_successfully? -%}
+          <div class="form-success-message" role="alert">
+            {{ section.settings.success_msg }}
+          </div>
+        {%- elsif form.errors -%}
+          <div class="form-error-message" role="alert">
+            {{ section.settings.error_msg }}
+          </div>
+        {%- endif -%}
+
+        <!-- Information Notice -->
+        {%- if section.settings.notice_text != blank -%}
+          <div class="returns-form-notice">
+            {{ section.settings.notice_text }}
+          </div>
+        {%- endif -%}
+
+        <!-- Row 1: Name and Email -->
+        <div class="returns-form-row">
+          <div class="field">
+            <label for="ReturnsForm-name">{{ section.settings.name_label }} <span>*</span></label>
+            <input 
+              type="text" 
+              id="ReturnsForm-name" 
+              name="contact[name]" 
+              required 
+              value="{% if customer %}{{ customer.name }}{% endif %}"
+              placeholder="{{ section.settings.name_placeholder }}"
+            >
+          </div>
+          <div class="field">
+            <label for="ReturnsForm-email">{{ section.settings.email_label }} <span>*</span></label>
+            <input 
+              type="email" 
+              id="ReturnsForm-email" 
+              name="contact[email]" 
+              required 
+              value="{% if customer %}{{ customer.email }}{% endif %}"
+              placeholder="{{ section.settings.email_placeholder }}"
+            >
+          </div>
+        </div>
+
+        <!-- Row 2: Order Number and Delivery Address -->
+        <div class="returns-form-row">
+          <div class="field">
+            <label for="ReturnsForm-order">{{ section.settings.order_label }} <span>*</span></label>
+            <input 
+              type="text" 
+              id="ReturnsForm-order" 
+              name="contact[order_number]" 
+              required 
+              placeholder="{{ section.settings.order_placeholder }}"
+            >
+          </div>
+          <div class="field">
+            <label for="ReturnsForm-address">{{ section.settings.address_label }} <span>*</span></label>
+            <input 
+              type="text" 
+              id="ReturnsForm-address" 
+              name="contact[delivery_address]" 
+              required 
+              placeholder="{{ section.settings.address_placeholder }}"
+            >
+          </div>
+        </div>
+
+        <!-- Field 3: Return Reason -->
+        <div class="field">
+          <label for="ReturnsForm-reason">{{ section.settings.reason_label }} <span>*</span></label>
+          <select id="ReturnsForm-reason" name="contact[return_reason]" required>
+            <option value="" disabled selected>{{ section.settings.reason_placeholder }}</option>
+            <option value="Faulty / Damaged Product">Faulty / Damaged Product</option>
+            <option value="Incorrect Item Received">Incorrect Item Received</option>
+            <option value="No longer wanted / Changed mind">No longer wanted / Changed mind</option>
+            <option value="Other (please specify in message)">Other (please specify in message)</option>
+          </select>
+        </div>
+
+        <!-- Field 4: Message -->
+        <div class="field">
+          <label for="ReturnsForm-message">{{ section.settings.message_label }}</label>
+          <textarea 
+            id="ReturnsForm-message" 
+            name="contact[body]" 
+            placeholder="{{ section.settings.message_placeholder }}"
+          ></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="dt-sc-btn">{{ section.settings.btn_text }}</button>
+
+      {%- endform -%}
+
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Returns Request Form",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Form Title Override",
+      "default": "Start a Return"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Form Subtitle",
+      "default": "Submit your order and reason details below to request a return authorization."
+    },
+    {
+      "type": "header",
+      "content": "Important Notice"
+    },
+    {
+      "type": "richtext",
+      "id": "notice_text",
+      "label": "Notice Content",
+      "default": "<p><strong>Notice:</strong> As outlined in our policy, if you are returning due to a <strong>damaged or faulty product</strong>, please email photographs of the items and the packaging directly to our team at <strong>support@complete-cosmetics.com</strong> after submitting this form.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Form Labels & Placeholders"
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Name Field Label",
+      "default": "Full Name"
+    },
+    {
+      "type": "text",
+      "id": "name_placeholder",
+      "label": "Name Field Placeholder",
+      "default": "e.g. Jane Doe"
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Email Field Label",
+      "default": "Email Address"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Email Field Placeholder",
+      "default": "e.g. jane@example.com"
+    },
+    {
+      "type": "text",
+      "id": "order_label",
+      "label": "Order Number Label",
+      "default": "Order Number"
+    },
+    {
+      "type": "text",
+      "id": "order_placeholder",
+      "label": "Order Number Placeholder",
+      "default": "e.g. #1001"
+    },
+    {
+      "type": "text",
+      "id": "address_label",
+      "label": "Address Label",
+      "default": "Delivery Address"
+    },
+    {
+      "type": "text",
+      "id": "address_placeholder",
+      "label": "Address Placeholder",
+      "default": "e.g. 123 High Street, London, UK"
+    },
+    {
+      "type": "text",
+      "id": "reason_label",
+      "label": "Return Reason Label",
+      "default": "Reason for Return"
+    },
+    {
+      "type": "text",
+      "id": "reason_placeholder",
+      "label": "Return Reason Option Placeholder",
+      "default": "Please select a reason..."
+    },
+    {
+      "type": "text",
+      "id": "message_label",
+      "label": "Message Label",
+      "default": "Additional Details / Message"
+    },
+    {
+      "type": "text",
+      "id": "message_placeholder",
+      "label": "Message Placeholder",
+      "default": "Please write any details or additional notes for your return request..."
+    },
+    {
+      "type": "header",
+      "content": "Submit Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Button Text",
+      "default": "Submit Return Request"
+    },
+    {
+      "type": "header",
+      "content": "Status Messages"
+    },
+    {
+      "type": "text",
+      "id": "success_msg",
+      "label": "Success Message Text",
+      "default": "Success! Your return request has been submitted. Our team will review it and get back to you within 24-48 hours."
+    },
+    {
+      "type": "text",
+      "id": "error_msg",
+      "label": "Error Message Text",
+      "default": "Please correct the fields and try again."
+    },
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 600,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "label": "Max Content Width",
+      "default": 1200
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#faf6f0"
+    }
+  ]
+}
+{% endschema %}

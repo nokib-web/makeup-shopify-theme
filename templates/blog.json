@@ -30,7 +30,7 @@
           "type": "carousel",
           "settings": {
             "title": "",
-            "collection": "makeup",
+            "collection": "best-sellers",
             "limit": 5
           }
         }
