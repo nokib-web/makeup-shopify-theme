@@ -958,6 +958,55 @@ section.settings.search_type == 'search-icon' %}
     .logo-alignment:not(.secondary-menu-enabled) .mobile-nav-container .menu-trigger > i, 
     .logo-alignment:not(.secondary-menu-enabled) .mobile-nav-container .menu-trigger > span { color: {{ section.settings.icon_color }}; }
     .logo-alignment:not(.secondary-menu-enabled) .mobile-nav-container .menu-trigger { background-color: {{ section.settings.icon_bg }}; padding: 0 5px 0 10px; border-radius: var(--DTRadius); }   
+    
+    /* Bolder and more decorative dropdown navigation for desktop */
+    ul.dt-nav > li:not(.has-mega-menu) div.sub-menu-block {
+      width: 220px !important;
+      border: 1px solid #eaeaea !important;
+      border-radius: 6px !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+      padding: 10px 0 !important;
+    }
+
+    ul.dt-nav > li:not(.has-mega-menu) ul.sub-menu-lists > li > a {
+      font-size: 14px !important;
+      font-weight: 600 !important; /* Bolder text */
+      text-transform: capitalize;
+      color: #222222 !important;
+      padding: 12px 20px !important;
+      transition: all 0.25s ease !important;
+      border-bottom: 1px solid #f5f5f5 !important;
+      display: flex !important;
+      align-items: center;
+      position: relative;
+    }
+
+    ul.dt-nav > li:not(.has-mega-menu) ul.sub-menu-lists > li:last-child > a {
+      border-bottom: none !important;
+    }
+
+    /* Left accent indicator line on hover */
+    ul.dt-nav > li:not(.has-mega-menu) ul.sub-menu-lists > li > a::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background-color: var(--DTPrimaryColor, #e63946);
+      transform: scaleY(0);
+      transition: transform 0.25s ease;
+    }
+    
+    ul.dt-nav > li:not(.has-mega-menu) ul.sub-menu-lists > li > a:hover::before {
+      transform: scaleY(1);
+    }
+
+    ul.dt-nav > li:not(.has-mega-menu) ul.sub-menu-lists > li > a:hover {
+      color: var(--DTPrimaryColor, #e63946) !important;
+      background-color: #fafafa !important;
+      padding-left: 26px !important; /* Slide right animation */
+    }
   }
 </style> 
 
