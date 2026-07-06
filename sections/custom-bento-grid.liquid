@@ -57,36 +57,60 @@
         </div>
       </div>
 
-      {% comment %} Bento Box 2..N: Product Cards Grid {% endcomment %}
-      {%- assign bento_collection = collections[section.settings.collection] -%}
-      {%- assign product_limit = section.settings.products_to_show | default: 3 -%}
+      {% comment %} Bento Box 2..N: Product Cards Slider {% endcomment %}
+      <div class="bento-products-slider-wrapper">
+        <div class="swiper-container bento-swiper-{{ section.id }}">
+          <div class="swiper-wrapper">
+            {%- assign bento_collection = collections[section.settings.collection] -%}
+            {%- assign product_limit = section.settings.products_to_show | default: 6 -%}
 
-      {%- if bento_collection != blank and bento_collection.products_count > 0 -%}
-        {%- for product in bento_collection.products limit: product_limit -%}
-          <div class="bento-box bento-product-cell">
-            {%- render 'product-grid-item', product: product, section: section -%}
+            {%- if bento_collection != blank and bento_collection.products_count > 0 -%}
+              {%- for product in bento_collection.products -%}
+                <div class="swiper-slide">
+                  <div class="bento-box bento-product-cell">
+                    {%- render 'product-grid-item', product: product, section: section -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            {%- else -%}
+              {% comment %} Onboarding Sample Product Cards {% endcomment %}
+              {%- for i in (1..product_limit) -%}
+                <div class="swiper-slide">
+                  <div class="bento-box bento-product-cell onboarding-cell">
+                    <div class="bestseller-product-card">
+                      <div class="bestseller-image-wrapper ratio-1-1" style="background: #f8f8f8; display: flex; align-items: center; justify-content: center;">
+                        {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
+                        {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                      </div>
+                      <div class="bestseller-card-info" style="padding: 15px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
+                        <h3 class="bestseller-product-title">Spotlight Cosmetic {{ i }}</h3>
+                        <div class="bestseller-card-price" style="font-weight: 600; margin-top: 5px;">$35.00</div>
+                        <button class="dt-sc-btn" style="width: 100%; margin-top: 10px;">Add to Bag</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {%- endfor -%}
+            {%- endif -%}
           </div>
-        {%- endfor -%}
-      {%- else -%}
-        {% comment %} Onboarding Sample Product Cards {% endcomment %}
-        {%- for i in (1..product_limit) -%}
-          <div class="bento-box bento-product-cell onboarding-cell">
-            <div class="bestseller-product-card">
-              <div class="bestseller-image-wrapper ratio-1-1" style="background: #f8f8f8; display: flex; align-items: center; justify-content: center;">
-                {% capture current %}{% cycle 1, 2, 3 %}{% endcapture %}
-                {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
-              </div>
-              <div class="bestseller-card-info" style="padding: 15px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1;">
-                <h3 class="bestseller-product-title">Spotlight Cosmetic {{ i }}</h3>
-                <div class="bestseller-card-price" style="font-weight: 600; margin-top: 5px;">$35.00</div>
-                <button class="dt-sc-btn" style="width: 100%; margin-top: 10px;">Add to Bag</button>
-              </div>
-            </div>
-          </div>
-        {%- endfor -%}
-      {%- endif -%}
+        </div>
+        <div class="swiper-button-prev bento-swiper-prev">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </div>
+        <div class="swiper-button-next bento-swiper-next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </div>
+      </div>
 
     </div>
+
+    {%- if section.settings.show_view_all and section.settings.collection != blank -%}
+      <div class="bento-view-all-wrapper" style="text-align: center; margin-top: 40px;">
+        <a href="{{ collections[section.settings.collection].url }}" class="dt-sc-btn bento-view-all-btn">
+          {{ section.settings.view_all_text | default: 'View Collection' }}
+        </a>
+      </div>
+    {%- endif -%}
 
   </div>
 </div>
@@ -111,10 +135,69 @@
 
   .bento-grid-container {
     display: grid;
-    grid-template-columns: 1.3fr repeat(3, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: 1.3fr 3fr;
     gap: 24px;
     align-items: stretch;
+  }
+
+  .bento-products-slider-wrapper {
+    min-width: 0; /* Prevents flex/grid blowouts */
+    position: relative;
+  }
+
+  .bento-swiper-prev, .bento-swiper-next {
+    width: auto;
+    height: auto;
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    color: var(--DTPrimaryColor, #
+    e63946);
+    margin-top: 0;
+    transform: translateY(-50%);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  .bento-swiper-prev {
+    left: -25px;
+  }
+  
+  .bento-swiper-next {
+    right: -25px;
+  }
+  
+  @media (max-width: 767px) {
+    .bento-swiper-prev { left: 5px; }
+    .bento-swiper-next { right: 5px; }
+  }
+
+  .bento-swiper-prev:after, .bento-swiper-next:after {
+    display: none !important;
+  }
+  
+  .bento-swiper-prev svg, .bento-swiper-next svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 2.5;
+  }
+  
+  .bento-view-all-btn {
+    display: inline-block !important;
+    padding: 12px 32px !important;
+    font-size: 14px !important;
+    min-width: 150px;
+    width: auto !important;
+  }
+
+  .bento-swiper-{{ section.id }} {
+    height: 100%;
+  }
+
+  .bento-swiper-{{ section.id }} .swiper-slide {
+    height: auto;
   }
 
   .bento-box {
@@ -260,26 +343,60 @@
 
   @media (max-width: 1199px) {
     .bento-grid-container {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
     }
     .bento-spotlight {
-      grid-column: span 2;
       min-height: 350px;
     }
   }
 
   @media (max-width: 575px) {
-    .bento-grid-container {
-      grid-template-columns: 1fr;
-    }
     .bento-spotlight {
-      grid-column: span 1;
       min-height: 300px;
       padding: 20px;
     }
     .bento-title { font-size: 20px; }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var swiperOptions = {
+      slidesPerView: 1,
+      spaceBetween: 24,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: '.bento-swiper-next',
+        prevEl: '.bento-swiper-prev',
+      },
+      breakpoints: {
+        576: {
+          slidesPerView: 2,
+        },
+        992: {
+          slidesPerView: 3,
+        }
+      }
+    };
+    
+    // Check if Swiper is globally available, if not wait for it
+    var checkSwiper = setInterval(function() {
+      if (typeof Swiper !== 'undefined') {
+        clearInterval(checkSwiper);
+        new Swiper('.bento-swiper-{{ section.id }}', swiperOptions);
+      }
+    }, 200);
+    
+    // Timeout after 5 seconds just in case
+    setTimeout(function() {
+      clearInterval(checkSwiper);
+    }, 5000);
+  });
+</script>
 
 {% schema %}
 {
@@ -397,11 +514,27 @@
     {
       "type": "range",
       "id": "products_to_show",
-      "min": 2,
-      "max": 6,
+      "min": 3,
+      "max": 15,
       "step": 1,
       "label": "Products to Show",
-      "default": 3
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "View All Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Show 'View Collection' button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "Button Text",
+      "default": "View Collection"
     },
     {
       "type": "header",

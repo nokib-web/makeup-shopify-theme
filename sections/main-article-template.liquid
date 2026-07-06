@@ -220,7 +220,16 @@
   
   #dt-sc-comments .dt-sc-comment-form-fields { margin-bottom: var(--DTGutter_Width); }
   #dt-sc-comments .dt-sc-comment-form-fields label { margin-bottom: 5px; width: 100%; float: left; display: none; }
-  .dt-sc-blog-single .dt-sc-blog-item .dt-sc-blog-image img{width:100%;}
+  .dt-sc-blog-single .dt-sc-blog-item .dt-sc-blog-image img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+  }
+  @media (max-width: 767px) {
+    .dt-sc-blog-single .dt-sc-blog-item .dt-sc-blog-image img {
+      height: 280px;
+    }
+  }
   #dt-sc-comments .dt-sc-total-comments { margin-top: 0; margin-bottom: var(--DTGutter_Width); font-size:26px; 
     font-weight: var(--font-weight-header);
     }

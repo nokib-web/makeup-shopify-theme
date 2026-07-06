@@ -13,10 +13,10 @@
       "type": "main-list-collection",
       "settings": {
         "use_custom_list_collection": false,
-        "list-collections": "",
+        "list-collections": "main-menu",
         "collection_btn_text": "Shop Now",
-        "show_item_count": false,
-        "show_excerpt": false,
+        "show_item_count": true,
+        "show_excerpt": true,
         "grid": "4"
       }
     }

@@ -259,9 +259,18 @@
 
   }
     @media (max-width: 991px) {
-  
-  .dt-sc-blog-section .dt-sc-blog-item .dt-sc-blog-content{margin-bottom:30px;}
-      
+      .dt-sc-blog-section .dt-sc-blog-item .dt-sc-blog-content { margin-bottom:30px; }
+    }
+
+    .dt-sc-blog-section .dt-sc-blog-item .dt-sc-blog-image img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+    }
+    @media (max-width: 767px) {
+      .dt-sc-blog-section .dt-sc-blog-item .dt-sc-blog-image img {
+        height: 240px;
+      }
     }
 </style>
 

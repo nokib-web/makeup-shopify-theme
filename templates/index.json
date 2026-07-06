@@ -230,7 +230,7 @@
         "description_font_weight": "400",
         "description_max_width": 420,
         "button_text": "Shop Collection",
-        "button_link": "shopify://collections",
+        "button_link": "shopify://collections/all",
         "button_padding_horizontal": 28,
         "button_padding_vertical": 16,
         "button_font_size": 13,
@@ -1110,7 +1110,7 @@
         "background_image": "shopify://shop_images/client-bg_1.png",
         "background_style": "default",
         "enable_overlay": false,
-        "background_color": "",
+        "background_color": "#FBFAFA",
         "overlay_transparency": "0.5",
         "section_heading": "OUR LATEST NEWS",
         "section_sub_heading": "",
@@ -1134,7 +1134,7 @@
         "blog_show_description": true,
         "enable_blog_icons": false,
         "block_banner_style": "list-style",
-        "post_limit": 4,
+        "post_limit": 5,
         "grid": "2",
         "text_position": "text-start",
         "enable_box_shadow": false,
@@ -1196,39 +1196,40 @@
         "16304740301177992d-0": {
           "type": "Image",
           "settings": {
-            "image": "shopify://shop_images/client-3_200x200_0a350948-5ca6-4010-b918-50990f2d10c9.png",
-            "title": "Brand Name",
-            "link": ""
+            "image": "shopify://shop_images/logo_8.png",
+            "title": "Mayabelline New York",
+            "link": "shopify://collections/rimmel"
           }
         },
         "image_g8DNfN": {
           "type": "Image",
           "settings": {
-            "image": "shopify://shop_images/client-6_200x200_176ec3d8-50a5-496d-8a16-d34352bb3cea.png",
+            "image": "shopify://shop_images/MicrosoftTeams-image__15.png",
             "title": "Brand Name",
-            "link": ""
+            "link": "shopify://collections/garnier"
           }
         },
         "16304740301177992d-1": {
           "type": "Image",
           "settings": {
-            "image": "shopify://shop_images/client-1_200x200_f05e21e1-9909-4671-86f7-1696054295ce.png",
+            "image": "shopify://shop_images/logo.svg",
             "title": "Brand Name",
-            "link": ""
+            "link": "shopify://collections/max-factor"
           }
         },
         "16304740301177992d-3": {
           "type": "Image",
           "settings": {
-            "image": "shopify://shop_images/client-5_200x200_4f8d1908-e2e8-4b53-b79b-0dedfc8f80c7.png",
+            "image": "shopify://shop_images/logos-logo-small.svg",
             "title": "Brand Name",
-            "link": ""
+            "link": "shopify://collections/maybelline"
           }
         },
         "647f0322-a525-47f2-a57f-4679598d5193": {
           "type": "Image",
+          "disabled": true,
           "settings": {
-            "image": "shopify://shop_images/client-4_200x200_1cc69620-ebaf-415c-90bb-aa5befce6429.png",
+            "image": "shopify://shop_images/thayers-usa-logo-white_346x127px_x1_dd362ad2-5c98-40a3-8205-2ce5accb68df.png",
             "title": "Brand Name",
             "link": ""
           }
@@ -1246,17 +1247,18 @@
         "spacing_both_ends": false,
         "padding": "40,40",
         "margin": "40,0",
-        "show_background_image": false,
+        "show_background_image": true,
+        "background_image": "shopify://shop_images/footer-bg_1.jpg",
         "background_style": "default",
         "enable_overlay": false,
-        "background_color": "",
+        "background_color": "#FFFFFF",
         "overlay_transparency": "0.5",
-        "section_heading": "",
+        "section_heading": "Shop By Brand",
         "section_sub_heading": "",
         "section_description": "",
         "section_button_text": "",
         "section_button_link": "",
-        "section_heading_color": "",
+        "section_heading_color": "#FFFFFF",
         "section_sub_heading_color": "",
         "section_description_color": "",
         "section_button_bg_color": "",
