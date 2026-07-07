@@ -23,7 +23,7 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
         "padding_horizontal": 28,
-        "max_width": 1460,
+        "max_width": 1600,
         "bg_color": "#f5f2ee",
         "bg_image": "shopify://shop_images/ChatGPT_Image_Jul_3_2026_10_29_40_AM.png",
         "bg_image_mobile": "shopify://shop_images/ChatGPT_Image_Jul_3_2026_12_26_15_PM.png",
@@ -49,8 +49,8 @@
         "button_font_size": 13,
         "button_color": "#ffffff",
         "button_font_weight": "600",
-        "button_bg": "#2b2b2b",
-        "button_hover_bg": "#3d5a36",
+        "button_bg": "#C9694F",
+        "button_hover_bg": "#853E3E",
         "button_text_2": "Discover Our Story",
         "button_link_2": "#our_story",
         "button_2_padding_horizontal": 32,
@@ -59,7 +59,7 @@
         "button_2_color": "#2b2b2b",
         "button_2_font_weight": "600",
         "button_2_bg": "rgba(0,0,0,0)",
-        "button_2_hover_bg": "#0000000f",
+        "button_2_hover_bg": "#853E3E",
         "button_2_border_color": "#2b2b2b"
       }
     },
@@ -72,7 +72,7 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
         "padding_horizontal": 28,
-        "max_width": 1400,
+        "max_width": 1600,
         "bg_color": "#faf6f2",
         "image": "shopify://shop_images/ChatGPT_Image_Jul_2_2026_04_07_38_PM.png",
         "image_height": 420,
@@ -88,7 +88,7 @@
         "title_font_size_mobile": 28,
         "title_color": "#2b2b2b",
         "title_font_weight": "400",
-        "description": "<p>Instead of following trends, we focus on timeless beauty.</p><p>Our mission began with a simple idea: create cosmetics that feel luxurious, perform beautifully, and become part of your everyday ritual.</p><p>Every product is designed with thoughtful ingredients, elegant packaging, and effortless wear.</p>",
+        "description": "<p>Complete Cosmetics Limited was established in 2026. Though we haven’t been around a long time, we have  completed over 30,000 orders in only a few months we believe this is due to us offering premium brands at affordable prices something we have set out to achieve from the very start. As everyone should be able to obtain premium cosmetics at reasonable prices. We continue to grow our business by sourcing quality genuine products both from the UK and worldwide to offer them at the best possible prices for our customers.</p>",
         "description_font_size": 16,
         "description_color": "#5c5c5c",
         "description_font_weight": "400",
@@ -102,24 +102,24 @@
           "type": "icon_item",
           "settings": {
             "icon": "shopify://shop_images/leaf_3.png",
-            "title": "Clean Beauty",
-            "description": "<p>Carefully selected ingredients made with quality and care.</p>"
+            "title": "Trending Products",
+            "description": "<p>We sources the latest trending products</p>"
           }
         },
         "icon_item_AhDTgL": {
           "type": "icon_item",
           "settings": {
             "icon": "shopify://shop_images/eco-friendly.png",
-            "title": "Responsible Choices",
-            "description": "<p>Thoughtfully sourced whenever possible with conscious production.</p>"
+            "title": "Affordable pricing",
+            "description": "<p>We strive to offer the best possible prices on all our products</p>"
           }
         },
         "icon_item_VhGb8A": {
           "type": "icon_item",
           "settings": {
             "icon": "shopify://shop_images/diamond.png",
-            "title": "Luxury Experience",
-            "description": "<p>Elegant formulas, refined textures, premium packaging.</p>"
+            "title": "Great Customer Experience",
+            "description": "<p>We want our customers to receive the best possible service as with our you we wouldn’t be here</p>"
           }
         },
         "icon_item_4fiLUf": {
@@ -187,31 +187,31 @@
         "bullet_xTmzgi": {
           "type": "bullet",
           "settings": {
-            "text": "Premium Ingredients"
+            "text": " Premium cosmetics"
           }
         },
         "bullet_z4BUJD": {
           "type": "bullet",
           "settings": {
-            "text": "Skin-Loving Formulas"
+            "text": "Genuine Products"
           }
         },
         "bullet_kcFtLW": {
           "type": "bullet",
           "settings": {
-            "text": "Modern Minimal Packaging"
+            "text": " Latest products"
           }
         },
         "bullet_AYRdaf": {
           "type": "bullet",
           "settings": {
-            "text": "Tested for Performance"
+            "text": " Affordable price"
           }
         },
         "bullet_93nDzQ": {
           "type": "bullet",
           "settings": {
-            "text": "Trusted by Beauty Lovers"
+            "text": "Free shipping on orders over £25"
           }
         }
       },
@@ -318,6 +318,7 @@
         "item_9xAM9R",
         "item_LTri3V"
       ],
+      "disabled": true,
       "name": "Ingredients Grid",
       "settings": {
         "padding_top": 80,
@@ -439,6 +440,7 @@
         "milestone_eBmAeA",
         "milestone_bH6nrz"
       ],
+      "disabled": true,
       "name": "Our Journey",
       "settings": {
         "padding_top": 80,
@@ -463,6 +465,7 @@
     },
     "about_meet_the_founder_GE6jbB": {
       "type": "about-meet-the-founder",
+      "disabled": true,
       "name": "Meet The Founder",
       "settings": {
         "padding_top": 0,
@@ -509,7 +512,7 @@
         "stat_PP6EWe": {
           "type": "stat",
           "settings": {
-            "title": "150K+",
+            "title": "30K+",
             "title_font_size": 44,
             "title_font_size_mobile": 32,
             "title_color": "#2b2b2b",
@@ -523,6 +526,7 @@
         },
         "stat_6X4mJd": {
           "type": "stat",
+          "disabled": true,
           "settings": {
             "title": "500+",
             "title_font_size": 44,
@@ -539,7 +543,7 @@
         "stat_fUq3At": {
           "type": "stat",
           "settings": {
-            "title": "30+",
+            "title": "60+",
             "title_font_size": 44,
             "title_font_size_mobile": 32,
             "title_color": "#2b2b2b",
@@ -660,7 +664,6 @@
           "type": "quote",
           "settings": {
             "quote": "<p>I've tried many skincare products, but this one genuinely made a difference. My skin feels smoother, hydrated, and looks healthier after just a few weeks.</p>",
-            "icon": "shopify://shop_images/g1.png",
             "author": "Emma Carter",
             "job": "Marketing Manager"
           }

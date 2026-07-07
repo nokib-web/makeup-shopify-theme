@@ -451,7 +451,7 @@
             "title": "Best Sellers",
             "collection": "best-sellers",
             "show_view_all": true,
-            "view_all_label": "View All Products"
+            "view_all_label": "View Best sellers"
           }
         },
         "tab_2": {
@@ -460,7 +460,7 @@
             "title": "Lip & Gloss",
             "collection": "lips-makeup",
             "show_view_all": true,
-            "view_all_label": "View All Lips"
+            "view_all_label": "View all lips and gloss"
           }
         },
         "tab_3": {
