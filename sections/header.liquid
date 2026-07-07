@@ -117,15 +117,15 @@ section.settings.search_type == 'search-icon' %}
 {%- assign img_url = section.settings.logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 <div  class="logo{% unless section.settings.menu_align == 'logo_left' %} text-center{% endunless %}">
   <a href="{{ routes.root_url }}">
-    {% capture logo_alt %}{{ section.settings.logo.alt | default: shop.name }}{% endcapture %}
+    {% capture logo_alt %}{{ section.settings.logo.alt | default: "Complete Cosmetics Limited" }}{% endcapture %}
     <img class="{% if section.settings.mobile_logo %}desktop-logo-has-mobile{% endif %}" src="{{ section.settings.logo | img_url: '300x300' }}"  alt="{{ logo_alt | escape }}"  style="max-width: {{ section.settings.logo_max_width }}px">
     {% if section.settings.mobile_logo %}
-      <img class="mobile-logo-only" src="{{ section.settings.mobile_logo | img_url: '300x300' }}" alt="{{ section.settings.mobile_logo.alt | default: shop.name | escape }}" style="max-width: {{ section.settings.mobile_logo_max_width | default: section.settings.logo_max_width }}px; display: none;">
+      <img class="mobile-logo-only" src="{{ section.settings.mobile_logo | img_url: '300x300' }}" alt="{{ section.settings.mobile_logo.alt | default: "Complete Cosmetics Limited" | escape }}" style="max-width: {{ section.settings.mobile_logo_max_width | default: section.settings.logo_max_width }}px; display: none;">
     {% endif %}
   </a> 
 </div>
 {% else %}
-<a href="{{ routes.root_url }}">{{ shop.name }}</a>
+<a href="{{ routes.root_url }}">Complete Cosmetics Limited</a>
 {% endif %} 
 {% endcapture %}
 <div data-section-id="{{ section.id }}" data-section-type="header-section" data-header-section>

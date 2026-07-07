@@ -7,11 +7,11 @@
   {%- assign footer_logo_size = block.settings.footer_logo_height | prepend: 'x' -%}  
 
   <a href="{{ routes.root_url }}">
-    <img src="{{ block.settings.logo | img_url: footer_logo_size, scale: 2 }}" alt="{{ block.settings.logo.alt | default: shop.name }}" style="height:{{ block.settings.footer_logo_height}}px">
+    <img src="{{ block.settings.logo | img_url: footer_logo_size, scale: 2 }}" alt="{{ block.settings.logo.alt | default: "Complete Cosmetics Limited" }}" style="height:{{ block.settings.footer_logo_height}}px">
   </a>
     {% else %}
     <a href="{{ routes.root_url }}">
-     <span class="h2">{{ shop.name }}</span>
+     <span class="h2">Complete Cosmetics Limited</span>
     </a>
   {% endif %}
 
