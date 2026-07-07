@@ -355,48 +355,53 @@
     "quotes_rQ9LBp": {
       "type": "quotes",
       "blocks": {
-        "quote_PjLjVn": {
+        "quote_1": {
           "type": "quote",
           "settings": {
-            "quote": "<p>I've tried many skincare products, but this one genuinely made a difference. My skin feels smoother, hydrated, and looks healthier after just a few weeks.</p>",
-            "icon": "shopify://shop_images/g1.png",
-            "author": "Emma Carter",
-            "job": "Marketing Manager"
+            "quote": "<p>⭐️⭐️⭐️⭐️⭐️<br>Arrived on time and well packaged</p>",
+            "author": "Miss A.B",
+            "job": "Fri, 3 Jul 2026"
           }
         },
-        "quote_hfrMdR": {
+        "quote_2": {
           "type": "quote",
           "settings": {
-            "quote": "<p>The quality exceeded my expectations. It's lightweight, absorbs quickly, and leaves my skin glowing without feeling greasy.</p>",
-            "icon": "shopify://shop_images/g2.png",
-            "author": "Sophia Bennett",
-            "job": "Beautician"
+            "quote": "<p>⭐️⭐️⭐️⭐️⭐️<br>Excellent product and price</p>",
+            "author": "Mr E.A",
+            "job": "Wed, 1 Jul 2026"
           }
         },
-        "quote_EfHWmN": {
+        "quote_3": {
           "type": "quote",
           "settings": {
-            "quote": "<p>I have sensitive skin, and this product worked perfectly for me. No irritation, just soft and refreshed skin every day.</p>",
-            "icon": "shopify://shop_images/g3.png",
-            "author": "Jessica Lumina",
-            "job": "Makeup Artist"
+            "quote": "<p>⭐️⭐️⭐️⭐️⭐️<br>Arrived on time and as described</p>",
+            "author": "Ms J.S",
+            "job": "Mon, 29 Jun 2026"
           }
         },
-        "quote_zcd4qj": {
+        "quote_4": {
           "type": "quote",
           "settings": {
-            "quote": "<p>Beautiful packaging, premium quality, and most importantly—it actually delivers on its promises. I'll definitely repurchase.</p>",
-            "icon": "shopify://shop_images/g4.png",
-            "author": "Charlotte Evans",
-            "job": "Fashion Stylist"
+            "quote": "<p>⭐️⭐️⭐️⭐️<br>Great</p>",
+            "author": "Ms A.P",
+            "job": "Sat, 20 Jun 2026"
+          }
+        },
+        "quote_5": {
+          "type": "quote",
+          "settings": {
+            "quote": "<p>⭐️⭐️⭐️⭐️⭐️<br>Have used this seller many times I know what to expect and I am quite happy</p>",
+            "author": "Mr M.S",
+            "job": "Mon, 15 Jun 2026"
           }
         }
       },
       "block_order": [
-        "quote_PjLjVn",
-        "quote_hfrMdR",
-        "quote_EfHWmN",
-        "quote_zcd4qj"
+        "quote_1",
+        "quote_2",
+        "quote_3",
+        "quote_4",
+        "quote_5"
       ],
       "name": "Advanced Testimonial",
       "settings": {

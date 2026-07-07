@@ -17,9 +17,7 @@
           </div>
            {% else %}
            <div class="clients">            
-           {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
-{%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
-{{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}         
+            <div class="quote-icon quote-initial" style="width: 90px; height: 90px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; background-color: #fc4c4b; color: #fff; margin: auto;">{{ block.settings.author | remove: 'Mr ' | remove: 'Ms ' | remove: 'Mrs ' | remove: 'Miss ' | slice: 0, 1 }}</div>      
           </div>
           {% endif %}
          {% endfor %}   
@@ -38,9 +36,7 @@
            </div>  
              {% else %}
              <div class="client-img">
-            {%- assign placeholder_image_index = forloop.index0 | modulo: 4 | plus: 1 -%}
-{%- assign placeholder_image = 'product-apparel-' | append: placeholder_image_index -%}
-{{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+            <div class="quote-icon quote-initial" style="width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; background-color: #fc4c4b; color: #fff; margin: auto;">{{ block.settings.author | remove: 'Mr ' | remove: 'Ms ' | remove: 'Mrs ' | remove: 'Miss ' | slice: 0, 1 }}</div>
            </div> 
           {% endif %}
           <div class="client-info">
@@ -470,7 +466,7 @@
 {
   "name": "Advanced Testimonial",
   "class": "index-section index-section--quotes",
-  "max_blocks": 6,
+  "max_blocks": 20,
   "settings": [
     {
     "type": "image_picker",
