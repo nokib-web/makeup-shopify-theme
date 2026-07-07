@@ -28,7 +28,7 @@
         "bg_image": "shopify://shop_images/ChatGPT_Image_Jul_3_2026_10_29_40_AM.png",
         "bg_image_mobile": "shopify://shop_images/ChatGPT_Image_Jul_3_2026_12_26_15_PM.png",
         "image_radius": 0,
-        "eyebrow_text": "About Our Brand",
+        "eyebrow_text": "",
         "eyebrow_font_size": 13,
         "eyebrow_color": "#3d5a36",
         "eyebrow_font_weight": "600",
@@ -49,8 +49,8 @@
         "button_font_size": 13,
         "button_color": "#ffffff",
         "button_font_weight": "600",
-        "button_bg": "#C9694F",
-        "button_hover_bg": "#853E3E",
+        "button_bg": "#c9694f",
+        "button_hover_bg": "#853e3e",
         "button_text_2": "Discover Our Story",
         "button_link_2": "#our_story",
         "button_2_padding_horizontal": 32,
@@ -59,7 +59,7 @@
         "button_2_color": "#2b2b2b",
         "button_2_font_weight": "600",
         "button_2_bg": "rgba(0,0,0,0)",
-        "button_2_hover_bg": "#853E3E",
+        "button_2_hover_bg": "#853e3e",
         "button_2_border_color": "#2b2b2b"
       }
     },
@@ -72,7 +72,7 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
         "padding_horizontal": 28,
-        "max_width": 1600,
+        "max_width": 1580,
         "bg_color": "#faf6f2",
         "image": "shopify://shop_images/ChatGPT_Image_Jul_2_2026_04_07_38_PM.png",
         "image_height": 420,
@@ -232,7 +232,7 @@
         "padding_top_mobile": 40,
         "padding_bottom_mobile": 40,
         "padding_horizontal": 28,
-        "max_width": 1400,
+        "max_width": 1580,
         "bg_color": "#faf6f2",
         "image": "shopify://shop_images/ChatGPT_Image_Jul_2_2026_05_50_20_PM.png",
         "image_height": 420,
@@ -663,7 +663,7 @@
         "quote_1": {
           "type": "quote",
           "settings": {
-            "quote": "<p>⭐️⭐️⭐️⭐️⭐️<br>Thank you for the speedy delivery. Yes the items are exactly as expected. Thank you once again.</p>",
+            "quote": "<p>⭐️⭐️⭐️⭐️⭐️<br/>Thank you for the speedy delivery. Yes the items are exactly as expected. Thank you once again.</p>",
             "author": "Mary J",
             "job": "Mon, 6 Jul 2026"
           }

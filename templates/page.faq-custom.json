@@ -110,7 +110,7 @@
           "type": "icon",
           "settings": {
             "title": "What is your return policy?",
-            "desc": "We accept returns within 30 days of purchase for unused products in their original packaging. Please contact support to initiate a return."
+            "desc": "We accept returns within 14 days of purchase for unused products in their original packaging. Please contact support to initiate a return."
           }
         },
         "icon_qEKDnz": {
@@ -151,10 +151,10 @@
         "section_heading_color": "#000000",
         "section_sub_heading_color": "#000000",
         "section_description_color": "#000000",
-        "section_button_bg_color": "#FC4C4B",
+        "section_button_bg_color": "#C9694F",
         "section_button_text_color": "",
-        "section_button_hover_bg_color": "#0B0000",
-        "section_button_hover_text_color": "#FFFFFF",
+        "section_button_hover_bg_color": "#0b0000",
+        "section_button_hover_text_color": "#ffffff",
         "faq_heading_color": "#0b0000",
         "faq_heading_bg_color": "#f5f5f5",
         "faq_content_color": "#000000",
