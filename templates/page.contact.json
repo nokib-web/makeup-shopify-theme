@@ -73,7 +73,7 @@
           "settings": {
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"></path><polyline points=\"22,6 12,13 2,6\"></polyline></svg>",
             "title": "EMAIL SUPPORT",
-            "subtitle": "support@completecosmeticslimited.com"
+            "subtitle": "support@completecosmetics.co.uk"
           }
         },
         "feature-4": {
@@ -118,7 +118,7 @@
           "settings": {
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"></path><polyline points=\"22,6 12,13 2,6\"></polyline></svg>",
             "title": "Email Us",
-            "text": "<p>support@completecosmeticslimited.com<br/>info@completecosmeticslimited.com</p>"
+            "text": "<p>support@completecosmetics.co.uk<br/>info@completecosmetics.co.uk</p>"
           }
         },
         "info-2": {
@@ -134,7 +134,7 @@
           "settings": {
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle></svg>",
             "title": "Visit Us",
-            "text": "<p>123 Beauty Street<br>New York, NY 10001, USA</p>"
+            "text": "<p>123 Beauty Street<br/>uk 10001.</p>"
           }
         },
         "social-1": {

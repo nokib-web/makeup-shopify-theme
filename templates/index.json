@@ -403,6 +403,7 @@
         "quote_4",
         "quote_5"
       ],
+      "disabled": true,
       "name": "Advanced Testimonial",
       "settings": {
         "heading": "Hear From Our Customers",
@@ -501,7 +502,7 @@
         "slide_3Vpkhc": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/L_OrealGlamShineBalmyGloss-915DieForGuava.png",
+            "image": "shopify://shop_images/lor-al-paris-color-riche-lipstick-scarlett-creme-461_600x_7eb6d9f4-0ba3-45b8-af01-aeb40e47de9c.png",
             "title": "Flow",
             "subtitle": "01 - 05",
             "text_color": "#ffffff",
@@ -511,7 +512,7 @@
         "slide_mmXPMe": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/blog-1_c01a3d24-b663-4b76-9711-018db9829b4f.jpg",
+            "image": "shopify://shop_images/L_OrealNudeMagiqueCushionFoundation7GoldenBeige14.6g.png",
             "title": "Flow",
             "subtitle": "01 - 05",
             "text_color": "#ffffff",
@@ -521,7 +522,7 @@
         "slide-1": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/blog-1.jpg",
+            "image": "shopify://shop_images/RimmelGlamEyesDaytoNightMascara_Black_9.5ml.png",
             "title": "FLOW",
             "subtitle": "01 - 05",
             "text_color": "#ffffff",
@@ -1201,6 +1202,70 @@
     "16304740301177992d": {
       "type": "home-brand-logos",
       "blocks": {
+        "image_cJqPT9": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/AMAZINGCOSMETICS_Logo_Grey_1500x2000_63c25aaf-6416-44f7-a8bf-e672c1a691ba.png",
+            "title": "Brand Name",
+            "link": "shopify://collections/amazingcosmetics-brand"
+          }
+        },
+        "image_pdCjP4": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/revolution_brand_logo.png",
+            "title": "Brand Name",
+            "link": ""
+          }
+        },
+        "image_iRJQWc": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/revlon_brand_logo.png",
+            "title": "Brand Name",
+            "link": "shopify://collections/revlon-brand"
+          }
+        },
+        "image_UjzgJi": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/bourjois_logo.svg",
+            "title": "Brand Name",
+            "link": ""
+          }
+        },
+        "image_EN9RCb": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/download_1.png",
+            "title": "Brand Name",
+            "link": ""
+          }
+        },
+        "image_rPXGnt": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/logo_1.svg",
+            "title": "Brand Name",
+            "link": ""
+          }
+        },
+        "image_RdgEDJ": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/download.png",
+            "title": "Brand Name",
+            "link": ""
+          }
+        },
+        "image_PixfwF": {
+          "type": "Image",
+          "settings": {
+            "image": "shopify://shop_images/sanctuasyspa.png",
+            "title": "Brand Name",
+            "link": ""
+          }
+        },
         "16304740301177992d-0": {
           "type": "Image",
           "settings": {
@@ -1243,6 +1308,14 @@
         }
       },
       "block_order": [
+        "image_cJqPT9",
+        "image_pdCjP4",
+        "image_iRJQWc",
+        "image_UjzgJi",
+        "image_EN9RCb",
+        "image_rPXGnt",
+        "image_RdgEDJ",
+        "image_PixfwF",
         "16304740301177992d-0",
         "image_g8DNfN",
         "16304740301177992d-1",
@@ -1279,7 +1352,7 @@
         "column_gap": "30",
         "border_radius": "0",
         "block_border_color": "",
-        "block_background_color": "",
+        "block_background_color": "rgba(0,0,0,0)",
         "enable_slider": true,
         "mobile_items_per_view": 2,
         "enable_auto_height": true,
