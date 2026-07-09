@@ -88,7 +88,13 @@
           <h3 class="feature-title-{{ section.id }}">{{ block.settings.title }}</h3>
         {%- endif -%}
         {%- if block.settings.subtitle != blank -%}
-          <p class="feature-subtitle-{{ section.id }}">{{ block.settings.subtitle }}</p>
+          <p class="feature-subtitle-{{ section.id }}">
+            {%- if block.settings.subtitle contains '@' and block.settings.subtitle contains '.' -%}
+              <span style="white-space: nowrap;">{{ block.settings.subtitle }}</span>
+            {%- else -%}
+              {{ block.settings.subtitle }}
+            {%- endif -%}
+          </p>
         {%- endif -%}
       </div>
     {%- endfor -%}

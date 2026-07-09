@@ -1242,6 +1242,12 @@
       },
       {
         "type": "text",
+        "id": "social_tiktok_link",
+        "label": "TikTok",
+        "info": "https://tiktok.com/@shopify"
+      },
+      {
+        "type": "text",
         "id": "social_tumblr_link",
         "label": "Tumblr",
         "info": "http://shopify.tumblr.com"
