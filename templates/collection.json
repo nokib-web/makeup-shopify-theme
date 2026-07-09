@@ -238,6 +238,7 @@
         "social_icon_VgKE4q",
         "social_icon_HFrR7C"
       ],
+      "disabled": true,
       "name": "Newsletter & Social",
       "settings": {
         "padding_horizontal": 15,

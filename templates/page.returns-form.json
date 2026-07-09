@@ -11,7 +11,30 @@
   "sections": {
     "main": {
       "type": "main-returns-form",
-      "settings": {}
+      "settings": {
+        "title": "Start a Return",
+        "subtitle": "Submit your order and reason details below to request a return authorization.",
+        "notice_text": "<p><strong>Notice:</strong> As outlined in our policy, if you are returning due to a <strong>damaged or faulty product</strong>, please email photographs of the items and the packaging directly to our team at <strong>enquiries@completecosmetics.co.uk</strong> after submitting this form.</p>",
+        "name_label": "Full Name",
+        "name_placeholder": "e.g. Jane Doe",
+        "email_label": "Email Address",
+        "email_placeholder": "e.g. jane@example.com",
+        "order_label": "Order Number",
+        "order_placeholder": "e.g. #1001",
+        "address_label": "Delivery Address",
+        "address_placeholder": "e.g. 123 High Street, London, UK",
+        "reason_label": "Reason for Return",
+        "reason_placeholder": "Please select a reason...",
+        "message_label": "Additional Details / Message",
+        "message_placeholder": "Please write any details or additional notes for your return request...",
+        "btn_text": "Submit Return Request",
+        "success_msg": "Success! Your return request has been submitted. Our team will review it and get back to you within 24-48 hours.",
+        "error_msg": "Please correct the fields and try again.",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "max_width": 1200,
+        "bg_color": "#faf6f0"
+      }
     }
   },
   "order": [
