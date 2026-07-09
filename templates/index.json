@@ -268,7 +268,7 @@
           "type": "category_item",
           "settings": {
             "collection": "face-makeup",
-            "image": "shopify://shop_images/51-1TwvvsrL._AC_SX679.png",
+            "image": "shopify://shop_images/RimmelMultiTaskerBetterThanFilters_3in1FacePrimer_GlowBoosterandHighlighter_FlawlessFinish_InfusedwithVitaminCandE_MaxiSoftApplicator_Vegan_30ml.png",
             "title": "",
             "link": ""
           }
@@ -277,6 +277,7 @@
           "type": "category_item",
           "settings": {
             "collection": "eye-makeup",
+            "image": "shopify://shop_images/Maybelline_New_York_Firework_Volumising_Lengthening_Mascara.png",
             "title": "Eyes",
             "link": ""
           }
@@ -285,6 +286,7 @@
           "type": "category_item",
           "settings": {
             "collection": "skin-care-tools",
+            "image": "shopify://shop_images/ThayersSoakYourSkin80HRLiquidMoisturizer-FaceMoisturizerwithHyaluronicAcidandSnowMushroom-DermatologistTestedSkinCareforNormaltoDrySkin-75ml.png",
             "title": "Skin Care",
             "link": ""
           }
@@ -293,6 +295,7 @@
           "type": "category_item",
           "settings": {
             "collection": "lips-makeup",
+            "image": "shopify://shop_images/MaybellineLifterGloss_HydratingLipGlosswithHyaluronicAcid_003Moon_NudePink.png",
             "title": "Lips",
             "link": ""
           }
@@ -309,7 +312,7 @@
           "type": "category_item",
           "settings": {
             "collection": "featured",
-            "image": "shopify://shop_images/L_OrealNudeMagiqueCushionFoundation7GoldenBeige14.6g.png",
+            "image": "shopify://shop_images/MaybellineNewYorkSuperStayVinylInkLiquidLipColour_Shade115Peppy.png",
             "title": "Featured",
             "link": ""
           }
