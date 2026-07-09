@@ -557,6 +557,7 @@
         "slide-2",
         "slide-3"
       ],
+      "disabled": true,
       "settings": {
         "bg_image": "shopify://shop_images/client-bg_1.png",
         "bg_color": "#f4f4f4",
@@ -1215,7 +1216,7 @@
           "settings": {
             "image": "shopify://shop_images/revolution_brand_logo.png",
             "title": "Brand Name",
-            "link": ""
+            "link": "shopify://collections/revolution-brand"
           }
         },
         "image_iRJQWc": {
@@ -1231,7 +1232,7 @@
           "settings": {
             "image": "shopify://shop_images/bourjois_logo.svg",
             "title": "Brand Name",
-            "link": ""
+            "link": "shopify://collections/bourjois-paris-brand"
           }
         },
         "image_EN9RCb": {
@@ -1239,7 +1240,7 @@
           "settings": {
             "image": "shopify://shop_images/download_1.png",
             "title": "Brand Name",
-            "link": ""
+            "link": "shopify://collections/nyx-professional-makeup-brand"
           }
         },
         "image_rPXGnt": {
@@ -1247,7 +1248,7 @@
           "settings": {
             "image": "shopify://shop_images/logo_1.svg",
             "title": "Brand Name",
-            "link": ""
+            "link": "shopify://collections/sally-hansen-brand"
           }
         },
         "image_RdgEDJ": {
@@ -1255,7 +1256,7 @@
           "settings": {
             "image": "shopify://shop_images/download.png",
             "title": "Brand Name",
-            "link": ""
+            "link": "shopify://collections/essie-brand"
           }
         },
         "image_PixfwF": {
@@ -1374,6 +1375,7 @@
     },
     "1630474195a8c84738": {
       "type": "home-newsletter",
+      "disabled": true,
       "settings": {
         "full": true,
         "spacing_both_ends": false,
@@ -1422,8 +1424,8 @@
           "type": "class",
           "settings": {
             "class": "fa fa-truck",
-            "title": "Fast SHIP WORLDWIDE",
-            "desc": "You will get free home delivery to the items in your cart on your first purchase",
+            "title": "Free Shipping",
+            "desc": "Free UK shipping on orders over £25",
             "link_text": "",
             "link": ""
           }
@@ -1452,7 +1454,7 @@
           "type": "class",
           "settings": {
             "class": "fa fa-headphones",
-            "title": "SUPPORT 24/7",
+            "title": "SUPPORT",
             "desc": "Our support team provide best services to our customers for getting a best product.",
             "link_text": "View More",
             "link": ""

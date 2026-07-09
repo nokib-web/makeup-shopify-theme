@@ -11,7 +11,17 @@
   "sections": {
     "main": {
       "type": "main-404",
-      "settings": {}
+      "settings": {
+        "image": "shopify://shop_images/bg-2.png",
+        "image_max_width": 350,
+        "title": "404 Page Not Found",
+        "text": "<p>The page you requested does not exist. Click here to continue shopping.</p>",
+        "button_label": "Continue Shopping",
+        "button_link": "shopify://collections/all",
+        "bg_color": "",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     }
   },
   "order": [

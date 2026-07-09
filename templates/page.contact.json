@@ -40,7 +40,7 @@
         "btn_font_size": 14,
         "btn_color": "#ffffff",
         "btn_font_weight": 700,
-        "btn_bg_color": "#C9694F",
+        "btn_bg_color": "#c9694f",
         "btn_hover_bg_color": "#333333",
         "image": "shopify://shop_images/banner_4.webp",
         "image_width": 600,
@@ -73,7 +73,7 @@
           "settings": {
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"></path><polyline points=\"22,6 12,13 2,6\"></polyline></svg>",
             "title": "EMAIL SUPPORT",
-            "subtitle": "support@completecosmetics.co.uk"
+            "subtitle": "enquiries@completecosmetics.co.uk"
           }
         },
         "feature-4": {
@@ -118,7 +118,7 @@
           "settings": {
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z\"></path><polyline points=\"22,6 12,13 2,6\"></polyline></svg>",
             "title": "Email Us",
-            "text": "<p>support@completecosmetics.co.uk<br/>info@completecosmetics.co.uk</p>"
+            "text": "<p><strong>enquiries@completecosmetics.co.uk</strong></p>"
           }
         },
         "info-2": {
@@ -126,7 +126,7 @@
           "settings": {
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z\"></path></svg>",
             "title": "Call Us",
-            "text": "<p>+1 (800) 123-4567<br>Mon - Fri: 9AM - 6PM</p>"
+            "text": "<p><strong>+44 330 330 3038<br/>Mon - Fri: 9AM - 6PM</strong></p>"
           }
         },
         "info-3": {
@@ -134,7 +134,7 @@
           "settings": {
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z\"></path><circle cx=\"12\" cy=\"10\" r=\"3\"></circle></svg>",
             "title": "Visit Us",
-            "text": "<p>123 Beauty Street<br/>uk 10001.</p>"
+            "text": "<p><strong>Complete Cosmetics Limited</strong></p><p><strong>50 Princes Street</strong></p><p><strong>Ipswich Suffolk</strong></p><p><strong>IP1 1RJ</strong></p><p><strong>United Kingdom</strong></p>"
           }
         },
         "social-1": {
@@ -177,7 +177,7 @@
         "btn_font_size": 12,
         "btn_color": "#ffffff",
         "btn_font_weight": 700,
-        "btn_bg_color": "#C9694F",
+        "btn_bg_color": "#c9694f",
         "btn_hover_bg_color": "#4d4d4d",
         "card_bg_color": "#faf4ef",
         "card_border_color": "rgba(0,0,0,0)",
@@ -247,16 +247,16 @@
         "link_text": "VIEW ALL FAQS",
         "link_url": "shopify://pages/faq",
         "link_font_size": 12,
-        "link_color": "#C9694F",
+        "link_color": "#c9694f",
         "link_font_weight": 600,
         "acc_bg_color": "#ffffff",
         "acc_border_color": "#ffffff",
         "acc_border_radius": 0,
         "acc_padding": 20,
         "acc_question_size": 16,
-        "acc_question_color": "#1B0101",
+        "acc_question_color": "#1b0101",
         "acc_question_weight": 600,
-        "acc_question_hover_bg": "#C9694F",
+        "acc_question_hover_bg": "#c9694f",
         "acc_icon_color": "#888888",
         "acc_answer_bg": "rgba(0,0,0,0)",
         "acc_answer_size": 14,
