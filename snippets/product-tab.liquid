@@ -13,8 +13,14 @@
   </div>
   {% endif %}
   {% if section.settings.product_tab2 %}
-  <div class="dt-sc-tabs-content"  id="tab-custom">
-    {{ pages[section.settings.page_content].content }}
+  <div class="dt-sc-tabs-content rte" id="tab-custom">
+    {% if product.metafields.custom.additional_information != blank %}
+      {{ product.metafields.custom.additional_information | metafield_tag }}
+    {% elsif product.metafields.custom.additional_info != blank %}
+      {{ product.metafields.custom.additional_info | metafield_tag }}
+    {% else %}
+      {{ pages[section.settings.page_content].content }}
+    {% endif %}
   </div>
   {% endif %}  
   {% if product.metafields.custom.ingredients != blank %}
