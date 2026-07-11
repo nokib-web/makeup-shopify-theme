@@ -63,15 +63,15 @@
           {% if product.images.size > 1 %}
           <div class="reveal"> 
             <span class="product-additional">            
-              <img src="{{ 'loading.gif' | asset_url }}" data-src="{{ product.featured_image.src | img_url: '600x' }}" class="featured-image teaser lazyload" alt="{{ product.featured_image.alt | escape }}">            
+              <img src="{{ 'loading.gif' | asset_url }}" data-src="{{ product.featured_image.src | img_url: '600x' }}" class="featured-image teaser lazyload" loading="lazy" alt="{{ product.featured_image.alt | escape }}">            
             </span>          
-            <img  src="{{ 'loading.gif' | asset_url }}" data-src="{{ product.images.last | product_img_url: '600x' }}" class="hidden-feature_img teaser lazyload" alt="{{ product.images.last.alt | escape }}" />
+            <img src="{{ 'loading.gif' | asset_url }}" data-src="{{ product.images.last | product_img_url: '600x' }}" class="hidden-feature_img teaser lazyload" loading="lazy" alt="{{ product.images.last.alt | escape }}" />
           </div> 
           {% else %}
-          <img src="{{ 'loading.gif' | asset_url }}" data-src="{{ product.featured_image.src | img_url: '600x' }}" class="featured-image teaser lazyload" alt="{{ product.featured_image.alt | escape }}">
+          <img src="{{ 'loading.gif' | asset_url }}" data-src="{{ product.featured_image.src | img_url: '600x' }}" class="featured-image teaser lazyload" loading="lazy" alt="{{ product.featured_image.alt | escape }}">
           {% endif %}
           {% else %}
-          <img src="{{ 'loading.gif' | asset_url }}" data-src="{{ product.featured_image.src | img_url: '600x' }}" class="featured-image teaser lazyload" alt="{{ product.featured_image.alt | escape }}">        
+          <img src="{{ 'loading.gif' | asset_url }}" data-src="{{ product.featured_image.src | img_url: '600x' }}" class="featured-image teaser lazyload" loading="lazy" alt="{{ product.featured_image.alt | escape }}">        
           {% endif %} 
         </div>
       </a>

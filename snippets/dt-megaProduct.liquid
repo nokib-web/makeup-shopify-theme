@@ -11,7 +11,8 @@
   <div class="dt-sc-menu-product__item">
     <div class="dt-sc-menu-product_item-image">
       <a href="{{ product1.url | within: collection }}">             
-        <img src="{{ product1.featured_image.src | img_url: 'master' }}"
+        <img src="{{ product1.featured_image.src | img_url: '400x' }}"
+             loading="lazy"
              data-aspectratio="{{ product1.featured_image.src.aspect_ratio }}"
              data-sizes="auto"            
              alt="{{ product1.title | escape }}">               
@@ -33,7 +34,8 @@
     <div class="dt-sc-menu-product_item-image">
       {%- assign product2 = all_products[block.settings.product2] -%}
       <a href="{{ product2.url | within: collection }}">        
-        <img src="{{ product2.featured_image.src | img_url: 'master' }}"
+        <img src="{{ product2.featured_image.src | img_url: '400x' }}"
+             loading="lazy"
              data-aspectratio="{{ product2.featured_image.src.aspect_ratio }}"
              data-sizes="auto"            
              alt="{{ product2.title | escape }}">            
@@ -55,7 +57,8 @@
     <div class="dt-sc-menu-product_item-image">
       {%- assign product3 = all_products[block.settings.product3] -%}
       <a href="{{ product3.url | within: collection }}">        
-        <img src="{{ product3.featured_image.src | img_url: 'master' }}"
+        <img src="{{ product3.featured_image.src | img_url: '400x' }}"
+             loading="lazy"
              data-aspectratio="{{ product3.featured_image.src.aspect_ratio }}"
              data-sizes="auto"            
              alt="{{ product3.title | escape }}">            
@@ -77,7 +80,8 @@
     <div class="dt-sc-menu-product_item-image">
       {%- assign product4 = all_products[block.settings.product4] -%}
       <a href="{{ product4.url | within: collection }}">       
-        <img src="{{ product4.featured_image.src | img_url: 'master' }}"
+        <img src="{{ product4.featured_image.src | img_url: '400x' }}"
+             loading="lazy"
              data-aspectratio="{{ product4.featured_image.src.aspect_ratio }}"
              data-sizes="auto"            
              alt="{{ product4.title | escape }}">            

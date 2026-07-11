@@ -3,7 +3,7 @@
   {% capture collection_title %}{{ collections[featured].title | escape }}{% endcapture %}
   <a href="{{ collections[featured].url }}" title="{{ 'collections.general.link_title' | t: title: collection_title }}" class="pickgradient grid-link">
     {% if collections[featured].image %}     
-    <img class="lazyload"
+    <img class="lazyload" loading="lazy"
          data-src="{{ collections[featured].image.src | img_url: collection_item_img_size }}"
          data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
          data-aspectratio="{{ collections[featured].image.aspect_ratio }}"
@@ -13,7 +13,7 @@
       <img  src="{{ collections[featured].image.src | img_url: collection_item_img_size}}" alt="{{collection_title}}" class="dt-sc-noscript-image" >
     </noscript>
     {% else %}    
-    <img class="lazyload"
+    <img class="lazyload" loading="lazy"
          data-src="{{ collections[featured].products.first.featured_image | img_url: collection_item_img_size }}"
          data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
          data-aspectratio="{{ collections[featured].products.first.featured_image.aspect_ratio }}"

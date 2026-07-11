@@ -6,7 +6,8 @@
     {%- capture dt_megaImage -%}
     {%- unless block.settings.image_1 == blank -%}    
     {%- assign mega_img_1_url = block.settings.image_1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-    <img src="{{ block.settings.image_1 | img_url: 'master' }}"
+    <img src="{{ block.settings.image_1 | img_url: '400x' }}"
+         loading="lazy"
          data-aspectratio="{{ block.settings.image_1.aspect_ratio }}"
          data-sizes="auto"            
          alt="{{ block.settings.image_1.alt | escape }}">            
@@ -40,7 +41,8 @@
     {%- capture dt_megaImage -%}
     {%- unless block.settings.image_2 == blank -%}
    {%- assign mega_img_2_url = block.settings.image_2 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-    <img src="{{ block.settings.image_2 | img_url: 'master' }}"
+    <img src="{{ block.settings.image_2 | img_url: '400x' }}"
+         loading="lazy"
          data-aspectratio="{{ block.settings.image_2.aspect_ratio }}"
          data-sizes="auto"            
          alt="{{ block.settings.image_1.alt | escape }}">            
@@ -74,7 +76,8 @@
     {%- capture dt_megaImage -%}
     {%- unless block.settings.image_3 == blank -%}
  
-    <img src="{{ block.settings.image_3 | img_url: 'master' }}"
+    <img src="{{ block.settings.image_3 | img_url: '400x' }}"
+         loading="lazy"
          data-aspectratio="{{ block.settings.image_3.aspect_ratio }}"
          data-sizes="auto"            
          alt="{{ block.settings.image_1.alt | escape }}">            
@@ -107,7 +110,8 @@
   <div class="dt-sc-mega_menu text-center">
     {%- capture dt_megaImage -%}
     {%- unless block.settings.image_4 == blank -%}      
-    <img src="{{ block.settings.image_4 | img_url: 'master' }}"
+    <img src="{{ block.settings.image_4 | img_url: '400x' }}"
+         loading="lazy"
          data-aspectratio="{{ block.settings.image_4.aspect_ratio }}"
          data-sizes="auto"            
          alt="{{ block.settings.image_4.alt | escape }}">            
