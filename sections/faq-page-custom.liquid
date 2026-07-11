@@ -207,7 +207,11 @@
   .faq-right-text {
     margin-bottom: 25px;
     color: var(--DTColor_Body);
-    font-size: 0.95em;
+    font-size: 1em;
+    font-weight: 700;
+    {% if section.settings.right_text_stroke_width > 0 %}
+    -webkit-text-stroke: {{ section.settings.right_text_stroke_width }}px {{ section.settings.right_text_stroke_color | default: '#000000' }};
+    {% endif %}
   }
   
   /* Contact Form Styles */
@@ -406,10 +410,27 @@
 "default": "Ask Any Question"
 },
 {
-"type": "text",
+"type": "text", // enter dilei jeno line break ney
 "id": "right_text",
 "label": "Right Text",
 "default": "Feel free to ask any question you have; we're here to help!"
+},
+{
+"type": "color",
+"id": "right_text_stroke_color",
+"label": "Right Text Stroke Color",
+"default": "#000000"
+},
+{
+"type": "range",
+"id": "right_text_stroke_width",
+"min": 0,
+"max": 3,
+"step": 0.1,
+"unit": "px",
+"label": "Right Text Stroke Width",
+"default": 0,
+"info": "0 = no stroke"
 },
 {
 "type": "text",

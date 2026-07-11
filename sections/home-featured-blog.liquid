@@ -96,12 +96,12 @@
               <div class="dt-sc-blog-content">
                 <div class="dt-sc-blog-meta {% if section.settings.enable_blog_icons %}with-meta-icons{% endif %}">
                   {% if section.settings.blog_show_author %}
-                  <p class="dt-sc-blog-author">
+                  {% comment %} <p class="dt-sc-blog-author">
                     {% if section.settings.enable_blog_icons %}<span class="fa fa-user"></span>
                     {% else %}
                     {% include 'icon-author' %}  
                     {% endif %}
-                    <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span></p>
+                    <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span></p> {% endcomment %}
                   {% endif %}
                   {% if section.settings.blog_show_date %}
                   <p class="dt-sc-blog-date">                    
@@ -176,12 +176,12 @@
               <div class="dt-sc-blog-content">
                 <div class="dt-sc-blog-meta {% if section.settings.enable_blog_icons %}with-meta-icons{% endif %}">
                   {% if section.settings.blog_show_author %}
-                  <p class="dt-sc-blog-author">
+                  {% comment %} <p class="dt-sc-blog-author">
                     {% if section.settings.enable_blog_icons %}<span class="fa fa-user"></span>
                     {% else %}
                     {% include 'icon-author' %}  
                     {% endif %}
-                    <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span></p>
+                    <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span></p> {% endcomment %}
                   {% endif %}
                   {% if section.settings.blog_show_date %}
                   <p class="dt-sc-blog-date">                    
@@ -251,12 +251,12 @@
             <div class="dt-sc-blog-content">
               <div class="dt-sc-blog-meta {% if section.settings.enable_blog_icons %}with-meta-icons{% endif %}">
                 {% if section.settings.blog_show_author %}
-                <p class="dt-sc-blog-author">
+                {% comment %} <p class="dt-sc-blog-author">
                   {% if section.settings.enable_blog_icons %}<span class="fa fa-user"></span>
                   {% else %}
                   {% include 'icon-author' %}  
                   {% endif %}
-                  <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span></p>
+                  <span>{{ 'blogs.article.by_author' | t: author: article.author }}</span></p> {% endcomment %}
                 {% endif %}
                 {% if section.settings.blog_show_date %}
                 <p class="dt-sc-blog-date">                    

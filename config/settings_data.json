@@ -106,7 +106,7 @@
     "timer": "903710998572@10/24/2021_00:00:00",
     "timer_button_bg": "rgba(0,0,0,0)",
     "social_twitter_link": "",
-    "social_facebook_link": "https://www.facebook.com/completecosmetics",
+    "social_facebook_link": "https://facebook.com/completecosmeticsltd",
     "social_pinterest_link": "",
     "social_google_plus_link": "",
     "social_instagram_link": "https://www.instagram.com/completecosmeticsltd",
@@ -2113,6 +2113,13 @@
       "16254638834e702403",
       "162546445354753e59",
       "1625464732dee99c61"
-    ]
+    ],
+    "blocks": {
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      }
+    }
   }
 }

@@ -186,12 +186,17 @@
         "padding_top": 60,
         "padding_bottom": 60
       }
+    },
+    "17836652373f9bb709": {
+      "type": "apps",
+      "settings": {}
     }
   },
   "order": [
     "main",
     "product-recommendations",
     "recently-viewed-products",
-    "home_bestseller_carousel_7k4tKj"
+    "home_bestseller_carousel_7k4tKj",
+    "17836652373f9bb709"
   ]
 }

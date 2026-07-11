@@ -9,7 +9,7 @@
   {% capture shareTitle %}{% unless shop.metafields.global.description_tag == blank %}{{ shop.metafields.global.description_tag | url_param_escape }}{% else %}{{ shop.name | url_param_escape }}{% endunless %}{% endcapture %}
 {% endif %}
 <div class="social-sharing" data-permalink="{{ permalinkURL }}">
-  <h6 class="social_share_title">{{ 'general.social.share_title' | t }}:</h6>      
+  {% comment %} <h6 class="social_share_title">{{ 'general.social.share_title' | t }}:</h6>       {% endcomment %}
   
   {% if settings.share_facebook %}
     <a target="_blank" href="//www.facebook.com/sharer.php?u={{ permalinkURL }}" class="share-facebook">
