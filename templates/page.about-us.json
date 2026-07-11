@@ -717,12 +717,54 @@
         "quote_5",
         "quote_6"
       ],
+      "disabled": true,
       "name": "Advanced Testimonial",
       "settings": {
         "heading": "Hear From Our Customers",
         "color_bg": "#faf6f2",
         "color_text": "#000000"
       }
+    },
+    "1783742577a39b3c08": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_cards_carousel_NfLtT6": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": false,
+            "reviews_selection": "all",
+            "products": [],
+            "star_rating": "all",
+            "show_review_media": true,
+            "display_order": "media_first",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "medium",
+            "image_ratio": "1",
+            "reviews_shown": 4,
+            "show_reviewer_name": true,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "bottom",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Hear From Our Customers",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_cards_carousel_NfLtT6"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -737,6 +779,7 @@
     "about_meet_the_founder_GE6jbB",
     "about_stats_bar_XbyMfY",
     "about_testimonials_carousel_nQV8BM",
-    "quotes_QnQyJF"
+    "quotes_QnQyJF",
+    "1783742577a39b3c08"
   ]
 }
