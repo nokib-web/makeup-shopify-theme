@@ -60,22 +60,26 @@
           <h4> {{ section.settings.contact_form_title }} </h4>
           {% form 'contact' %}
           {% if form.posted_successfully? %}
-          <p class="note form-success">
-            {{ 'contact.form.post_success' | t }}
-          </p>
+          <div class="contact-form-success-banner" style="background: #eaf8ee; border: 1px solid #34a853; border-radius: 8px; padding: 24px; text-align: center; margin-bottom: 24px;" tabindex="-1" autofocus>
+            <div style="font-size: 32px; margin-bottom: 12px;">✅</div>
+            <h3 style="color: #1b6631; font-size: 22px; margin: 0 0 10px 0; font-weight: 600;">Thank You! Your message has been sent successfully.</h3>
+            <p style="color: #2c593a; font-size: 15px; margin: 0; line-height: 1.6;">{{ 'contact.form.post_success' | t }}</p>
+          </div>
           {% endif %}
           {{ form.errors | default_errors }}         
+          {% unless form.posted_successfully? %}
           <label for="ContactFormName" class="label--hidden">{{ 'contact.form.name' | t }}</label>
-          <input type="text" id="ContactFormName" class="input-full" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
+          <input type="text" id="ContactFormName" class="input-full" name="contact[name]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" required value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}">
           <label for="ContactFormEmail" class="label--hidden">{{ 'contact.form.email' | t }}</label>
-          <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+          <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" required value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
           <label for="ContactFormPhone" class="label--hidden">{{ 'contact.form.phone' | t }}</label>
-          <input type="tel" id="ContactFormPhone" class="input-full" name="contact[phone]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+          <input type="tel" id="ContactFormPhone" class="input-full" name="contact[phone]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" required value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}">
           <label for="ContactFormMessage" class="label--hidden">{{ 'contact.form.message' | t }}</label>
-          <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+          <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}" required>{% if form.body %}{{ form.body }}{% endif %}</textarea>
           <button type="submit" class="btn">
             {{ 'contact.form.send' | t }} 
           </button>
+          {% endunless %}
           {% endform %}          
           {% endif %}
         </div>

@@ -8,7 +8,7 @@
     {% if section.settings.product_tab3 %}<button class="tablinks" onclick="openTab(event, 'tab-review')">{{ section.settings.product_tab3_heading }}</button>{% endif %}
   </div>
   {% if section.settings.product_tab1 %}
-  <div class="dt-sc-tabs-content  product-single__description rte" id="tab-description" style="display:block;">
+  <div class="dt-sc-tabs-content  product-single__description rte" id="tab-description"{% unless section.settings.product_tab3 %} style="display:block;"{% endunless %}>
     {{ product.description }}
   </div>
   {% endif %}
@@ -29,7 +29,7 @@
   </div>
   {% endif %}
   {% if section.settings.product_tab3 %}
-  <div class="dt-sc-tabs-content" id="tab-review">
+  <div class="dt-sc-tabs-content" id="tab-review" style="display:block;">
     <div id="shopify-product-reviews" data-id="{{product.id}}">
       <div style='clear:both'></div>
   <div id='judgeme_product_reviews' class='jdgm-widget jdgm-review-widget' data-id='{{ product.id }}'>
@@ -80,9 +80,14 @@
   function relocateJudgeMeToReviewsTab() {
     var $tabReviewContainer = $('#tab-review #shopify-product-reviews');
     if ($tabReviewContainer.length) {
-      var $externalWidget = $('.jdgm-review-widget, .jdgm-widget-wrapper, [data-block-handle="review-widget"]').not('#tab-review .jdgm-review-widget');
+      var $externalWidget = $('.jdgm-review-widget, .jdgm-widget-wrapper, [data-block-handle="review-widget"]').not('#tab-review .jdgm-review-widget, #tab-review .jdgm-widget-wrapper, #tab-review [data-block-handle="review-widget"]');
       if ($externalWidget.length) {
-        $tabReviewContainer.append($externalWidget);
+        $tabReviewContainer.empty().append($externalWidget.first());
+        $externalWidget.slice(1).remove();
+      }
+      var $insideWidgets = $('#tab-review .jdgm-review-widget, #tab-review .jdgm-widget-wrapper');
+      if ($insideWidgets.length > 1) {
+        $insideWidgets.slice(1).remove();
       }
     }
   }
@@ -93,6 +98,15 @@
     setTimeout(relocateJudgeMeToReviewsTab, 2000);
   });
 
-  $( ".tablinks" ).first().addClass( "active" );
-  $( ".dt-sc-tabs-content" ).first().css( "display", "block" );
+  var $reviewTabBtn = $(".tablinks[onclick*='tab-review']");
+  var $reviewTabContent = $("#tab-review");
+  if ($reviewTabBtn.length && $reviewTabContent.length) {
+    $(".tablinks").removeClass("active");
+    $(".dt-sc-tabs-content").css("display", "none");
+    $reviewTabBtn.addClass("active");
+    $reviewTabContent.css("display", "block");
+  } else {
+    $( ".tablinks" ).first().addClass( "active" );
+    $( ".dt-sc-tabs-content" ).first().css( "display", "block" );
+  }
 </script>
