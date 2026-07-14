@@ -294,27 +294,9 @@
             <textarea id="ContactForm-body" name="contact[body]" required placeholder=""></textarea>
           </div>
           
-          <div class="field" style="display:none !important;" aria-hidden="true">
-            <label for="ContactForm-honeypot">Website</label>
-            <input type="text" id="ContactForm-honeypot" name="contact[website]" tabindex="-1" autocomplete="off">
-          </div>
-          
           <button type="submit">{{ section.settings.btn_text }}</button>
         {%- endunless -%}
       {%- endform -%}
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          var form = document.querySelector('.contact-form-{{ section.id }}');
-          if (form) {
-            form.addEventListener('submit', function(e) {
-              var honeypot = document.getElementById('ContactForm-honeypot');
-              if (honeypot && honeypot.value !== '') {
-                e.preventDefault(); // Stop submission
-              }
-            });
-          }
-        });
-      </script>
     </div>
 
     <!-- Right Info Area -->
